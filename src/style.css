@@ -286,12 +286,14 @@
   background: linear-gradient(var(--color-caret), var(--color-caret)) no-repeat right 0 top 50% / 0 0;
   animation: dtk 1ms linear var(--at) both, dtc var(--hold, 45ms) step-end var(--at);
 }
+/* "good" is flagged with the wavy clay mark DuoTyping draws under a mistake, then struck. */
 .dt-good {
   position: relative;
   color: var(--color-struck);
-  text-decoration: underline dotted transparent;
-  text-decoration-thickness: 0.07em;
-  text-underline-offset: 0.12em;
+  text-decoration: underline wavy transparent;
+  text-decoration-thickness: 0.05em;
+  text-underline-offset: 0.14em;
+  text-decoration-skip-ink: none;
   animation: dtflag 670ms step-end 1200ms, dtgrey 200ms ease-out 1870ms both;
 }
 .dt-strike {
