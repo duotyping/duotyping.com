@@ -286,15 +286,24 @@
   background: linear-gradient(var(--color-caret), var(--color-caret)) no-repeat right 0 top 50% / 0 0;
   animation: dtk 1ms linear var(--at) both, dtc var(--hold, 45ms) step-end var(--at);
 }
-/* "good" is flagged with the wavy clay mark DuoTyping draws under a mistake, then struck. */
 .dt-good {
   position: relative;
   color: var(--color-struck);
-  text-decoration: underline wavy transparent;
-  text-decoration-thickness: 0.05em;
-  text-underline-offset: 0.14em;
-  text-decoration-skip-ink: none;
-  animation: dtflag 670ms step-end 1200ms, dtgrey 200ms ease-out 1870ms both;
+  text-decoration: none;
+  animation: dtgrey 200ms ease-out 1870ms both;
+}
+/* The flag: the wavy clay mark DuoTyping draws under a mistake, shown from 1.2 s until the
+   strike. One shape under the whole word, not an underline, which would restart its wave at
+   every letter's span. A 16 × 8 tile holds one period, sized in em to follow the headline;
+   the tile's width is spelled out, since not every renderer derives it from the image. */
+.dt-wave {
+  position: absolute;
+  inset-inline: 0;
+  top: calc(100% - 0.12em);
+  height: 0.14em;
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='8' viewBox='0 0 16 8'%3E%3Cpath d='M-8 4C-5.5 7.6-2.5 7.6 0 4C2.5 .4 5.5 .4 8 4C10.5 7.6 13.5 7.6 16 4C18.5 .4 21.5 .4 24 4' fill='none' stroke='%23B04E25' stroke-width='2.4'/%3E%3C/svg%3E") repeat-x 0 50% / 0.28em 100%;
+  opacity: 0;
+  animation: dtflag 670ms step-end 1200ms;
 }
 .dt-strike {
   position: absolute;
@@ -324,7 +333,7 @@
 
 @keyframes dtk { from { opacity: 0; } to { opacity: 1; } }
 @keyframes dtc { 0%, 100% { background-size: 0.055em 0.8em; } }
-@keyframes dtflag { 0%, 100% { text-decoration-color: var(--color-clay); } }
+@keyframes dtflag { 0%, 100% { opacity: 1; } }
 @keyframes dtstrike { from { transform: scaleX(0); } to { transform: scaleX(1); } }
 @keyframes dtgrey { from { color: var(--color-ink); } to { color: var(--color-struck); } }
 @keyframes dtwell { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
@@ -633,7 +642,7 @@ details[open] .faq-icon .bar { transform: scaleY(0); }
 
 /* Nothing here is load-bearing, so honour the setting: every piece shows its final frame. */
 @media (prefers-reduced-motion: reduce) {
-  .dt-k, .dt-good, .dt-strike, .dt-well, .dt-show, .dt-caret, .tcaret, .dt-sel, .dt-pop, .dt-mark, .dt-in { animation: none !important; }
+  .dt-k, .dt-good, .dt-strike, .dt-wave, .dt-well, .dt-show, .dt-caret, .tcaret, .dt-sel, .dt-pop, .dt-mark, .dt-in { animation: none !important; }
   .fade, .mk, .sel, .keycap-press, .faq-icon, .faq-icon .bar, .faq details::details-content,
   .menu-enter-active, .menu-leave-active { transition: none !important; }
   .loop, .loop * { animation: none !important; }

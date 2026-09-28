@@ -73,7 +73,7 @@ onUnmounted(() => clearTimeout(timer))
           :key="i"
           class="dt-k"
           :style="{ '--at': `${at}ms`, '--hold': i === GOOD.length - 1 ? '450ms' : null }"
-        >{{ ch }}</span><span class="dt-strike" /></del> <span class="dt-well"><ins class="text-clay no-underline">well</ins>.</span>
+        >{{ ch }}</span><span class="dt-strike" /><span class="dt-wave" /></del> <span class="dt-well"><ins class="text-clay no-underline">well</ins>.</span>
       <br />
       <span class="dt-show" style="--at: 2600ms">{{ line2 }}</span><span class="dt-caret" :class="caret" />
     </span>
