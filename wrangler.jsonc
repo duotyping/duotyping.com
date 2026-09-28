@@ -11,6 +11,14 @@
     // Unknown paths get dist/404.html with a real 404 status.
     "not_found_handling": "404-page"
   },
+  // Observability settings for logging and monitoring.
+  "observability": {
+    "logs": {
+      "enabled": true,
+      "invocation_logs": true,
+      "persist": true
+    }
+  },
   // One origin. The app fetches https://duotyping.com/models.json and /appcast.xml by exact
   // URL, and every canonical link points here; a workers.dev copy would only be a duplicate.
   "workers_dev": false,
