@@ -1,0 +1,18 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "duotyping-com",
+  "compatibility_date": "2026-09-28",
+  // Static assets only. No Worker script runs, so every request is served straight from
+  // Cloudflare's edge and none counts as a Worker invocation.
+  "assets": {
+    "directory": "./dist",
+    // /privacy serves privacy.html, and /privacy.html redirects to /privacy.
+    "html_handling": "auto-trailing-slash",
+    // Unknown paths get dist/404.html with a real 404 status.
+    "not_found_handling": "404-page"
+  },
+  // One origin. The app fetches https://duotyping.com/models.json and /appcast.xml by exact
+  // URL, and every canonical link points here; a workers.dev copy would only be a duplicate.
+  "workers_dev": false,
+  "routes": [{ "pattern": "duotyping.com", "custom_domain": true }]
+}

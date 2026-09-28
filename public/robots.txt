@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://duotyping.com/sitemap.xml
