@@ -148,6 +148,26 @@
   }
   .btn:hover { background: var(--color-clay-hover); }
   .btn:active { background: var(--color-clay-press); translate: 0 1px; }
+  /* Before the first release: the button's shape, no action. */
+  .btn-soon, .btn-soon:hover, .btn-soon:active {
+    background: var(--color-card);
+    color: var(--color-ink);
+    box-shadow: inset 0 0 0 1.5px var(--color-pill);
+    cursor: default;
+    translate: none;
+  }
+  /* A live dot: it's on its way. The ring only pulses when motion is welcome. */
+  .btn-soon::before {
+    content: '';
+    width: 8px;
+    height: 8px;
+    border-radius: 999px;
+    background: var(--color-clay);
+    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-clay) 45%, transparent);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .btn-soon::before { animation: dtsoon 2s ease-out infinite; }
+  }
   .btn-sm { height: 44px; padding: 0 18px; border-radius: 12px; font-size: 15.5px; }
 
   .nav-link {
@@ -395,6 +415,7 @@
 .dt-in { display: inline-block; animation: dtwell 240ms ease-out both; }
 
 @keyframes dtsel { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+@keyframes dtsoon { to { box-shadow: 0 0 0 7px transparent; } }
 @keyframes dtpop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
 @keyframes dtmark { from { text-decoration-color: transparent; } }
 

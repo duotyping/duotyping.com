@@ -7,7 +7,7 @@ import { FEEDBACK_URL } from '../site'
 const route = useRoute()
 const at = (hash) => (route.path === '/' ? hash : `/${hash}`)
 const COLUMNS = computed(() => [
-  ['Product', [[at('#download'), 'Download'], [at('#how'), 'How it works'], [at('#privacy'), 'Privacy'], [at('#models'), 'Models']]],
+  ['Product', [[at('#download'), 'Coming soon'], [at('#how'), 'How it works'], [at('#privacy'), 'Privacy'], [at('#models'), 'Models']]],
   ['Help', [[at('#faq'), 'FAQ'], [FEEDBACK_URL, 'Send feedback']]],
   ['Legal', [['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Use']]],
 ])

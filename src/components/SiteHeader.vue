@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router'
 import BrandMark from './BrandMark.vue'
 import Icon from './Icon.vue'
 import ShareActions from './ShareActions.vue'
-import { DOWNLOAD_URL } from '../site'
 
 const route = useRoute()
 // "#how" on the home page, "/#how" everywhere else. A bare "/#how" on the home page would
@@ -63,7 +62,7 @@ onUnmounted(() => {
       </a>
       <nav aria-label="Main" class="hidden items-center gap-9 lg:flex">
         <a v-for="[hash, label] in LINKS" :key="hash" :href="at(hash)" class="nav-link">{{ label }}</a>
-        <a :href="DOWNLOAD_URL" class="btn btn-sm"><Icon name="download" class="size-4" />Download</a>
+        <span class="btn btn-soon btn-sm">Coming soon</span>
       </nav>
       <button
         type="button"
@@ -92,7 +91,7 @@ onUnmounted(() => {
           <div class="mt-[22px]">
             <!-- A phone can't install it, so pass the link on; a tablet-sized window might be a Mac. -->
             <ShareActions class="sm:hidden" />
-            <a :href="DOWNLOAD_URL" class="btn w-full max-sm:hidden"><Icon name="download" class="size-[19px]" />Download for Mac</a>
+            <span class="btn btn-soon w-full max-sm:hidden">Coming soon</span>
           </div>
         </nav>
       </div>

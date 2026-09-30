@@ -13,7 +13,7 @@ import Popup from '../components/mock/Popup.vue'
 import RewritePill from '../components/mock/RewritePill.vue'
 import Suggestion from '../components/mock/Suggestion.vue'
 import { usePageHead } from '../head'
-import { DOWNLOAD_URL, FEEDBACK_URL, SITE_URL, release } from '../site'
+import { FEEDBACK_URL, SITE_URL, release } from '../site'
 
 const TITLE = 'DuoTyping — the private writing assistant for Mac'
 const DESCRIPTION =
@@ -91,7 +91,6 @@ usePageHead({
         applicationCategory: 'BusinessApplication',
         operatingSystem: 'macOS 14 Sonoma or later',
         processorRequirements: 'Apple silicon',
-        downloadUrl: DOWNLOAD_URL,
         ...(release.version && { softwareVersion: release.version }),
         image: `${SITE_URL}/og.png`,
         offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
@@ -137,11 +136,11 @@ const NOTE_LINES = [
       <div class="mt-1 flex flex-col gap-[18px] sm:hidden">
         <ShareActions copy />
         <p class="text-center text-sm leading-normal text-ink-3">
-          DuoTyping is a Mac app, so send yourself the link and download it there.<br />Free · macOS 14 or later · Apple silicon
+          DuoTyping is a Mac app, so send yourself the link for when it’s out.<br />Free · macOS 14 or later · Apple silicon
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-x-[30px] gap-y-3 max-sm:hidden">
-        <a :href="DOWNLOAD_URL" class="btn"><Icon name="download" class="size-[19px]" />Download for Mac</a>
+        <span class="btn btn-soon">Coming soon</span>
         <a
           href="#how"
           class="inline-flex min-h-11 items-center gap-2 text-[17px] font-semibold text-ink underline decoration-ink/28 decoration-[1.5px] underline-offset-[5px] transition-[text-decoration-color] duration-150 hover:decoration-ink"
@@ -743,7 +742,7 @@ const NOTE_LINES = [
     <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:21] [--lo:17.5]">Free for Mac. No account, nothing to unlock.</p>
     <ShareActions class="w-full sm:hidden" />
     <div class="flex flex-col items-center gap-[22px] sm:mt-1.5 sm:gap-4">
-      <a :href="DOWNLOAD_URL" class="btn max-sm:hidden"><Icon name="download" class="size-[19px]" />Download for Mac</a>
+      <span class="btn btn-soon max-sm:hidden">Coming soon</span>
       <p class="text-sm text-ink-3 sm:text-[14.5px]">macOS 14 Sonoma or later · Apple silicon</p>
     </div>
   </section>
