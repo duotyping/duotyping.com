@@ -12,8 +12,8 @@ import { introElapsed, reducedMotion } from '../intro'
 // The product, a step at a time (Motion board). The email types itself and a wavy line lands
 // under each mistake once the next word arrives; the badge counts them. Then the selection
 // sweeps, Rewrite appears, ⌃⌥⌘D go down in turn, the popup rises, and Accept fixes the first
-// sentence. A pointer does the mouse's part: it drags the selection and clicks Accept.
-// It fades and plays again every 11.7 s. Times are from the start of each run.
+// sentence, then the second. A pointer does the mouse's part: it drags the selection and
+// clicks each Accept. It fades and plays again every 13.3 s. Times are from the start of each run.
 const SEGS = [
   ['t0', 'Thanks for the quick reply. '],
   ['t1', 'I '],
@@ -27,7 +27,7 @@ const MARK1 = 43 // "have send" is marked once " the" is typed after it
 const MARK2 = 103 // "they will be review", once " it" is
 const FIRST = 2400 // the first run starts as the headline settles
 const TYPE = 26
-const CYCLE = 11700
+const CYCLE = 13300
 // `cur: [where, ms]` glides the pointer there, measured off the page at that moment.
 // `drag: ms` is the mouse-down drag: the selection follows the pointer, letter by letter.
 const STEPS = [
@@ -48,15 +48,21 @@ const STEPS = [
   [8400, { cdown: true }],
   [8450, { press: true }],
   [8650, { cdown: false }],
-  [8750, { panel: false, pill: false, sweep: false, press: false, done: true, mk1: false, count: 1, keysOn: false }],
-  [9100, { cur: ['rest', 900] }],
-  [11100, { para: false, badge: false, capM: 0 }],
+  // Sentence 1 goes in, and the popup moves on to sentence 2.
+  [8750, { pill: false, sweep: false, press: false, done: true, mk1: false, count: 1, keysOn: false, card: 2 }],
+  [9150, { cur: ['accept', 600] }],
+  [9950, { cdown: true }],
+  [10000, { press: true }],
+  [10200, { cdown: false }],
+  [10300, { panel: false, press: false, done2: true, mk2: false, badge: false, capM: 0 }],
+  [10650, { cur: ['rest', 900] }],
+  [12700, { para: false }],
 ]
 const KEYS = ['⌃', '⌥', '⌘', 'D']
 // Every step in place at once: what reduced motion shows.
 const REST = { cx: 640, cy: 560, cms: 0, cdown: false, ibeam: false, rects: [] } // between the email and the keys
-const STILL = { ...REST, n: TOTAL, mk1: true, mk2: true, count: 2, badge: true, sweep: true, pill: true, keys: 0, panel: true, press: false, done: false, para: true, caret: false, capM: 1, keysOn: true }
-const RESET = { ...REST, n: 0, mk1: false, mk2: false, count: 0, badge: false, sweep: false, pill: false, keys: 0, panel: false, press: false, done: false, para: true, caret: true, capM: 0, keysOn: false }
+const STILL = { ...REST, n: TOTAL, mk1: true, mk2: true, count: 2, badge: true, sweep: true, pill: true, keys: 0, panel: true, press: false, done: false, done2: false, card: 1, para: true, caret: false, capM: 1, keysOn: true }
+const RESET = { ...REST, n: 0, mk1: false, mk2: false, count: 0, badge: false, sweep: false, pill: false, keys: 0, panel: false, press: false, done: false, done2: false, card: 1, para: true, caret: true, capM: 0, keysOn: false }
 
 // Prerendered at the first frame — an empty email and a blinking caret — so nothing jumps
 // when the script picks it up.
@@ -135,6 +141,7 @@ const text = computed(() => {
     left -= seg.length
   })
   if (d.done) Object.assign(v, { t1: 'I ', m1: '' })
+  if (d.done2) v.m2 = ''
   return { ...v, at, caret: ['tcaret', (d.n === 0 || d.n >= TOTAL) && 'is-blink'] }
 })
 
@@ -257,6 +264,7 @@ onUnmounted(() => {
               <span v-if="d.done" class="dt-in font-semibold text-clay">sent</span>
               <span class="mk" :class="d.mk1 && 'is-on'">{{ text.m1 }}</span><span v-if="text.at === 2" :class="text.caret" />
               <span>{{ text.t2 }}</span><span v-if="text.at === 3" :class="text.caret" />
+              <span v-if="d.done2" class="dt-in font-semibold text-clay">They will review</span>
               <span class="mk" :class="d.mk2 && 'is-on'">{{ text.m2 }}</span><span v-if="text.at === 4" :class="text.caret" />
               <span>{{ text.t3 }}</span><span v-if="text.at === 5" :class="text.caret" />
             </span>
@@ -280,10 +288,24 @@ onUnmounted(() => {
       <div class="absolute top-[318px] left-[58px]">
         <div class="fade" :class="!d.panel && 'is-out'">
           <Popup scope="Sentence by sentence" count="2 suggestions" checked="Both checked on this Mac" note="Nothing changes until you accept." class="w-[600px]">
-            <Suggestion label="Sentence 1 of 2" focused actions="accept-skip" :pressed="d.press" original="I have send the revised contract to legal yesterday.">
+            <Suggestion
+              label="Sentence 1 of 2"
+              :focused="d.card === 1"
+              :actions="d.card === 1 ? 'accept-skip' : null"
+              :pressed="d.press"
+              original="I have send the revised contract to legal yesterday."
+              class="transition-opacity duration-300"
+              :class="d.card > 1 && 'opacity-50'"
+            >
               I <span class="font-semibold text-clay">sent</span> the revised contract to legal yesterday.
             </Suggestion>
-            <Suggestion label="Sentence 2 of 2" original="they will be review it by Friday.">
+            <Suggestion
+              label="Sentence 2 of 2"
+              :focused="d.card === 2"
+              :actions="d.card === 2 ? 'accept-skip' : null"
+              :pressed="d.press"
+              original="they will be review it by Friday."
+            >
               <span class="font-semibold text-clay">They will review</span> it by Friday.
             </Suggestion>
           </Popup>
