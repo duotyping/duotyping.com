@@ -14,12 +14,12 @@ usePageHead({
   <!-- Every line here is something the code does; see docs/PRD.md §2, §4.6 and §5 in the app repo. -->
   <LegalPage title="Privacy Policy" updated="28 September 2026">
     <p class="lede">
-      DuoTyping is built so that this page can be short. It has no account, no analytics, no telemetry and no crash reporter — not in the app, not in its engine, and not on this website.
+      DuoTyping is built so that this page can be short. It has no account, no analytics, no telemetry and no crash reporter: not in the app, not in its engine, and not on this website.
     </p>
 
     <h2>Your writing</h2>
     <ul>
-      <li>DuoTyping reads text only when you ask it to: the text you select when you press the shortcut, what you type or paste into New Note, and — where marks as you type are on — the text in the box you’re typing in.</li>
+      <li>DuoTyping reads text only when you ask it to: the text you select when you press the shortcut, what you type or paste into New Note and, where marks as you type are on, the text in the box you’re typing in.</li>
       <li>With a local model, the check runs entirely on your Mac. Nothing you write is sent anywhere.</li>
       <li>If you connect a cloud provider, the text being checked, with your writing profile and any custom instructions, goes from your Mac straight to that provider on your own key. No DuoTyping server sits in between, and the provider handles it under its own terms and privacy policy.</li>
       <li>Neither the app nor its engine keeps what you write: not after the check, not in a log, not in a history.</li>
@@ -27,7 +27,7 @@ usePageHead({
 
     <h2>What stays on your Mac</h2>
     <ul>
-      <li>Your settings — writing profile, custom instructions, shortcut and chosen model — are saved in DuoTyping’s preferences on your Mac.</li>
+      <li>Your settings (writing profile, custom instructions, shortcut and chosen model) are saved in DuoTyping’s preferences on your Mac.</li>
       <li>Cloud API keys are stored in the macOS Keychain, and never read back into the app.</li>
       <li>Installed models and the last verified model catalog are kept in DuoTyping’s folder in Application Support.</li>
       <li>To remove everything, disconnect any cloud provider in Settings › Models, then delete DuoTyping and <code>~/Library/Application Support/DuoTyping</code>.</li>
@@ -43,7 +43,7 @@ usePageHead({
 
     <h2>This website</h2>
     <ul>
-      <li>It sets no cookies and runs no analytics or tracking scripts. It loads nothing from anyone else — even its fonts come from duotyping.com.</li>
+      <li>It sets no cookies and runs no analytics or tracking scripts. It loads nothing from anyone else. Even its fonts come from duotyping.com.</li>
       <li>It’s hosted on Cloudflare, which, like any host, sees your IP address in order to deliver the page.</li>
       <li>The Download button takes you to GitHub, which hosts the app’s releases; GitHub’s privacy statement applies there.</li>
       <li>Send feedback opens a form on GitHub. What you post there is public.</li>

@@ -20,7 +20,7 @@ usePageHead({
     <p>You can download DuoTyping and use it on your own Macs, for personal or professional writing, at no cost. There’s no account and nothing to unlock.</p>
 
     <h2>Your writing is yours</h2>
-    <p>You keep every right to what you write, and to the suggestions you accept. We claim none of it — and, as the <a href="/privacy">Privacy Policy</a> explains, DuoTyping never stores it.</p>
+    <p>You keep every right to what you write, and to the suggestions you accept. We claim none of it. As the <a href="/privacy">Privacy Policy</a> explains, DuoTyping never stores it.</p>
 
     <h2>Suggestions can be wrong</h2>
     <p>Suggestions come from a language model, and a language model can be mistaken. Nothing changes until you accept a suggestion, so read it first: you’re responsible for the text you send.</p>

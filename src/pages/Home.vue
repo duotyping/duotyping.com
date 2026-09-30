@@ -43,7 +43,7 @@ const CYCLE = {
 
 const FACTS = [
   ['no-account', 'No account', 'There’s nothing to sign up for, and nothing to sign in to.'],
-  ['no-tracking', 'No tracking', 'No analytics, no telemetry and no crash reporter — in the app or the engine.'],
+  ['no-tracking', 'No tracking', 'No analytics, no telemetry and no crash reporter, in the app or the engine.'],
   ['nothing-kept', 'Nothing kept', 'Neither part stores what you write, not even for a moment longer than the check.'],
   ['key', 'Keys in your Keychain', 'Cloud API keys are stored in the macOS Keychain and never read back into the app.'],
   ['verified', 'Verified models', 'Every model download is checked against a signed catalog before it’s used.'],
@@ -68,7 +68,7 @@ const FAQ = [
   ['Is DuoTyping really free?', 'Yes. There’s no trial, no account and nothing to unlock. If you connect a cloud model, your provider bills you directly for what you use.'],
   ['Does my writing leave my Mac?', 'Not unless you connect a cloud model. With a local model, the check runs on your Mac and nothing you write is sent anywhere. If you connect a cloud provider, the text you check goes straight to that provider, on your own key, and nowhere else. Either way, DuoTyping never stores what you write.'],
   ['Why does it ask for Accessibility access?', 'It’s how macOS lets one app read the text you select in another, and write an accepted change back in place. DuoTyping uses it for exactly that, and never reads password fields. Without it, you can still type or paste into New Note.'],
-  ['Which apps does it work in?', 'Most apps where you can select text — Mail, Messages, Notes, Pages, Slack and your browser among them. Marks as you type work in Mail, Messages, Slack, Teams and WhatsApp. For an app that won’t share its text, New Note is the way in: type or paste, check, then copy the result back.'],
+  ['Which apps does it work in?', 'Most apps where you can select text: Mail, Messages, Notes, Pages, Slack and your browser among them. Marks as you type work in Mail, Messages, Slack, Teams and WhatsApp. For an app that won’t share its text, New Note is the way in: type or paste, check, then copy the result back.'],
   ['Which Macs can run it?', 'Any Mac with Apple silicon on macOS 14 Sonoma or later. Local models need memory too: the smaller ones run in 8 GB, and Qwen2.5 14B recommends 32 GB.'],
   ['Does it work offline?', 'Yes, with a local model. Once it’s downloaded, it checks your writing without a connection. A cloud model needs the internet, of course.'],
   ['Which languages does it support?', 'English. DuoTyping is built and tested for English writing today.'],
@@ -131,13 +131,13 @@ const NOTE_LINES = [
       <div class="eyebrow">The private writing assistant for Mac</div>
       <HeroHeadline />
       <p class="fluid max-w-[540px] leading-[1.55] text-pretty text-ink-2 [--hi:21] [--lo:17.5]">
-        DuoTyping checks grammar and tone in the apps you already write in — and changes nothing until you say so. It runs on your Mac by default, so what you write stays there.
+        DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you say so. It runs on your Mac by default, so what you write stays there.
       </p>
       <!-- A phone can't install a Mac app, so here the call is to pass the link on. -->
       <div class="mt-1 flex flex-col gap-[18px] sm:hidden">
         <ShareActions copy />
         <p class="text-center text-sm leading-normal text-ink-3">
-          DuoTyping is a Mac app — send yourself the link and download it there.<br />Free · macOS 14 or later · Apple silicon
+          DuoTyping is a Mac app, so send yourself the link and download it there.<br />Free · macOS 14 or later · Apple silicon
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-x-[30px] gap-y-3 max-sm:hidden">
@@ -196,7 +196,7 @@ const NOTE_LINES = [
         <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
           <span class="flex size-[30px] items-center justify-center rounded-full border-[1.5px] border-clay font-mono text-[13px] font-semibold text-clay" aria-hidden="true">1</span>
           <h3 class="fluid mt-1.5 font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">Select what you wrote</h3>
-          <p class="text-[16.5px] leading-[1.55] text-pretty text-ink-2">A sentence, a paragraph or a whole email — wherever you’re writing it.</p>
+          <p class="text-[16.5px] leading-[1.55] text-pretty text-ink-2">A sentence, a paragraph or a whole email, wherever you’re writing it.</p>
         </div>
       </li>
       <li class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
@@ -241,7 +241,7 @@ const NOTE_LINES = [
           <div v-loop class="loop flex h-[250px] items-center justify-center bg-stage md:h-[380px]" aria-hidden="true">
             <div class="flex items-start gap-2">
               <div class="font-mac w-[262px] rounded-[10px] border border-[#D6CFBC] bg-white px-4 py-3.5 text-[13px] leading-[1.75] text-mac-ink shadow-[0_12px_28px_rgba(60,40,20,0.10)] md:w-[440px] md:text-sm">
-                Hi team — just to confirm, I <span class="wavy loop-m1">have send</span> the deck to the client and they <span class="wavy loop-m2">will be review</span> it tomorrow.
+                Hi team, just to confirm, I <span class="wavy loop-m1">have send</span> the deck to the client and they <span class="wavy loop-m2">will be review</span> it tomorrow.
                 <span class="wavy loop-m3 [--mark:var(--color-slate)]">Please revert back to me if any change is required.</span>
               </div>
               <CountBadge class="loop-badge">
@@ -254,7 +254,7 @@ const NOTE_LINES = [
           <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
             <h4 class="fluid font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">Marks as you type</h4>
             <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">
-              Mistakes get a wavy underline while you write — clay for grammar and spelling, slate for tone — and a badge beside the box counts them. Click it to go through them one by one.
+              Mistakes get a wavy underline while you write (clay for grammar and spelling, slate for tone), and a badge beside the box counts them. Click it to go through them one by one.
             </p>
           </div>
         </article>
@@ -271,7 +271,7 @@ const NOTE_LINES = [
               </div>
               <Popup scope="Rewrite" count="Other ways to say it" note="Nothing changes until you pick one." class="loop-rpop w-[300px] md:w-[440px]">
                 <Suggestion label="Option 1 of 3" focused actions="replace" size="text-[13.5px]">Let me know if anything needs changing.</Suggestion>
-                <Suggestion label="Option 2 of 3" size="text-[13.5px]">Happy to adjust anything — just say the word.</Suggestion>
+                <Suggestion label="Option 2 of 3" size="text-[13.5px]">Happy to adjust anything. Just say the word.</Suggestion>
               </Popup>
             </div>
           </div>
@@ -338,7 +338,7 @@ const NOTE_LINES = [
           <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
             <h4 class="fluid font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">A local model, installed once</h4>
             <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">
-              Pick a size that fits your Mac — download size and memory are on every row. It’s checked against a signed catalog before it loads, then works offline.
+              Pick a size that fits your Mac: download size and memory are on every row. It’s checked against a signed catalog before it loads, then works offline.
             </p>
           </div>
         </article>
@@ -446,12 +446,12 @@ const NOTE_LINES = [
               Following up on your email: we can’t confirm a delivery date until our supplier updates us. Apologies for the inconvenience.
             </Suggestion>
             <Suggestion label="Proposal 2 of 3" class="loop-w2">
-              Thanks for your email. We’re unable to confirm a delivery date until we hear back from our supplier — apologies for the delay.
+              Thanks for your email. We’re unable to confirm a delivery date until we hear back from our supplier. Apologies for the delay.
             </Suggestion>
             <Suggestion label="Proposal 3 of 3" cloud="Anthropic · your key" class="loop-w3 max-md:hidden">
               In response to your email, we cannot confirm a delivery date until the supplier provides an update. We apologise for the inconvenience.
             </Suggestion>
-            <template #note>Close to decline<span class="max-md:hidden"> — nothing is written</span>.</template>
+            <template #note>Close to decline<span class="max-md:hidden">, and nothing is written</span>.</template>
           </Popup>
         </div>
       </div>
@@ -461,7 +461,7 @@ const NOTE_LINES = [
       <div class="flex flex-col gap-[22px] lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:gap-5">
         <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:40] [--lo:30]">Tuned to how you write.</h2>
         <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:18.5] [--lo:16.5]">
-          Pick one of 17 writing profiles and the tone follows: precise for legal, warm for support, relaxed for personal notes. Add a line of your own, like “keep it short”. Grammar rules stay the same everywhere — only the tone moves.
+          Pick one of 17 writing profiles and the tone follows: precise for legal, warm for support, relaxed for personal notes. Add a line of your own, like “keep it short”. Grammar rules stay the same everywhere. Only the tone moves.
         </p>
       </div>
       <div class="lg:col-span-6 lg:row-start-1" aria-hidden="true">
@@ -486,7 +486,7 @@ const NOTE_LINES = [
             </div>
             <p class="grid rounded-[7px] bg-[#F2EFE4] px-[11px] py-[9px] text-xs leading-[1.45] text-ink-2">
               <span v-for="([, line, tone], name, i) in CYCLE" :key="name" class="[grid-area:1/1]" :class="[line, i && 'opacity-0']">
-                <strong class="font-bold text-ink">{{ name }}</strong> — {{ tone }}
+                <strong class="font-bold text-ink">{{ name }}</strong>: {{ tone }}
               </span>
             </p>
             <div class="flex flex-col gap-1.5">
@@ -518,7 +518,7 @@ const NOTE_LINES = [
           </h2>
         </div>
         <p class="fluid max-w-[760px] leading-[1.55] text-pretty text-night-text [--hi:20] [--lo:17]">
-          DuoTyping is built in two parts, on purpose. The app you see only goes online to check for updates. A separate engine runs the model on your Mac, and only goes online to download a model — or to reach a cloud provider you chose to connect.
+          DuoTyping is built in two parts, on purpose. The app you see only goes online to check for updates. A separate engine runs the model on your Mac, and only goes online to download a model, or to reach a cloud provider you chose to connect.
         </p>
       </div>
 
@@ -616,7 +616,7 @@ const NOTE_LINES = [
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border-[1.5px] border-dashed border-night-dash px-[18px] py-4">
             <span class="text-[16.5px] font-semibold text-night-text">Your cloud provider</span>
-            <span class="text-sm leading-[1.4] text-night-mute">Only if you connect one — with your key</span>
+            <span class="text-sm leading-[1.4] text-night-mute">Only if you connect one, with your key</span>
           </div>
         </div>
       </figure>
