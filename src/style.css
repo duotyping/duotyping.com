@@ -71,8 +71,10 @@
   --font-sans: "Instrument Sans Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-display: "Onest Variable", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
-  /* Keycaps and product mockups use the system face, like the Mac itself. */
-  --font-mac: -apple-system, BlinkMacSystemFont, "SF Pro Text", "Helvetica Neue", sans-serif;
+  /* Keycaps and product mockups use the system face, like the Mac itself. Elsewhere, the
+     page's own sans: no local "SF Pro" or "Helvetica Neue", whose Windows copies are often a
+     condensed or outline cut. */
+  --font-mac: -apple-system, BlinkMacSystemFont, "Instrument Sans Variable", sans-serif;
 }
 
 /* One gutter for the whole page: 20 px on a phone, 32 on a tablet, and from 1024 whatever
