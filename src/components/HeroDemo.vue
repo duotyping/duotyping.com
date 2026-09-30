@@ -173,7 +173,7 @@ onUnmounted(() => {
 
       <MacWindow fields class="absolute top-[72px] left-[36px] h-[420px] w-[700px]">
         <div class="flex flex-col gap-[11px] px-[22px] py-4 text-[15px] leading-[1.65]">
-          <p>Hi Maya,</p>
+          <p>Hi <span class="skel" />,</p>
           <!-- Two lines tall from the start, so the rest of the email never moves as it types. -->
           <p class="min-h-[49.5px] transition-opacity duration-400 ease-out" :class="!d.para && 'opacity-0'">
             <span>{{ text.t0 }}</span><span v-if="text.at === 0" :class="text.caret" />
@@ -192,7 +192,7 @@ onUnmounted(() => {
             </span>
           </p>
           <p>Let me know if anything is missing before then.</p>
-          <p>Best,<br />Sam</p>
+          <p>Best,<br /><span class="skel [--w:2.5em]" /></p>
         </div>
       </MacWindow>
 

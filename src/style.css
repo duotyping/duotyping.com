@@ -242,6 +242,15 @@
     color: var(--color-ink);
     background: var(--color-panel);
   }
+  /* A name or anything private in a demo: a grey bar the width of a word, not the word. */
+  .skel {
+    display: inline-block;
+    width: var(--w, 3em);
+    height: 0.7em;
+    vertical-align: -0.05em;
+    border-radius: 999px;
+    background: var(--color-chip);
+  }
   .wavy {
     text-decoration: underline wavy var(--mark, var(--color-clay));
     text-decoration-thickness: 1.5px;

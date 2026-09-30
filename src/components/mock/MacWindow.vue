@@ -15,7 +15,7 @@ defineProps({ fields: Boolean })
     </div>
     <template v-if="fields">
       <div class="flex h-10 items-center gap-2 border-b border-[#EEEDEA] px-[22px] text-[13.5px]">
-        <span class="text-[#8A8A8E]">To:</span><span>Maya Chen</span>
+        <span class="text-[#8A8A8E]">To:</span><span class="skel [--w:5.5em]" />
       </div>
       <div class="flex h-10 items-center gap-2 border-b border-[#EEEDEA] px-[22px] text-[13.5px]">
         <span class="text-[#8A8A8E]">Subject:</span><span>Revised contract</span>

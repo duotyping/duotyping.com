@@ -19,7 +19,7 @@ import Suggestion from './mock/Suggestion.vue'
       </svg>
       <MacWindow class="absolute top-4 left-3.5 h-[262px] w-[322px]">
         <div class="flex flex-col gap-[11px] px-[22px] py-4 text-[13.5px] leading-[1.65]">
-          <p>Hi Maya,</p>
+          <p>Hi <span class="skel" />,</p>
           <p>Thanks for the quick reply. <span class="sel-full dt-sel" style="--at: 3500ms">I <span class="wavy dt-mark" style="--at: 3200ms">have send</span> the revised contract to legal yesterday. <span class="wavy dt-mark" style="--at: 3200ms">they will be review</span> it by Friday.</span><span class="relative inline-block h-[1em] w-0"><span class="absolute top-[-8px] left-3"><span class="dt-pop inline-block" style="--at: 3860ms"><RewritePill /></span></span></span></p>
         </div>
       </MacWindow>
