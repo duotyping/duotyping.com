@@ -12,7 +12,8 @@ import { introElapsed, reducedMotion } from '../intro'
 // The product, a step at a time (Motion board). The email types itself and a wavy line lands
 // under each mistake once the next word arrives; the badge counts them. Then the selection
 // sweeps, Rewrite appears, ⌃⌥⌘D go down in turn, the popup rises, and Accept fixes the first
-// sentence. It fades and plays again every 11.7 s. Times are from the start of each run.
+// sentence. A pointer does the mouse's part: it drags the selection and clicks Accept.
+// It fades and plays again every 11.7 s. Times are from the start of each run.
 const SEGS = [
   ['t0', 'Thanks for the quick reply. '],
   ['t1', 'I '],
@@ -27,29 +28,102 @@ const MARK2 = 103 // "they will be review", once " it" is
 const FIRST = 2400 // the first run starts as the headline settles
 const TYPE = 26
 const CYCLE = 11700
+// `cur: [where, ms]` glides the pointer there, measured off the page at that moment.
+// `drag: ms` is the mouse-down drag: the selection follows the pointer, letter by letter.
 const STEPS = [
+  [3450, { cur: ['start', 420] }],
   [3500, { caret: false }],
-  [3900, { sel: true, capM: 0.4, keysOn: true }],
-  [4600, { pill: true }],
+  [3650, { ibeam: true }], // over the text now
+  [3880, { cdown: true }],
+  [3900, { drag: 1000, capM: 0.4, keysOn: true }],
+  [4950, { cdown: false }],
+  [5050, { pill: true }],
   [5300, { keys: 1 }],
   [5440, { keys: 2 }],
   [5580, { keys: 3 }],
   [5720, { keys: 4 }],
   [6050, { keys: 0 }],
   [6250, { panel: true }],
+  [7300, { ibeam: false, cur: ['accept', 700] }],
+  [8400, { cdown: true }],
   [8450, { press: true }],
-  [8750, { panel: false, pill: false, sel: false, press: false, done: true, mk1: false, count: 1, keysOn: false }],
+  [8650, { cdown: false }],
+  [8750, { panel: false, pill: false, sweep: false, press: false, done: true, mk1: false, count: 1, keysOn: false }],
+  [9100, { cur: ['rest', 900] }],
   [11100, { para: false, badge: false, capM: 0 }],
 ]
 const KEYS = ['⌃', '⌥', '⌘', 'D']
 // Every step in place at once: what reduced motion shows.
-const STILL = { n: TOTAL, mk1: true, mk2: true, count: 2, badge: true, sel: true, pill: true, keys: 0, panel: true, press: false, done: false, para: true, caret: false, capM: 1, keysOn: true }
-const RESET = { n: 0, mk1: false, mk2: false, count: 0, badge: false, sel: false, pill: false, keys: 0, panel: false, press: false, done: false, para: true, caret: true, capM: 0, keysOn: false }
+const REST = { cx: 640, cy: 560, cms: 0, cdown: false, ibeam: false, rects: [] } // between the email and the keys
+const STILL = { ...REST, n: TOTAL, mk1: true, mk2: true, count: 2, badge: true, sweep: true, pill: true, keys: 0, panel: true, press: false, done: false, para: true, caret: false, capM: 1, keysOn: true }
+const RESET = { ...REST, n: 0, mk1: false, mk2: false, count: 0, badge: false, sweep: false, pill: false, keys: 0, panel: false, press: false, done: false, para: true, caret: true, capM: 0, keysOn: false }
 
 // Prerendered at the first frame — an empty email and a blinking caret — so nothing jumps
 // when the script picks it up.
 const d = reactive({ ...RESET })
-const set = (p) => Object.assign(d, p)
+const canvas = ref(null)
+// Where the pointer goes, in canvas px: the canvas is scaled, so undo that from the rects.
+function aim(where, ms) {
+  if (where === 'rest') return { ...REST, cms: ms }
+  const c = canvas.value.getBoundingClientRect()
+  const s = c.width / 1000
+  if (!s) return {}
+  const box = where === 'accept' ? canvas.value.querySelector('.mk-btn') : canvas.value.querySelector('.sel')
+  const lines = box.getClientRects()
+  const r = where === 'end' ? lines[lines.length - 1] : lines[0]
+  const x = where === 'start' ? r.left : where === 'end' ? r.right : r.left + r.width / 2
+  return { cx: (x - c.left) / s, cy: (r.top + r.height * 0.6 - c.top) / s, cms: ms }
+}
+let raf = 0
+function set({ cur, drag: ms, ...p }) {
+  if (ms) drag(ms)
+  if (p.sweep === false) p.rects = []
+  Object.assign(d, p, cur && aim(...cur))
+}
+
+// The pointer rides a curve from the first letter along line one and down to the last, the
+// way a hand drags; each frame selects every letter before it, the way text does, and draws
+// the selection as one box per line behind the letters, so the marks keep their colour.
+function drag(ms) {
+  const c = canvas.value.getBoundingClientRect()
+  const s = c.width / 1000
+  if (!s) return
+  const chars = []
+  const walk = document.createTreeWalker(canvas.value.querySelector('.sel'), NodeFilter.SHOW_TEXT)
+  for (let n; (n = walk.nextNode()); ) {
+    for (let i = 0; i < n.length; i++) {
+      const r = new Range()
+      r.setStart(n, i)
+      r.setEnd(n, i + 1)
+      const b = r.getClientRects()[0]
+      if (b) chars.push({ l: (b.left - c.left) / s, r: (b.right - c.left) / s, t: (b.top - c.top) / s, b: (b.bottom - c.top) / s })
+    }
+  }
+  if (!chars.length) return
+  const [first, last] = [chars[0], chars.at(-1)]
+  const mid = (ch) => (ch.t + ch.b) / 2
+  const lineEnd = Math.max(...chars.filter((ch) => Math.abs(ch.t - first.t) < 2).map((ch) => ch.r))
+  const P = [{ x: first.l, y: mid(first) }, { x: lineEnd + 30, y: mid(first) }, { x: last.r, y: mid(last) }]
+  const before = (ch, x, y) => y >= ch.b || (y >= ch.t && x > (ch.l + ch.r) / 2)
+  const t0 = performance.now()
+  const frame = (now) => {
+    const t = Math.min(1, (now - t0) / ms)
+    const e = t < 0.5 ? 2 * t * t : 1 - (2 - 2 * t) ** 2 / 2
+    const q = (k) => (1 - e) ** 2 * P[0][k] + 2 * (1 - e) * e * P[1][k] + e * e * P[2][k]
+    const [x, y] = [q('x'), q('y')]
+    let k = 0
+    while (k < chars.length && before(chars[k], x, y)) k++
+    const rects = []
+    for (const ch of chars.slice(0, k)) {
+      const line = rects.at(-1)
+      if (line && Math.abs(line.t - ch.t) < 2) line.r = ch.r
+      else rects.push({ ...ch })
+    }
+    Object.assign(d, { cx: x, cy: y, cms: 0, rects })
+    if (t < 1) raf = requestAnimationFrame(frame)
+  }
+  raf = requestAnimationFrame(frame)
+}
 
 const text = computed(() => {
   const v = {}
@@ -69,6 +143,7 @@ const later = (ms, fn) => timers.push(setTimeout(fn, ms))
 const stop = () => {
   timers.forEach(clearTimeout)
   timers = []
+  cancelAnimationFrame(raf)
 }
 
 function play() {
@@ -125,7 +200,7 @@ onUnmounted(() => {
     <!-- The menu bar runs the stage's whole width, however wide the screen: it belongs to the
          stage, not the canvas, which is only drawn 1000 px across. -->
     <div class="stage-menubar" />
-    <div class="canvas">
+    <div ref="canvas" class="canvas">
       <!-- Wider than the canvas, so the pencils aren't cut off where a wide screen shows more. -->
       <svg width="1400" height="778" viewBox="0 0 1400 778" fill="none" class="absolute top-0 left-0">
         <g transform="translate(282 34) scale(55.6)"><MarkPaths tone="desk" /></g>
@@ -177,7 +252,7 @@ onUnmounted(() => {
           <!-- Two lines tall from the start, so the rest of the email never moves as it types. -->
           <p class="min-h-[49.5px] transition-opacity duration-400 ease-out" :class="!d.para && 'opacity-0'">
             <span>{{ text.t0 }}</span><span v-if="text.at === 0" :class="text.caret" />
-            <span class="sel" :class="d.sel && 'is-on'">
+            <span class="sel" :class="d.sweep && 'is-on'">
               <span>{{ text.t1 }}</span><span v-if="text.at === 1" :class="text.caret" />
               <span v-if="d.done" class="dt-in font-semibold text-clay">sent</span>
               <span class="mk" :class="d.mk1 && 'is-on'">{{ text.m1 }}</span><span v-if="text.at === 2" :class="text.caret" />
@@ -195,6 +270,12 @@ onUnmounted(() => {
           <p>Best,<br /><span class="skel [--w:2.5em]" /></p>
         </div>
       </MacWindow>
+      <span
+        v-for="(r, i) in d.rects"
+        :key="i"
+        class="selbox"
+        :style="{ left: `${r.l}px`, top: `${r.t}px`, width: `${r.r - r.l}px`, height: `${r.b - r.t}px` }"
+      />
 
       <div class="absolute top-[318px] left-[58px]">
         <div class="fade" :class="!d.panel && 'is-out'">
@@ -208,6 +289,17 @@ onUnmounted(() => {
           </Popup>
         </div>
       </div>
+
+      <!-- The mouse: a macOS arrow with its tip on the point, or over text the I-beam centred on it. -->
+      <span class="cursor" :class="d.cdown && 'is-down'" :style="{ translate: `${d.cx}px ${d.cy}px`, transitionDuration: `${d.cms}ms` }">
+        <svg v-if="d.ibeam" width="11" height="20" viewBox="0 0 11 20" fill="none" class="-translate-x-1/2 -translate-y-1/2">
+          <path d="M2 1.5c2 0 3.5.7 3.5 2.3v12.4c0 1.6 1.5 2.3 3.5 2.3M9 1.5c-2 0-3.5.7-3.5 2.3M5.5 16.2c0 1.6-1.5 2.3-3.5 2.3M3.5 10h4" stroke="#fff" stroke-width="3" stroke-linecap="round" />
+          <path d="M2 1.5c2 0 3.5.7 3.5 2.3v12.4c0 1.6 1.5 2.3 3.5 2.3M9 1.5c-2 0-3.5.7-3.5 2.3M5.5 16.2c0 1.6-1.5 2.3-3.5 2.3M3.5 10h4" stroke="#1D1D1F" stroke-width="1.3" stroke-linecap="round" />
+        </svg>
+        <svg v-else width="17" height="25" viewBox="0 0 17 25" fill="none">
+          <path d="M1.5 1.5v19.2l4.6-4.4 2.9 6.9 3-1.3-2.9-6.8h6.3L1.5 1.5Z" fill="#1D1D1F" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" />
+        </svg>
+      </span>
     </div>
   </div>
 </template>

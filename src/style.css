@@ -371,6 +371,17 @@
 /* ── The product demo ────────────────────────────────────────────────────────────────── */
 
 /* A step appearing or leaving: 220 ms, ease-out, a 6 px rise. Never a bounce. */
+/* The dragged selection, one box per line: multiply keeps the letters and marks their colour. */
+.selbox { position: absolute; background: var(--color-select); mix-blend-mode: multiply; }
+.cursor {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: translate 0ms cubic-bezier(0.45, 0, 0.2, 1);
+  filter: drop-shadow(0 1.5px 2px rgba(0, 0, 0, 0.28));
+}
+.cursor svg { transform-origin: 2px 2px; transition: scale 90ms ease-out; }
+.cursor.is-down svg { scale: 0.86; }
 .fade { transition: opacity 220ms ease-out, transform 220ms ease-out; }
 .fade.is-out { opacity: 0; transform: translateY(6px); }
 
