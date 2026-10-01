@@ -4,7 +4,7 @@ export const SITE_URL = 'https://duotyping.com'
 // The app's source repo is private, and a private repo's release assets have no public URL,
 // so `make release` in the app repo publishes the disk image on THIS repo's releases and
 // commits the feed to public/appcast.xml. This repo has to be public for either to download.
-export const REPO = 'redevify/duotyping.com'
+export const REPO = 'duotyping/duotyping.com'
 export const RELEASES_URL = `https://github.com/${REPO}/releases/latest`
 
 // Owner-approved destination for "Send feedback", same rule as the app's own button.
