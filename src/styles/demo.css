@@ -1,0 +1,129 @@
+/* ── The headline: still, so the eye goes to the demo ────────────────────────────────── */
+
+/* 40 px on a 390 px phone and 58 at 1440, like every fluid size; below 390 it shrinks with
+   the column instead, so "Say it good well." never breaks. */
+.hero-title {
+  font-size: clamp(30px, min(calc((100vw - 40px) * 40 / 350), calc(40px + (100vw - 390px) * 18 / 1050)), 58px);
+}
+
+@keyframes dtwell { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+@keyframes dtblink { 0%, 49% { opacity: 1; } 50%, 100% { opacity: 0; } }
+
+/* ── The product demo ────────────────────────────────────────────────────────────────── */
+
+/* A step appearing or leaving: 220 ms, ease-out, a 6 px rise. Never a bounce. */
+.fade { transition: opacity 220ms ease-out, transform 220ms ease-out; }
+.fade.is-out { opacity: 0; transform: translateY(6px); }
+
+/* The email typing itself: the text caret, wavy marks landing, the selection sweeping. */
+.tcaret {
+  display: inline-block;
+  width: 1.5px;
+  height: 1.15em;
+  margin-left: 1px;
+  vertical-align: -0.22em;
+  background: var(--color-mac-ink);
+}
+.tcaret.is-blink { animation: dtblink 1.06s steps(1) infinite; }
+.mk {
+  text-decoration: underline wavy transparent;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+  text-decoration-skip-ink: none;
+  transition: text-decoration-color 300ms ease-out;
+}
+.mk.is-on { text-decoration-color: var(--color-clay); }
+/* An inline background sizes against the whole run as if it were one line, so 0 → 100 %
+   sweeps the first line, then the second — the way a drag-select does. */
+.sel {
+  background: linear-gradient(var(--color-select), var(--color-select)) no-repeat 0 0 / 0% 100%;
+  transition: background-size 450ms ease-out;
+}
+.sel.is-on { background-size: 100% 100%; }
+/* ⌃⌥⌘D going down one after another: 2 px, the bottom edge flattens, the cap warms. */
+.keycap-press { transition: transform 90ms ease-out, box-shadow 90ms ease-out, background-color 90ms ease-out; }
+.keycap-press.is-down {
+  transform: translateY(2px);
+  border-bottom-width: 1px;
+  background: var(--color-tag);
+  box-shadow: 0 2px 5px rgba(74, 45, 30, 0.1);
+}
+
+/* The phone plays the same story once, on CSS alone. */
+.dt-sel { animation: dtsel 300ms ease-out var(--at) both; }
+.dt-pop { animation: dtpop 180ms ease-out var(--at) both; }
+.dt-mark { animation: dtmark 300ms ease-out var(--at) both; }
+.dt-in { display: inline-block; animation: dtwell 240ms ease-out both; }
+
+@keyframes dtsel { from { background-size: 0% 100%; } to { background-size: 100% 100%; } }
+@keyframes dtsoon { to { box-shadow: 0 0 0 7px transparent; } }
+@keyframes dtpop { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+@keyframes dtmark { from { text-decoration-color: transparent; } }
+
+/* The stages hold each composition at the size it was drawn, and scale it to the room there
+   is. tan(atan2(a, b)) is a / b as a plain number: the one way CSS divides a length by a
+   length, so the fit needs no script and never jumps after load. 100cqw is the width of the
+   section around it, which carries Tailwind's @container. */
+
+/* Phones: the 350 × 626 composition, a little larger on a larger phone. */
+.stage-phone {
+  --s: min(1.15, tan(atan2(100cqw - 2 * var(--gutter), 350px)));
+  position: relative;
+  width: calc(350px * var(--s));
+  height: calc(626px * var(--s));
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 22px;
+  background: var(--color-desk);
+}
+.stage-phone > .canvas { width: 350px; height: 626px; transform: scale(var(--s)); transform-origin: 0 0; }
+
+/* Tablets and small laptops: the 1000 × 778 desktop canvas under the copy. Its content spans
+   850 px of that width, so that is what gets centred. */
+.stage-desk {
+  --s: min(0.9, tan(atan2(100cqw - 2 * var(--gutter), 850px)));
+  position: relative;
+  height: calc(778px * var(--s));
+  overflow: hidden;
+  border-radius: 28px;
+  background: var(--color-desk);
+}
+.stage-desk > .canvas {
+  position: absolute;
+  top: 0;
+  left: calc(50% - 425px * var(--s));
+  width: 1000px;
+  height: 778px;
+  transform: scale(var(--s));
+  transform-origin: 0 0;
+}
+.stage-menubar {
+  position: absolute;
+  inset-inline: 0;
+  top: 0;
+  height: calc(31px * var(--s)); /* 30 px and its hairline, as drawn */
+  border-bottom: 1px solid rgba(30, 42, 50, 0.08);
+  background: rgba(251, 248, 240, 0.74);
+}
+/* From 1280 the stage sits beside the copy and runs off the right edge, as drawn at 1440.
+   It needs 822 px of room at 0.9 (740 of them on screen); narrower, it shrinks to fit. */
+@media (width >= 80rem) {
+  .stage-desk {
+    --s: min(0.9, tan(atan2(100cqw - var(--gutter) - 580px, 822px)));
+    position: absolute;
+    top: 50%;
+    right: 0;
+    left: calc(var(--gutter) + 580px);
+    translate: 0 -50%;
+    border-radius: 28px 0 0 28px;
+  }
+  .stage-desk > .canvas { left: 0; }
+}
+
+/* The privacy diagram, drawn at 1200 × 400, scaled down to the column below 1440. */
+.diagram-fit {
+  --s: min(1, tan(atan2(100cqw - 2 * var(--gutter), 1200px)));
+  position: relative;
+  height: calc(400px * var(--s));
+}
+.diagram-fit > .canvas { position: absolute; width: 1200px; height: 400px; transform: scale(var(--s)); transform-origin: 0 0; }

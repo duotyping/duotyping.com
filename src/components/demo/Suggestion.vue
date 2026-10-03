@@ -20,7 +20,7 @@ withDefaults(
   <div class="rounded-lg border px-[13px] py-[11px]" :class="focused ? 'border-clay bg-tint' : 'border-edge bg-card'">
     <div class="mb-[7px] flex items-center gap-2">
       <span class="text-[11px] text-ink-2">{{ label }}</span>
-      <span v-if="cloud" class="mk-tag mk-tag-cloud">
+      <span v-if="cloud" class="mk-tag border border-[#A9B7C0] bg-transparent px-[7px] py-px text-slate">
         <svg width="10" height="9" viewBox="0 0 13 12" fill="none" aria-hidden="true">
           <path d="M3.6 9.2a2.6 2.6 0 0 1 .3-5.18 3.4 3.4 0 0 1 6.5.9 2.3 2.3 0 0 1-.5 4.28H3.6Z" stroke="#3D4E59" stroke-width="1.2" stroke-linejoin="round" />
         </svg>{{ cloud }}

@@ -310,10 +310,11 @@ onUnmounted(() => {
           <p>Best,<br /><span class="skel [--w:2.5em]" /></p>
         </div>
       </MacWindow>
+      <!-- The dragged selection, one box per line: multiply keeps the letters and marks their colour. -->
       <span
         v-for="(r, i) in d.rects"
         :key="i"
-        class="selbox"
+        class="absolute bg-select mix-blend-multiply"
         :style="{ left: `${r.l}px`, top: `${r.t}px`, width: `${r.r - r.l}px`, height: `${r.b - r.t}px` }"
       />
 
@@ -345,12 +346,15 @@ onUnmounted(() => {
       </div>
 
       <!-- The mouse: a macOS arrow with its tip on the point, or over text the I-beam centred on it. -->
-      <span class="cursor" :class="d.cdown && 'is-down'" :style="{ translate: `${d.cx}px ${d.cy}px`, transitionDuration: `${d.cms}ms` }">
-        <svg v-if="d.ibeam" width="11" height="20" viewBox="0 0 11 20" fill="none" class="-translate-x-1/2 -translate-y-1/2">
+      <span
+        class="absolute top-0 left-0 drop-shadow-[0_1.5px_2px_rgba(0,0,0,0.28)] transition-[translate] ease-[cubic-bezier(0.45,0,0.2,1)]"
+        :style="{ translate: `${d.cx}px ${d.cy}px`, transitionDuration: `${d.cms}ms` }"
+      >
+        <svg v-if="d.ibeam" width="11" height="20" viewBox="0 0 11 20" fill="none" class="-translate-1/2 transition-[scale] duration-90 ease-out" :class="d.cdown && 'scale-86'">
           <path d="M2 1.5c2 0 3.5.7 3.5 2.3v12.4c0 1.6 1.5 2.3 3.5 2.3M9 1.5c-2 0-3.5.7-3.5 2.3M5.5 16.2c0 1.6-1.5 2.3-3.5 2.3M3.5 10h4" stroke="#fff" stroke-width="3" stroke-linecap="round" />
           <path d="M2 1.5c2 0 3.5.7 3.5 2.3v12.4c0 1.6 1.5 2.3 3.5 2.3M9 1.5c-2 0-3.5.7-3.5 2.3M5.5 16.2c0 1.6-1.5 2.3-3.5 2.3M3.5 10h4" stroke="#1D1D1F" stroke-width="1.3" stroke-linecap="round" />
         </svg>
-        <svg v-else width="17" height="25" viewBox="0 0 17 25" fill="none">
+        <svg v-else width="17" height="25" viewBox="0 0 17 25" fill="none" class="origin-[2px_2px] transition-[scale] duration-90 ease-out" :class="d.cdown && 'scale-86'">
           <path d="M1.5 1.5v19.2l4.6-4.4 2.9 6.9 3-1.3-2.9-6.8h6.3L1.5 1.5Z" fill="#1D1D1F" stroke="#fff" stroke-width="1.5" stroke-linejoin="round" />
         </svg>
       </span>

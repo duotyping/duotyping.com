@@ -62,7 +62,7 @@ onUnmounted(() => {
       </a>
       <nav aria-label="Main" class="hidden items-center gap-9 lg:flex">
         <a v-for="[hash, label] in LINKS" :key="hash" :href="at(hash)" class="nav-link">{{ label }}</a>
-        <span class="btn btn-soon btn-sm">Coming soon</span>
+        <span class="btn btn-soon h-11 rounded-xl px-[18px] text-[15.5px]">Coming soon</span>
       </nav>
       <button
         type="button"

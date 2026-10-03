@@ -1,0 +1,148 @@
+/* ── The figure loops: each figure plays its own story on repeat (the Main boards) ───────
+   Every element rests as the figure is drawn, so with Reduce Motion, or before a loop starts,
+   the page shows the finished picture. v-loop (motion.ts) starts each one as it scrolls in. */
+
+/* Marks as you type · 7 s: the marks land one at a time, and the badge counts them. */
+.loop-m1 { animation: dtm1 7s linear infinite both; }
+.loop-m2 { animation: dtm2 7s linear infinite both; }
+.loop-m3 { animation: dtm3 7s linear infinite both; }
+.loop-badge { animation: dtbadge 7s ease-out infinite both; }
+.loop-n1 { animation: dtn1 7s linear infinite both; }
+.loop-n2 { animation: dtn2 7s linear infinite both; }
+.loop-n3 { animation: dtn3 7s linear infinite both; }
+@keyframes dtm1 { 0%, 8% { text-decoration-color: transparent; } 12%, 90% { text-decoration-color: var(--mark, var(--color-clay)); } 95%, 100% { text-decoration-color: transparent; } }
+@keyframes dtm2 { 0%, 20% { text-decoration-color: transparent; } 24%, 90% { text-decoration-color: var(--mark, var(--color-clay)); } 95%, 100% { text-decoration-color: transparent; } }
+@keyframes dtm3 { 0%, 32% { text-decoration-color: transparent; } 36%, 90% { text-decoration-color: var(--mark, var(--color-clay)); } 95%, 100% { text-decoration-color: transparent; } }
+@keyframes dtbadge { 0%, 9% { opacity: 0; transform: translateY(6px); } 12%, 90% { opacity: 1; transform: none; } 95%, 100% { opacity: 0; transform: none; } }
+@keyframes dtn1 { 0%, 8.9% { opacity: 0; } 9%, 23.9% { opacity: 1; } 24%, 100% { opacity: 0; } }
+@keyframes dtn2 { 0%, 23.9% { opacity: 0; } 24%, 35.9% { opacity: 1; } 36%, 100% { opacity: 0; } }
+@keyframes dtn3 { 0%, 35.9% { opacity: 0; } 36%, 100% { opacity: 1; } }
+
+/* Rewrite a selection · 8 s: select, Rewrite, the options, Replace — then the new sentence. The
+   old one fades out before the new one fades in, so the two never overlap. */
+.loop-rsel { animation: dtrsel 8s ease-out infinite both; }
+.loop-rnew { animation: dtrnew 8s ease-out infinite both; }
+.loop-rpill { animation: dtrpill 8s ease-out infinite both; }
+.loop-rpop { animation: dtrpop 8s ease-out infinite both; }
+.loop-rpop .mk-btn { animation: dtpress 8s linear infinite both; }
+@keyframes dtrsel { 0%, 4% { background-size: 0% 100%; opacity: 1; } 10%, 57% { background-size: 100% 100%; opacity: 1; } 59%, 95.9% { background-size: 100% 100%; opacity: 0; } 96% { background-size: 0% 100%; opacity: 0; } 100% { background-size: 0% 100%; opacity: 1; } }
+@keyframes dtrnew { 0%, 59% { opacity: 0; transform: translateY(4px); } 63%, 92% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
+@keyframes dtrpill { 0%, 13% { opacity: 0; transform: translateY(6px); } 16%, 57% { opacity: 1; transform: none; } 60%, 100% { opacity: 0; transform: translateY(6px); } }
+@keyframes dtrpop { 0%, 20% { opacity: 0; transform: translateY(6px); } 23%, 57% { opacity: 1; transform: none; } 60%, 100% { opacity: 0; transform: translateY(6px); } }
+@keyframes dtpress { 0%, 52%, 57%, 100% { background-color: var(--color-clay); transform: none; } 53%, 56% { background-color: #8F3C1B; transform: scale(0.96); } }
+
+/* Whole selection · 8 s: the two local proposals rise first, then the cloud one arrives. A phone
+   shows only the local two, so there the count stays at three. */
+.loop-w1 { animation: dtw1 8s ease-out infinite both; }
+.loop-w2 { animation: dtw2 8s ease-out infinite both; }
+.loop-w3 { animation: dtw3 8s ease-out infinite both; }
+@media (width >= 48rem) {
+  .loop-wa { animation: dtwa 8s linear infinite both; }
+  .loop-wb { animation: dtwb 8s linear infinite both; }
+}
+@keyframes dtw1 { 0%, 5% { opacity: 0; transform: translateY(6px); } 8%, 93% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes dtw2 { 0%, 10% { opacity: 0; transform: translateY(6px); } 13%, 93% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes dtw3 { 0%, 30% { opacity: 0; transform: translateY(6px); } 33%, 93% { opacity: 1; transform: none; } 97%, 100% { opacity: 0; transform: none; } }
+@keyframes dtwa { 0%, 32.9% { opacity: 1; } 33%, 100% { opacity: 0; } }
+@keyframes dtwb { 0%, 32.9% { opacity: 0; } 33%, 100% { opacity: 1; } }
+
+/* Writing profile · 10 s: Business/finance, Legal, Customer support, Casual — and the tone line
+   under them follows. Each line fades out before the next fades in. */
+.loop-pb { animation: dtpb 10s linear infinite both; }
+.loop-pl { animation: dtpl 10s linear infinite both; }
+.loop-pc { animation: dtpc 10s linear infinite both; }
+.loop-pp { animation: dtpp 10s linear infinite both; }
+.loop-db { animation: dtdb 10s linear infinite both; }
+.loop-dl { animation: dtdl 10s linear infinite both; }
+.loop-dc { animation: dtdc 10s linear infinite both; }
+.loop-dp { animation: dtdp 10s linear infinite both; }
+@keyframes dtpb { 0%, 22%, 98%, 100% { background-color: var(--color-tint); border-color: var(--color-clay); font-weight: 600; } 23%, 97% { background-color: var(--color-card); border-color: var(--color-edge); font-weight: 500; } }
+@keyframes dtpl { 0%, 22%, 48%, 100% { background-color: var(--color-card); border-color: var(--color-edge); font-weight: 500; } 23%, 47% { background-color: var(--color-tint); border-color: var(--color-clay); font-weight: 600; } }
+@keyframes dtpc { 0%, 47%, 73%, 100% { background-color: var(--color-card); border-color: var(--color-edge); font-weight: 500; } 48%, 72% { background-color: var(--color-tint); border-color: var(--color-clay); font-weight: 600; } }
+@keyframes dtpp { 0%, 72%, 98%, 100% { background-color: var(--color-card); border-color: var(--color-edge); font-weight: 500; } 73%, 97% { background-color: var(--color-tint); border-color: var(--color-clay); font-weight: 600; } }
+@keyframes dtdb { 0%, 22%, 98.2%, 100% { opacity: 1; } 22.5%, 97.5% { opacity: 0; } }
+@keyframes dtdl { 0%, 22.5%, 47.5%, 100% { opacity: 0; } 23.2%, 47% { opacity: 1; } }
+@keyframes dtdc { 0%, 47.5%, 72.5%, 100% { opacity: 0; } 48.2%, 72% { opacity: 1; } }
+@keyframes dtdp { 0%, 72.5%, 97.5%, 100% { opacity: 0; } 73.2%, 97% { opacity: 1; } }
+
+/* Privacy · 16 s, three scenes, each captioned, as the app really moves your text:
+   1. by default: selection → DuoTyping → engine → suggestions back → the accepted one written in;
+   2. with a cloud provider: the same, and the engine asks the provider while the model runs;
+   3. a model download: the signed catalog into the engine, checked before use.
+   The online links stay dim until their scene. */
+.diagram-fit {
+  --glow-off: 0 0 0 0 rgb(224 174 98 / 0), 0 0 0 0 rgb(224 174 98 / 0);
+  --glow-amber: 0 0 0 5px rgb(224 174 98 / 0.2), 0 12px 36px rgb(224 174 98 / 0.26);
+  --glow-clay: 0 0 0 5px rgb(232 145 95 / 0.22), 0 12px 36px rgb(232 145 95 / 0.28);
+  --glow-link: 0 0 0 5px rgb(224 174 98 / 0.14), 0 12px 36px rgb(224 174 98 / 0.2);
+}
+.loop-app { animation: dtgA 16s ease-in-out infinite both; }
+.loop-duo { animation: dtgD 16s ease-in-out infinite both; }
+/* The engine at work: a band of light sweeps across it, parked off the box at rest. */
+.loop-engine {
+  background-image: linear-gradient(105deg, rgb(224 174 98 / 0) 40%, rgb(224 174 98 / 0.16) 50%, rgb(224 174 98 / 0) 60%);
+  background-repeat: no-repeat;
+  background-size: 300% 100%;
+  background-position: 100% 0;
+  animation: dtgE 16s ease-in-out infinite both, dtsh 16s linear infinite both;
+}
+.loop-cat { animation: dtgC 16s ease-in-out infinite both; }
+.loop-prov { animation: dtgP 16s ease-in-out infinite both; }
+.loop-ct { animation: dtcto 16s ease-in-out infinite both, dtctd 16s linear infinite both; }
+.loop-pv { animation: dtpvo 16s ease-in-out infinite both, dtpvd 16s linear infinite both; }
+.loop-q1 { animation: dtq1 16s ease-in-out infinite both; }
+.loop-q2 { animation: dtq2 16s ease-in-out infinite both; }
+.loop-q3 { animation: dtq3 16s ease-in-out infinite both; }
+.loop-q4 { animation: dtq4 16s ease-in-out infinite both; }
+.loop-cap1 { animation: dtcap1 16s ease-in-out infinite both; }
+.loop-cap2 { animation: dtcap2 16s ease-in-out infinite both; }
+.loop-cap3 { animation: dtcap3 16s ease-in-out infinite both; }
+@keyframes dtgA { 0%, 2%, 9%, 31%, 36%, 37%, 43%, 72%, 77%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 4%, 7%, 39%, 41% { border-color: var(--color-amber); background-color: #2D3C46; box-shadow: var(--glow-amber); } 33%, 34%, 74%, 75% { border-color: #E8915F; background-color: #2F3B43; box-shadow: var(--glow-clay); } }
+@keyframes dtgD { 0%, 9%, 15%, 24.5%, 30.5%, 43.5%, 49.5%, 59.5%, 71%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 11%, 13%, 45.5%, 47.5% { border-color: var(--color-amber); background-color: #2D3C46; box-shadow: var(--glow-amber); } 26.5%, 28.5%, 61.5%, 69% { border-color: #E8915F; background-color: #2F3B43; box-shadow: var(--glow-clay); } }
+@keyframes dtgE { 0%, 15.5%, 23%, 50%, 65%, 84%, 94%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 17.5%, 21%, 52%, 63%, 86%, 92% { border-color: var(--color-amber); background-color: #2D3C46; box-shadow: var(--glow-amber); } }
+@keyframes dtsh { 0%, 17%, 56.5%, 87% { background-position: 100% 0; } 22%, 51.5%, 92%, 100% { background-position: 0% 0; } }
+@keyframes dtq1 { 0%, 5.5%, 11.125%, 40%, 45.625%, 100% { opacity: 0; transform: translateX(0); } 6%, 40.5% { opacity: 1; transform: translateX(0); } 10%, 44.5% { opacity: 1; transform: translateX(56px); } 11%, 45.5% { opacity: 0; transform: translateX(56px); } }
+@keyframes dtq2 { 0%, 12%, 17.625%, 46.5%, 52.125%, 100% { opacity: 0; transform: translateX(0); } 12.5%, 47% { opacity: 1; transform: translateX(0); } 16.5%, 51% { opacity: 1; transform: translateX(56px); } 17.5%, 52% { opacity: 0; transform: translateX(56px); } }
+@keyframes dtq3 { 0%, 21%, 26.625%, 56%, 61.625%, 62.5%, 68.125%, 100% { opacity: 0; transform: translateX(0); } 21.5%, 56.5%, 63% { opacity: 1; transform: translateX(0); } 25.5%, 60.5%, 67% { opacity: 1; transform: translateX(-56px); } 26.5%, 61.5%, 68% { opacity: 0; transform: translateX(-56px); } }
+@keyframes dtq4 { 0%, 27.5%, 33.125%, 68.5%, 74.125%, 100% { opacity: 0; transform: translateX(0); } 28%, 69% { opacity: 1; transform: translateX(0); } 32%, 73% { opacity: 1; transform: translateX(-56px); } 33%, 74% { opacity: 0; transform: translateX(-56px); } }
+@keyframes dtpvo { 0%, 50%, 65%, 100% { opacity: 0.35; } 52%, 63% { opacity: 1; } }
+@keyframes dtpvd { 0%, 51.5%, 62%, 100% { stroke-dashoffset: 0; } 55.5%, 58% { stroke-dashoffset: -44; } }
+@keyframes dtgP { 0%, 54.5%, 62%, 100% { border-color: var(--color-night-dash); background-color: rgb(224 174 98 / 0); box-shadow: var(--glow-off); } 56.5%, 60% { border-color: var(--color-amber); background-color: rgb(224 174 98 / 0.08); box-shadow: var(--glow-link); } }
+@keyframes dtcto { 0%, 77%, 91%, 100% { opacity: 0.35; } 79%, 89% { opacity: 1; } }
+@keyframes dtctd { 0%, 79% { stroke-dashoffset: 0; } 88%, 100% { stroke-dashoffset: -88; } }
+@keyframes dtgC { 0%, 77%, 87%, 100% { border-color: var(--color-night-dash); background-color: rgb(224 174 98 / 0); box-shadow: var(--glow-off); } 79%, 85% { border-color: var(--color-amber); background-color: rgb(224 174 98 / 0.08); box-shadow: var(--glow-link); } }
+@keyframes dtcap1 { 0%, 0.5% { opacity: 0; transform: translateY(4px); } 2.5%, 34% { opacity: 1; transform: none; } 35.5%, 100% { opacity: 0; transform: none; } }
+@keyframes dtcap2 { 0%, 36% { opacity: 0; transform: translateY(4px); } 38%, 74% { opacity: 1; transform: none; } 75.5%, 100% { opacity: 0; transform: none; } }
+@keyframes dtcap3 { 0%, 76% { opacity: 0; transform: translateY(4px); } 78%, 95% { opacity: 1; transform: none; } 96.5%, 100% { opacity: 0; transform: none; } }
+
+/* The FAQ drawing · 8 s: the question mark draws itself, the dark pencil writes a line with a
+   mistake in it, the mistake's wavy mark shows up on its own, and the clay pencil writes the fix.
+   At rest the two pencils stack back into the logo. */
+.loop-fq { animation: dtfq 8s linear infinite both; }
+.loop-fd { transform-box: fill-box; transform-origin: center; animation: dtfd 8s ease-out infinite both; }
+.loop-f1a { animation: dtf1a 8s linear infinite both; }
+.loop-f1b { animation: dtf1b 8s linear infinite both; }
+.loop-f1c { animation: dtf1c 8s linear infinite both; }
+.loop-fw { animation: dtfw 8s ease-out infinite both; }
+.loop-f2a { animation: dtf2a 8s linear infinite both; }
+.loop-f2b { animation: dtf2b 8s linear infinite both; }
+.loop-f2c { animation: dtf2c 8s linear infinite both; }
+.loop-pen1 { animation: dtpen1 8s linear infinite both; }
+.loop-pen2 { animation: dtpen2 8s linear infinite both; }
+.loop-fs { transform-box: fill-box; transform-origin: center; animation: dtfs 8s ease-in-out infinite both; }
+.loop-fb { animation: dtfb 1.4s ease-in-out infinite both; }
+@keyframes dtfq { 0%, 2% { stroke-dashoffset: 1; opacity: 0; } 2.1% { stroke-dashoffset: 1; opacity: 1; } 11%, 90% { stroke-dashoffset: 0; opacity: 1; } 95%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes dtfd { 0%, 11% { transform: scale(0); opacity: 0; } 13%, 90% { transform: scale(1); opacity: 1; } 95%, 100% { transform: scale(1); opacity: 0; } }
+@keyframes dtfw { 0%, 30% { opacity: 0; } 34%, 90% { opacity: 1; } 95%, 100% { opacity: 0; } }
+@keyframes dtfs { 0%, 49%, 57%, 100% { transform: scale(1); } 53% { transform: scale(1.4); } }
+@keyframes dtfb { 0%, 60%, 100% { opacity: 0.35; } 30% { opacity: 1; } }
+/* Each pencil's tip rides its line's head at one steady speed, lifting between strokes; the
+   offsets are the note's lines turned by its -4 degree tilt. */
+@keyframes dtpen1 { 0%, 12% { transform: translate(0, 0); animation-timing-function: cubic-bezier(0.4, 0, 1, 1); } 13.5% { transform: translate(-63.265px, -1.591px); animation-timing-function: cubic-bezier(0, 0, 0.6, 1); } 15% { transform: translate(-125.693px, 8.789px); animation-timing-function: linear; } 27%, 100% { transform: translate(0, 0); } }
+@keyframes dtpen2 { 0%, 35% { transform: translate(0, 0); animation-timing-function: cubic-bezier(0.4, 0, 1, 1); } 37% { transform: translate(-65.26px, -1.451px); animation-timing-function: cubic-bezier(0, 0, 0.6, 1); } 39% { transform: translate(-129.683px, 9.068px); animation-timing-function: linear; } 51%, 100% { transform: translate(0, 0); } }
+@keyframes dtf1a { 0%, 15% { stroke-dashoffset: 1; opacity: 0; } 15.05% { stroke-dashoffset: 1; opacity: 1; } 18.619%, 90% { stroke-dashoffset: 0; opacity: 1; } 95%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes dtf1b { 0%, 19.571% { stroke-dashoffset: 1; opacity: 0; } 19.621% { stroke-dashoffset: 1; opacity: 1; } 23.952%, 90% { stroke-dashoffset: 0; opacity: 1; } 95%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes dtf1c { 0%, 24.905% { stroke-dashoffset: 1; opacity: 0; } 24.955% { stroke-dashoffset: 1; opacity: 1; } 27%, 90% { stroke-dashoffset: 0; opacity: 1; } 95%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes dtf2a { 0%, 39% { stroke-dashoffset: 1; opacity: 0; } 39.05% { stroke-dashoffset: 1; opacity: 1; } 42.508%, 90% { stroke-dashoffset: 0; opacity: 1; } 95%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes dtf2b { 0%, 43.431% { stroke-dashoffset: 1; opacity: 0; } 43.481% { stroke-dashoffset: 1; opacity: 1; } 47.677%, 90% { stroke-dashoffset: 0; opacity: 1; } 95%, 100% { stroke-dashoffset: 0; opacity: 0; } }
+@keyframes dtf2c { 0%, 48.6% { stroke-dashoffset: 1; opacity: 0; } 48.65% { stroke-dashoffset: 1; opacity: 1; } 51%, 90% { stroke-dashoffset: 0; opacity: 1; } 95%, 100% { stroke-dashoffset: 0; opacity: 0; } }
