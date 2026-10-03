@@ -12,7 +12,7 @@ import { SITE_URL, release } from '../utils/site'
 
 const TITLE = 'DuoTyping — the private writing assistant for Mac'
 const DESCRIPTION =
-  'DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you accept. It runs on your Mac by default. Free, no account.'
+  'DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you accept. It runs on your Mac by default.'
 
 usePageHead({
   title: TITLE,
@@ -33,7 +33,6 @@ usePageHead({
         processorRequirements: 'Apple silicon',
         ...(release.version && { softwareVersion: release.version }),
         image: `${SITE_URL}/og.png`,
-        offers: { '@type': 'Offer', price: '0', priceCurrency: 'USD' },
         featureList: [
           'Grammar, spelling and tone suggestions in the apps you already use',
           'Nothing changes until you accept',
@@ -41,6 +40,7 @@ usePageHead({
           'Optional cloud models with your own API key',
           'Marks as you type in Mail, Messages, Slack, Teams and WhatsApp',
           '17 writing profiles',
+          'An optional account that syncs profiles and settings between Macs',
         ],
       },
       {

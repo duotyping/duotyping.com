@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import Icon from '../components/Icon.vue'
 import CountBadge from '../components/demo/CountBadge.vue'
+import NoteDemo from '../components/demo/NoteDemo.vue'
 import Popup from '../components/demo/Popup.vue'
 import RewritePill from '../components/demo/RewritePill.vue'
 import Suggestion from '../components/demo/Suggestion.vue'
@@ -223,11 +224,17 @@ import Suggestion from '../components/demo/Suggestion.vue'
       </div>
     </div>
 
-    <div class="flex gap-3.5 rounded-2xl border-[1.5px] border-dashed border-[#C6CCD8] p-[18px] lg:items-center lg:gap-[18px] lg:rounded-[18px] lg:px-[26px] lg:py-5">
-      <Icon name="note" class="size-6 text-clay lg:size-7" />
-      <p class="fluid leading-normal text-ink-2 [--hi:17] [--lo:15.5]">
-        <strong class="font-semibold text-ink">Nothing selected?</strong> New Note opens instead: type or paste, check, then copy the result anywhere. It’s also the way in for apps that won’t share their text.
-      </p>
-    </div>
+    <article class="mt-3 flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card lg:mt-5 lg:grid lg:grid-cols-12">
+      <div v-loop class="loop flex items-center justify-center bg-stage px-4 py-8 md:p-10 lg:order-2 lg:col-span-7" aria-hidden="true">
+        <NoteDemo class="w-[318px] max-w-full md:w-[480px]" />
+      </div>
+      <div class="flex flex-col justify-center gap-2.5 p-6 lg:order-1 lg:col-span-5 lg:p-10">
+        <Icon name="note" class="size-7 text-cyan-deep" />
+        <h4 class="fluid mt-1 font-semibold tracking-[-0.01em] [--hi:26] [--lo:21]">Nothing selected? New Note.</h4>
+        <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">
+          New Note opens instead: type or paste, check, then copy the result anywhere. It’s also the way in for apps that won’t share their text.
+        </p>
+      </div>
+    </article>
   </section>
 </template>

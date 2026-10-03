@@ -25,7 +25,7 @@ import HeroDemoPhone from '../components/demo/HeroDemoPhone.vue'
       <div class="mt-1 flex flex-col gap-[18px] sm:hidden">
         <ShareActions copy />
         <p class="text-center text-sm leading-normal text-ink-3">
-          DuoTyping is a Mac app, so send yourself the link for when it’s out.<br />Free · macOS 14 or later · Apple silicon
+          DuoTyping is a Mac app, so send yourself the link for when it’s out.<br />macOS 14 or later · Apple silicon
         </p>
       </div>
       <div class="flex flex-wrap items-center gap-x-[30px] gap-y-3 max-sm:hidden">
@@ -35,7 +35,7 @@ import HeroDemoPhone from '../components/demo/HeroDemoPhone.vue'
           class="inline-flex min-h-11 items-center gap-2 text-[17px] font-semibold text-ink underline decoration-ink/28 decoration-[1.5px] underline-offset-[5px] transition-[text-decoration-color] duration-150 hover:decoration-ink"
         >See how it works<Icon name="arrow-down" class="size-[18px]" /></a>
       </div>
-      <p class="-mt-2.5 text-[14.5px] text-ink-3 max-sm:hidden">Free · macOS 14 Sonoma or later · Apple silicon</p>
+      <p class="-mt-2.5 text-[14.5px] text-ink-3 max-sm:hidden">macOS 14 Sonoma or later · Apple silicon</p>
       <HeroDemoPhone class="sm:hidden" />
     </div>
     <div class="wrap pt-12 max-sm:hidden xl:contents">

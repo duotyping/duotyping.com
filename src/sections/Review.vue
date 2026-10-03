@@ -9,6 +9,15 @@ const REVIEW: [IconName, string, string][] = [
   ['shield', 'Safe while you keep typing', 'If your text changed during the check, DuoTyping asks before writing anything.'],
 ]
 
+// The account's What syncs list (board 22 and the sync spec): each kind has its own switch, all on.
+const SYNCS: [string, string][] = [
+  ['Writing profiles', 'Every profile and its custom instructions'],
+  ['Default profile', 'Which profile checks start with'],
+  ['Appearance', 'Auto, Light or Dark'],
+  ['Cloud model choice', 'The provider and model, never the key'],
+  ['Shortcuts', 'Between your Macs'],
+]
+
 const PROFILES = ['Legal', 'Medical/healthcare', 'Technology/engineering', 'Business/finance', 'Academic/research', 'Customer support/service', 'Casual/personal', 'Marketing/creative']
 // The panel cycles through four of them, in this order: the chip's loop, its line's loop, and
 // the tone the app gives that profile (Shared/DomainProfile.swift), in plain words.
@@ -124,6 +133,46 @@ const CYCLE: Record<string, [string, string, string]> = {
                 <span class="w-[34px] text-center text-[13px] font-semibold">3</span>
                 <span class="flex h-7 w-[30px] items-center justify-center bg-chip"><Icon name="plus" class="size-3.5" /></span>
               </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid grid-cols-1 gap-[22px] pt-14 lg:grid-cols-12 lg:items-center lg:gap-x-6 lg:pt-0">
+      <div class="flex flex-col gap-[22px] lg:col-span-5 lg:gap-5">
+        <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:40] [--lo:30]">Your profiles, on every Mac.</h2>
+        <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:18.5] [--lo:16.5]">
+          Sign in, and your writing profiles and settings follow you from Mac to Mac. Each kind has its own switch. An account is optional, and it carries settings, never writing: keys, models and anything you check stay on the Mac.
+        </p>
+      </div>
+      <div class="lg:col-span-6 lg:col-start-7" aria-hidden="true">
+        <div class="flex items-center justify-center overflow-hidden rounded-[22px] bg-stage p-4 md:rounded-[28px] md:p-[34px]">
+          <div class="font-mac flex w-[318px] max-w-full flex-col gap-3.5 rounded-xl border border-edge bg-panel px-5 py-[18px] text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)] md:w-[540px] md:px-6 md:py-[22px]">
+            <div class="flex items-center gap-3">
+              <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-ink text-[15px] font-bold text-white">Y</span>
+              <div class="flex min-w-0 grow flex-col gap-0.5">
+                <span class="text-[13.5px] font-semibold">you@example.com</span>
+                <span class="flex items-center gap-1.5 text-[11.5px] text-ink-2"><span class="size-1.5 shrink-0 rounded-full bg-[#2F7D3A]" />Signed in with Apple · Synced 2 min ago</span>
+              </div>
+              <span class="mk-btn-2 max-md:hidden">Sync Now</span>
+            </div>
+            <div class="flex flex-col">
+              <div class="mb-1 text-xs font-semibold">What syncs</div>
+              <div class="mb-2 text-[11px] leading-[1.4] text-ink-3">Encrypted in transit and at rest. Turn a row off to keep it on this Mac.</div>
+              <div class="flex flex-col rounded-lg border border-edge bg-card">
+                <div v-for="([name, detail], i) in SYNCS" :key="name" class="flex items-center gap-3 px-3 py-2" :class="i > 0 && 'border-t border-line'">
+                  <div class="flex grow flex-col">
+                    <span class="text-[12.5px] font-medium">{{ name }}</span>
+                    <span class="text-[11px] text-ink-3">{{ detail }}</span>
+                  </div>
+                  <!-- A switch, on -->
+                  <span class="flex h-[18px] w-[30px] shrink-0 items-center justify-end rounded-full bg-accent p-0.5"><span class="size-3.5 rounded-full bg-white shadow-[0_1px_2px_rgba(24,33,63,0.3)]" /></span>
+                </div>
+              </div>
+            </div>
+            <div class="rounded-[7px] bg-[#F1F3F7] px-[11px] py-[9px] text-[11px] leading-[1.45] text-ink-2">
+              <strong class="font-semibold text-ink">Stays on this Mac:</strong> API keys, installed models, Accessibility access. Nothing you check is stored, so none of it can sync.
             </div>
           </div>
         </div>

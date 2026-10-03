@@ -4,8 +4,8 @@ import Icon, { type IconName } from '../components/Icon.vue'
 import BrandMark from '../components/brand/BrandMark.vue'
 
 const FACTS: [IconName, string, string][] = [
-  ['no-account', 'No account', 'There’s nothing to sign up for, and nothing to sign in to.'],
-  ['no-tracking', 'No tracking', 'No analytics, no telemetry and no crash reporter, in the app or the engine.'],
+  ['lock', 'Never your passwords', 'Password fields and other secure text are skipped entirely: never read, never marked.'],
+  ['shield', 'Signed updates', 'Every update is signed, and checked against that signature before it installs.'],
   ['nothing-kept', 'Nothing kept', 'Neither part stores what you write, not even for a moment longer than the check.'],
   ['key', 'Keys in your Keychain', 'Cloud API keys are stored in the macOS Keychain and never read back into the app.'],
   ['verified', 'Verified models', 'Every model download is checked against a signed catalog before it’s used.'],

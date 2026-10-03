@@ -1,8 +1,9 @@
 <script lang="ts">
 // Rendered here and handed to search engines as FAQPage, from the one list.
 export const FAQ: [string, string][] = [
-  ['Is DuoTyping really free?', 'Yes. There’s no trial, no account and nothing to unlock. If you connect a cloud model, your provider bills you directly for what you use.'],
+  ['What does a cloud model cost?', 'Whatever your provider charges. DuoTyping sends the text you check straight to the provider on your own key, and the provider bills you directly. A local model has no per-use bill.'],
   ['Does my writing leave my Mac?', 'Not unless you connect a cloud model. With a local model, the check runs on your Mac and nothing you write is sent anywhere. If you connect a cloud provider, the text you check goes straight to that provider, on your own key, and nowhere else. Either way, DuoTyping never stores what you write.'],
+  ['Do I need an account?', 'No. Every feature works signed out. Signing in only syncs your writing profiles and settings between your Macs; keys, models and anything you check stay on each Mac.'],
   ['Why does it ask for Accessibility access?', 'It’s how macOS lets one app read the text you select in another, and write an accepted change back in place. DuoTyping uses it for exactly that, and never reads password fields. Without it, you can still type or paste into New Note.'],
   ['Which apps does it work in?', 'Most apps where you can select text: Mail, Messages, Notes, Pages, Slack and your browser among them. Marks as you type work in Mail, Messages, Slack, Teams and WhatsApp. For an app that won’t share its text, New Note is the way in: type or paste, check, then copy the result back.'],
   ['Which Macs can run it?', 'Any Mac with Apple silicon on macOS 14 Sonoma or later. Local models need memory too: the smaller ones run in 8 GB, and Qwen2.5 14B recommends 32 GB.'],
@@ -12,14 +13,14 @@ export const FAQ: [string, string][] = [
 </script>
 
 <script setup lang="ts">
-import Pencils from '../components/brand/Pencils.vue'
+import { useId } from 'vue'
 import { FEEDBACK_URL } from '../utils/site'
 
-// The FAQ note's two lines of writing, a word at a time: the line as written, then the assistant's fix in deep cyan.
-const NOTE_LINES = [
-  ['M66 241H104', 'f1a', '#D5D9E2'], ['M114 241H160', 'f1b', '#D5D9E2'], ['M170 241H192', 'f1c', '#D5D9E2'],
-  ['M66 270H104', 'f2a', '#D5D9E2'], ['M114 270H160', 'f2b', '#0A6F84'], ['M170 270H196', 'f2c', '#D5D9E2'],
-]
+// The assistant's answer, a line at a time.
+// A soft shadow under both bubbles. It stays put while they bob, so they lift off the page.
+const shadow = useId()
+const ANSWER = [['M65 61H97', 'f1a'], ['M65 69H93', 'f1b'], ['M65 77H83', 'f1c']]
+
 </script>
 
 <template>
@@ -33,26 +34,32 @@ const NOTE_LINES = [
       <p class="order-3 text-base text-ink-2 lg:order-none lg:text-[17px] lg:leading-[1.55]">
         Something else on your mind? <a :href="FEEDBACK_URL" class="font-semibold text-accent underline transition-colors hover:text-accent-hover">Send feedback</a>
       </p>
+      <!-- A question and its answer, in the logo's two bubbles: yours asks, the assistant's answers.
+           Drawn on the logo's 100-unit grid, spread apart so each bubble has room to speak. -->
       <svg v-loop width="384" height="340" viewBox="0 0 384 340" fill="none" aria-hidden="true" class="loop block overflow-visible max-lg:hidden">
-        <g transform="rotate(-4 150 170)">
-          <rect x="42" y="40" width="228" height="280" rx="16" fill="#18213F" opacity="0.07" />
-          <rect x="36" y="30" width="228" height="280" rx="16" fill="#FFFFFF" stroke="#E1E4EA" stroke-width="1.5" />
-          <path d="M58 54V290" stroke="#F1D3C4" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M60 223H240M60 250H240M60 277H240" stroke="#E6E9EF" stroke-width="1.5" stroke-linecap="round" />
-          <!-- Each stroke is its own path, drawn by its dash: pathLength 1 makes the dash the whole stroke. -->
-          <path class="loop-fq" d="M104 112C104 82 124 64 148 64C174 64 192 82 192 106C192 128 176 138 162 148C152 155 148 164 148 178" pathLength="1" stroke-dasharray="1" stroke="#18213F" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
-          <circle class="loop-fd" cx="148" cy="208" r="7.5" fill="#18213F" />
-          <path v-for="[d, n, color] in NOTE_LINES" :key="n" :class="`loop-${n}`" :d="d" pathLength="1" stroke-dasharray="1" :stroke="color" stroke-width="6" stroke-linecap="round" />
-          <path class="loop-fw" d="M114 249q2.9-3.4 5.8 0q2.9 3.4 5.8 0q2.9-3.4 5.8 0q2.9 3.4 5.8 0q2.9-3.4 5.8 0q2.9 3.4 5.8 0q2.9-3.4 5.8 0q2.9 3.4 5.8 0" stroke="#B04E25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <defs>
+          <filter :id="shadow" x="-30%" y="-30%" width="160%" height="160%"><feGaussianBlur stdDeviation="2.8" /></filter>
+        </defs>
+        <g :filter="`url(#${shadow})`" fill="#18213F" opacity="0.2" transform="translate(18 18) scale(3.2)">
+          <path d="M20 6H62A16 16 0 0 1 78 22V36A16 16 0 0 1 62 52L70 60L52 52H20A16 16 0 0 1 4 36V22A16 16 0 0 1 20 6Z" />
+          <path d="M46 44H92A16 16 0 0 1 108 60V78A16 16 0 0 1 92 94L100 102L82 94H46A16 16 0 0 1 30 78V60A16 16 0 0 1 46 44Z" />
         </g>
-        <path d="M292 34H350A18 18 0 0 1 368 52V78A18 18 0 0 1 350 96H318L302 112L304 96H292A18 18 0 0 1 274 78V52A18 18 0 0 1 292 34Z" fill="#D9F8FF" stroke="#0A6F84" stroke-width="1.8" stroke-linejoin="round" />
-        <circle v-for="(x, i) in [302, 321, 340]" :key="x" class="loop-fb" :style="{ animationDelay: `${i * 0.2}s` }" :cx="x" cy="65" r="4.2" fill="#0A6F84" />
-        <path class="loop-fs" d="M18 55C19 61.5 20.5 63 27 64C20.5 65 19 66.5 18 73C17 66.5 15.5 65 9 64C15.5 63 17 61.5 18 55Z" fill="#2EC5DB" />
-        <path class="loop-fs" style="animation-delay: 0.15s" d="M366 123C367.2 130.9 369.1 132.8 377 134C369.1 135.2 367.2 137.1 366 145C364.8 137.1 362.9 135.2 355 134C362.9 132.8 364.8 130.9 366 123Z" fill="#2EC5DB" />
-        <path class="loop-fs" style="animation-delay: 0.3s" d="M22 311C22.8 316 24 317.2 29 318C24 318.8 22.8 320 22 325C21.2 320 20 318.8 15 318C20 317.2 21.2 316 22 311Z" fill="#9ED7E3" />
-        <!-- Two pencils, apart so each can write its line: they stack back at rest. -->
-        <g class="loop-pen1"><g transform="translate(164 132) scale(8.4)"><Pencils part="back" /></g></g>
-        <g class="loop-pen2"><g transform="translate(164 132) scale(8.4)"><Pencils part="front" /></g></g>
+        <g transform="translate(18 6) scale(3.2)" stroke-linecap="round" stroke-linejoin="round">
+          <g class="loop-fy">
+            <path d="M20 6H62A16 16 0 0 1 78 22V36A16 16 0 0 1 62 52L70 60L52 52H20A16 16 0 0 1 4 36V22A16 16 0 0 1 20 6Z" fill="#D7784F" />
+            <!-- pathLength 1 makes the dash the whole stroke, so the question mark draws itself. -->
+            <path class="loop-fq" d="M34 21.5C34 15.5 37.5 12 41.5 12C46 12 49 15 49 19C49 22.5 46.5 24.5 44 26.2C42.2 27.5 41.5 29 41.5 32" pathLength="1" stroke-dasharray="1" stroke="#FFFFFF" stroke-width="3.6" />
+            <circle class="loop-fd" cx="41.5" cy="39.5" r="2.3" fill="#FFFFFF" />
+          </g>
+          <g class="loop-fa">
+            <path d="M46 44H92A16 16 0 0 1 108 60V78A16 16 0 0 1 92 94L100 102L82 94H46A16 16 0 0 1 30 78V60A16 16 0 0 1 46 44Z" fill="#18213F" />
+            <g class="loop-fe" fill="#3EE6FF">
+              <rect x="40" y="62.5" width="7" height="13" rx="2.3" />
+              <rect x="51" y="62.5" width="7" height="13" rx="2.3" />
+            </g>
+            <path v-for="[d, n] in ANSWER" :key="n" :class="`loop-${n}`" :d="d" pathLength="1" stroke-dasharray="1" stroke="#3EE6FF" stroke-width="3.4" />
+          </g>
+        </g>
       </svg>
     </div>
     <div class="order-2 lg:order-none lg:col-span-7 lg:col-start-6">

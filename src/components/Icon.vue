@@ -2,8 +2,8 @@
 // Every icon by name, so a misspelt <Icon name> fails the type check instead of drawing nothing.
 export type IconName =
   | 'download' | 'arrow-down' | 'arrow-right' | 'share' | 'copy' | 'check' | 'menu' | 'close'
-  | 'undo' | 'mac' | 'no-account' | 'note' | 'fixes' | 'lines' | 'shield' | 'keyboard'
-  | 'no-tracking' | 'nothing-kept' | 'key' | 'verified' | 'selection' | 'lock' | 'chevron'
+  | 'mac' | 'offline' | 'note' | 'fixes' | 'lines' | 'shield' | 'keyboard'
+  | 'nothing-kept' | 'key' | 'verified' | 'selection' | 'lock' | 'chevron'
   | 'minus' | 'plus'
 </script>
 
@@ -20,15 +20,13 @@ const ICONS: Record<IconName, [string, number]> = {
   check: ['<path d="M5.5 12.5l4.2 4.2L18.5 8"/>', 2],
   menu: ['<path d="M4 7.5h16M4 12h16M4 16.5h16"/>', 1.8],
   close: ['<path d="M6 6l12 12M18 6 6 18"/>', 1.8],
-  undo: ['<path d="M19 5v6.5a3 3 0 0 1-3 3H6"/><path d="M9.5 11 6 14.5 9.5 18"/>', 1.7],
+  offline: ['<path d="M2.5 9.2a14 14 0 0 1 19 0M5.8 12.6a9.4 9.4 0 0 1 12.4 0M9.1 16a4.6 4.6 0 0 1 5.8 0"/><path d="M12 19.6h.01"/><path d="M4 4l16 16"/>', 1.8],
   mac: ['<rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/>', 1.7],
-  'no-account': ['<circle cx="12" cy="8.5" r="3.4"/><path d="M5.2 19.5c1.2-3 3.8-4.8 6.8-4.8s5.6 1.8 6.8 4.8"/><path d="M4 4l16 16"/>', 1.7],
   note: ['<rect x="3.5" y="4" width="17" height="16" rx="2.6"/><path d="M3.5 8.2h17"/><path d="M8.5 16.8l.5-2.3 5.3-5.3 1.8 1.8-5.3 5.3-2.3.5Z"/>', 1.7],
   fixes: ['<path d="M3.5 16.5 7.5 6l4 10.5M5 12.8h5"/><path d="M13.5 15.2l2.6 2.6 4.6-5.3"/>', 1.7],
   lines: ['<path d="M4 6.5h16M4 11.5h11M4 16.5h14"/>', 1.7],
   shield: ['<path d="M12 3.5 5.5 6.2v5.1c0 4.1 2.8 7.3 6.5 8.9 3.7-1.6 6.5-4.8 6.5-8.9V6.2L12 3.5Z"/><path d="M9 12.2l2.1 2.1 4-4.1"/>', 1.7],
   keyboard: ['<rect x="2.8" y="6.2" width="18.4" height="11.6" rx="2.2"/><path d="M6.8 10h.01M10 10h.01M13.2 10h.01M16.4 10h.01M8 14h8"/>', 1.7],
-  'no-tracking': ['<path d="M3 12s3.3-6 9-6 9 6 9 6-3.3 6-9 6-9-6-9-6Z"/><circle cx="12" cy="12" r="2.5"/><path d="M4 4l16 16"/>', 1.7],
   'nothing-kept': ['<rect x="4" y="4.5" width="16" height="4.2" rx="1.2"/><path d="M5.6 8.7v8.8a1.6 1.6 0 0 0 1.6 1.6h9.6a1.6 1.6 0 0 0 1.6-1.6V8.7"/><path d="M10 12.5l4 4M14 12.5l-4 4"/>', 1.7],
   key: ['<circle cx="8" cy="12" r="3.6"/><path d="M11.6 12H20.5M17.2 12v3M20.5 12v2.4"/>', 1.7],
   verified: ['<path d="M12 3.2l2.3 1.7 2.9-.1.9 2.7 2.3 1.7-.9 2.8.9 2.8-2.3 1.7-.9 2.7-2.9-.1L12 20.8l-2.3-1.7-2.9.1-.9-2.7-2.3-1.7.9-2.8-.9-2.8 2.3-1.7.9-2.7 2.9.1Z"/><path d="M9 12l2 2 4-4"/>', 1.7],

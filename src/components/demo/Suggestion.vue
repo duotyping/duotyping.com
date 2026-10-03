@@ -1,5 +1,5 @@
 <script setup lang="ts">
-// One card in the popup: where it came from, the new text with the change in clay, your
+// One card in the popup: where it came from, the new text with the change in deep cyan, your
 // original struck through underneath, and the keys that act on it.
 withDefaults(
   defineProps<{
@@ -27,15 +27,15 @@ withDefaults(
       </span>
       <span v-else class="mk-tag">
         <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <rect x="1.5" y="2.5" width="9" height="7" rx="1.5" stroke="#8A5A1E" stroke-width="1.3" />
-          <path d="M4 11h4" stroke="#8A5A1E" stroke-width="1.3" stroke-linecap="round" />
+          <rect x="1.5" y="2.5" width="9" height="7" rx="1.5" stroke="#0A6F84" stroke-width="1.3" />
+          <path d="M4 11h4" stroke="#0A6F84" stroke-width="1.3" stroke-linecap="round" />
         </svg>On this Mac
       </span>
     </div>
     <p class="leading-[1.45] text-ink" :class="[size, original ? 'mb-1' : actions ? 'mb-2.5' : '']"><slot /></p>
     <p v-if="original" class="leading-[1.4] text-ink-3 line-through" :class="[originalSize, actions && 'mb-2.5']">{{ original }}</p>
     <div v-if="actions" class="flex flex-wrap items-center gap-2">
-      <span class="mk-btn transition-[background-color,scale] duration-120 ease-out" :class="pressed && 'scale-96 bg-[#8F3C1B]'">
+      <span class="mk-btn transition-[background-color,scale] duration-120 ease-out" :class="pressed && 'scale-96 bg-accent-press'">
         {{ actions === 'replace' ? 'Replace selection' : 'Accept' }}
       </span>
       <span class="mk-kbd">return</span>

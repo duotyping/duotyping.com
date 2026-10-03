@@ -51,7 +51,7 @@ const CLOUD = [
         <div class="flex flex-col gap-2.5">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
             <h3 class="fluid font-display font-[650] tracking-[-0.02em] [--hi:27] [--lo:24]">Cloud, with your key</h3>
-            <span class="tag bg-[#F7E3D8] text-clay">Optional</span>
+            <span class="tag">Optional</span>
           </div>
           <p class="text-base leading-[1.55] text-ink-2">Runs alongside local: your local results show first, and the cloud adds its own as they arrive.</p>
         </div>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
-// A Mail compose window. With `fields`, the To and Subject rows under the title bar.
-defineProps<{ fields?: boolean }>()
+// A Mac window, a Mail compose one by default. With `fields`, the To and Subject rows under the title bar.
+withDefaults(defineProps<{ fields?: boolean; title?: string }>(), { title: 'New Message' })
 </script>
 
 <template>
@@ -11,7 +11,7 @@ defineProps<{ fields?: boolean }>()
         <span class="block size-3 rounded-full bg-[#FEBC2E] shadow-[inset_0_0_0_0.5px_#DEA123]" />
         <span class="block size-3 rounded-full bg-[#28C840] shadow-[inset_0_0_0_0.5px_#1AAB29]" />
       </div>
-      <span class="absolute inset-x-0 text-center text-[13px] font-semibold text-[#4A4A4A]">New Message</span>
+      <span class="absolute inset-x-0 text-center text-[13px] font-semibold text-[#4A4A4A]">{{ title }}</span>
     </div>
     <template v-if="fields">
       <div class="flex h-10 items-center gap-2 border-b border-[#EEEDEA] px-[22px] text-[13.5px]">

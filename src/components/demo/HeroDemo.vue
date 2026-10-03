@@ -246,7 +246,9 @@ onUnmounted(() => {
       </svg>
 
       <!-- DuoTyping in the menu bar, where the 1440 board draws it -->
-      <span class="absolute top-1 left-[778px] flex rounded-[5px] bg-ink/8 px-1.5 py-[3px]"><MenuBarMark class="size-4" /></span>
+      <!-- The front app's menus on the left, so the strip reads as the menu bar at a glance -->
+      <div class="font-mac absolute top-[6px] left-6 flex gap-[18px] text-[13px] text-mac-ink"><b class="font-bold">Mail</b><span>File</span><span>Edit</span><span>View</span><span>Message</span></div>
+      <span class="absolute top-1 left-[778px] flex rounded-[5px] bg-ink/14 px-1.5 py-[3px]"><MenuBarMark class="size-4" /></span>
       <div class="absolute top-[36px] right-[190px] flex flex-row-reverse items-end gap-1.5">
         <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
           <path d="M3 18C9 17 14 13 15.5 3" stroke="#0A6F84" stroke-width="1.8" stroke-linecap="round" />

@@ -102,8 +102,9 @@
   inset-inline: 0;
   top: 0;
   height: calc(31px * var(--s)); /* 30 px and its hairline, as drawn */
-  border-bottom: 1px solid rgba(24, 33, 63, 0.08);
-  background: rgba(255, 255, 255, 0.72);
+  border-bottom: 1px solid rgba(24, 33, 63, 0.14);
+  /* A cool grey, not white: on the near-white page a white bar has no edge to read as one. */
+  background: rgba(206, 212, 225, 0.92);
 }
 /* From 1280 the stage sits beside the copy and runs off the right edge, as drawn at 1440.
    It needs 822 px of room at 0.9 (740 of them on screen); narrower, it shrinks to fit. */
