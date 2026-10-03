@@ -12,7 +12,7 @@ export const FAQ: [string, string][] = [
 </script>
 
 <script setup lang="ts">
-import MarkPaths from '../components/brand/MarkPaths.vue'
+import Pencils from '../components/brand/Pencils.vue'
 import { FEEDBACK_URL } from '../utils/site'
 
 // The FAQ note's two lines of writing, a word at a time: the line as written, then the fix in clay.
@@ -50,9 +50,9 @@ const NOTE_LINES = [
         <path class="loop-fs" d="M18 55C19 61.5 20.5 63 27 64C20.5 65 19 66.5 18 73C17 66.5 15.5 65 9 64C15.5 63 17 61.5 18 55Z" fill="#B8802A" />
         <path class="loop-fs" style="animation-delay: 0.15s" d="M366 123C367.2 130.9 369.1 132.8 377 134C369.1 135.2 367.2 137.1 366 145C364.8 137.1 362.9 135.2 355 134C362.9 132.8 364.8 130.9 366 123Z" fill="#B8802A" />
         <path class="loop-fs" style="animation-delay: 0.3s" d="M22 311C22.8 316 24 317.2 29 318C24 318.8 22.8 320 22 325C21.2 320 20 318.8 15 318C20 317.2 21.2 316 22 311Z" fill="#E2B461" />
-        <!-- The logo's two pencils, apart so each can write its line: they stack back at rest. -->
-        <g class="loop-pen1"><g transform="translate(164 132) scale(8.4)"><MarkPaths part="back" /></g></g>
-        <g class="loop-pen2"><g transform="translate(164 132) scale(8.4)"><MarkPaths part="front" /></g></g>
+        <!-- Two pencils, apart so each can write its line: they stack back at rest. -->
+        <g class="loop-pen1"><g transform="translate(164 132) scale(8.4)"><Pencils part="back" /></g></g>
+        <g class="loop-pen2"><g transform="translate(164 132) scale(8.4)"><Pencils part="front" /></g></g>
       </svg>
     </div>
     <div class="order-2 lg:order-none lg:col-span-7 lg:col-start-6">

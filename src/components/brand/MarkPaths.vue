@@ -1,42 +1,29 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 
-// The two pencils, one of them the assistant, in their 18-unit box at −38° (Brand board).
-// A bare <g>, so any SVG can place it: the lockup, the watermark on a stage, the diagram.
-// `part` draws just one of them, for a drawing where each pencil moves on its own.
+// The two bubbles, yours behind and the assistant's in front with its two tall eyes, in the
+// 18-unit box (the app icon's 100-unit art at 0.18). A bare <g>, so any SVG can place it: the
+// lockup, the watermark on a stage.
 type Tone = 'paper' | 'ink' | 'desk'
-const TONES: Record<Tone, [string, string, string, string, string, number]> = {
-  // back, its lead, front, its lead, the sparkle, the back pencil's opacity
-  paper: ['#4A2D1E', '#33251C', '#C97A52', '#33251C', '#F1EFE6', 0.95],
-  // On ink: the Dark-appearance colours.
-  ink: ['#9A6B49', '#3A241A', '#E5A075', '#3A241A', '#F7ECDF', 0.95],
+const TONES: Record<Tone, [string, string, string, string]> = {
+  // your bubble, the assistant's, its eyes, the outline
+  paper: ['#D7784F', '#18213F', '#3EE6FF', '#0A0F22'],
+  // On ink: the outline turns paper, so the midnight bubble keeps its edge.
+  ink: ['#D7784F', '#18213F', '#3EE6FF', '#F1EFE6'],
   // Printed faintly into a product stage.
-  desk: ['#DCCDB2', '#D2BD9A', '#E2C5A4', '#D2BD9A', '#EEE4CF', 1],
+  desk: ['#E2C5A4', '#DCCDB2', '#EEE4CF', '#D2BD9A'],
 }
-const props = withDefaults(defineProps<{ tone?: Tone; part?: 'back' | 'front' }>(), { tone: 'paper' })
+const props = withDefaults(defineProps<{ tone?: Tone }>(), { tone: 'paper' })
 const c = computed(() => TONES[props.tone])
 </script>
 
 <template>
-  <g transform="rotate(38 9 9)">
-    <template v-if="part !== 'front'">
-      <path
-        d="M5.46 3.5a2.3 2.3 0 0 1 4.6 0L10.06 10.102Q10.06 10.7 9.773 11.225L7.972 14.514a.2116 .2116 0 0 1-.423 0L5.747 11.225Q5.46 10.7 5.46 10.102Z"
-        :fill="c[0]"
-        :opacity="c[5]"
-      />
-      <path d="M6.868 13.27L8.652 13.27L7.972 14.514a.2116 .2116 0 0 1-.423 0Z" :fill="c[1]" :opacity="c[5]" />
-    </template>
-    <template v-if="part !== 'back'">
-      <path
-        d="M7.94 5.5a2.3 2.3 0 0 1 4.6 0L12.54 12.102Q12.54 12.7 12.253 13.225L10.452 16.514a.2116 .2116 0 0 1-.423 0L8.227 13.225Q7.94 12.7 7.94 12.102Z"
-        :fill="c[2]"
-      />
-      <path d="M9.348 15.27L11.132 15.27L10.452 16.514a.2116 .2116 0 0 1-.423 0Z" :fill="c[3]" />
-      <path
-        d="M10.24 8.61C10.41 9.69 10.89 9.88 11.68 10.05C10.89 10.22 10.41 10.41 10.24 11.49C10.07 10.41 9.59 10.22 8.8 10.05C9.59 9.88 10.07 9.69 10.24 8.61Z"
-        :fill="c[4]"
-      />
-    </template>
+  <g transform="scale(0.18)" :stroke="c[3]" stroke-width="2.4" stroke-linejoin="round">
+    <path d="M26 8H58A18 18 0 0 1 76 26V38A18 18 0 0 1 58 56L68 64L48 56H26A18 18 0 0 1 8 38V26A18 18 0 0 1 26 8Z" :fill="c[0]" />
+    <path d="M40 26H74A18 18 0 0 1 92 44V62A18 18 0 0 1 74 80L84 88L64 80H40A18 18 0 0 1 22 62V44A18 18 0 0 1 40 26Z" :fill="c[1]" />
+    <g :fill="c[2]" stroke="none">
+      <rect x="40.56" y="42.8" width="10.88" height="20.4" rx="3.48" />
+      <rect x="62.56" y="42.8" width="10.88" height="20.4" rx="3.48" />
+    </g>
   </g>
 </template>

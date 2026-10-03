@@ -117,7 +117,7 @@
 
 /* The FAQ drawing · 8 s: the question mark draws itself, the dark pencil writes a line with a
    mistake in it, the mistake's wavy mark shows up on its own, and the clay pencil writes the fix.
-   At rest the two pencils stack back into the logo. */
+   At rest the two pencils stack back together. */
 .loop-fq { animation: dtfq 8s linear infinite both; }
 .loop-fd { transform-box: fill-box; transform-origin: center; animation: dtfd 8s ease-out infinite both; }
 .loop-f1a { animation: dtf1a 8s linear infinite both; }

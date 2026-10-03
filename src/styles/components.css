@@ -165,8 +165,8 @@
     width: var(--icon, 120px);
     height: var(--icon, 120px);
     border-radius: calc(var(--icon, 120px) * 0.225);
-    background: linear-gradient(150deg, #F4ECD9, #EBE0C8);
-    box-shadow: 0 calc(var(--icon, 120px) / 12) calc(var(--icon, 120px) / 5) rgba(74, 45, 30, 0.22), 0 1px 3px rgba(74, 45, 30, 0.12);
+    background: linear-gradient(150deg, #F4F4F2, #E6E6E3);
+    box-shadow: 0 calc(var(--icon, 120px) / 12) calc(var(--icon, 120px) / 5) rgba(26, 27, 30, 0.2), 0 1px 3px rgba(26, 27, 30, 0.12);
   }
   /* The small caps labels drawn onto a product stage: "Select, then press". */
   .stage-label {

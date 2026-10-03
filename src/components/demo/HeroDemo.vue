@@ -240,7 +240,7 @@ onUnmounted(() => {
          stage, not the canvas, which is only drawn 1000 px across. -->
     <div class="stage-menubar" />
     <div ref="canvas" class="canvas">
-      <!-- Wider than the canvas, so the pencils aren't cut off where a wide screen shows more. -->
+      <!-- Wider than the canvas, so the bubbles aren't cut off where a wide screen shows more. -->
       <svg width="1400" height="778" viewBox="0 0 1400 778" fill="none" class="absolute top-0 left-0">
         <g transform="translate(282 34) scale(55.6)"><MarkPaths tone="desk" /></g>
       </svg>

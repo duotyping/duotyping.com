@@ -34,7 +34,7 @@ own API key. There's no account, no tracking, and DuoTyping never stores what yo
 
 | Folder | Files |
 |---|---|
-| `logo/` | The logo (app icon + name), horizontal and stacked, for light and dark backgrounds; one-colour black and white versions with the pencils alone; a square avatar for profile pictures (Default and Dark appearance). SVG, plus PNG at 4000 px (mark and avatar 2048 px), transparent except the avatar. |
+| `logo/` | The logo (app icon + name), horizontal and stacked, for light and dark backgrounds; one-colour black and white versions with the two bubbles alone; a square avatar for profile pictures (Default and Dark appearance). SVG, plus PNG at 4000 px (mark and avatar 2048 px), transparent except the avatar. |
 | `icon/` | The macOS app icon at 512, 1024 and 2048 px and the Dark appearance at 2048 px, plus vector versions of both. |
 | `banners/` | 3000×1000 (X/Twitter header, web hero), 2400×1260 (link previews, articles) and 2160×2160 square (Instagram, feeds) in light and dark, and 3168×792 (LinkedIn). SVG and PNG. |
 
@@ -43,12 +43,12 @@ own API key. There's no account, no tracking, and DuoTyping never stores what yo
 - The colour logo is the app icon beside the name. Use it on light backgrounds and the
   `-on-dark` version on dark ones. Over a photo or a busy background, use the one-colour black
   or white version.
-- Don't show the colour pencils without their tile; on their own, use the one-colour mark.
+- Don't show the colour bubbles without their tile; on their own, use the one-colour mark.
 - Leave clear space around the logo at least the height of the "D" in DuoTyping.
 - Don't recolour, rotate, stretch, outline or add effects to the logo, and don't redraw the
   wordmark in another typeface.
-- The two pencils always lean at the same angle; the front one, with the sparkle, is the
-  assistant.
+- Two bubbles: yours behind in terracotta, the assistant's in front in midnight with two tall
+  cyan eyes. Don't draw the assistant's bubble on its own.
 
 ## Colours
 
@@ -58,8 +58,9 @@ own API key. There's no account, no tracking, and DuoTyping never stores what yo
 | Ink | `#1E2A32` | Text, dark background |
 | Clay | `#B04E25` | Accent, the one action |
 | Gold | `#8A5A1E` | Labels |
-| Espresso | `#4A2D1E` | Back pencil |
-| Pencil clay | `#C97A52` | Front pencil |
+| Terracotta | `#D7784F` | Your bubble |
+| Midnight | `#18213F` | The assistant's bubble |
+| Cyan | `#3EE6FF` | The assistant's eyes |
 
 ## Typefaces
 
