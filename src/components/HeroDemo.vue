@@ -7,7 +7,7 @@ import MacWindow from './mock/MacWindow.vue'
 import Popup from './mock/Popup.vue'
 import RewritePill from './mock/RewritePill.vue'
 import Suggestion from './mock/Suggestion.vue'
-import { introElapsed, reducedMotion } from '../intro'
+import { reducedMotion } from '../intro'
 
 // The product, a step at a time (Motion board). The email types itself and a wavy line lands
 // under each mistake once the next word arrives; the badge counts them. Then the selection
@@ -25,7 +25,7 @@ const SEGS = [
 const TOTAL = SEGS.reduce((n, [, text]) => n + text.length, 0)
 const MARK1 = 43 // "have send" is marked once " the" is typed after it
 const MARK2 = 103 // "they will be review", once " it" is
-const FIRST = 2400 // the first run starts as the headline settles
+const FIRST = 600 // the first run starts just after the page settles
 const TYPE = 26
 const CYCLE = 13300
 // `cur: [where, ms]` glides the pointer there, measured off the page at that moment.
@@ -183,7 +183,7 @@ const sync = () => {
   running = go
   stop()
   set(RESET)
-  if (go) later(Math.max(0, FIRST - introElapsed()), play)
+  if (go) later(FIRST, play)
 }
 onMounted(() => {
   if (reducedMotion()) return set(STILL)
