@@ -31,7 +31,7 @@ export const DOWNLOAD_URL = release.url || RELEASES_URL
 // "Send to my Mac" on a phone: the share sheet where there is one, else a mail to yourself.
 export const SHARE = {
   title: 'DuoTyping for Mac',
-  text: 'DuoTyping — the private writing assistant for Mac. Coming soon to your Mac:',
+  text: 'DuoTyping | The private writing assistant for Mac. Coming soon to your Mac:',
   url: `${SITE_URL}/`,
 }
 export const MAIL_SELF = `mailto:?subject=${encodeURIComponent(SHARE.title)}&body=${encodeURIComponent(`${SHARE.text} ${SHARE.url}`)}`

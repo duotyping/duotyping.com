@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import Icon from '../components/Icon.vue'
 import CountBadge from '../components/demo/CountBadge.vue'
+import InlineRewriteCard from '../components/demo/InlineRewriteCard.vue'
 import NoteDemo from '../components/demo/NoteDemo.vue'
-import Popup from '../components/demo/Popup.vue'
 import RewritePill from '../components/demo/RewritePill.vue'
 import Suggestion from '../components/demo/Suggestion.vue'
 </script>
@@ -104,10 +104,12 @@ import Suggestion from '../components/demo/Suggestion.vue'
                 </p>
                 <RewritePill class="loop-rpill" />
               </div>
-              <Popup scope="Rewrite" count="Other ways to say it" note="Nothing changes until you pick one." class="loop-rpop w-[300px] md:w-[440px]">
-                <Suggestion label="Option 1 of 3" focused actions="replace" size="text-[13.5px]">Let me know if anything needs changing.</Suggestion>
-                <Suggestion label="Option 2 of 3" size="text-[13.5px]">Happy to adjust anything. Just say the word.</Suggestion>
-              </Popup>
+              <InlineRewriteCard
+                original="Please revert back to me if any change is required."
+                :words="10"
+                :options="['Let me know if anything needs changing.', 'Happy to adjust anything. Just say the word.']"
+                class="loop-rpop w-[300px] md:w-[440px]"
+              />
             </div>
           </div>
           <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
