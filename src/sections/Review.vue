@@ -20,7 +20,8 @@ const SYNCS: [string, string][] = [
 
 // The Profile tab (board 19): named profiles, each with its own writing context, scope and
 // instructions. The figure steps through four of them; each line is [loop class, name, writing
-// context, its tone in the app's words, scope, variations, custom instructions].
+// context, its tone in the app's words, scope, variations, custom instructions]. The scope buttons'
+// own loops (loop-sw, loop-ss, loop-sv) follow the scopes listed here.
 const PROFILES: [string, string, string, string, 'whole' | 'sentence', number, string][] = [
   ['loop-db', 'Work email', 'Business & finance', 'Professional and outcome-oriented, with moderate formality.', 'whole', 3, 'Keep it friendly, and never longer than my original.'],
   ['loop-dl', 'Team chat', 'Casual & personal', 'Relaxed. Contractions and everyday phrases are left alone.', 'sentence', 1, 'Short and friendly. No sign-off.'],
@@ -115,37 +116,51 @@ const PROFILES: [string, string, string, string, 'whole' | 'sentence', number, s
               </div>
               <p class="text-[11px] text-ink-3">Checks start with the default profile, Work email.</p>
             </div>
-            <div class="grid">
-              <div v-for="([loop, name, context, tone, scope, variations, instructions], i) in PROFILES" :key="name" class="flex flex-col gap-3.5 [grid-area:1/1]" :class="[loop, i > 0 && 'opacity-0']">
-                <div class="grid grid-cols-2 gap-3">
-                  <div class="flex flex-col gap-1">
-                    <span class="text-[11px] font-semibold">Name</span>
-                    <span class="truncate rounded-md border border-key bg-white px-2 py-1 text-[12.5px]">{{ name }}</span>
-                  </div>
-                  <div class="flex flex-col gap-1">
-                    <span class="text-[11px] font-semibold">Writing context</span>
-                    <span class="flex items-center justify-between gap-1 rounded-md border border-key bg-white px-2 py-1 text-[12.5px]"><span class="truncate">{{ context }}</span><Icon name="chevron" class="size-3 shrink-0 text-ink-3" /></span>
-                  </div>
-                </div>
-                <p class="rounded-[7px] bg-[#F1F3F7] px-[11px] py-2 text-xs leading-[1.45] text-ink-2">“{{ tone }}”</p>
-                <div class="flex flex-col gap-1.5">
-                  <span class="text-[11px] font-semibold">What one accept replaces</span>
-                  <div class="grid grid-cols-2 gap-2">
-                    <span v-for="[key, label] in [['whole', 'Whole selection'], ['sentence', 'Sentence by sentence']]" :key="key" class="rounded-[7px] border px-2.5 py-1.5 text-xs" :class="scope === key ? 'border-accent bg-tint font-semibold' : 'border-edge bg-card'">{{ label }}</span>
-                  </div>
-                  <div class="flex items-center justify-between pt-1">
-                    <span class="text-[11px] font-semibold">Variations</span>
-                    <div class="flex items-center overflow-hidden rounded-[7px] border border-key" :class="scope === 'sentence' && 'opacity-45'">
-                      <span class="flex h-6 w-7 items-center justify-center bg-chip"><Icon name="minus" class="size-3" /></span>
-                      <span class="w-8 text-center text-[12.5px] font-semibold">{{ variations }}</span>
-                      <span class="flex h-6 w-7 items-center justify-center bg-chip"><Icon name="plus" class="size-3" /></span>
-                    </div>
-                  </div>
+            <!-- The labels hold still; only each field's value crossfades to the next profile's. -->
+            <div class="flex flex-col gap-3.5">
+              <div class="grid grid-cols-2 gap-3">
+                <div class="flex flex-col gap-1">
+                  <span class="text-[11px] font-semibold">Name</span>
+                  <span class="grid rounded-md border border-key bg-white px-2 py-1 text-[12.5px]">
+                    <span v-for="([loop, name], i) in PROFILES" :key="name" class="truncate [grid-area:1/1]" :class="[loop, i > 0 && 'opacity-0']">{{ name }}</span>
+                  </span>
                 </div>
                 <div class="flex flex-col gap-1">
-                  <span class="text-[11px] font-semibold">Custom instructions</span>
-                  <span class="min-h-[calc(2.9em+14px)] rounded-[7px] border border-key bg-white px-2.5 py-1.5 text-[12.5px] leading-[1.45]">{{ instructions }}</span>
+                  <span class="text-[11px] font-semibold">Writing context</span>
+                  <span class="flex items-center justify-between gap-1 rounded-md border border-key bg-white px-2 py-1 text-[12.5px]">
+                    <span class="grid min-w-0">
+                      <span v-for="([loop, name, context], i) in PROFILES" :key="name" class="truncate [grid-area:1/1]" :class="[loop, i > 0 && 'opacity-0']">{{ context }}</span>
+                    </span>
+                    <Icon name="chevron" class="size-3 shrink-0 text-ink-3" />
+                  </span>
                 </div>
+              </div>
+              <p class="grid rounded-[7px] bg-[#F1F3F7] px-[11px] py-2 text-xs leading-[1.45] text-ink-2">
+                <span v-for="([loop, name, , tone], i) in PROFILES" :key="name" class="[grid-area:1/1]" :class="[loop, i > 0 && 'opacity-0']">“{{ tone }}”</span>
+              </p>
+              <div class="flex flex-col gap-1.5">
+                <span class="text-[11px] font-semibold">What one accept replaces</span>
+                <!-- Work email and Support replies take the whole selection; Team chat and Legal drafts go sentence by sentence. -->
+                <div class="grid grid-cols-2 gap-2">
+                  <span class="loop-sw rounded-[7px] border border-accent bg-tint px-2.5 py-1.5 text-xs font-semibold">Whole selection</span>
+                  <span class="loop-ss rounded-[7px] border border-edge bg-card px-2.5 py-1.5 text-xs font-semibold">Sentence by sentence</span>
+                </div>
+                <div class="flex items-center justify-between pt-1">
+                  <span class="text-[11px] font-semibold">Variations</span>
+                  <div class="loop-sv flex items-center overflow-hidden rounded-[7px] border border-key">
+                    <span class="flex h-6 w-7 items-center justify-center bg-chip"><Icon name="minus" class="size-3" /></span>
+                    <span class="grid w-8 text-center text-[12.5px] font-semibold">
+                      <span v-for="([loop, name, , , , variations], i) in PROFILES" :key="name" class="[grid-area:1/1]" :class="[loop, i > 0 && 'opacity-0']">{{ variations }}</span>
+                    </span>
+                    <span class="flex h-6 w-7 items-center justify-center bg-chip"><Icon name="plus" class="size-3" /></span>
+                  </div>
+                </div>
+              </div>
+              <div class="flex flex-col gap-1">
+                <span class="text-[11px] font-semibold">Custom instructions</span>
+                <span class="grid min-h-[calc(2.9em+14px)] rounded-[7px] border border-key bg-white px-2.5 py-1.5 text-[12.5px] leading-[1.45]">
+                  <span v-for="([loop, name, , , , , instructions], i) in PROFILES" :key="name" class="[grid-area:1/1]" :class="[loop, i > 0 && 'opacity-0']">{{ instructions }}</span>
+                </span>
               </div>
             </div>
           </div>
