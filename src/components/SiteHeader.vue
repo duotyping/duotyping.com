@@ -53,7 +53,7 @@ onUnmounted(() => {
 <template>
   <header
     class="sticky top-0 z-40 h-16 border-b border-ink/8 transition-[background-color,box-shadow] duration-200 ease-out lg:h-[76px]"
-    :class="open ? 'bg-paper' : scrolled && 'bg-paper/88 shadow-[0_8px_24px_rgba(30,42,50,0.06)] backdrop-blur-[18px]'"
+    :class="open ? 'bg-paper' : scrolled && 'bg-paper/88 shadow-[0_8px_24px_rgba(24,33,63,0.06)] backdrop-blur-[18px]'"
   >
     <div class="wrap flex h-full items-center justify-between max-lg:pr-[calc(var(--gutter)-8px)]">
       <a :href="route.path === '/' ? '#top' : '/'" aria-label="DuoTyping home" class="flex items-center gap-[9px] text-ink lg:gap-2.5">

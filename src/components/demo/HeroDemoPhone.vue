@@ -30,10 +30,10 @@ import Suggestion from './Suggestion.vue'
         <div class="dt-pop" style="--at: 4480ms">
           <Popup scope="Sentence by sentence" count="2 suggestions" checked="Both checked on this Mac" note="Nothing changes until you accept." class="w-[322px]">
             <Suggestion label="Sentence 1 of 2" focused actions="accept-skip" original="I have send the revised contract to legal yesterday.">
-              I <span class="font-semibold text-clay">sent</span> the revised contract to legal yesterday.
+              I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
             </Suggestion>
             <Suggestion label="Sentence 2 of 2" original="they will be review it by Friday.">
-              <span class="font-semibold text-clay">They will review</span> it by Friday.
+              <span class="font-semibold text-cyan-deep">They will review</span> it by Friday.
             </Suggestion>
           </Popup>
         </div>

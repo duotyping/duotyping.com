@@ -7,8 +7,8 @@ withDefaults(defineProps<{ count?: number | string; icon?: number }>(), { icon: 
 </script>
 
 <template>
-  <div class="font-mac inline-flex items-center gap-1.5 rounded-lg border border-pill bg-panel px-[9px] py-1.5 shadow-[0_6px_18px_rgba(74,45,30,0.15)]">
-    <MenuBarMark color="#4A3F33" :style="{ width: `${icon}px`, height: `${icon}px` }" />
+  <div class="font-mac inline-flex items-center gap-1.5 rounded-lg border border-pill bg-panel px-[9px] py-1.5 shadow-[0_6px_18px_rgba(24,33,63,0.15)]">
+    <MenuBarMark color="#474E6A" :style="{ width: `${icon}px`, height: `${icon}px` }" />
     <span class="rounded-[9px] bg-clay px-1.5 text-[11.5px] leading-[17px] font-bold text-white"><slot>{{ count }}</slot></span>
   </div>
 </template>

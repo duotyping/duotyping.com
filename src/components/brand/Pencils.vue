@@ -6,12 +6,13 @@ import { computed } from 'vue'
 // `part` draws just one of them, so each pencil can move on its own.
 type Tone = 'paper' | 'ink' | 'desk'
 const TONES: Record<Tone, [string, string, string, string, string, number]> = {
-  // back, its lead, front, its lead, the sparkle, the back pencil's opacity
-  paper: ['#4A2D1E', '#33251C', '#C97A52', '#33251C', '#F1EFE6', 0.95],
+  // back, its lead, front, its lead, the sparkle, the back pencil's opacity. In the bubbles' colours:
+  // yours is terracotta behind, the assistant's is midnight in front, with a cyan spark.
+  paper: ['#D7784F', '#8E4A2C', '#18213F', '#0A0F22', '#3EE6FF', 1],
   // On ink: the Dark-appearance colours.
-  ink: ['#9A6B49', '#3A241A', '#E5A075', '#3A241A', '#F7ECDF', 0.95],
+  ink: ['#D7784F', '#8E4A2C', '#3A4A86', '#0A0F22', '#3EE6FF', 1],
   // Printed faintly into a product stage.
-  desk: ['#DCCDB2', '#D2BD9A', '#E2C5A4', '#D2BD9A', '#EEE4CF', 1],
+  desk: ['#EBCDBD', '#E2BBA6', '#CDD3E2', '#C3CAD8', '#E3E7EF', 1],
 }
 const props = withDefaults(defineProps<{ tone?: Tone; part?: 'back' | 'front' }>(), { tone: 'paper' })
 const c = computed(() => TONES[props.tone])

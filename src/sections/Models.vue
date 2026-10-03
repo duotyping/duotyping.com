@@ -45,13 +45,13 @@ const CLOUD = [
             <span v-if="tag" class="tag">{{ tag }}</span>
           </li>
         </ul>
-        <div class="flex items-center gap-2.5 text-sm text-ink-2"><Icon name="lock" class="size-[18px] text-gold" />A signed catalog. Every file is checked before it loads.</div>
+        <div class="flex items-center gap-2.5 text-sm text-ink-2"><Icon name="lock" class="size-[18px] text-cyan-deep" />A signed catalog. Every file is checked before it loads.</div>
       </article>
       <article class="flex flex-col gap-[22px] rounded-3xl border border-edge bg-card p-[22px] md:p-[34px]">
         <div class="flex flex-col gap-2.5">
           <div class="flex flex-wrap items-center gap-x-3 gap-y-2">
             <h3 class="fluid font-display font-[650] tracking-[-0.02em] [--hi:27] [--lo:24]">Cloud, with your key</h3>
-            <span class="tag border border-[#A9B7C0] bg-transparent text-slate">Optional</span>
+            <span class="tag bg-[#F7E3D8] text-clay">Optional</span>
           </div>
           <p class="text-base leading-[1.55] text-ink-2">Runs alongside local: your local results show first, and the cloud adds its own as they arrive.</p>
         </div>
@@ -64,7 +64,7 @@ const CLOUD = [
             </div>
           </li>
         </ul>
-        <div class="flex items-center gap-2.5 text-sm text-ink-2"><Icon name="key" class="size-[18px] text-gold" />Your key stays in the macOS Keychain. Your provider bills you directly.</div>
+        <div class="flex items-center gap-2.5 text-sm text-ink-2"><Icon name="key" class="size-[18px] text-cyan-deep" />Your key stays in the macOS Keychain. Your provider bills you directly.</div>
       </article>
     </div>
   </section>

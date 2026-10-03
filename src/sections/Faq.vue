@@ -15,10 +15,10 @@ export const FAQ: [string, string][] = [
 import Pencils from '../components/brand/Pencils.vue'
 import { FEEDBACK_URL } from '../utils/site'
 
-// The FAQ note's two lines of writing, a word at a time: the line as written, then the fix in clay.
+// The FAQ note's two lines of writing, a word at a time: the line as written, then the assistant's fix in deep cyan.
 const NOTE_LINES = [
-  ['M66 241H104', 'f1a', '#D9CFBA'], ['M114 241H160', 'f1b', '#D9CFBA'], ['M170 241H192', 'f1c', '#D9CFBA'],
-  ['M66 270H104', 'f2a', '#D9CFBA'], ['M114 270H160', 'f2b', '#B04E25'], ['M170 270H196', 'f2c', '#D9CFBA'],
+  ['M66 241H104', 'f1a', '#D5D9E2'], ['M114 241H160', 'f1b', '#D5D9E2'], ['M170 241H192', 'f1c', '#D5D9E2'],
+  ['M66 270H104', 'f2a', '#D5D9E2'], ['M114 270H160', 'f2b', '#0A6F84'], ['M170 270H196', 'f2c', '#D5D9E2'],
 ]
 </script>
 
@@ -31,25 +31,25 @@ const NOTE_LINES = [
         <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:54] [--lo:35]">Fair questions.</h2>
       </div>
       <p class="order-3 text-base text-ink-2 lg:order-none lg:text-[17px] lg:leading-[1.55]">
-        Something else on your mind? <a :href="FEEDBACK_URL" class="font-semibold text-clay underline transition-colors hover:text-clay-hover">Send feedback</a>
+        Something else on your mind? <a :href="FEEDBACK_URL" class="font-semibold text-accent underline transition-colors hover:text-accent-hover">Send feedback</a>
       </p>
       <svg v-loop width="384" height="340" viewBox="0 0 384 340" fill="none" aria-hidden="true" class="loop block overflow-visible max-lg:hidden">
         <g transform="rotate(-4 150 170)">
-          <rect x="42" y="40" width="228" height="280" rx="16" fill="#4A2D1E" opacity="0.07" />
-          <rect x="36" y="30" width="228" height="280" rx="16" fill="#FBFAF5" stroke="#DDD6C6" stroke-width="1.5" />
-          <path d="M58 54V290" stroke="#F0CDB9" stroke-width="1.5" stroke-linecap="round" />
-          <path d="M60 223H240M60 250H240M60 277H240" stroke="#EAE3D3" stroke-width="1.5" stroke-linecap="round" />
+          <rect x="42" y="40" width="228" height="280" rx="16" fill="#18213F" opacity="0.07" />
+          <rect x="36" y="30" width="228" height="280" rx="16" fill="#FFFFFF" stroke="#E1E4EA" stroke-width="1.5" />
+          <path d="M58 54V290" stroke="#F1D3C4" stroke-width="1.5" stroke-linecap="round" />
+          <path d="M60 223H240M60 250H240M60 277H240" stroke="#E6E9EF" stroke-width="1.5" stroke-linecap="round" />
           <!-- Each stroke is its own path, drawn by its dash: pathLength 1 makes the dash the whole stroke. -->
-          <path class="loop-fq" d="M104 112C104 82 124 64 148 64C174 64 192 82 192 106C192 128 176 138 162 148C152 155 148 164 148 178" pathLength="1" stroke-dasharray="1" stroke="#B04E25" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
-          <circle class="loop-fd" cx="148" cy="208" r="7.5" fill="#B04E25" />
+          <path class="loop-fq" d="M104 112C104 82 124 64 148 64C174 64 192 82 192 106C192 128 176 138 162 148C152 155 148 164 148 178" pathLength="1" stroke-dasharray="1" stroke="#18213F" stroke-width="11" stroke-linecap="round" stroke-linejoin="round" />
+          <circle class="loop-fd" cx="148" cy="208" r="7.5" fill="#18213F" />
           <path v-for="[d, n, color] in NOTE_LINES" :key="n" :class="`loop-${n}`" :d="d" pathLength="1" stroke-dasharray="1" :stroke="color" stroke-width="6" stroke-linecap="round" />
           <path class="loop-fw" d="M114 249q2.9-3.4 5.8 0q2.9 3.4 5.8 0q2.9-3.4 5.8 0q2.9 3.4 5.8 0q2.9-3.4 5.8 0q2.9 3.4 5.8 0q2.9-3.4 5.8 0q2.9 3.4 5.8 0" stroke="#B04E25" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
         </g>
-        <path d="M292 34H350A18 18 0 0 1 368 52V78A18 18 0 0 1 350 96H318L302 112L304 96H292A18 18 0 0 1 274 78V52A18 18 0 0 1 292 34Z" fill="#F3E4C6" stroke="#8A5A1E" stroke-width="1.8" stroke-linejoin="round" />
-        <circle v-for="(x, i) in [302, 321, 340]" :key="x" class="loop-fb" :style="{ animationDelay: `${i * 0.2}s` }" :cx="x" cy="65" r="4.2" fill="#8A5A1E" />
-        <path class="loop-fs" d="M18 55C19 61.5 20.5 63 27 64C20.5 65 19 66.5 18 73C17 66.5 15.5 65 9 64C15.5 63 17 61.5 18 55Z" fill="#B8802A" />
-        <path class="loop-fs" style="animation-delay: 0.15s" d="M366 123C367.2 130.9 369.1 132.8 377 134C369.1 135.2 367.2 137.1 366 145C364.8 137.1 362.9 135.2 355 134C362.9 132.8 364.8 130.9 366 123Z" fill="#B8802A" />
-        <path class="loop-fs" style="animation-delay: 0.3s" d="M22 311C22.8 316 24 317.2 29 318C24 318.8 22.8 320 22 325C21.2 320 20 318.8 15 318C20 317.2 21.2 316 22 311Z" fill="#E2B461" />
+        <path d="M292 34H350A18 18 0 0 1 368 52V78A18 18 0 0 1 350 96H318L302 112L304 96H292A18 18 0 0 1 274 78V52A18 18 0 0 1 292 34Z" fill="#D9F8FF" stroke="#0A6F84" stroke-width="1.8" stroke-linejoin="round" />
+        <circle v-for="(x, i) in [302, 321, 340]" :key="x" class="loop-fb" :style="{ animationDelay: `${i * 0.2}s` }" :cx="x" cy="65" r="4.2" fill="#0A6F84" />
+        <path class="loop-fs" d="M18 55C19 61.5 20.5 63 27 64C20.5 65 19 66.5 18 73C17 66.5 15.5 65 9 64C15.5 63 17 61.5 18 55Z" fill="#2EC5DB" />
+        <path class="loop-fs" style="animation-delay: 0.15s" d="M366 123C367.2 130.9 369.1 132.8 377 134C369.1 135.2 367.2 137.1 366 145C364.8 137.1 362.9 135.2 355 134C362.9 132.8 364.8 130.9 366 123Z" fill="#2EC5DB" />
+        <path class="loop-fs" style="animation-delay: 0.3s" d="M22 311C22.8 316 24 317.2 29 318C24 318.8 22.8 320 22 325C21.2 320 20 318.8 15 318C20 317.2 21.2 316 22 311Z" fill="#9ED7E3" />
         <!-- Two pencils, apart so each can write its line: they stack back at rest. -->
         <g class="loop-pen1"><g transform="translate(164 132) scale(8.4)"><Pencils part="back" /></g></g>
         <g class="loop-pen2"><g transform="translate(164 132) scale(8.4)"><Pencils part="front" /></g></g>

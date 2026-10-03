@@ -90,7 +90,7 @@ const CYCLE: Record<string, [string, string, string]> = {
       </div>
       <div class="lg:col-span-6 lg:row-start-1" aria-hidden="true">
         <div v-loop class="loop flex items-center justify-center overflow-hidden rounded-[22px] bg-stage p-4 md:rounded-[28px] md:p-[34px]">
-          <div class="font-mac flex w-[318px] max-w-full flex-col gap-4 rounded-xl border border-edge bg-panel px-6 py-[22px] text-left text-ink shadow-[0_26px_60px_rgba(74,45,30,0.18),0_3px_10px_rgba(74,45,30,0.08)] md:w-[560px]">
+          <div class="font-mac flex w-[318px] max-w-full flex-col gap-4 rounded-xl border border-edge bg-panel px-6 py-[22px] text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)] md:w-[560px]">
             <div>
               <div class="text-[13.5px] font-bold">Writing profile</div>
               <div class="mt-[3px] text-xs text-ink-2">Changes the tone. Grammar rules stay the same.</div>
@@ -100,7 +100,7 @@ const CYCLE: Record<string, [string, string, string]> = {
                 v-for="p in PROFILES"
                 :key="p"
                 class="rounded-[7px] border px-[11px] py-[7px] text-xs md:text-[12.5px]"
-                :class="[p === 'Business/finance' ? 'border-clay bg-tint font-semibold' : 'border-edge bg-card font-medium', CYCLE[p]?.[0]]"
+                :class="[p === 'Business/finance' ? 'border-accent bg-tint font-semibold' : 'border-edge bg-card font-medium', CYCLE[p]?.[0]]"
               >
                 <!-- A bold copy holds the chip at its selected width, so nothing moves as the weight changes. -->
                 <span v-if="CYCLE[p]" class="inline-grid text-center"><span class="[grid-area:1/1]">{{ p }}</span><span class="invisible font-semibold [grid-area:1/1]">{{ p }}</span></span>
@@ -108,7 +108,7 @@ const CYCLE: Record<string, [string, string, string]> = {
               </span>
               <span class="rounded-[7px] border border-dashed border-pill px-[11px] py-[7px] text-xs font-medium text-ink-2 md:text-[12.5px]">9 more</span>
             </div>
-            <p class="grid rounded-[7px] bg-[#F2EFE4] px-[11px] py-[9px] text-xs leading-[1.45] text-ink-2">
+            <p class="grid rounded-[7px] bg-[#F1F3F7] px-[11px] py-[9px] text-xs leading-[1.45] text-ink-2">
               <span v-for="([, line, tone], name, i) in CYCLE" :key="name" class="[grid-area:1/1]" :class="[line, i > 0 && 'opacity-0']">
                 <strong class="font-bold text-ink">{{ name }}</strong>: {{ tone }}
               </span>

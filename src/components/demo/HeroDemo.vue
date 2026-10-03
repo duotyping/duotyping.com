@@ -249,8 +249,8 @@ onUnmounted(() => {
       <span class="absolute top-1 left-[778px] flex rounded-[5px] bg-ink/8 px-1.5 py-[3px]"><MenuBarMark class="size-4" /></span>
       <div class="absolute top-[36px] right-[190px] flex flex-row-reverse items-end gap-1.5">
         <svg width="24" height="20" viewBox="0 0 24 20" fill="none">
-          <path d="M3 18C9 17 14 13 15.5 3" stroke="#B8802A" stroke-width="1.8" stroke-linecap="round" />
-          <path d="M11.8 6.2 15.6 2.5l3 4.3" stroke="#B8802A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+          <path d="M3 18C9 17 14 13 15.5 3" stroke="#0A6F84" stroke-width="1.8" stroke-linecap="round" />
+          <path d="M11.8 6.2 15.6 2.5l3 4.3" stroke="#0A6F84" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
         </svg>
         <span class="stage-label">Lives in your menu bar</span>
       </div>
@@ -268,8 +268,8 @@ onUnmounted(() => {
         </div>
       </div>
       <svg width="1000" height="778" viewBox="0 0 1000 778" fill="none" class="absolute top-0 left-0 transition-opacity duration-300 ease-out" :class="!d.keysOn && 'opacity-0'">
-        <path d="M544 735C500 735 470 710 466 664" stroke="#B8802A" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.5 7" />
-        <path d="M456 673 466 660 477 672" stroke="#B8802A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+        <path d="M544 735C500 735 470 710 466 664" stroke="#0A6F84" stroke-width="2" stroke-linecap="round" stroke-dasharray="0.5 7" />
+        <path d="M456 673 466 660 477 672" stroke="#0A6F84" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
       </svg>
 
       <!-- Marks as you type: the badge beside the box, and what it is -->
@@ -279,7 +279,7 @@ onUnmounted(() => {
       <div class="absolute top-[256px] left-[744px]">
         <div class="fade flex flex-col items-start gap-1.5" :class="!d.capM && 'is-out'" :style="d.capM ? { opacity: d.capM } : null">
           <svg width="12" height="22" viewBox="0 0 12 22" fill="none">
-            <path d="M6 20V3M1.5 8 6 3l4.5 5" stroke="#B8802A" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+            <path d="M6 20V3M1.5 8 6 3l4.5 5" stroke="#0A6F84" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
           </svg>
           <span class="stage-label leading-[1.5]">Marks as<br />you type</span>
         </div>
@@ -293,10 +293,10 @@ onUnmounted(() => {
             <span>{{ text.t0 }}</span><span v-if="text.at === 0" :class="text.caret" />
             <span class="sel" :class="d.sweep && 'is-on'">
               <span>{{ text.t1 }}</span><span v-if="text.at === 1" :class="text.caret" />
-              <span v-if="d.done" class="dt-in font-semibold text-clay">sent</span>
+              <span v-if="d.done" class="dt-in font-semibold text-cyan-deep">sent</span>
               <span class="mk" :class="d.mk1 && 'is-on'">{{ text.m1 }}</span><span v-if="text.at === 2" :class="text.caret" />
               <span>{{ text.t2 }}</span><span v-if="text.at === 3" :class="text.caret" />
-              <span v-if="d.done2" class="dt-in font-semibold text-clay">They will review</span>
+              <span v-if="d.done2" class="dt-in font-semibold text-cyan-deep">They will review</span>
               <span class="mk" :class="d.mk2 && 'is-on'">{{ text.m2 }}</span><span v-if="text.at === 4" :class="text.caret" />
               <span>{{ text.t3 }}</span><span v-if="text.at === 5" :class="text.caret" />
             </span>
@@ -330,7 +330,7 @@ onUnmounted(() => {
               class="transition-opacity duration-300"
               :class="d.card > 1 && 'opacity-50'"
             >
-              I <span class="font-semibold text-clay">sent</span> the revised contract to legal yesterday.
+              I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
             </Suggestion>
             <Suggestion
               label="Sentence 2 of 2"
@@ -339,7 +339,7 @@ onUnmounted(() => {
               :pressed="d.press"
               original="they will be review it by Friday."
             >
-              <span class="font-semibold text-clay">They will review</span> it by Friday.
+              <span class="font-semibold text-cyan-deep">They will review</span> it by Friday.
             </Suggestion>
           </Popup>
         </div>

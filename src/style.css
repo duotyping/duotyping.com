@@ -26,42 +26,45 @@
 }
 
 @theme {
-  /* Brand board — paper, ink and a second pencil. Contrast is against paper. */
-  --color-paper: #F1EFE6;       /* page ground */
-  --color-card: #F8F6EF;        /* cards, panels */
-  --color-desk: #E6DAC3;        /* product stages */
-  --color-stage: #EAE1CF;       /* the stage inside a card */
-  --color-ink: #1E2A32;         /* text, the dark band · 12.7:1 */
-  --color-ink-2: #4E5862;       /* body copy · 6.3:1 */
-  --color-ink-3: #5C6670;       /* captions and meta */
-  --color-clay: #B04E25;        /* the one action · 5.3:1 with white */
-  --color-clay-hover: #97411D;
-  --color-clay-press: #86391A;
-  --color-gold: #8A5A1E;        /* eyebrows, small labels · 5.1:1 */
-  --color-caret: #B8802A;       /* the caret only — never text */
-  --color-line: #DDD6C6;        /* hairlines */
-  --color-edge: #DFD9C8;        /* card borders */
-  --color-sand: #E9E3D4;        /* secondary hover, a closed question */
-  --color-struck: #8F887B;      /* the struck word */
+  /* The two bubbles: midnight and cyan are the assistant, terracotta and clay are you.
+     Contrast is against paper. */
+  --color-paper: #F6F7F9;       /* page ground: cool white */
+  --color-card: #FFFFFF;        /* cards, panels */
+  --color-desk: #E9ECF1;        /* product stages */
+  --color-stage: #EEF0F4;       /* the stage inside a card */
+  --color-ink: #18213F;         /* text, the dark band · 14.8:1 */
+  --color-ink-2: #474E6A;       /* body copy · 7.6:1 */
+  --color-ink-3: #5F6680;       /* captions and meta · 5.3:1 */
+  --color-accent: #18213F;      /* the one action: midnight, white on it */
+  --color-accent-hover: #2A3563;
+  --color-accent-press: #0F1530;
+  --color-cyan: #3EE6FF;        /* the assistant's light — on dark only, never text on paper */
+  --color-cyan-deep: #0A6F84;   /* eyebrows, small labels, the assistant’s words · 5.4:1 */
+  --color-terra: #D7784F;       /* your bubble — shapes only */
+  --color-clay: #B04E25;        /* you in text: your mistakes’ marks · 4.9:1 */
+  --color-caret: #0A6F84;       /* the caret only */
+  --color-line: #E1E4EA;        /* hairlines */
+  --color-edge: #E1E4EA;        /* card borders */
+  --color-sand: #E9ECF1;        /* secondary hover, a closed question */
+  --color-struck: #8A91A6;      /* the struck word */
 
-  /* The Mac, as the illustrations draw it */
+  /* The Mac, as the illustrations draw it: the redesign's light theme */
   --color-mac-ink: #1D1D1F;
-  --color-panel: #FBFAF5;
-  --color-tint: #FBF1E4;        /* the focused suggestion */
-  --color-tag: #F3E4C6;
-  --color-chip: #EDE9DC;        /* small buttons, kbd */
-  --color-key: #CDC5B0;         /* keycap and chip borders */
-  --color-pill: #C4BBA4;        /* pill and badge borders */
+  --color-panel: #FFFFFF;
+  --color-tint: #EEF1F7;        /* the focused suggestion */
+  --color-tag: #D9F8FF;
+  --color-chip: #EEF0F4;        /* small buttons, kbd */
+  --color-key: #D5D9E2;         /* keycap and chip borders */
+  --color-pill: #C6CCD8;        /* pill and badge borders */
   --color-slate: #3D4E59;       /* tone marks, cloud */
   --color-select: #B3D7FF;      /* macOS text selection */
 
-  /* The dark band */
-  --color-night-card: #26343D;
-  --color-night-line: #3A4852;
-  --color-night-dash: #5A6873;
-  --color-night-text: #B9C2C9;
-  --color-night-mute: #9AA5AE;
-  --color-amber: #E0AE62;
+  /* The dark band: midnight */
+  --color-night-card: #222C50;
+  --color-night-line: #2E3966;
+  --color-night-dash: #3A4675;
+  --color-night-text: #B9C1DA;
+  --color-night-mute: #9AA3C0;
 
   /* The design sets a line height where it wants one and leaves the rest to the font, so the
      named sizes don't bring Tailwind's own leading with them. */
@@ -116,7 +119,7 @@
     overflow-x: clip;
   }
   :focus-visible {
-    outline: 2px solid var(--color-clay);
+    outline: 2px solid var(--color-cyan-deep);
     outline-offset: 3px;
   }
   summary { list-style: none; }
@@ -130,9 +133,9 @@
 .legal h2 { margin: 40px 0 12px; font-size: 21px; font-weight: 600; letter-spacing: -0.01em; color: var(--color-ink); }
 .legal p + p { margin-top: 12px; }
 .legal ul { display: flex; flex-direction: column; gap: 10px; padding-left: 1.15em; list-style: disc; }
-.legal li::marker { color: var(--color-clay); }
-.legal a { color: var(--color-clay); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
-.legal a:hover { color: var(--color-clay-hover); }
+.legal li::marker { color: var(--color-terra); }
+.legal a { color: var(--color-cyan-deep); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+.legal a:hover { color: var(--color-accent); }
 .legal code { font-family: var(--font-mono); font-size: 0.85em; color: var(--color-ink); }
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────────────────── */

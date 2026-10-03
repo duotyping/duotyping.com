@@ -17,7 +17,7 @@ withDefaults(
 </script>
 
 <template>
-  <div class="rounded-lg border px-[13px] py-[11px]" :class="focused ? 'border-clay bg-tint' : 'border-edge bg-card'">
+  <div class="rounded-lg border px-[13px] py-[11px]" :class="focused ? 'border-accent bg-tint' : 'border-edge bg-card'">
     <div class="mb-[7px] flex items-center gap-2">
       <span class="text-[11px] text-ink-2">{{ label }}</span>
       <span v-if="cloud" class="mk-tag border border-[#A9B7C0] bg-transparent px-[7px] py-px text-slate">

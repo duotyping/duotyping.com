@@ -22,12 +22,12 @@ import Suggestion from '../components/demo/Suggestion.vue'
     <ol class="flex flex-col gap-4 lg:grid lg:grid-cols-3 lg:gap-6">
       <li class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
         <div class="flex h-[196px] items-center justify-center bg-stage md:h-[214px]" aria-hidden="true">
-          <div class="font-mac w-[290px] rounded-[10px] bg-white px-[18px] py-4 text-[13px] leading-[1.62] text-mac-ink shadow-[0_12px_28px_rgba(60,40,20,0.12)] md:w-[300px] md:text-[13.5px]">
+          <div class="font-mac w-[290px] rounded-[10px] bg-white px-[18px] py-4 text-[13px] leading-[1.62] text-mac-ink shadow-[0_12px_28px_rgba(24,33,63,0.12)] md:w-[300px] md:text-[13.5px]">
             Thanks for the quick reply. <span class="bg-select">I have send the revised contract to legal yesterday.</span> Let me know if anything is missing.
           </div>
         </div>
         <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
-          <span class="flex size-[30px] items-center justify-center rounded-full border-[1.5px] border-clay font-mono text-[13px] font-semibold text-clay" aria-hidden="true">1</span>
+          <span class="flex size-[30px] items-center justify-center rounded-full border-[1.5px] border-accent font-mono text-[13px] font-semibold text-accent" aria-hidden="true">1</span>
           <h3 class="fluid mt-1.5 font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">Select what you wrote</h3>
           <p class="text-[16.5px] leading-[1.55] text-pretty text-ink-2">A sentence, a paragraph or a whole email, wherever you’re writing it.</p>
         </div>
@@ -38,26 +38,27 @@ import Suggestion from '../components/demo/Suggestion.vue'
             <span
               v-for="k in ['⌃', '⌥', '⌘', 'D']"
               :key="k"
+              :class="k === 'D' && 'border-[#0A0F22] !bg-ink font-semibold text-cyan'"
               class="keycap h-14 min-w-14 rounded-xl px-[13px] text-[23px] md:h-[62px] md:min-w-[62px] md:rounded-[13px] md:px-[15px] md:text-[26px]"
             >{{ k }}</span>
           </div>
         </div>
         <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
-          <span class="flex size-[30px] items-center justify-center rounded-full border-[1.5px] border-clay font-mono text-[13px] font-semibold text-clay" aria-hidden="true">2</span>
+          <span class="flex size-[30px] items-center justify-center rounded-full border-[1.5px] border-accent font-mono text-[13px] font-semibold text-accent" aria-hidden="true">2</span>
           <h3 class="fluid mt-1.5 font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">Press ⌃⌥⌘D</h3>
           <p class="text-[16.5px] leading-[1.55] text-pretty text-ink-2">Or any shortcut you like. DuoTyping reads the text you selected and nothing else.</p>
         </div>
       </li>
       <li class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
         <div class="flex h-[196px] items-center justify-center bg-stage md:h-[214px]" aria-hidden="true">
-          <div class="font-mac w-[300px] rounded-lg shadow-[0_12px_28px_rgba(74,45,30,0.14)]">
+          <div class="font-mac w-[300px] rounded-lg shadow-[0_12px_28px_rgba(24,33,63,0.14)]">
             <Suggestion label="Sentence 1 of 2" focused actions="accept" original="I have send the revised contract to legal yesterday." size="text-[13px]" original-size="text-[11px]">
-              I <span class="font-semibold text-clay">sent</span> the revised contract to legal yesterday.
+              I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
             </Suggestion>
           </div>
         </div>
         <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
-          <span class="flex size-[30px] items-center justify-center rounded-full border-[1.5px] border-clay font-mono text-[13px] font-semibold text-clay" aria-hidden="true">3</span>
+          <span class="flex size-[30px] items-center justify-center rounded-full border-[1.5px] border-accent font-mono text-[13px] font-semibold text-accent" aria-hidden="true">3</span>
           <h3 class="fluid mt-1.5 font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">Accept what you like</h3>
           <p class="text-[16.5px] leading-[1.55] text-pretty text-ink-2">Return takes a suggestion, Delete skips it. The text changes right where it was.</p>
         </div>
@@ -73,7 +74,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
         <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
           <div v-loop class="loop flex h-[250px] items-center justify-center bg-stage md:h-[380px]" aria-hidden="true">
             <div class="flex items-start gap-2">
-              <div class="font-mac w-[262px] rounded-[10px] border border-[#D6CFBC] bg-white px-4 py-3.5 text-[13px] leading-[1.75] text-mac-ink shadow-[0_12px_28px_rgba(60,40,20,0.10)] md:w-[440px] md:text-sm">
+              <div class="font-mac w-[262px] rounded-[10px] border border-[#D5D9E2] bg-white px-4 py-3.5 text-[13px] leading-[1.75] text-mac-ink shadow-[0_12px_28px_rgba(24,33,63,0.10)] md:w-[440px] md:text-sm">
                 Hi team, just to confirm, I <span class="wavy loop-m1">have send</span> the deck to the client and they <span class="wavy loop-m2">will be review</span> it tomorrow.
                 <span class="wavy loop-m3 [--mark:var(--color-slate)]">Please revert back to me if any change is required.</span>
               </div>
@@ -133,24 +134,24 @@ import Suggestion from '../components/demo/Suggestion.vue'
                 <div class="flex grow flex-col gap-[3px]">
                   <div class="flex flex-wrap items-center gap-x-2 gap-y-[3px]">
                     <span class="text-[13px] font-semibold whitespace-nowrap">Qwen3 1.7B</span>
-                    <span class="rounded bg-[#E6E0CF] px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-ink-2">Fastest</span>
+                    <span class="rounded bg-[#E6E9EF] px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-ink-2">Fastest</span>
                   </div>
                   <span class="text-[11.5px] text-ink-2">983.6 MB · 8 GB memory</span>
                 </div>
                 <span class="mk-btn-2">Install</span>
               </div>
-              <div class="flex flex-col gap-[9px] rounded-[10px] border border-clay bg-tint px-3.5 py-[11px]">
+              <div class="flex flex-col gap-[9px] rounded-[10px] border border-accent bg-tint px-3.5 py-[11px]">
                 <div class="flex items-center gap-3">
                   <div class="flex grow flex-col gap-[3px]">
                     <div class="flex flex-wrap items-center gap-x-2 gap-y-[3px]">
                       <span class="text-[13px] font-semibold whitespace-nowrap">Qwen3 4B Instruct 2507</span>
-                      <span class="rounded bg-clay px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-white">Recommended</span>
+                      <span class="rounded bg-accent px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-white">Recommended</span>
                     </div>
                     <span class="text-[11.5px] text-ink-2">2.28 GB · 8 GB memory · balanced</span>
                   </div>
                   <span class="mk-btn-2">Pause</span>
                 </div>
-                <div class="h-[5px] overflow-hidden rounded-[3px] bg-chip"><div class="h-[5px] w-[62%] rounded-[3px] bg-clay" /></div>
+                <div class="h-[5px] overflow-hidden rounded-[3px] bg-chip"><div class="h-[5px] w-[62%] rounded-[3px] bg-accent" /></div>
                 <div class="flex items-center gap-[7px]">
                   <Icon name="verified" class="size-[15px] text-[#2F7D3A]" />
                   <span class="text-[11.5px] text-ink-2">1.4 GB of 2.28 GB · signature verified</span>
@@ -160,7 +161,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
                 <div class="flex grow flex-col gap-[3px]">
                   <div class="flex flex-wrap items-center gap-x-2 gap-y-[3px]">
                     <span class="text-[13px] font-semibold whitespace-nowrap">Qwen2.5 14B Instruct</span>
-                    <span class="rounded bg-[#E6E0CF] px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-ink-2">Most capable</span>
+                    <span class="rounded bg-[#E6E9EF] px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-ink-2">Most capable</span>
                   </div>
                   <span class="text-[11.5px] text-ink-2">8.32 GB · 32 GB memory recommended</span>
                 </div>
@@ -190,7 +191,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
                   <span class="inline-block size-1.5 rounded-full bg-[#2F7D3A]" />Connected
                 </span>
               </div>
-              <div class="flex flex-col gap-[9px] rounded-[10px] border border-clay bg-tint px-3.5 py-2.5">
+              <div class="flex flex-col gap-[9px] rounded-[10px] border border-accent bg-tint px-3.5 py-2.5">
                 <div class="flex items-center gap-2.5">
                   <span class="flex size-[26px] shrink-0 items-center justify-center rounded-full bg-[#E3E7EA] text-xs font-bold text-slate">A</span>
                   <span class="text-[13px] font-semibold">Anthropic</span>
@@ -200,7 +201,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
                 <span class="-mt-1 rounded-md border border-key bg-white px-[9px] py-1.5 font-mono text-xs leading-normal text-ink">••••••••••••••••••••••••••••••</span>
                 <div class="flex items-center gap-2">
                   <span class="mk-btn">Save</span>
-                  <span class="flex items-center gap-1.5 text-[11px] text-ink-2"><Icon name="key" :stroke="1.8" class="size-[13px] text-gold" />Stored in your Mac’s Keychain</span>
+                  <span class="flex items-center gap-1.5 text-[11px] text-ink-2"><Icon name="key" :stroke="1.8" class="size-[13px] text-cyan-deep" />Stored in your Mac’s Keychain</span>
                 </div>
               </div>
               <div class="flex items-center gap-2.5 rounded-[10px] border border-edge bg-panel px-3.5 py-2.5">
@@ -222,7 +223,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
       </div>
     </div>
 
-    <div class="flex gap-3.5 rounded-2xl border-[1.5px] border-dashed border-[#CFC6B2] p-[18px] lg:items-center lg:gap-[18px] lg:rounded-[18px] lg:px-[26px] lg:py-5">
+    <div class="flex gap-3.5 rounded-2xl border-[1.5px] border-dashed border-[#C6CCD8] p-[18px] lg:items-center lg:gap-[18px] lg:rounded-[18px] lg:px-[26px] lg:py-5">
       <Icon name="note" class="size-6 text-clay lg:size-7" />
       <p class="fluid leading-normal text-ink-2 [--hi:17] [--lo:15.5]">
         <strong class="font-semibold text-ink">Nothing selected?</strong> New Note opens instead: type or paste, check, then copy the result anywhere. It’s also the way in for apps that won’t share their text.

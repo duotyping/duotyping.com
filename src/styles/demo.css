@@ -46,7 +46,7 @@
   transform: translateY(2px);
   border-bottom-width: 1px;
   background: var(--color-tag);
-  box-shadow: 0 2px 5px rgba(74, 45, 30, 0.1);
+  box-shadow: 0 2px 5px rgba(24, 33, 63, 0.1);
 }
 
 /* The phone plays the same story once, on CSS alone. */
@@ -102,8 +102,8 @@
   inset-inline: 0;
   top: 0;
   height: calc(31px * var(--s)); /* 30 px and its hairline, as drawn */
-  border-bottom: 1px solid rgba(30, 42, 50, 0.08);
-  background: rgba(251, 248, 240, 0.74);
+  border-bottom: 1px solid rgba(24, 33, 63, 0.08);
+  background: rgba(255, 255, 255, 0.72);
 }
 /* From 1280 the stage sits beside the copy and runs off the right edge, as drawn at 1440.
    It needs 822 px of room at 0.9 (740 of them on screen); narrower, it shrinks to fit. */

@@ -4,7 +4,7 @@ defineProps<{ fields?: boolean }>()
 </script>
 
 <template>
-  <div class="font-mac overflow-hidden rounded-xl border border-black/10 bg-white text-mac-ink shadow-[0_30px_60px_rgba(60,40,20,0.14),0_2px_6px_rgba(60,40,20,0.07)]">
+  <div class="font-mac overflow-hidden rounded-xl border border-black/10 bg-white text-mac-ink shadow-[0_30px_60px_rgba(24,33,63,0.14),0_2px_6px_rgba(24,33,63,0.07)]">
     <div class="relative flex h-[50px] items-center border-b border-[#E6E4E0] bg-[#F6F5F3] px-[18px]">
       <div class="flex gap-2">
         <span class="block size-3 rounded-full bg-[#FF5F57] shadow-[inset_0_0_0_0.5px_#E0443E]" />

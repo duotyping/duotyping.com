@@ -9,9 +9,9 @@ const TONES: Record<Tone, [string, string, string, string]> = {
   // your bubble, the assistant's, its eyes, the outline
   paper: ['#D7784F', '#18213F', '#3EE6FF', '#0A0F22'],
   // On ink: the outline turns paper, so the midnight bubble keeps its edge.
-  ink: ['#D7784F', '#18213F', '#3EE6FF', '#F1EFE6'],
+  ink: ['#D7784F', '#18213F', '#3EE6FF', '#F6F7F9'],
   // Printed faintly into a product stage.
-  desk: ['#E2C5A4', '#DCCDB2', '#EEE4CF', '#D2BD9A'],
+  desk: ['#EBCDBD', '#CDD3E2', '#E3E7EF', '#C3CAD8'],
 }
 const props = withDefaults(defineProps<{ tone?: Tone }>(), { tone: 'paper' })
 const c = computed(() => TONES[props.tone])

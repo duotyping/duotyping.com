@@ -14,7 +14,7 @@ const FACTS: [IconName, string, string][] = [
 
 const arrow = useId()
 // The privacy diagram's loop: where each dot sets off, its colour, its keyframes' number...
-const PACKETS: [number, string, number][] = [[262, '#E0AE62', 1], [542, '#E0AE62', 2], [598, '#E8915F', 3], [318, '#E8915F', 4]]
+const PACKETS: [number, string, number][] = [[262, '#D7784F', 1], [542, '#D7784F', 2], [598, '#3EE6FF', 3], [318, '#3EE6FF', 4]]
 // ...and the caption for each of its three scenes.
 const SCENES = ['By default · your text stays on this Mac', 'If you connect a cloud provider', 'When you download a model']
 </script>
@@ -25,7 +25,7 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
     <div class="wrap flex flex-col gap-7 pt-[72px] pb-[76px] lg:gap-16 lg:pt-[116px] lg:pb-28">
       <div class="flex flex-col gap-7 lg:gap-6">
         <div class="flex flex-col gap-3.5 lg:gap-6">
-          <div class="eyebrow text-amber">Privacy</div>
+          <div class="eyebrow text-cyan">Privacy</div>
           <h2 class="fluid max-w-[900px] font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance text-paper [--hi:61] [--lo:35]">
             Local by default.<br />Cloud only if you choose it.
           </h2>
@@ -44,16 +44,16 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
           <svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" class="absolute top-0 left-0">
             <defs>
               <marker :id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-                <path d="M1 1 9 5 1 9" stroke="#E0AE62" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+                <path d="M1 1 9 5 1 9" stroke="#7F8BB5" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
               </marker>
             </defs>
             <rect x="1" y="1" width="858" height="398" rx="26" stroke="#5A6873" stroke-width="1.5" stroke-dasharray="7 7" />
-            <path d="M262 216H318" stroke="#E0AE62" stroke-width="1.8" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
-            <path d="M542 216H598" stroke="#E0AE62" stroke-width="1.8" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
+            <path d="M262 216H318" stroke="#7F8BB5" stroke-width="1.8" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
+            <path d="M542 216H598" stroke="#7F8BB5" stroke-width="1.8" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
             <!-- A download only comes in; the provider gets your text and answers, so both ways. -->
-            <path class="loop-ct" d="M942 118C900 118 880 150 830 170" stroke="#E0AE62" stroke-width="1.6" stroke-dasharray="5 6" :marker-end="`url(#${arrow})`" />
-            <path class="loop-pv" d="M830 262C880 282 900 300 942 300" stroke="#E0AE62" stroke-width="1.6" stroke-dasharray="5 6" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
-            <!-- What travels between the boxes: your text in amber, the suggestions in clay. -->
+            <path class="loop-ct" d="M942 118C900 118 880 150 830 170" stroke="#3EE6FF" stroke-width="1.6" stroke-dasharray="5 6" :marker-end="`url(#${arrow})`" />
+            <path class="loop-pv" d="M830 262C880 282 900 300 942 300" stroke="#3EE6FF" stroke-width="1.6" stroke-dasharray="5 6" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
+            <!-- What travels between the boxes: your text in terracotta, the suggestions in cyan. -->
             <g v-for="[x, color, n] in PACKETS" :key="n" class="opacity-0" :class="`loop-q${n}`">
               <circle :cx="x" cy="216" r="11" :fill="color" opacity="0.26" />
               <circle :cx="x" cy="216" r="5.5" :fill="color" />
@@ -62,9 +62,9 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
           <div class="absolute top-[26px] left-[30px] flex items-center gap-[9px] font-mono text-[12.5px] font-medium tracking-[0.12em] text-night-text uppercase">
             <Icon name="mac" class="size-[18px]" />Your Mac
           </div>
-          <div class="absolute top-[340px] left-[30px] grid justify-items-start font-mono text-[12.5px] font-medium tracking-[0.12em] whitespace-nowrap text-amber uppercase">
+          <div class="absolute top-[340px] left-[30px] grid justify-items-start font-mono text-[12.5px] font-medium tracking-[0.12em] whitespace-nowrap text-cyan uppercase">
             <span v-for="(scene, i) in SCENES" :key="scene" class="flex items-center gap-2.5 opacity-0 [grid-area:1/1]" :class="`loop-cap${i + 1}`">
-              <span class="size-[7px] shrink-0 rounded-full bg-amber shadow-[0_0_0_3px_rgb(224_174_98/0.2)]" />{{ scene }}
+              <span class="size-[7px] shrink-0 rounded-full bg-cyan shadow-[0_0_0_3px_rgb(62_230_255/0.2)]" />{{ scene }}
             </span>
           </div>
           <div class="loop-app absolute top-[136px] left-10 flex h-40 w-[222px] flex-col justify-center gap-1.5 rounded-2xl border border-night-line bg-night-card p-5">
@@ -102,7 +102,7 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
             <span class="text-sm leading-[1.4] text-night-mute">Shares only the text you select</span>
           </div>
           <div class="flex h-10 items-center gap-2.5 pl-[22px]" aria-hidden="true">
-            <svg width="14" height="40" viewBox="0 0 14 40" fill="none"><path d="M7 3V36" stroke="#E0AE62" stroke-width="1.7" /><path d="M2.5 31 7 36l4.5-5" stroke="#E0AE62" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <svg width="14" height="40" viewBox="0 0 14 40" fill="none"><path d="M7 3V36" stroke="#7F8BB5" stroke-width="1.7" /><path d="M2.5 31 7 36l4.5-5" stroke="#7F8BB5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
             <span class="font-mono text-[11px] tracking-[0.1em] text-night-mute uppercase">Selection</span>
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border border-night-line bg-night-card px-[18px] py-4">
@@ -110,7 +110,7 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
             <span class="text-sm leading-[1.4] text-night-mute">Only goes online for updates</span>
           </div>
           <div class="flex h-10 items-center gap-2.5 pl-[22px]" aria-hidden="true">
-            <svg width="14" height="40" viewBox="0 0 14 40" fill="none"><path d="M7 3V36" stroke="#E0AE62" stroke-width="1.7" /><path d="M2.5 31 7 36l4.5-5" stroke="#E0AE62" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <svg width="14" height="40" viewBox="0 0 14 40" fill="none"><path d="M7 3V36" stroke="#7F8BB5" stroke-width="1.7" /><path d="M2.5 31 7 36l4.5-5" stroke="#7F8BB5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
             <span class="font-mono text-[11px] tracking-[0.1em] text-night-mute uppercase">Text</span>
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border border-night-line bg-night-card px-[18px] py-4">
@@ -120,7 +120,7 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
         </div>
         <div class="flex flex-col gap-3">
           <div class="flex h-10 items-center gap-2.5 pl-[22px]">
-            <svg width="14" height="40" viewBox="0 0 14 40" fill="none" aria-hidden="true"><path d="M7 3V36" stroke="#E0AE62" stroke-width="1.7" stroke-dasharray="4 5" /><path d="M2.5 31 7 36l4.5-5" stroke="#E0AE62" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
+            <svg width="14" height="40" viewBox="0 0 14 40" fill="none" aria-hidden="true"><path d="M7 3V36" stroke="#7F8BB5" stroke-width="1.7" stroke-dasharray="4 5" /><path d="M2.5 31 7 36l4.5-5" stroke="#7F8BB5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
             <span class="font-mono text-[11px] tracking-[0.1em] text-night-mute uppercase">Only goes online for</span>
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border-[1.5px] border-dashed border-night-dash px-[18px] py-4">
@@ -136,7 +136,7 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
 
       <div class="grid grid-cols-1 gap-y-[34px] max-lg:mt-4 md:grid-cols-2 md:gap-x-10 lg:grid-cols-3">
         <div v-for="[icon, title, body] in FACTS" :key="title" class="flex gap-4">
-          <Icon :name="icon" class="size-[26px] text-amber" />
+          <Icon :name="icon" class="size-[26px] text-cyan" />
           <div class="flex flex-col gap-1.5">
             <h3 class="text-[18.5px] font-semibold text-paper">{{ title }}</h3>
             <p class="fluid leading-[1.55] text-pretty text-night-text [--hi:15.5] [--lo:15]">{{ body }}</p>
