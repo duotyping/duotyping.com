@@ -10,7 +10,7 @@ import Promises from '../sections/Promises.vue'
 import Review from '../sections/Review.vue'
 import { SITE_URL, release } from '../utils/site'
 
-const TITLE = 'DuoTyping — the private writing assistant for Mac'
+const TITLE = 'DuoTyping | The private writing assistant for Mac'
 const DESCRIPTION =
   'DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you accept. It runs on your Mac by default.'
 
