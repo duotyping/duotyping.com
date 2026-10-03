@@ -5,16 +5,16 @@ import { FEEDBACK_URL } from '../site'
 
 usePageHead({
   title: 'Privacy Policy — DuoTyping',
-  description: 'DuoTyping has no account, no analytics and no telemetry. What happens to your writing, your keys and your settings, in the app and on this website.',
+  description: 'The DuoTyping app has no account, no analytics and no telemetry. What happens to your writing, your keys and your settings, and what this website measures.',
   path: '/privacy',
 })
 </script>
 
 <template>
   <!-- Every line here is something the code does; see docs/PRD.md §2, §4.6 and §5 in the app repo. -->
-  <LegalPage title="Privacy Policy" updated="28 September 2026">
+  <LegalPage title="Privacy Policy" updated="3 October 2026">
     <p class="lede">
-      DuoTyping is built so that this page can be short. It has no account, no analytics, no telemetry and no crash reporter: not in the app, not in its engine, and not on this website.
+      DuoTyping is built so that this page can be short. It has no account, no analytics, no telemetry and no crash reporter, not in the app and not in its engine. This website is the one exception: it uses Google Analytics to count visits.
     </p>
 
     <h2>Your writing</h2>
@@ -43,7 +43,8 @@ usePageHead({
 
     <h2>This website</h2>
     <ul>
-      <li>It sets no cookies and runs no analytics or tracking scripts. It loads nothing from anyone else. Even its fonts come from duotyping.com.</li>
+      <li>It uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies and receives your IP address, your browser and device details, and the pages you visit, under <a href="https://policies.google.com/privacy">Google’s privacy policy</a>. A content blocker or blocking cookies turns it off, and the site works the same without it.</li>
+      <li>Apart from that script, it loads nothing from anyone else. Even its fonts come from duotyping.com.</li>
       <li>It’s hosted on Cloudflare, which, like any host, sees your IP address in order to deliver the page.</li>
       <li>The Download button takes you to GitHub, which hosts the app’s releases; GitHub’s privacy statement applies there.</li>
       <li>Send feedback opens a form on GitHub. What you post there is public.</li>
