@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import MenuBarMark from '../MenuBarMark.vue'
+import MenuBarMark from '../brand/MenuBarMark.vue'
 
 // The badge beside the box you're typing in: the menu-bar mark and how many marks it holds.
 // The slot stands in for the number when the badge has to count up.

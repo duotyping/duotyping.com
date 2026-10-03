@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import MarkPaths from './MarkPaths.vue'
-import CountBadge from './mock/CountBadge.vue'
-import MacWindow from './mock/MacWindow.vue'
-import Popup from './mock/Popup.vue'
-import RewritePill from './mock/RewritePill.vue'
-import Suggestion from './mock/Suggestion.vue'
+import MarkPaths from '../brand/MarkPaths.vue'
+import CountBadge from './CountBadge.vue'
+import MacWindow from './MacWindow.vue'
+import Popup from './Popup.vue'
+import RewritePill from './RewritePill.vue'
+import Suggestion from './Suggestion.vue'
 
 // The phone tells the same story once, in CSS alone: the marks land and the badge counts
 // them (3.2 s), the selection sweeps (3.5 s), Rewrite appears (3.86 s), the popup rises

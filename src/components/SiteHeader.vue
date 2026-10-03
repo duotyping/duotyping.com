@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
-import BrandMark from './BrandMark.vue'
+import BrandMark from './brand/BrandMark.vue'
 import Icon from './Icon.vue'
 import ShareActions from './ShareActions.vue'
 

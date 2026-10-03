@@ -20,15 +20,17 @@ npm run preview   # build, then serve dist/ with Cloudflare's own runtime (wrang
 
 Where things are:
 
-- `src/pages/Home.vue` — the page, section by section, from the design canvas
+- `src/pages/Home.vue` — the page's head and search data, then its sections in order.
+- `src/sections/` — one file per section of the home page, with its copy, from the design canvas
   ("DuoTyping Landing"): 1440 px desktop and 390 px phone boards, fluid in between.
 - `src/style.css` — the brand tokens (colours, type), the fluid type scale and every keyframe.
-- `src/components/HeroHeadline.vue`, `HeroDemo.vue`, `HeroDemoPhone.vue` — the hero motion, timed
-  to the "Hero motion" board. Reduced motion shows each one's final frame.
+- `src/components/demo/HeroDemo.vue`, `HeroDemoPhone.vue` — the hero motion, timed to the
+  "Hero motion" board. Reduced motion shows each one's final frame.
 - The figure loops (marks, Rewrite, Whole selection, writing profile, the privacy flow, the FAQ
-  drawing) are CSS keyframes in `src/style.css`, timed to the desktop boards; `src/loops.ts`
+  drawing) are CSS keyframes in `src/style.css`, timed to the desktop boards; `src/motion.ts`
   (`v-loop`) starts each one as it scrolls into view and pauses it off screen.
-- `src/components/mock/` — the Mac UI the illustrations draw, in the system font.
+- `src/components/demo/` — the Mac UI the illustrations draw, in the system font.
+- `src/components/brand/` — the pencils, the lockup, the app icon and the menu-bar mark.
 - `src/pages/Privacy.vue`, `Terms.vue` — linked from every Settings tab in the app.
 
 ## What the app reads from here

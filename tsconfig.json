@@ -6,5 +6,7 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true
   },
-  "include": ["src/**/*.ts", "src/**/*.vue", "vite.config.ts"]
+  "include": ["src/**/*.ts", "src/**/*.vue", "vite.config.ts"],
+  // An unknown component or attribute in a template is an error, not plain HTML.
+  "vueCompilerOptions": { "strictTemplates": true }
 }

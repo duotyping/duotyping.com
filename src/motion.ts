@@ -1,5 +1,7 @@
 import type { Directive } from 'vue'
 
+export const reducedMotion = () => matchMedia('(prefers-reduced-motion: reduce)').matches
+
 // The figure loops are CSS, and CSS starts them when the page paints, so by the time you
 // scroll to one it would be halfway through its story. v-loop starts each figure from its
 // first frame the first time it comes into view, and pauses it while it's off screen.
@@ -27,4 +29,11 @@ export const vLoop: Directive<HTMLElement> = {
     loops.set(el, io)
   },
   unmounted: (el) => loops.get(el)?.disconnect(),
+}
+
+// Registered app-wide in main.ts; this tells templates it exists.
+declare module 'vue' {
+  interface GlobalDirectives {
+    vLoop: typeof vLoop
+  }
 }

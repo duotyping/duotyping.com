@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
-import BrandMark from './BrandMark.vue'
+import BrandMark from './brand/BrandMark.vue'
 import { FEEDBACK_URL } from '../site'
 
 const route = useRoute()

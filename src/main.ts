@@ -1,6 +1,6 @@
 import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
-import { vLoop } from './loops'
+import { vLoop } from './motion'
 import Home from './pages/Home.vue'
 import NotFound from './pages/NotFound.vue'
 import './style.css'

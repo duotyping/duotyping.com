@@ -1,13 +1,13 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
-import MarkPaths from './MarkPaths.vue'
-import MenuBarMark from './MenuBarMark.vue'
-import CountBadge from './mock/CountBadge.vue'
-import MacWindow from './mock/MacWindow.vue'
-import Popup from './mock/Popup.vue'
-import RewritePill from './mock/RewritePill.vue'
-import Suggestion from './mock/Suggestion.vue'
-import { reducedMotion } from '../intro'
+import MarkPaths from '../brand/MarkPaths.vue'
+import MenuBarMark from '../brand/MenuBarMark.vue'
+import CountBadge from './CountBadge.vue'
+import MacWindow from './MacWindow.vue'
+import Popup from './Popup.vue'
+import RewritePill from './RewritePill.vue'
+import Suggestion from './Suggestion.vue'
+import { reducedMotion } from '../../motion'
 
 type Seg = 't0' | 't1' | 'm1' | 't2' | 'm2' | 't3'
 // A line box, in canvas px: left, right, top, bottom.
