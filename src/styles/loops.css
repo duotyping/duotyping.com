@@ -18,8 +18,8 @@
 @keyframes dtn2 { 0%, 23.9% { opacity: 0; } 24%, 35.9% { opacity: 1; } 36%, 100% { opacity: 0; } }
 @keyframes dtn3 { 0%, 35.9% { opacity: 0; } 36%, 100% { opacity: 1; } }
 
-/* Rewrite a selection · 8 s: select, Rewrite, the options, Replace — then the new sentence. The
-   old one fades out before the new one fades in, so the two never overlap. */
+/* Rewrite a selection · 8 s: select, Rewrite appears and is pressed, the options, Replace — then the
+   new sentence. The old one fades out before the new one fades in, so the two never overlap. */
 .loop-rsel { animation: dtrsel 8s ease-out infinite both; }
 .loop-rnew { animation: dtrnew 8s ease-out infinite both; }
 .loop-rpill { animation: dtrpill 8s ease-out infinite both; }
@@ -27,7 +27,7 @@
 .loop-rpop .mk-btn { animation: dtpress 8s linear infinite both; }
 @keyframes dtrsel { 0%, 4% { background-size: 0% 100%; opacity: 1; } 10%, 57% { background-size: 100% 100%; opacity: 1; } 59%, 95.9% { background-size: 100% 100%; opacity: 0; } 96% { background-size: 0% 100%; opacity: 0; } 100% { background-size: 0% 100%; opacity: 1; } }
 @keyframes dtrnew { 0%, 59% { opacity: 0; transform: translateY(4px); } 63%, 92% { opacity: 1; transform: none; } 96%, 100% { opacity: 0; transform: none; } }
-@keyframes dtrpill { 0%, 13% { opacity: 0; transform: translateY(6px); } 16%, 57% { opacity: 1; transform: none; } 60%, 100% { opacity: 0; transform: translateY(6px); } }
+@keyframes dtrpill { 0%, 13% { opacity: 0; transform: translateY(6px); } 16%, 17.5%, 20.5%, 57% { opacity: 1; transform: none; background-color: var(--color-panel); } 18.5%, 19.5% { opacity: 1; transform: scale(0.95); background-color: var(--color-chip); } 60%, 100% { opacity: 0; transform: translateY(6px); } }
 @keyframes dtrpop { 0%, 20% { opacity: 0; transform: translateY(6px); } 23%, 57% { opacity: 1; transform: none; } 60%, 100% { opacity: 0; transform: translateY(6px); } }
 @keyframes dtpress { 0%, 52%, 57%, 100% { background-color: var(--color-accent); transform: none; } 53%, 56% { background-color: #0F1530; transform: scale(0.96); } }
 
