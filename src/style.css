@@ -31,7 +31,7 @@
   --color-paper: #F6F7F9;       /* page ground: cool white */
   --color-card: #FFFFFF;        /* cards, panels */
   --color-desk: #E9ECF1;        /* product stages */
-  --color-stage: #E4E8EF;       /* the stage inside a card: a step under the selected tint, so a selection reads */
+  --color-stage: #FFFFFF;       /* the stage inside a card: white, as the app's window is, so a selection reads */
   --color-ink: #18213F;         /* text, the dark band · 14.8:1 */
   --color-ink-2: #474E6A;       /* body copy · 7.6:1 */
   --color-ink-3: #5F6680;       /* captions and meta · 5.3:1 */

@@ -18,15 +18,15 @@ const SYNCS: [string, string][] = [
   ['Shortcuts', 'Between your Macs'],
 ]
 
-const PROFILES = ['Legal', 'Medical/healthcare', 'Technology/engineering', 'Business/finance', 'Academic/research', 'Customer support/service', 'Casual/personal', 'Marketing/creative']
-// The panel cycles through four of them, in this order: the chip's loop, its line's loop, and
-// the tone the app gives that profile (Shared/DomainProfile.swift), in plain words.
-const CYCLE: Record<string, [string, string, string]> = {
-  'Business/finance': ['loop-pb', 'loop-db', 'professional and outcome-oriented, with moderate formality.'],
-  Legal: ['loop-pl', 'loop-dl', 'precise, formal and liability-conscious.'],
-  'Customer support/service': ['loop-pc', 'loop-dc', 'warm and empathetic, with plain language over jargon.'],
-  'Casual/personal': ['loop-pp', 'loop-dp', 'relaxed; contractions and colloquialisms are fine.'],
-}
+// The Profile tab (board 19): named profiles, each with its own writing context, scope and
+// instructions. The figure steps through four of them; each line is [loop class, name, writing
+// context, its tone in the app's words, scope, variations, custom instructions].
+const PROFILES: [string, string, string, string, 'whole' | 'sentence', number, string][] = [
+  ['loop-db', 'Work email', 'Business & finance', 'Professional and outcome-oriented, with moderate formality.', 'whole', 3, 'Keep it friendly, and never longer than my original.'],
+  ['loop-dl', 'Team chat', 'Casual & personal', 'Relaxed. Contractions and everyday phrases are left alone.', 'sentence', 1, 'Short and friendly. No sign-off.'],
+  ['loop-dc', 'Legal drafts', 'Legal', 'Precise, formal and liability-conscious.', 'sentence', 1, 'Never soften an obligation.'],
+  ['loop-dp', 'Support replies', 'Customer support & service', 'Warm and empathetic, with plain language over jargon.', 'whole', 2, 'Apologise once, then fix it.'],
+]
 </script>
 
 <template>
@@ -45,14 +45,14 @@ const CYCLE: Record<string, [string, string, string]> = {
         </div>
         <ul class="order-3 flex flex-col lg:order-none">
           <li v-for="[icon, title, body] in REVIEW" :key="title" class="flex gap-[18px] border-t border-line py-5">
-            <Icon :name="icon" class="size-[26px] text-clay" />
+            <Icon :name="icon" class="size-[26px] text-cyan-deep" />
             <div class="flex flex-col gap-[5px]">
               <h3 class="fluid font-semibold [--hi:19] [--lo:17.5]">{{ title }}</h3>
               <p class="fluid leading-[1.6] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">{{ body }}</p>
             </div>
           </li>
           <li class="flex gap-[18px] border-t border-line py-5">
-            <Icon name="keyboard" class="size-[26px] text-clay" />
+            <Icon name="keyboard" class="size-[26px] text-cyan-deep" />
             <div class="flex flex-col gap-[5px]">
               <h3 class="fluid font-semibold [--hi:19] [--lo:17.5]">All from the keyboard</h3>
               <p class="fluid leading-[1.6] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">
@@ -64,7 +64,7 @@ const CYCLE: Record<string, [string, string, string]> = {
         </ul>
       </div>
       <div class="order-2 lg:order-none lg:col-span-6 lg:col-start-7" aria-hidden="true">
-        <div v-loop class="loop flex items-center justify-center overflow-hidden rounded-[22px] bg-desk p-4 md:rounded-[28px] md:p-10">
+        <div v-loop class="loop flex items-center justify-center overflow-hidden rounded-[22px] border border-edge bg-stage p-4 md:rounded-[28px] md:p-10">
           <Popup
             scope="Whole selection"
             original="Regarding to your email, we are not able to confirm the delivery date until the supplier will give us the update. Sorry for any inconvenient."
@@ -94,44 +94,58 @@ const CYCLE: Record<string, [string, string, string]> = {
       <div class="flex flex-col gap-[22px] lg:col-span-5 lg:col-start-8 lg:row-start-1 lg:gap-5">
         <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:40] [--lo:30]">Tuned to how you write.</h2>
         <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:18.5] [--lo:16.5]">
-          Pick one of 17 writing profiles and the tone follows: precise for legal, warm for support, relaxed for personal notes. Add a line of your own, like “keep it short”. Grammar rules stay the same everywhere. Only the tone moves.
+          Make a profile for each kind of writing: work email, team chat, legal drafts. Each has its own writing context, from 17, its own way to accept, and a line of your own, like “keep it short”. Grammar rules stay the same everywhere. Only the tone moves.
         </p>
       </div>
       <div class="lg:col-span-6 lg:row-start-1" aria-hidden="true">
-        <div v-loop class="loop flex items-center justify-center overflow-hidden rounded-[22px] bg-stage p-4 md:rounded-[28px] md:p-[34px]">
-          <div class="font-mac flex w-[318px] max-w-full flex-col gap-4 rounded-xl border border-edge bg-panel px-6 py-[22px] text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)] md:w-[560px]">
-            <div>
-              <div class="text-[13.5px] font-bold">Writing profile</div>
-              <div class="mt-[3px] text-xs text-ink-2">Changes the tone. Grammar rules stay the same.</div>
-            </div>
-            <div class="flex flex-wrap gap-[7px]">
-              <span
-                v-for="p in PROFILES"
-                :key="p"
-                class="rounded-[7px] border px-[11px] py-[7px] text-xs md:text-[12.5px]"
-                :class="[p === 'Business/finance' ? 'border-accent bg-tint font-semibold' : 'border-edge bg-card font-medium', CYCLE[p]?.[0]]"
-              >
-                <!-- A bold copy holds the chip at its selected width, so nothing moves as the weight changes. -->
-                <span v-if="CYCLE[p]" class="inline-grid text-center"><span class="[grid-area:1/1]">{{ p }}</span><span class="invisible font-semibold [grid-area:1/1]">{{ p }}</span></span>
-                <template v-else>{{ p }}</template>
-              </span>
-              <span class="rounded-[7px] border border-dashed border-pill px-[11px] py-[7px] text-xs font-medium text-ink-2 md:text-[12.5px]">9 more</span>
-            </div>
-            <p class="grid rounded-[7px] bg-[#F1F3F7] px-[11px] py-[9px] text-xs leading-[1.45] text-ink-2">
-              <span v-for="([, line, tone], name, i) in CYCLE" :key="name" class="[grid-area:1/1]" :class="[line, i > 0 && 'opacity-0']">
-                <strong class="font-bold text-ink">{{ name }}</strong>: {{ tone }}
-              </span>
-            </p>
+        <div v-loop class="loop flex items-center justify-center overflow-hidden rounded-[22px] border border-edge bg-stage p-4 md:rounded-[28px] md:p-[34px]">
+          <div class="font-mac flex w-[318px] max-w-full flex-col gap-4 rounded-xl border border-edge bg-panel px-5 py-[18px] text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)] md:w-[560px] md:px-6 md:py-[22px]">
             <div class="flex flex-col gap-1.5">
-              <span class="text-xs font-semibold">Custom instructions</span>
-              <div class="min-h-[calc(2.9em+18px)] rounded-[7px] border border-key bg-white px-2.5 py-2 text-[13px] leading-[1.45]">Keep it friendly, and never longer than my original.</div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-semibold">Profile</span>
+                <!-- The picker shows each profile in turn; every name shares one cell, so nothing moves. -->
+                <span class="inline-flex min-w-0 items-center justify-between gap-2 rounded-md border border-key bg-white px-2 py-1 text-[12.5px]">
+                  <span class="grid">
+                    <span v-for="([loop, name], i) in PROFILES" :key="name" class="[grid-area:1/1] whitespace-nowrap" :class="[loop, i > 0 && 'opacity-0']">{{ name }}<span v-if="i === 0" class="text-ink-3"> — default</span></span>
+                  </span>
+                  <Icon name="chevron" class="size-3 text-ink-3" />
+                </span>
+                <span class="mk-btn-2 max-md:hidden">New…</span>
+                <span class="mk-btn-2 ml-auto whitespace-nowrap">Make Default</span>
+              </div>
+              <p class="text-[11px] text-ink-3">Checks start with the default profile, Work email.</p>
             </div>
-            <div class="flex items-center justify-between">
-              <span class="text-xs font-semibold">Versions to suggest</span>
-              <div class="flex items-center overflow-hidden rounded-[7px] border border-key">
-                <span class="flex h-7 w-[30px] items-center justify-center bg-chip"><Icon name="minus" class="size-3.5" /></span>
-                <span class="w-[34px] text-center text-[13px] font-semibold">3</span>
-                <span class="flex h-7 w-[30px] items-center justify-center bg-chip"><Icon name="plus" class="size-3.5" /></span>
+            <div class="grid">
+              <div v-for="([loop, name, context, tone, scope, variations, instructions], i) in PROFILES" :key="name" class="flex flex-col gap-3.5 [grid-area:1/1]" :class="[loop, i > 0 && 'opacity-0']">
+                <div class="grid grid-cols-2 gap-3">
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[11px] font-semibold">Name</span>
+                    <span class="truncate rounded-md border border-key bg-white px-2 py-1 text-[12.5px]">{{ name }}</span>
+                  </div>
+                  <div class="flex flex-col gap-1">
+                    <span class="text-[11px] font-semibold">Writing context</span>
+                    <span class="flex items-center justify-between gap-1 rounded-md border border-key bg-white px-2 py-1 text-[12.5px]"><span class="truncate">{{ context }}</span><Icon name="chevron" class="size-3 shrink-0 text-ink-3" /></span>
+                  </div>
+                </div>
+                <p class="rounded-[7px] bg-[#F1F3F7] px-[11px] py-2 text-xs leading-[1.45] text-ink-2">“{{ tone }}”</p>
+                <div class="flex flex-col gap-1.5">
+                  <span class="text-[11px] font-semibold">What one accept replaces</span>
+                  <div class="grid grid-cols-2 gap-2">
+                    <span v-for="[key, label] in [['whole', 'Whole selection'], ['sentence', 'Sentence by sentence']]" :key="key" class="rounded-[7px] border px-2.5 py-1.5 text-xs" :class="scope === key ? 'border-accent bg-tint font-semibold' : 'border-edge bg-card'">{{ label }}</span>
+                  </div>
+                  <div class="flex items-center justify-between pt-1">
+                    <span class="text-[11px] font-semibold">Variations</span>
+                    <div class="flex items-center overflow-hidden rounded-[7px] border border-key" :class="scope === 'sentence' && 'opacity-45'">
+                      <span class="flex h-6 w-7 items-center justify-center bg-chip"><Icon name="minus" class="size-3" /></span>
+                      <span class="w-8 text-center text-[12.5px] font-semibold">{{ variations }}</span>
+                      <span class="flex h-6 w-7 items-center justify-center bg-chip"><Icon name="plus" class="size-3" /></span>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex flex-col gap-1">
+                  <span class="text-[11px] font-semibold">Custom instructions</span>
+                  <span class="min-h-[calc(2.9em+14px)] rounded-[7px] border border-key bg-white px-2.5 py-1.5 text-[12.5px] leading-[1.45]">{{ instructions }}</span>
+                </div>
               </div>
             </div>
           </div>
@@ -147,7 +161,7 @@ const CYCLE: Record<string, [string, string, string]> = {
         </p>
       </div>
       <div class="lg:col-span-6 lg:col-start-7" aria-hidden="true">
-        <div class="flex items-center justify-center overflow-hidden rounded-[22px] bg-stage p-4 md:rounded-[28px] md:p-[34px]">
+        <div class="flex items-center justify-center overflow-hidden rounded-[22px] border border-edge bg-stage p-4 md:rounded-[28px] md:p-[34px]">
           <div class="font-mac flex w-[318px] max-w-full flex-col gap-3.5 rounded-xl border border-edge bg-panel px-5 py-[18px] text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)] md:w-[540px] md:px-6 md:py-[22px]">
             <div class="flex items-center gap-3">
               <span class="flex size-9 shrink-0 items-center justify-center rounded-full bg-ink text-[15px] font-bold text-white">Y</span>

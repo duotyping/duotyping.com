@@ -22,7 +22,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
 
     <ol class="flex flex-col gap-4 lg:grid lg:grid-cols-3 lg:gap-6">
       <li class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-        <div class="flex h-[196px] items-center justify-center bg-stage md:h-[214px]" aria-hidden="true">
+        <div class="flex h-[196px] items-center justify-center border-b border-edge bg-stage md:h-[214px]" aria-hidden="true">
           <div class="font-mac w-[290px] rounded-[10px] bg-white px-[18px] py-4 text-[13px] leading-[1.62] text-mac-ink shadow-[0_12px_28px_rgba(24,33,63,0.12)] md:w-[300px] md:text-[13.5px]">
             Thanks for the quick reply. <span class="bg-select">I have send the revised contract to legal yesterday.</span> Let me know if anything is missing.
           </div>
@@ -34,7 +34,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
         </div>
       </li>
       <li class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-        <div class="flex h-40 items-center justify-center bg-stage md:h-[214px]" aria-hidden="true">
+        <div class="flex h-40 items-center justify-center border-b border-edge bg-stage md:h-[214px]" aria-hidden="true">
           <div class="flex items-center gap-2 md:gap-2.5">
             <span
               v-for="k in ['⌃', '⌥', '⌘', 'D']"
@@ -51,7 +51,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
         </div>
       </li>
       <li class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-        <div class="flex h-[196px] items-center justify-center bg-stage md:h-[214px]" aria-hidden="true">
+        <div class="flex h-[196px] items-center justify-center border-b border-edge bg-stage md:h-[214px]" aria-hidden="true">
           <div class="font-mac w-[300px] rounded-lg shadow-[0_12px_28px_rgba(24,33,63,0.14)]">
             <Suggestion label="Sentence 1 of 2" focused actions="accept" original="I have send the revised contract to legal yesterday." size="text-[13px]" original-size="text-[11px]">
               I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
@@ -73,7 +73,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
       </div>
       <div class="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-6">
         <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-          <div v-loop class="loop flex h-[250px] items-center justify-center bg-stage md:h-[380px]" aria-hidden="true">
+          <div v-loop class="loop flex h-[250px] items-center justify-center border-b border-edge bg-stage md:h-[380px]" aria-hidden="true">
             <div class="flex items-start gap-2">
               <div class="font-mac w-[262px] rounded-[10px] border border-[#D5D9E2] bg-white px-4 py-3.5 text-[13px] leading-[1.75] text-mac-ink shadow-[0_12px_28px_rgba(24,33,63,0.10)] md:w-[440px] md:text-sm">
                 Hi team, just to confirm, I <span class="wavy loop-m1">have send</span> the deck to the client and they <span class="wavy loop-m2">will be review</span> it tomorrow.
@@ -94,7 +94,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
           </div>
         </article>
         <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-          <div v-loop class="loop flex h-[390px] items-center justify-center bg-stage md:h-[380px]" aria-hidden="true">
+          <div v-loop class="loop flex h-[390px] items-center justify-center border-b border-edge bg-stage md:h-[380px]" aria-hidden="true">
             <div class="flex flex-col items-start gap-3">
               <div class="flex items-center gap-2.5">
                 <!-- Both sentences share one cell, so the pill never moves when one becomes the other. -->
@@ -129,7 +129,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
       </div>
       <div class="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-6">
         <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-          <div class="flex h-80 items-center justify-center bg-stage md:h-[300px]" aria-hidden="true">
+          <div class="flex h-80 items-center justify-center border-b border-edge bg-stage md:h-[300px]" aria-hidden="true">
             <div class="font-mac flex w-[310px] flex-col gap-2 text-ink md:w-[460px]">
               <div class="flex items-center gap-3 rounded-[10px] border border-edge bg-panel px-3.5 py-[11px]">
                 <div class="flex grow flex-col gap-[3px]">
@@ -178,7 +178,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
           </div>
         </article>
         <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-          <div class="flex h-[300px] items-center justify-center bg-stage" aria-hidden="true">
+          <div class="flex h-[300px] items-center justify-center border-b border-edge bg-stage" aria-hidden="true">
             <div class="font-mac flex w-[310px] flex-col gap-2 text-ink md:w-[460px]">
               <div class="flex items-center gap-2.5 rounded-[10px] border border-edge bg-panel px-3.5 py-2.5">
                 <span class="flex size-[26px] shrink-0 items-center justify-center rounded-full bg-[#E3E7EA] text-xs font-bold text-slate">O</span>
@@ -225,7 +225,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
     </div>
 
     <article class="mt-3 flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card lg:mt-5 lg:grid lg:grid-cols-12">
-      <div v-loop class="loop flex items-center justify-center bg-stage px-4 py-8 md:p-10 lg:order-2 lg:col-span-7" aria-hidden="true">
+      <div v-loop class="loop flex items-center justify-center bg-stage px-4 py-6 max-lg:border-b max-lg:border-edge lg:order-2 lg:col-span-7 lg:border-l lg:border-edge md:h-[492px] md:p-8" aria-hidden="true">
         <NoteDemo class="w-[318px] max-w-full md:w-[480px]" />
       </div>
       <div class="flex flex-col justify-center gap-2.5 p-6 lg:order-1 lg:col-span-5 lg:p-10">

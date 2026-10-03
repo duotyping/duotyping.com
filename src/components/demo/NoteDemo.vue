@@ -35,16 +35,19 @@ import Suggestion from './Suggestion.vue'
         <span class="loop-nstat ml-auto text-[11px] text-ink-3">1.2 s</span>
       </div>
     </div>
-    <div>
+    <!-- Each slot folds to nothing while it's hidden, so the window never holds an empty gap. -->
+    <div class="loop-nslot-stat grid grid-rows-[1fr]"><div class="min-h-0 overflow-hidden">
       <div class="loop-nstat flex items-center gap-2 border-b border-line px-4 pb-[9px] text-[11.5px] text-ink-2">
         <span class="size-1.5 rounded-full bg-cyan-deep" />1 found on this Mac<span class="text-ink-3">·</span>cloud is off
       </div>
+    </div></div>
+    <div class="loop-nslot-card grid grid-rows-[1fr]"><div class="min-h-0 overflow-hidden">
       <div class="loop-ncard p-2.5">
         <Suggestion label="Sentence 1 of 1" focused actions="accept-skip" original="I have send the contract to legal yesterday." size="text-[13px]" original-size="text-[11px]">
           I <span class="font-semibold text-cyan-deep">sent</span> the contract to legal yesterday.
         </Suggestion>
       </div>
-    </div>
+    </div></div>
     <div class="border-t border-line px-3.5 py-2 text-[11px] text-ink-3">Nothing here touches another app — accept rewrites this box.</div>
   </MacWindow>
 </template>

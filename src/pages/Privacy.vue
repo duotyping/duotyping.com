@@ -5,16 +5,17 @@ import { FEEDBACK_URL } from '../utils/site'
 
 usePageHead({
   title: 'Privacy Policy — DuoTyping',
-  description: 'The DuoTyping app has no account, no analytics and no telemetry. What happens to your writing, your keys and your settings, and what this website measures.',
+  description: 'What DuoTyping does with your writing, your keys and your settings, what the optional account holds, and what this website measures.',
   path: '/privacy',
 })
 </script>
 
 <template>
-  <!-- Every line here is something the code does; see docs/PRD.md §2, §4.6 and §5 in the app repo. -->
+  <!-- Every line here is something the code does (docs/PRD.md §2, §4.6 and §5 in the app repo), and
+       the account section is what docs/specs/writing-profiles-and-sync.md §4 commits it to. -->
   <LegalPage title="Privacy Policy" updated="3 October 2026">
     <p class="lede">
-      DuoTyping is built so that this page can be short. It has no account, no analytics, no telemetry and no crash reporter, not in the app and not in its engine. This website is the one exception: it uses Google Analytics to count visits.
+      DuoTyping is built so that this page can be short. Neither the app nor its engine sends analytics, telemetry or crash reports. An account is optional, and it carries settings, never writing. This website uses Google Analytics to count visits.
     </p>
 
     <h2>Your writing</h2>
@@ -27,7 +28,7 @@ usePageHead({
 
     <h2>What stays on your Mac</h2>
     <ul>
-      <li>Your settings (writing profile, custom instructions, shortcut and chosen model) are saved in DuoTyping’s preferences on your Mac.</li>
+      <li>Your settings (writing profiles, custom instructions, shortcut and chosen model) are saved in DuoTyping’s preferences on your Mac. They leave it only if you sign in and turn sync on.</li>
       <li>Cloud API keys are stored in the macOS Keychain, and never read back into the app.</li>
       <li>Installed models and the last verified model catalog are kept in DuoTyping’s folder in Application Support.</li>
       <li>To remove everything, disconnect any cloud provider in Settings › Models, then delete DuoTyping and <code>~/Library/Application Support/DuoTyping</code>.</li>
@@ -36,9 +37,21 @@ usePageHead({
     <h2>When DuoTyping goes online</h2>
     <ul>
       <li>The engine fetches the signed model catalog from duotyping.com, and a model’s files when you install one. These requests carry no account, no key and nothing you write.</li>
+      <li>If you sign in, the engine talks to DuoTyping’s account server to sync your settings. The app itself still doesn’t go online for it.</li>
       <li>The app checks duotyping.com for updates, and downloads an update from GitHub when you install one. You can turn automatic checks off in Settings › General.</li>
       <li>A cloud provider is contacted only if you connect one, and only to check your text.</li>
       <li>Like any server you connect to, each of these sees your Mac’s IP address. DuoTyping doesn’t collect it.</li>
+    </ul>
+
+    <h2>The optional account</h2>
+    <ul>
+      <li>Everything in DuoTyping works signed out. If you sign in, the account holds your email address and the settings you choose to sync, and nothing else: no name, and no details about your devices.</li>
+      <li>What can sync, each with its own switch in Settings › Account: writing profiles and their custom instructions, which profile is the default, appearance, your language, your cloud model choice (never its key), custom providers (never a key), shortcuts and which apps have marks as you type.</li>
+      <li>What never syncs: anything you check, any suggestion, API keys, installed models, and your Mac’s own permissions and setup.</li>
+      <li>The account and its synced settings are stored with Cloudflare, in the EU. They’re encrypted in transit and at rest, but not end to end, so our server can read the settings it stores.</li>
+      <li>Synced settings are kept until you delete them. Deleting the account erases them at once; restorable backups expire within 30 days. Sign-in records (time, a shortened IP address, platform and app version) are kept for 6 months, to keep accounts secure.</li>
+      <li>You can export everything the account holds as one file, or delete the account, in Settings › Account. Your devices keep their own settings either way.</li>
+      <li>We don’t sell or share any of it, and we use it only to run the account and keep it secure.</li>
     </ul>
 
     <h2>This website</h2>

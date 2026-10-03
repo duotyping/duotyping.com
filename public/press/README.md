@@ -8,12 +8,13 @@ Everything here is free to use in coverage of DuoTyping. Download it all at once
 **Short:** DuoTyping is the private writing assistant for Mac. It checks grammar and tone in the
 apps you already write in, and changes nothing until you accept.
 
-**Long:** DuoTyping is a free writing assistant for the Mac. Select text in Mail, Messages, Notes,
+**Long:** DuoTyping is a writing assistant for the Mac. Select text in Mail, Messages, Notes,
 Slack or your browser, press one shortcut, and DuoTyping suggests fixes for spelling, grammar,
 punctuation and tone, sentence by sentence or as a whole rewrite. Nothing changes until you
 accept. By default it runs a local model on Apple silicon, so what you write never leaves the Mac;
 a cloud model (OpenAI, Anthropic, or any OpenAI-compatible endpoint) is optional and runs on your
-own API key. There's no account, no tracking, and DuoTyping never stores what you write.
+own API key. DuoTyping never stores what you write, and an optional account syncs only your
+writing profiles and settings between Macs.
 
 ## Fact sheet
 
@@ -23,7 +24,6 @@ own API key. There's no account, no tracking, and DuoTyping never stores what yo
 | Tagline | Say it well. Keep it yours. |
 | Category | Writing assistant, macOS menu-bar app |
 | Platform | macOS 14 Sonoma or later, Apple silicon |
-| Price | Free. No account, no trial, nothing to unlock |
 | Language | English |
 | Availability | Coming soon at [duotyping.com](https://duotyping.com) |
 | Local models | Qwen3 1.7B, Llama 3.2 3B Instruct, Qwen3 4B Instruct 2507, Qwen2.5 14B Instruct |
@@ -54,13 +54,12 @@ own API key. There's no account, no tracking, and DuoTyping never stores what yo
 
 | | Hex | Use |
 |---|---|---|
-| Paper | `#F1EFE6` | Background |
-| Ink | `#1E2A32` | Text, dark background |
-| Clay | `#B04E25` | Accent, the one action |
-| Gold | `#8A5A1E` | Labels |
+| Paper | `#F6F7F9` | Background |
+| Midnight | `#18213F` | Text, the dark background, the one action, the assistant's bubble |
+| Deep cyan | `#0A6F84` | Labels and links on light backgrounds |
+| Cyan | `#3EE6FF` | The assistant's eyes, accents on dark backgrounds (never text on light) |
 | Terracotta | `#D7784F` | Your bubble |
-| Midnight | `#18213F` | The assistant's bubble |
-| Cyan | `#3EE6FF` | The assistant's eyes |
+| Clay | `#B04E25` | Your mistakes' marks |
 
 ## Typefaces
 

@@ -5,19 +5,22 @@ import { FEEDBACK_URL } from '../utils/site'
 
 usePageHead({
   title: 'Terms of Use — DuoTyping',
-  description: 'The terms for using DuoTyping and duotyping.com: free to use, your writing stays yours, and suggestions are yours to accept or skip.',
+  description: 'The terms for using DuoTyping and duotyping.com: your writing stays yours, suggestions are yours to accept or skip, and an account is optional.',
   path: '/terms',
 })
 </script>
 
 <template>
-  <LegalPage title="Terms of Use" updated="28 September 2026">
+  <LegalPage title="Terms of Use" updated="3 October 2026">
     <p class="lede">
-      DuoTyping is free to download and use. These terms cover the app and this website, and by using either you agree to them. “We” means the people who make DuoTyping.
+      These terms cover the DuoTyping app, its optional account and this website, and by using any of them you agree to them. “We” means the people who make DuoTyping.
     </p>
 
     <h2>Using DuoTyping</h2>
-    <p>You can download DuoTyping and use it on your own Macs, for personal or professional writing, at no cost. There’s no account and nothing to unlock.</p>
+    <p>You can download DuoTyping and use it on your own Macs, for personal or professional writing. Every feature works without an account.</p>
+
+    <h2>Your account</h2>
+    <p>An account is optional, and it only syncs your writing profiles and settings between your devices. Keep its sign-in to yourself: what happens through it is yours. You can export its data or delete it at any time in Settings › Account, and deleting it never touches the settings on your devices. We may close an account that’s used to abuse the service.</p>
 
     <h2>Your writing is yours</h2>
     <p>You keep every right to what you write, and to the suggestions you accept. We claim none of it. As the <a href="/privacy">Privacy Policy</a> explains, DuoTyping never stores it.</p>
