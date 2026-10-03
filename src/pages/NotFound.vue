@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePageHead } from '../head'
+import { usePageHead } from '../utils/head'
 
 usePageHead({
   title: 'Page not found — DuoTyping',

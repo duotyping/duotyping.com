@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import BrandMark from './brand/BrandMark.vue'
-import { FEEDBACK_URL } from '../site'
+import { FEEDBACK_URL } from '../utils/site'
 
 const route = useRoute()
 const at = (hash: string) => (route.path === '/' ? hash : `/${hash}`)

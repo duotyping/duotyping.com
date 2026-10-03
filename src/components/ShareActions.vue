@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onUnmounted, ref } from 'vue'
 import Icon from './Icon.vue'
-import { MAIL_SELF, SHARE } from '../site'
+import { MAIL_SELF, SHARE } from '../utils/site'
 
 // A disk image is no use on a phone, so there the call to action hands the link on to the
 // visitor's Mac: the share sheet (AirDrop, Messages, Mail) where the browser has one, and a

@@ -10,7 +10,7 @@
     "typecheck": "vue-tsc --noEmit",
     "build": "vue-tsc --noEmit && vite-ssg build",
     "preview": "npm run build && wrangler dev",
-    "test": "node src/site.test.ts",
+    "test": "node src/utils/site.test.ts",
     "deploy": "npm run build && wrangler deploy"
   },
   "dependencies": {

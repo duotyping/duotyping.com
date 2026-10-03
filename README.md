@@ -21,6 +21,8 @@ npm run preview   # build, then serve dist/ with Cloudflare's own runtime (wrang
 Where things are:
 
 - `src/pages/Home.vue` — the page's head and search data, then its sections in order.
+- `src/utils/` — `site.ts` (the site's URLs and the appcast reader), `head.ts` (every page's
+  meta tags), `motion.ts` (Reduce Motion and `v-loop`).
 - `src/sections/` — one file per section of the home page, with its copy, from the design canvas
   ("DuoTyping Landing"): 1440 px desktop and 390 px phone boards, fluid in between.
 - `src/style.css` — the brand tokens (colours, type), the fluid type scale, and the legal, FAQ
@@ -29,7 +31,7 @@ Where things are:
 - `src/components/demo/HeroDemo.vue`, `HeroDemoPhone.vue` — the hero motion, timed to the
   "Hero motion" board. Reduced motion shows each one's final frame.
 - The figure loops (marks, Rewrite, Whole selection, writing profile, the privacy flow, the FAQ
-  drawing) are CSS keyframes in `src/styles/loops.css`, timed to the desktop boards; `src/motion.ts`
+  drawing) are CSS keyframes in `src/styles/loops.css`, timed to the desktop boards; `src/utils/motion.ts`
   (`v-loop`) starts each one as it scrolls into view and pauses it off screen.
 - `src/components/demo/` — the Mac UI the illustrations draw, in the system font.
 - `src/components/brand/` — the pencils, the lockup, the app icon and the menu-bar mark.

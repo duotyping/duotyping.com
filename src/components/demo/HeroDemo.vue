@@ -7,7 +7,7 @@ import MacWindow from './MacWindow.vue'
 import Popup from './Popup.vue'
 import RewritePill from './RewritePill.vue'
 import Suggestion from './Suggestion.vue'
-import { reducedMotion } from '../../motion'
+import { reducedMotion } from '../../utils/motion'
 
 type Seg = 't0' | 't1' | 'm1' | 't2' | 'm2' | 't3'
 // A line box, in canvas px: left, right, top, bottom.

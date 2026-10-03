@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePageHead } from '../head'
+import { usePageHead } from '../utils/head'
 import Download from '../sections/Download.vue'
 import Faq, { FAQ } from '../sections/Faq.vue'
 import Hero from '../sections/Hero.vue'
@@ -8,7 +8,7 @@ import Models from '../sections/Models.vue'
 import Privacy from '../sections/Privacy.vue'
 import Promises from '../sections/Promises.vue'
 import Review from '../sections/Review.vue'
-import { SITE_URL, release } from '../site'
+import { SITE_URL, release } from '../utils/site'
 
 const TITLE = 'DuoTyping — the private writing assistant for Mac'
 const DESCRIPTION =

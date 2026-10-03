@@ -13,7 +13,7 @@ export const FAQ: [string, string][] = [
 
 <script setup lang="ts">
 import MarkPaths from '../components/brand/MarkPaths.vue'
-import { FEEDBACK_URL } from '../site'
+import { FEEDBACK_URL } from '../utils/site'
 
 // The FAQ note's two lines of writing, a word at a time: the line as written, then the fix in clay.
 const NOTE_LINES = [

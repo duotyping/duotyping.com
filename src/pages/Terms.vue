@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import LegalPage from '../components/LegalPage.vue'
-import { usePageHead } from '../head'
-import { FEEDBACK_URL } from '../site'
+import { usePageHead } from '../utils/head'
+import { FEEDBACK_URL } from '../utils/site'
 
 usePageHead({
   title: 'Terms of Use — DuoTyping',
