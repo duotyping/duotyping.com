@@ -1,8 +1,17 @@
-<script setup>
+<script lang="ts">
+// Every icon by name, so a misspelt <Icon name> fails the type check instead of drawing nothing.
+export type IconName =
+  | 'download' | 'arrow-down' | 'arrow-right' | 'share' | 'copy' | 'check' | 'menu' | 'close'
+  | 'undo' | 'mac' | 'no-account' | 'note' | 'fixes' | 'lines' | 'shield' | 'keyboard'
+  | 'no-tracking' | 'nothing-kept' | 'key' | 'verified' | 'selection' | 'lock' | 'chevron'
+  | 'minus' | 'plus'
+</script>
+
+<script setup lang="ts">
 import { computed } from 'vue'
 
 // The page's line icons, on a 24-unit grid, drawn once here. [markup, stroke width].
-const ICONS = {
+const ICONS: Record<IconName, [string, number]> = {
   download: ['<path d="M12 4v11M7.5 10.5 12 15l4.5-4.5M5 19.5h14"/>', 2],
   'arrow-down': ['<path d="M12 5v14M6.5 13.5 12 19l5.5-5.5"/>', 2],
   'arrow-right': ['<path d="M5 12h14M13.5 6.5 19 12l-5.5 5.5"/>', 1.8],
@@ -30,7 +39,7 @@ const ICONS = {
   plus: ['<path d="M12 6v12M6 12h12"/>', 2],
 }
 
-const props = defineProps({ name: { type: String, required: true }, stroke: Number })
+const props = defineProps<{ name: IconName; stroke?: number }>()
 const icon = computed(() => ICONS[props.name])
 </script>
 

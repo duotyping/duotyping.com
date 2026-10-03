@@ -1,13 +1,13 @@
-<script setup>
+<script setup lang="ts">
 // The review popup: a scope tag, what it found, the cards, and the way back to your text.
 // `count` and `note` are slots too, so a phone can drop the half that doesn't fit.
-defineProps({
-  scope: { type: String, required: true }, // "Sentence by sentence" · "Rewrite" · "Whole selection"
-  count: String,
-  checked: String, // the status line under the header: "Both checked on this Mac"
-  original: String, // Whole selection shows your text above the proposals
-  note: String,
-})
+defineProps<{
+  scope: 'Sentence by sentence' | 'Rewrite' | 'Whole selection'
+  count?: string
+  checked?: string // the status line under the header: "Both checked on this Mac"
+  original?: string // Whole selection shows your text above the proposals
+  note?: string
+}>()
 </script>
 
 <template>

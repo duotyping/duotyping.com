@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict'
-import { DOWNLOAD_URL, RELEASES_URL, parseAppcast } from './site.js'
+import { DOWNLOAD_URL, RELEASES_URL, parseAppcast } from './site.ts'
 
 // The shape Sparkle's generate_appcast writes for the app repo's `make release`.
 const feed = parseAppcast(`<?xml version="1.0" standalone="yes"?>

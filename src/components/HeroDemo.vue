@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import MarkPaths from './MarkPaths.vue'
 import MenuBarMark from './MenuBarMark.vue'
@@ -9,12 +9,44 @@ import RewritePill from './mock/RewritePill.vue'
 import Suggestion from './mock/Suggestion.vue'
 import { reducedMotion } from '../intro'
 
+type Seg = 't0' | 't1' | 'm1' | 't2' | 'm2' | 't3'
+// A line box, in canvas px: left, right, top, bottom.
+type Box = { l: number; r: number; t: number; b: number }
+type Aim = 'start' | 'accept' | 'rest'
+type State = {
+  n: number // characters typed
+  mk1: boolean
+  mk2: boolean
+  count: number
+  badge: boolean
+  sweep: boolean // the CSS sweep, for reduced motion
+  pill: boolean
+  keys: number // keycaps down
+  panel: boolean
+  press: boolean
+  done: boolean
+  done2: boolean
+  card: 1 | 2 // the popup's focused card
+  para: boolean
+  caret: boolean
+  capM: number
+  keysOn: boolean
+  // The pointer: where, how long the glide takes, pressed, I-beam, and the boxes it has selected.
+  cx: number
+  cy: number
+  cms: number
+  cdown: boolean
+  ibeam: boolean
+  rects: Box[]
+}
+type Step = Partial<State> & { cur?: [Aim, number]; drag?: number }
+
 // The product, a step at a time (Motion board). The email types itself and a wavy line lands
 // under each mistake once the next word arrives; the badge counts them. Then the selection
 // sweeps, Rewrite appears, ⌃⌥⌘D go down in turn, the popup rises, and Accept fixes the first
 // sentence, then the second. A pointer does the mouse's part: it drags the selection and
 // clicks each Accept. It fades and plays again every 13.3 s. Times are from the start of each run.
-const SEGS = [
+const SEGS: [Seg, string][] = [
   ['t0', 'Thanks for the quick reply. '],
   ['t1', 'I '],
   ['m1', 'have send'],
@@ -30,7 +62,7 @@ const TYPE = 26
 const CYCLE = 13300
 // `cur: [where, ms]` glides the pointer there, measured off the page at that moment.
 // `drag: ms` is the mouse-down drag: the selection follows the pointer, letter by letter.
-const STEPS = [
+const STEPS: [number, Step][] = [
   [3450, { cur: ['start', 420] }],
   [3500, { caret: false }],
   [3650, { ibeam: true }], // over the text now
@@ -60,28 +92,26 @@ const STEPS = [
 ]
 const KEYS = ['⌃', '⌥', '⌘', 'D']
 // Every step in place at once: what reduced motion shows.
-const REST = { cx: 640, cy: 560, cms: 0, cdown: false, ibeam: false, rects: [] } // between the email and the keys
-const STILL = { ...REST, n: TOTAL, mk1: true, mk2: true, count: 2, badge: true, sweep: true, pill: true, keys: 0, panel: true, press: false, done: false, done2: false, card: 1, para: true, caret: false, capM: 1, keysOn: true }
-const RESET = { ...REST, n: 0, mk1: false, mk2: false, count: 0, badge: false, sweep: false, pill: false, keys: 0, panel: false, press: false, done: false, done2: false, card: 1, para: true, caret: true, capM: 0, keysOn: false }
+const REST = { cx: 640, cy: 560, cms: 0, cdown: false, ibeam: false, rects: [] as Box[] } // between the email and the keys
+const STILL: State = { ...REST, n: TOTAL, mk1: true, mk2: true, count: 2, badge: true, sweep: true, pill: true, keys: 0, panel: true, press: false, done: false, done2: false, card: 1, para: true, caret: false, capM: 1, keysOn: true }
+const RESET: State = { ...REST, n: 0, mk1: false, mk2: false, count: 0, badge: false, sweep: false, pill: false, keys: 0, panel: false, press: false, done: false, done2: false, card: 1, para: true, caret: true, capM: 0, keysOn: false }
 
 // Prerendered at the first frame — an empty email and a blinking caret — so nothing jumps
 // when the script picks it up.
-const d = reactive({ ...RESET })
-const canvas = ref(null)
+const d = reactive<State>({ ...RESET })
+const canvas = ref<HTMLElement | null>(null)
 // Where the pointer goes, in canvas px: the canvas is scaled, so undo that from the rects.
-function aim(where, ms) {
+function aim(where: Aim, ms: number): Partial<State> {
   if (where === 'rest') return { ...REST, cms: ms }
-  const c = canvas.value.getBoundingClientRect()
+  const c = canvas.value!.getBoundingClientRect()
   const s = c.width / 1000
-  if (!s) return {}
-  const box = where === 'accept' ? canvas.value.querySelector('.mk-btn') : canvas.value.querySelector('.sel')
-  const lines = box.getClientRects()
-  const r = where === 'end' ? lines[lines.length - 1] : lines[0]
-  const x = where === 'start' ? r.left : where === 'end' ? r.right : r.left + r.width / 2
+  const r = canvas.value!.querySelector(where === 'accept' ? '.mk-btn' : '.sel')?.getClientRects()[0]
+  if (!s || !r) return {}
+  const x = where === 'start' ? r.left : r.left + r.width / 2
   return { cx: (x - c.left) / s, cy: (r.top + r.height * 0.6 - c.top) / s, cms: ms }
 }
 let raf = 0
-function set({ cur, drag: ms, ...p }) {
+function set({ cur, drag: ms, ...p }: Step) {
   if (ms) drag(ms)
   if (p.sweep === false) p.rects = []
   Object.assign(d, p, cur && aim(...cur))
@@ -90,13 +120,15 @@ function set({ cur, drag: ms, ...p }) {
 // The pointer rides a curve from the first letter along line one and down to the last, the
 // way a hand drags; each frame selects every letter before it, the way text does, and draws
 // the selection as one box per line behind the letters, so the marks keep their colour.
-function drag(ms) {
-  const c = canvas.value.getBoundingClientRect()
+function drag(ms: number) {
+  const box = canvas.value?.querySelector('.sel')
+  if (!box) return
+  const c = canvas.value!.getBoundingClientRect()
   const s = c.width / 1000
   if (!s) return
-  const chars = []
-  const walk = document.createTreeWalker(canvas.value.querySelector('.sel'), NodeFilter.SHOW_TEXT)
-  for (let n; (n = walk.nextNode()); ) {
+  const chars: Box[] = []
+  const walk = document.createTreeWalker(box, NodeFilter.SHOW_TEXT)
+  for (let n: Text | null; (n = walk.nextNode() as Text | null); ) {
     for (let i = 0; i < n.length; i++) {
       const r = new Range()
       r.setStart(n, i)
@@ -105,21 +137,21 @@ function drag(ms) {
       if (b) chars.push({ l: (b.left - c.left) / s, r: (b.right - c.left) / s, t: (b.top - c.top) / s, b: (b.bottom - c.top) / s })
     }
   }
-  if (!chars.length) return
   const [first, last] = [chars[0], chars.at(-1)]
-  const mid = (ch) => (ch.t + ch.b) / 2
+  if (!first || !last) return
+  const mid = (ch: Box) => (ch.t + ch.b) / 2
   const lineEnd = Math.max(...chars.filter((ch) => Math.abs(ch.t - first.t) < 2).map((ch) => ch.r))
   const P = [{ x: first.l, y: mid(first) }, { x: lineEnd + 30, y: mid(first) }, { x: last.r, y: mid(last) }]
-  const before = (ch, x, y) => y >= ch.b || (y >= ch.t && x > (ch.l + ch.r) / 2)
+  const before = (ch: Box, x: number, y: number) => y >= ch.b || (y >= ch.t && x > (ch.l + ch.r) / 2)
   const t0 = performance.now()
-  const frame = (now) => {
+  const frame = (now: number) => {
     const t = Math.min(1, (now - t0) / ms)
     const e = t < 0.5 ? 2 * t * t : 1 - (2 - 2 * t) ** 2 / 2
-    const q = (k) => (1 - e) ** 2 * P[0][k] + 2 * (1 - e) * e * P[1][k] + e * e * P[2][k]
+    const q = (k: 'x' | 'y') => (1 - e) ** 2 * P[0][k] + 2 * (1 - e) * e * P[1][k] + e * e * P[2][k]
     const [x, y] = [q('x'), q('y')]
     let k = 0
-    while (k < chars.length && before(chars[k], x, y)) k++
-    const rects = []
+    while (k < chars.length && before(chars[k]!, x, y)) k++
+    const rects: Box[] = []
     for (const ch of chars.slice(0, k)) {
       const line = rects.at(-1)
       if (line && Math.abs(line.t - ch.t) < 2) line.r = ch.r
@@ -132,7 +164,7 @@ function drag(ms) {
 }
 
 const text = computed(() => {
-  const v = {}
+  const v = {} as Record<Seg, string>
   let left = d.n
   let at = -1 // which segment the caret follows
   SEGS.forEach(([k, seg], i) => {
@@ -145,8 +177,8 @@ const text = computed(() => {
   return { ...v, at, caret: ['tcaret', (d.n === 0 || d.n >= TOTAL) && 'is-blink'] }
 })
 
-let timers = []
-const later = (ms, fn) => timers.push(setTimeout(fn, ms))
+let timers: ReturnType<typeof setTimeout>[] = []
+const later = (ms: number, fn: () => void) => timers.push(setTimeout(fn, ms))
 const stop = () => {
   timers.forEach(clearTimeout)
   timers = []
@@ -159,7 +191,7 @@ function play() {
   let n = 0
   const type = () => {
     n += 1
-    const p = { n }
+    const p: Step = { n }
     if (n === MARK1) Object.assign(p, { mk1: true, count: 1, badge: true, capM: 1 })
     if (n === MARK2) Object.assign(p, { mk2: true, count: 2 })
     set(p)
@@ -173,10 +205,10 @@ function play() {
 // It only plays while someone can see it. Off screen, in a hidden tab (where timers are
 // throttled and the steps would drift apart) or display:none on a phone, it rests at the
 // start and begins again from the top when it's back.
-const root = ref(null)
+const root = ref<HTMLElement | null>(null)
 let seen = false
 let running = false
-let io
+let io: IntersectionObserver | undefined
 const sync = () => {
   const go = seen && !document.hidden
   if (go === running) return
@@ -188,10 +220,10 @@ const sync = () => {
 onMounted(() => {
   if (reducedMotion()) return set(STILL)
   io = new IntersectionObserver(([e]) => {
-    seen = e.isIntersecting
+    seen = !!e?.isIntersecting
     sync()
   })
-  io.observe(root.value)
+  io.observe(root.value!)
   document.addEventListener('visibilitychange', sync)
 })
 onUnmounted(() => {
@@ -291,7 +323,7 @@ onUnmounted(() => {
             <Suggestion
               label="Sentence 1 of 2"
               :focused="d.card === 1"
-              :actions="d.card === 1 ? 'accept-skip' : null"
+              :actions="d.card === 1 ? 'accept-skip' : undefined"
               :pressed="d.press"
               original="I have send the revised contract to legal yesterday."
               class="transition-opacity duration-300"
@@ -302,7 +334,7 @@ onUnmounted(() => {
             <Suggestion
               label="Sentence 2 of 2"
               :focused="d.card === 2"
-              :actions="d.card === 2 ? 'accept-skip' : null"
+              :actions="d.card === 2 ? 'accept-skip' : undefined"
               :pressed="d.press"
               original="they will be review it by Friday."
             >

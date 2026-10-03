@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { useId } from 'vue'
 
 // The app icon as the system renders it: the pencils on a cream tile, each with a soft cast

@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onUnmounted, ref } from 'vue'
 import Icon from './Icon.vue'
 import { MAIL_SELF, SHARE } from '../site'
@@ -6,9 +6,9 @@ import { MAIL_SELF, SHARE } from '../site'
 // A disk image is no use on a phone, so there the call to action hands the link on to the
 // visitor's Mac: the share sheet (AirDrop, Messages, Mail) where the browser has one, and a
 // mail to yourself where it doesn't — the plain href, which works without any script at all.
-defineProps({ copy: Boolean })
+defineProps<{ copy?: boolean }>()
 
-const share = async (e) => {
+const share = async (e: MouseEvent) => {
   if (!navigator.share) return
   e.preventDefault()
   try {
@@ -19,7 +19,7 @@ const share = async (e) => {
 }
 
 const copied = ref(false)
-let reset
+let reset: ReturnType<typeof setTimeout> | undefined
 const copyLink = async () => {
   try {
     await navigator.clipboard.writeText(SHARE.url)

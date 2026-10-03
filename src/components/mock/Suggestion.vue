@@ -1,16 +1,19 @@
-<script setup>
+<script setup lang="ts">
 // One card in the popup: where it came from, the new text with the change in clay, your
 // original struck through underneath, and the keys that act on it.
-defineProps({
-  label: String, // "Sentence 1 of 2"
-  focused: Boolean, // the card the keyboard is on
-  cloud: String, // a cloud model's card says so: "Anthropic · your key"
-  original: String,
-  actions: String, // 'accept' · 'accept-skip' · 'replace'
-  pressed: Boolean, // Accept, mid-press (the demo)
-  size: { type: String, default: 'text-sm' }, // the suggestion's own size
-  originalSize: { type: String, default: 'text-xs' },
-})
+withDefaults(
+  defineProps<{
+    label: string // "Sentence 1 of 2"
+    focused?: boolean // the card the keyboard is on
+    cloud?: string // a cloud model's card says so: "Anthropic · your key"
+    original?: string
+    actions?: 'accept' | 'accept-skip' | 'replace'
+    pressed?: boolean // Accept, mid-press (the demo)
+    size?: string // the suggestion's own size
+    originalSize?: string
+  }>(),
+  { size: 'text-sm', originalSize: 'text-xs' },
+)
 </script>
 
 <template>

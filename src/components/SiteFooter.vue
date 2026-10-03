@@ -1,12 +1,12 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import BrandMark from './BrandMark.vue'
 import { FEEDBACK_URL } from '../site'
 
 const route = useRoute()
-const at = (hash) => (route.path === '/' ? hash : `/${hash}`)
-const COLUMNS = computed(() => [
+const at = (hash: string) => (route.path === '/' ? hash : `/${hash}`)
+const COLUMNS = computed((): [string, [string, string][]][] => [
   ['Product', [[at('#download'), 'Coming soon'], [at('#how'), 'How it works'], [at('#privacy'), 'Privacy'], [at('#models'), 'Models']]],
   ['Help', [[at('#faq'), 'FAQ'], [FEEDBACK_URL, 'Send feedback']]],
   ['Legal', [['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Use']]],

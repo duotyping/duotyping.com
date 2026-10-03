@@ -14,16 +14,16 @@ export const FEEDBACK_URL = `https://github.com/${REPO}/issues/new?template=feed
 // page reads its version and its disk image off that one feed instead of keeping copies that
 // go stale. Regex, not DOMParser: it runs at build time in node, over a file our own release
 // pipeline writes. ponytail: first <item> wins — fine while generate_appcast gets one image.
-export function parseAppcast(xml) {
+export function parseAppcast(xml?: string) {
   const item = String(xml ?? '').split('<item>')[1] ?? ''
-  const tag = (name) => item.match(new RegExp(`<${name}>\\s*([^<]*?)\\s*</${name}>`))?.[1] ?? ''
+  const tag = (name: string) => item.match(new RegExp(`<${name}>\\s*([^<]*?)\\s*</${name}>`))?.[1] ?? ''
   return {
     version: tag('sparkle:shortVersionString'),
     url: item.match(/<enclosure[^>]*\surl="([^"]*)"/)?.[1] ?? '',
   }
 }
 
-// __APPCAST__ is public/appcast.xml, inlined by vite.config.js; the typeof guard lets node
+// __APPCAST__ is public/appcast.xml, inlined by vite.config.ts; the typeof guard lets node
 // import this file for the test.
 export const release = parseAppcast(typeof __APPCAST__ === 'string' ? __APPCAST__ : '')
 export const DOWNLOAD_URL = release.url || RELEASES_URL

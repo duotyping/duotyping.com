@@ -1,6 +1,6 @@
-<script setup>
+<script setup lang="ts">
 // A Mail compose window. With `fields`, the To and Subject rows under the title bar.
-defineProps({ fields: Boolean })
+defineProps<{ fields?: boolean }>()
 </script>
 
 <template>

@@ -1,10 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { computed } from 'vue'
 
 // The two pencils, one of them the assistant, in their 18-unit box at −38° (Brand board).
 // A bare <g>, so any SVG can place it: the lockup, the watermark on a stage, the diagram.
 // `part` draws just one of them, for a drawing where each pencil moves on its own.
-const TONES = {
+type Tone = 'paper' | 'ink' | 'desk'
+const TONES: Record<Tone, [string, string, string, string, string, number]> = {
   // back, its lead, front, its lead, the sparkle, the back pencil's opacity
   paper: ['#4A2D1E', '#33251C', '#C97A52', '#33251C', '#F1EFE6', 0.95],
   // On ink: the Dark-appearance colours.
@@ -12,7 +13,7 @@ const TONES = {
   // Printed faintly into a product stage.
   desk: ['#DCCDB2', '#D2BD9A', '#E2C5A4', '#D2BD9A', '#EEE4CF', 1],
 }
-const props = defineProps({ tone: { type: String, default: 'paper' }, part: String }) // part: 'back' · 'front'
+const props = withDefaults(defineProps<{ tone?: Tone; part?: 'back' | 'front' }>(), { tone: 'paper' })
 const c = computed(() => TONES[props.tone])
 </script>
 

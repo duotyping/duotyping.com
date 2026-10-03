@@ -1,11 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { useId } from 'vue'
 
 // The menu-bar template: the same two pencils in one channel, a gap cut between them and the
 // sparkle cut out of the front one, so it stays two pencils at 16 px. The mask id is per
 // instance: an id shared across the page resolves to the first copy, and a copy inside a
 // display:none stage renders nothing.
-defineProps({ color: { type: String, default: '#1E2A32' } })
+withDefaults(defineProps<{ color?: string }>(), { color: '#1E2A32' })
 const id = useId()
 </script>
 

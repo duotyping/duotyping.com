@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { usePageHead } from '../head'
 
 usePageHead({

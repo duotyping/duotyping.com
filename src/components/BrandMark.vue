@@ -1,7 +1,7 @@
-<script setup>
+<script setup lang="ts">
 import MarkPaths from './MarkPaths.vue'
 
-defineProps({ tone: { type: String, default: 'paper' } })
+withDefaults(defineProps<{ tone?: 'paper' | 'ink' }>(), { tone: 'paper' })
 </script>
 
 <template>

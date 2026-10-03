@@ -451,7 +451,7 @@
 
 /* ── The figure loops: each figure plays its own story on repeat (the Main boards) ───────
    Every element rests as the figure is drawn, so with Reduce Motion, or before a loop starts,
-   the page shows the finished picture. v-loop (loops.js) starts each one as it scrolls in. */
+   the page shows the finished picture. v-loop (loops.ts) starts each one as it scrolls in. */
 
 /* Marks as you type · 7 s: the marks land one at a time, and the badge counts them. */
 .loop-m1 { animation: dtm1 7s linear infinite both; }

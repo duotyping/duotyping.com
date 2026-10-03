@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import { onMounted, onUnmounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import BrandMark from './BrandMark.vue'
@@ -8,7 +8,7 @@ import ShareActions from './ShareActions.vue'
 const route = useRoute()
 // "#how" on the home page, "/#how" everywhere else. A bare "/#how" on the home page would
 // reload it whenever the address carries a query string.
-const at = (hash) => (route.path === '/' ? hash : `/${hash}`)
+const at = (hash: string) => (route.path === '/' ? hash : `/${hash}`)
 const LINKS = [
   ['#how', 'How it works'],
   ['#privacy', 'Privacy'],
@@ -29,12 +29,12 @@ watch(
   open,
   (on) => {
     document.documentElement.style.overflow = on ? 'hidden' : ''
-    for (const el of document.querySelectorAll('main, footer')) el.inert = on
+    for (const el of document.querySelectorAll<HTMLElement>('main, footer')) el.inert = on
   },
   { flush: 'sync' },
 )
-const onKey = (e) => e.key === 'Escape' && close()
-let wide
+const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close()
+let wide: MediaQueryList | undefined
 onMounted(() => {
   onScroll()
   addEventListener('scroll', onScroll, { passive: true })

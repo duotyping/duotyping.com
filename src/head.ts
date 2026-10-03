@@ -3,7 +3,15 @@ import { SITE_URL } from './site'
 
 // Title, description, canonical and social card for one page. Every page goes through here,
 // so none ships without the full set.
-export function usePageHead({ title, description, path, noindex = false, jsonLd }) {
+type PageHead = {
+  title: string
+  description: string
+  path: string // from the site root: '/privacy'
+  noindex?: boolean
+  jsonLd?: object // schema.org, written into the page as JSON-LD
+}
+
+export function usePageHead({ title, description, path, noindex = false, jsonLd }: PageHead) {
   const url = SITE_URL + path
   useHead({
     title,

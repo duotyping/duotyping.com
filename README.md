@@ -13,7 +13,8 @@ are self-hosted.
 npm install
 npm run dev       # Vite dev server
 npm test          # the appcast parser's check
-npm run build     # prerender to dist/
+npm run typecheck # vue-tsc over every .ts and .vue file, templates included
+npm run build     # type-check, then prerender to dist/
 npm run preview   # build, then serve dist/ with Cloudflare's own runtime (wrangler dev)
 ```
 
@@ -25,7 +26,7 @@ Where things are:
 - `src/components/HeroHeadline.vue`, `HeroDemo.vue`, `HeroDemoPhone.vue` — the hero motion, timed
   to the "Hero motion" board. Reduced motion shows each one's final frame.
 - The figure loops (marks, Rewrite, Whole selection, writing profile, the privacy flow, the FAQ
-  drawing) are CSS keyframes in `src/style.css`, timed to the desktop boards; `src/loops.js`
+  drawing) are CSS keyframes in `src/style.css`, timed to the desktop boards; `src/loops.ts`
   (`v-loop`) starts each one as it scrolls into view and pauses it off screen.
 - `src/components/mock/` — the Mac UI the illustrations draw, in the system font.
 - `src/pages/Privacy.vue`, `Terms.vue` — linked from every Settings tab in the app.

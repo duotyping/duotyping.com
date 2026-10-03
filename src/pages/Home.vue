@@ -1,11 +1,11 @@
-<script setup>
+<script setup lang="ts">
 import { useId } from 'vue'
 import AppIcon from '../components/AppIcon.vue'
 import BrandMark from '../components/BrandMark.vue'
 import HeroDemo from '../components/HeroDemo.vue'
 import HeroDemoPhone from '../components/HeroDemoPhone.vue'
 import HeroHeadline from '../components/HeroHeadline.vue'
-import Icon from '../components/Icon.vue'
+import Icon, { type IconName } from '../components/Icon.vue'
 import MarkPaths from '../components/MarkPaths.vue'
 import ShareActions from '../components/ShareActions.vue'
 import CountBadge from '../components/mock/CountBadge.vue'
@@ -19,13 +19,13 @@ const TITLE = 'DuoTyping — the private writing assistant for Mac'
 const DESCRIPTION =
   'DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you accept. It runs on your Mac by default. Free, no account.'
 
-const PILLARS = [
+const PILLARS: [IconName, string, string][] = [
   ['undo', 'Nothing changes until you accept', 'Every suggestion waits for your yes. If the text moved while DuoTyping was checking, it asks again instead of guessing.'],
   ['mac', 'Your words stay on your Mac', 'Local models check your writing right on Apple silicon. DuoTyping never stores what you write.'],
   ['no-account', 'Free, with no account', 'No sign-up, no trial, no tracking. A cloud model is optional, and it runs on your own key.'],
 ]
 
-const REVIEW = [
+const REVIEW: [IconName, string, string][] = [
   ['fixes', 'Fixes and rewrites', 'Spelling, grammar and punctuation fixes, plus a fresh version when the tone is off.'],
   ['lines', 'One sentence, or all of it', 'Accept sentence by sentence, or replace the whole selection with one of up to ten versions.'],
   ['shield', 'Safe while you keep typing', 'If your text changed during the check, DuoTyping asks before writing anything.'],
@@ -34,14 +34,14 @@ const REVIEW = [
 const PROFILES = ['Legal', 'Medical/healthcare', 'Technology/engineering', 'Business/finance', 'Academic/research', 'Customer support/service', 'Casual/personal', 'Marketing/creative']
 // The panel cycles through four of them, in this order: the chip's loop, its line's loop, and
 // the tone the app gives that profile (Shared/DomainProfile.swift), in plain words.
-const CYCLE = {
+const CYCLE: Record<string, [string, string, string]> = {
   'Business/finance': ['loop-pb', 'loop-db', 'professional and outcome-oriented, with moderate formality.'],
   Legal: ['loop-pl', 'loop-dl', 'precise, formal and liability-conscious.'],
   'Customer support/service': ['loop-pc', 'loop-dc', 'warm and empathetic, with plain language over jargon.'],
   'Casual/personal': ['loop-pp', 'loop-dp', 'relaxed; contractions and colloquialisms are fine.'],
 }
 
-const FACTS = [
+const FACTS: [IconName, string, string][] = [
   ['no-account', 'No account', 'There’s nothing to sign up for, and nothing to sign in to.'],
   ['no-tracking', 'No tracking', 'No analytics, no telemetry and no crash reporter, in the app or the engine.'],
   ['nothing-kept', 'Nothing kept', 'Neither part stores what you write, not even for a moment longer than the check.'],
@@ -113,7 +113,7 @@ usePageHead({
 
 const arrow = useId()
 // The privacy diagram's loop: where each dot sets off, its colour, its keyframes' number...
-const PACKETS = [[262, '#E0AE62', 1], [542, '#E0AE62', 2], [598, '#E8915F', 3], [318, '#E8915F', 4]]
+const PACKETS: [number, string, number][] = [[262, '#E0AE62', 1], [542, '#E0AE62', 2], [598, '#E8915F', 3], [318, '#E8915F', 4]]
 // ...and the caption for each of its three scenes.
 const SCENES = ['By default · your text stays on this Mac', 'If you connect a cloud provider', 'When you download a model']
 // The FAQ note's two lines of writing, a word at a time: the line as written, then the fix in clay.
@@ -162,7 +162,7 @@ const NOTE_LINES = [
         v-for="([icon, title, body], i) in PILLARS"
         :key="title"
         class="flex gap-4 py-[22px] lg:flex-col lg:gap-3.5 lg:px-10 lg:py-0 lg:first:pl-0"
-        :class="i && 'border-t border-line lg:border-t-0 lg:border-l'"
+        :class="i > 0 && 'border-t border-line lg:border-t-0 lg:border-l'"
       >
         <Icon :name="icon" class="size-[26px] text-clay lg:size-7" />
         <div class="flex flex-col gap-1.5 lg:gap-3.5">
@@ -484,7 +484,7 @@ const NOTE_LINES = [
               <span class="rounded-[7px] border border-dashed border-pill px-[11px] py-[7px] text-xs font-medium text-ink-2 md:text-[12.5px]">9 more</span>
             </div>
             <p class="grid rounded-[7px] bg-[#F2EFE4] px-[11px] py-[9px] text-xs leading-[1.45] text-ink-2">
-              <span v-for="([, line, tone], name, i) in CYCLE" :key="name" class="[grid-area:1/1]" :class="[line, i && 'opacity-0']">
+              <span v-for="([, line, tone], name, i) in CYCLE" :key="name" class="[grid-area:1/1]" :class="[line, i > 0 && 'opacity-0']">
                 <strong class="font-bold text-ink">{{ name }}</strong>: {{ tone }}
               </span>
             </p>

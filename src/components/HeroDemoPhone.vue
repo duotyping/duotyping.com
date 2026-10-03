@@ -1,4 +1,4 @@
-<script setup>
+<script setup lang="ts">
 import MarkPaths from './MarkPaths.vue'
 import CountBadge from './mock/CountBadge.vue'
 import MacWindow from './mock/MacWindow.vue'
