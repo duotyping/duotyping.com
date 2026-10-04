@@ -42,65 +42,9 @@
         "name" : "Anthropic"
       }
     ],
-    "expiresAt" : "2026-10-15T03:54:55Z",
-    "issuedAt" : "2026-09-15T03:54:55Z",
+    "expiresAt" : "2026-11-03T10:11:21Z",
+    "issuedAt" : "2026-10-04T10:11:21Z",
     "models" : [
-      {
-        "entry" : {
-          "descriptor" : "Fastest",
-          "downloadSize" : 938,
-          "gated" : false,
-          "id" : "qwen3-1.7b-4bit",
-          "license" : "Apache 2.0",
-          "minimumRAM" : 8192,
-          "name" : "Qwen3 1.7B (4-bit)",
-          "provider" : "huggingFace",
-          "recommendedRAM" : 8192
-        },
-        "kind" : "local"
-      },
-      {
-        "entry" : {
-          "descriptor" : "Balanced",
-          "downloadSize" : 1740,
-          "gated" : false,
-          "id" : "llama-3.2-3b-instruct-4bit",
-          "license" : "Llama 3.2 Community License",
-          "minimumRAM" : 8192,
-          "name" : "Llama 3.2 3B Instruct (4-bit)",
-          "provider" : "huggingFace",
-          "recommendedRAM" : 8192
-        },
-        "kind" : "local"
-      },
-      {
-        "entry" : {
-          "descriptor" : "Balanced",
-          "downloadSize" : 2173,
-          "gated" : false,
-          "id" : "qwen3-4b-instruct-2507-4bit",
-          "license" : "Apache 2.0",
-          "minimumRAM" : 8192,
-          "name" : "Qwen3 4B Instruct (2507, 4-bit)",
-          "provider" : "huggingFace",
-          "recommendedRAM" : 8192
-        },
-        "kind" : "local"
-      },
-      {
-        "entry" : {
-          "descriptor" : "Most capable",
-          "downloadSize" : 7935,
-          "gated" : false,
-          "id" : "qwen2.5-14b-instruct-4bit",
-          "license" : "Apache 2.0",
-          "minimumRAM" : 16384,
-          "name" : "Qwen2.5 14B Instruct (4-bit)",
-          "provider" : "huggingFace",
-          "recommendedRAM" : 32768
-        },
-        "kind" : "local"
-      },
       {
         "kind" : "cloud",
         "model" : {
@@ -258,7 +202,7 @@
             "rawValue" : "1.0.0"
           }
         },
-        "revoked" : false,
+        "revoked" : true,
         "source" : {
           "kind" : "huggingFaceFiles",
           "manifest" : {
@@ -330,7 +274,7 @@
             "rawValue" : "1.0.0"
           }
         },
-        "revoked" : false,
+        "revoked" : true,
         "source" : {
           "kind" : "huggingFaceFiles",
           "manifest" : {
@@ -387,7 +331,7 @@
             "rawValue" : "1.0.0"
           }
         },
-        "revoked" : false,
+        "revoked" : true,
         "source" : {
           "kind" : "huggingFaceFiles",
           "manifest" : {
@@ -464,7 +408,7 @@
             "rawValue" : "1.0.0"
           }
         },
-        "revoked" : false,
+        "revoked" : true,
         "source" : {
           "kind" : "huggingFaceFiles",
           "manifest" : {
@@ -533,5 +477,5 @@
     ],
     "schemaVersion" : 1
   },
-  "signature" : "jIcTaI4QVZR8\/dqWM0FA0cCBaYozZX\/vXuA6I0G1r9K6dCvZXIavhfeGnf2CzcSIyhAFujZzMhsMLz3OAFzjBA=="
+  "signature" : "Ae\/xRwtrV3nlQMqxKEnOhRP35RvQH4yfT\/eu9d1PLdJmoywyRW62JwO8G1etbUqIHjUm\/Bfcgn22sHbPcU6zBg=="
 }
