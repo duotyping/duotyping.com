@@ -20,7 +20,7 @@ defineProps<{ original: string; words: number; options: string[] }>()
       <div v-for="(text, i) in options" :key="text" class="rounded-lg border px-3 py-2.5" :class="i === 0 ? 'border-accent bg-tint' : 'border-edge bg-card'">
         <div class="flex items-center gap-[7px]" :class="i === 0 ? 'mb-1.5' : 'mb-[5px]'">
           <span class="grow text-[10.5px] text-ink-3">Option {{ i + 1 }} of {{ options.length + 1 }}</span>
-          <span v-if="i === 0" class="mk-tag">On this Mac</span>
+          <span class="mk-tag border border-[#A9B7C0] bg-transparent px-[7px] py-px text-slate">OpenAI · your key</span>
         </div>
         <p class="text-[13.5px] leading-[1.4]" :class="i === 0 && 'mb-[9px]'">{{ text }}</p>
         <div v-if="i === 0" class="flex items-center gap-[7px]">

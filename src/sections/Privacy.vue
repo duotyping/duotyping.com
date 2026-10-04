@@ -8,15 +8,13 @@ const FACTS: [IconName, string, string][] = [
   ['shield', 'Signed updates', 'Every update is signed, and checked against that signature before it installs.'],
   ['nothing-kept', 'Nothing kept', 'Neither part stores what you write, not even for a moment longer than the check.'],
   ['key', 'Keys in your Keychain', 'Cloud API keys are stored in the macOS Keychain and never read back into the app.'],
-  ['verified', 'Verified models', 'Every model download is checked against a signed catalog before it’s used.'],
-  ['selection', 'Only your selection', 'A cloud model gets just the text you selected, billed to your own account.'],
+  ['verified', 'Checked destinations', 'A provider you add yourself must be a public HTTPS address, checked before every request.'],
+  ['selection', 'Only your selection', 'Your provider gets just the text you check, billed to your own account.'],
 ]
 
 const arrow = useId()
-// The privacy diagram's loop: where each dot sets off, its colour, its keyframes' number...
+// The privacy diagram's loop: where each dot sets off, its colour, its keyframes' number.
 const PACKETS: [number, string, number][] = [[262, '#D7784F', 1], [542, '#D7784F', 2], [598, '#3EE6FF', 3], [318, '#3EE6FF', 4]]
-// ...and the caption for each of its three scenes.
-const SCENES = ['By default · your text stays on this Mac', 'If you connect a cloud provider', 'When you download a model']
 </script>
 
 <template>
@@ -27,18 +25,18 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
         <div class="flex flex-col gap-3.5 lg:gap-6">
           <div class="eyebrow text-cyan">Privacy</div>
           <h2 class="fluid max-w-[900px] font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance text-paper [--hi:61] [--lo:35]">
-            Local by default.<br />Cloud only if you choose it.
+            Your provider, your key.<br />Nothing kept in between.
           </h2>
         </div>
         <p class="fluid max-w-[760px] leading-[1.55] text-pretty text-night-text [--hi:20] [--lo:17]">
-          DuoTyping is built in two parts, on purpose. The app you see only goes online to check for updates. A separate engine runs the model on your Mac, and only goes online to download a model, or to reach a cloud provider you chose to connect.
+          DuoTyping is built in two parts, on purpose. The app you see only goes online to check for updates. A separate engine holds your key, and sends the text you check to the provider you connected, and nowhere else.
         </p>
       </div>
 
       <!-- Wide: the whole picture at once, 1200 × 400, scaled to the column below 1440 -->
       <figure v-loop class="loop diagram-fit max-lg:hidden">
         <figcaption class="sr-only">
-          On your Mac, the app you’re writing in shares only the text you select with DuoTyping, which passes it to the DuoTyping engine. The engine runs the model on this Mac, and only goes online for the signed model catalog, and for your cloud provider if you connect one.
+          On your Mac, the app you’re writing in shares only the text you select with DuoTyping, which passes it to the DuoTyping engine. The engine sends it to the cloud provider you connected, on your own key, and passes the suggestions back.
         </figcaption>
         <div class="canvas" aria-hidden="true">
           <svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" class="absolute top-0 left-0">
@@ -50,9 +48,8 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
             <rect x="1" y="1" width="858" height="398" rx="26" stroke="#5A6873" stroke-width="1.5" stroke-dasharray="7 7" />
             <path d="M262 216H318" stroke="#7F8BB5" stroke-width="1.8" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
             <path d="M542 216H598" stroke="#7F8BB5" stroke-width="1.8" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
-            <!-- A download only comes in; the provider gets your text and answers, so both ways. -->
-            <path class="loop-ct" d="M942 118C900 118 880 150 830 170" stroke="#3EE6FF" stroke-width="1.6" stroke-dasharray="5 6" :marker-end="`url(#${arrow})`" />
-            <path class="loop-pv" d="M830 262C880 282 900 300 942 300" stroke="#3EE6FF" stroke-width="1.6" stroke-dasharray="5 6" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
+            <!-- The provider gets your text and answers, so both ways. -->
+            <path class="loop-pv" d="M830 216H942" stroke="#3EE6FF" stroke-width="1.6" stroke-dasharray="5 6" :marker-start="`url(#${arrow})`" :marker-end="`url(#${arrow})`" />
             <!-- What travels between the boxes: your text in terracotta, the suggestions in cyan. -->
             <g v-for="[x, color, n] in PACKETS" :key="n" class="opacity-0" :class="`loop-q${n}`">
               <circle :cx="x" cy="216" r="11" :fill="color" opacity="0.26" />
@@ -62,10 +59,8 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
           <div class="absolute top-[26px] left-[30px] flex items-center gap-[9px] font-mono text-[12.5px] font-medium tracking-[0.12em] text-night-text uppercase">
             <Icon name="mac" class="size-[18px]" />Your Mac
           </div>
-          <div class="absolute top-[340px] left-[30px] grid justify-items-start font-mono text-[12.5px] font-medium tracking-[0.12em] whitespace-nowrap text-cyan uppercase">
-            <span v-for="(scene, i) in SCENES" :key="scene" class="flex items-center gap-2.5 opacity-0 [grid-area:1/1]" :class="`loop-cap${i + 1}`">
-              <span class="size-[7px] shrink-0 rounded-full bg-cyan shadow-[0_0_0_3px_rgb(62_230_255/0.2)]" />{{ scene }}
-            </span>
+          <div class="absolute top-[340px] left-[30px] flex items-center gap-2.5 font-mono text-[12.5px] font-medium tracking-[0.12em] whitespace-nowrap text-cyan uppercase">
+            <span class="size-[7px] shrink-0 rounded-full bg-cyan shadow-[0_0_0_3px_rgb(62_230_255/0.2)]" />Your text goes only to your provider
           </div>
           <div class="loop-app absolute top-[136px] left-10 flex h-40 w-[222px] flex-col justify-center gap-1.5 rounded-2xl border border-night-line bg-night-card p-5">
             <span class="text-[17.5px] font-semibold text-paper">The app you’re writing in</span>
@@ -77,15 +72,11 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
           </div>
           <div class="loop-engine absolute top-[136px] left-[600px] flex h-40 w-[230px] flex-col justify-center gap-1.5 rounded-2xl border border-night-line bg-night-card p-5">
             <span class="text-[17.5px] font-semibold text-paper">DuoTyping engine</span>
-            <span class="text-[14.5px] leading-[1.4] text-night-mute">Runs the model on this Mac</span>
+            <span class="text-[14.5px] leading-[1.4] text-night-mute">Holds your key, talks to your provider</span>
           </div>
-          <div class="loop-cat absolute top-[50px] left-[944px] flex h-[136px] w-64 flex-col justify-center gap-1.5 rounded-2xl border-[1.5px] border-dashed border-night-dash p-5">
-            <span class="text-[17.5px] font-semibold text-night-text">Model catalog</span>
-            <span class="text-[14.5px] leading-[1.4] text-night-mute">Signed downloads, checked before use</span>
-          </div>
-          <div class="loop-prov absolute top-[232px] left-[944px] flex h-[136px] w-64 flex-col justify-center gap-1.5 rounded-2xl border-[1.5px] border-dashed border-night-dash p-5">
+          <div class="loop-prov absolute top-[148px] left-[944px] flex h-[136px] w-64 flex-col justify-center gap-1.5 rounded-2xl border-[1.5px] border-dashed border-night-dash p-5">
             <span class="text-[17.5px] font-semibold text-night-text">Your cloud provider</span>
-            <span class="text-[14.5px] leading-[1.4] text-night-mute">Only if you connect one</span>
+            <span class="text-[14.5px] leading-[1.4] text-night-mute">Gets only the text you check</span>
           </div>
         </div>
       </figure>
@@ -115,7 +106,7 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border border-night-line bg-night-card px-[18px] py-4">
             <span class="text-[16.5px] font-semibold text-paper">DuoTyping engine</span>
-            <span class="text-sm leading-[1.4] text-night-mute">Runs the model on this Mac</span>
+            <span class="text-sm leading-[1.4] text-night-mute">Holds your key, talks to your provider</span>
           </div>
         </div>
         <div class="flex flex-col gap-3">
@@ -124,12 +115,8 @@ const SCENES = ['By default · your text stays on this Mac', 'If you connect a c
             <span class="font-mono text-[11px] tracking-[0.1em] text-night-mute uppercase">Only goes online for</span>
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border-[1.5px] border-dashed border-night-dash px-[18px] py-4">
-            <span class="text-[16.5px] font-semibold text-night-text">Model catalog</span>
-            <span class="text-sm leading-[1.4] text-night-mute">Signed downloads, checked before use</span>
-          </div>
-          <div class="flex flex-col gap-1 rounded-[14px] border-[1.5px] border-dashed border-night-dash px-[18px] py-4">
             <span class="text-[16.5px] font-semibold text-night-text">Your cloud provider</span>
-            <span class="text-sm leading-[1.4] text-night-mute">Only if you connect one, with your key</span>
+            <span class="text-sm leading-[1.4] text-night-mute">Gets only the text you check, on your key</span>
           </div>
         </div>
       </figure>

@@ -19,7 +19,7 @@ import HeroDemoPhone from '../components/demo/HeroDemoPhone.vue'
         </span>
       </h1>
       <p class="fluid max-w-[540px] leading-[1.55] text-pretty text-ink-2 [--hi:21] [--lo:17.5]">
-        DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you say so. It runs on your Mac by default, so what you write stays there.
+        DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you say so. It checks with your own OpenAI or Anthropic key, and keeps nothing you write.
       </p>
       <!-- A phone can't install a Mac app, so here the call is to pass the link on. -->
       <div class="mt-1 flex flex-col gap-[18px] sm:hidden">

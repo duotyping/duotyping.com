@@ -2,12 +2,12 @@
 import Icon, { type IconName } from '../components/Icon.vue'
 
 // Each promise in the logo's bubble: yours for the yes that's yours to give, the assistant's for
-// what it does on your Mac.
+// what it does with your text.
 const AI = 'M40 26H74A18 18 0 0 1 92 44V62A18 18 0 0 1 74 80L84 88L64 80H40A18 18 0 0 1 22 62V44A18 18 0 0 1 40 26Z'
 const PILLARS: [IconName, boolean, string, string][] = [
   ['check', true, 'Nothing changes until you accept', 'Every suggestion waits for your yes. If the text moved while DuoTyping was checking, it asks again instead of guessing.'],
-  ['mac', false, 'Your words stay on your Mac', 'Local models check your writing right on Apple silicon. DuoTyping never stores what you write.'],
-  ['offline', false, 'Works offline', 'Download a local model once and DuoTyping checks your writing without a connection. A cloud model is optional, on your own key.'],
+  ['key', false, 'Your key, your provider', 'Connect OpenAI, Anthropic or any OpenAI-compatible endpoint. The key stays in your Mac’s Keychain, and your provider bills you directly.'],
+  ['selection', false, 'Only what you select', 'Only the text you check goes to your provider, and DuoTyping never stores what you write.'],
 ]
 </script>
 

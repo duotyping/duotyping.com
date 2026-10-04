@@ -39,13 +39,12 @@ Where things are:
 
 ## What the app reads from here
 
-Two files in `public/` are part of the app, not the site. Both must stay at their exact URLs,
-return 200 with no redirect, and never sit behind a bot challenge (Bot Fight Mode, Under Attack
+One file in `public/` is part of the app, not the site. It must stay at its exact URL, return
+200 with no redirect, and never sit behind a bot challenge (Bot Fight Mode, Under Attack
 mode, a WAF challenge rule) — the app is not a browser and can't solve one.
 
 | URL | Written by | Notes |
 |---|---|---|
-| `/models.json` | copied from `catalog/models.json` in the app repo | The signed model catalog. The app refuses it once `payload.expiresAt` passes, so re-sign and copy it here before then. |
 | `/appcast.xml` | `make release` in the app repo | The Sparkle update feed. The Download button reads the latest disk image from it at build time. |
 
 Before the first release there is no appcast, and the Download button falls back to this repo's
@@ -66,4 +65,4 @@ Cloudflare account); workers.dev is off so there's only one origin.
   `https://duotyping.com/${1}` (the dashboard's "Redirect from WWW to root" template).
 
 `public/_headers` sets the security headers, caches `/assets/*` for a year (Vite fingerprints
-them) and makes `/models.json` and `/appcast.xml` revalidate on every fetch.
+them) and makes `/appcast.xml` revalidate on every fetch.

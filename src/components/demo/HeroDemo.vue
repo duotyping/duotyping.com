@@ -322,7 +322,7 @@ onUnmounted(() => {
 
       <div class="absolute top-[318px] left-[58px]">
         <div class="fade" :class="!d.panel && 'is-out'">
-          <Popup scope="Sentence by sentence" count="2 suggestions" checked="Both checked on this Mac" note="Nothing changes until you accept." class="w-[600px]">
+          <Popup scope="Sentence by sentence" count="2 suggestions" checked="Both checked by OpenAI" note="Nothing changes until you accept." class="w-[600px]">
             <Suggestion
               label="Sentence 1 of 2"
               :focused="d.card === 1"

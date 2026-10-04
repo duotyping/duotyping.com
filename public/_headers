@@ -10,9 +10,7 @@
 /assets/*
   Cache-Control: public, max-age=31536000, immutable
 
-# The app reads these two by exact URL: the signed model catalog and the Sparkle feed. Always
-# revalidate, so a re-signed catalog or a new release is seen on the next check.
-/models.json
-  Cache-Control: no-cache
+# The app reads the Sparkle feed by exact URL. Always revalidate, so a new release is seen on the
+# next check.
 /appcast.xml
   Cache-Control: no-cache

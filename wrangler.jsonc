@@ -25,8 +25,8 @@
       "persist": true
     }
   },
-  // One origin. The app fetches https://duotyping.com/models.json and /appcast.xml by exact
-  // URL, and every canonical link points here; a workers.dev copy would only be a duplicate.
+  // One origin. The app fetches https://duotyping.com/appcast.xml by exact URL, and every
+  // canonical link points here; a workers.dev copy would only be a duplicate.
   "workers_dev": false,
   "routes": [{ "pattern": "duotyping.com", "custom_domain": true }]
 }

@@ -4,7 +4,7 @@
 defineProps<{
   scope: 'Sentence by sentence' | 'Rewrite' | 'Whole selection'
   count?: string
-  checked?: string // the status line under the header: "Both checked on this Mac"
+  checked?: string // the status line under the header: "Both checked by OpenAI"
   original?: string // Whole selection shows your text above the proposals
   note?: string
 }>()

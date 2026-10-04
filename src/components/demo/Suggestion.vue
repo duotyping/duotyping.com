@@ -1,18 +1,18 @@
 <script setup lang="ts">
-// One card in the popup: where it came from, the new text with the change in deep cyan, your
+// One card in the popup: which provider checked it, the new text with the change in deep cyan, your
 // original struck through underneath, and the keys that act on it.
 withDefaults(
   defineProps<{
     label: string // "Sentence 1 of 2"
     focused?: boolean // the card the keyboard is on
-    cloud?: string // a cloud model's card says so: "Anthropic · your key"
+    cloud?: string // the provider and whose key: "OpenAI · your key"; empty in a note, which has no chip
     original?: string
     actions?: 'accept' | 'accept-skip' | 'replace'
     pressed?: boolean // Accept, mid-press (the demo)
     size?: string // the suggestion's own size
     originalSize?: string
   }>(),
-  { size: 'text-sm', originalSize: 'text-xs' },
+  { cloud: 'OpenAI · your key', size: 'text-sm', originalSize: 'text-xs' },
 )
 </script>
 
@@ -24,12 +24,6 @@ withDefaults(
         <svg width="10" height="9" viewBox="0 0 13 12" fill="none" aria-hidden="true">
           <path d="M3.6 9.2a2.6 2.6 0 0 1 .3-5.18 3.4 3.4 0 0 1 6.5.9 2.3 2.3 0 0 1-.5 4.28H3.6Z" stroke="#3D4E59" stroke-width="1.2" stroke-linejoin="round" />
         </svg>{{ cloud }}
-      </span>
-      <span v-else class="mk-tag">
-        <svg width="9" height="9" viewBox="0 0 12 12" fill="none" aria-hidden="true">
-          <rect x="1.5" y="2.5" width="9" height="7" rx="1.5" stroke="#0A6F84" stroke-width="1.3" />
-          <path d="M4 11h4" stroke="#0A6F84" stroke-width="1.3" stroke-linecap="round" />
-        </svg>On this Mac
       </span>
     </div>
     <p class="leading-[1.45] text-ink" :class="[size, original ? 'mb-1' : actions ? 'mb-2.5' : '']"><slot /></p>

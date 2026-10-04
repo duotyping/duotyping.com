@@ -82,7 +82,7 @@ const PROFILES: [string, string, string, string, 'whole' | 'sentence', number, s
             <Suggestion label="Proposal 2 of 3" class="loop-w2">
               Thanks for your email. We’re unable to confirm a delivery date until we hear back from our supplier. Apologies for the delay.
             </Suggestion>
-            <Suggestion label="Proposal 3 of 3" cloud="Anthropic · your key" class="loop-w3 max-md:hidden">
+            <Suggestion label="Proposal 3 of 3" class="loop-w3 max-md:hidden">
               In response to your email, we cannot confirm a delivery date until the supplier provides an update. We apologise for the inconvenience.
             </Suggestion>
             <template #note>Close to decline<span class="max-md:hidden">, and nothing is written</span>.</template>
@@ -201,7 +201,7 @@ const PROFILES: [string, string, string, string, 'whole' | 'sentence', number, s
               </div>
             </div>
             <div class="rounded-[7px] bg-[#F1F3F7] px-[11px] py-[9px] text-[11px] leading-[1.45] text-ink-2">
-              <strong class="font-semibold text-ink">Stays on this Mac:</strong> API keys, installed models, Accessibility access. Nothing you check is stored, so none of it can sync.
+              <strong class="font-semibold text-ink">Stays on this Mac:</strong> API keys, Accessibility access. Nothing you check is stored, so none of it can sync.
             </div>
           </div>
         </div>

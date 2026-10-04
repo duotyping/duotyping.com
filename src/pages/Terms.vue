@@ -30,7 +30,7 @@ usePageHead({
 
     <h2>Models and cloud providers</h2>
     <p>
-      Local models are made by others and come with their own licenses: the Qwen models under Apache 2.0, and Llama 3.2 under the Llama 3.2 Community License. Installing one means accepting its license. If you connect OpenAI, Anthropic or another provider, you use it under that provider’s terms, on your own key, and it bills you directly.
+      DuoTyping checks your writing with the cloud provider you connect: OpenAI, Anthropic or another provider. You use it under that provider’s terms, on your own key, and it bills you directly.
     </p>
 
     <h2>No warranty</h2>

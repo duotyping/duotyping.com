@@ -90,55 +90,42 @@
 @keyframes dtss { 0%, 22%, 75%, 100% { background-color: var(--color-card); border-color: var(--color-edge); } 25%, 72% { background-color: var(--color-tint); border-color: var(--color-accent); } }
 @keyframes dtsv { 0%, 22%, 75%, 100% { opacity: 1; } 25%, 72% { opacity: 0.45; } }
 
-/* Privacy · 16 s, three scenes, each captioned, as the app really moves your text:
-   1. by default: selection → DuoTyping → engine → suggestions back → the accepted one written in;
-   2. with a cloud provider: the same, and the engine asks the provider while the model runs;
-   3. a model download: the signed catalog into the engine, checked before use.
-   The online links stay dim until their scene. */
+/* Privacy · 8 s, one captioned scene, as the app really moves your text: selection → DuoTyping →
+   engine → provider, then the suggestions back the same way. The provider link stays dim until
+   the text reaches it. */
 .diagram-fit {
   --glow-off: 0 0 0 0 rgb(62 230 255 / 0), 0 0 0 0 rgb(62 230 255 / 0);
   --glow-you: 0 0 0 5px rgb(215 120 79 / 0.22), 0 12px 36px rgb(215 120 79 / 0.28);
   --glow-cyan: 0 0 0 5px rgb(62 230 255 / 0.2), 0 12px 36px rgb(62 230 255 / 0.24);
   --glow-link: 0 0 0 5px rgb(62 230 255 / 0.14), 0 12px 36px rgb(62 230 255 / 0.2);
 }
-.loop-app { animation: dtgA 16s ease-in-out infinite both; }
-.loop-duo { animation: dtgD 16s ease-in-out infinite both; }
+.loop-app { animation: dtgA 8s ease-in-out infinite both; }
+.loop-duo { animation: dtgD 8s ease-in-out infinite both; }
 /* The engine at work: a band of light sweeps across it, parked off the box at rest. */
 .loop-engine {
   background-image: linear-gradient(105deg, rgb(62 230 255 / 0) 40%, rgb(62 230 255 / 0.16) 50%, rgb(62 230 255 / 0) 60%);
   background-repeat: no-repeat;
   background-size: 300% 100%;
-  background-position: 100% 0;
-  animation: dtgE 16s ease-in-out infinite both, dtsh 16s linear infinite both;
+  background-position: 0% 0;
+  animation: dtgE 8s ease-in-out infinite both, dtsh 8s linear infinite both;
 }
-.loop-cat { animation: dtgC 16s ease-in-out infinite both; }
-.loop-prov { animation: dtgP 16s ease-in-out infinite both; }
-.loop-ct { animation: dtcto 16s ease-in-out infinite both, dtctd 16s linear infinite both; }
-.loop-pv { animation: dtpvo 16s ease-in-out infinite both, dtpvd 16s linear infinite both; }
-.loop-q1 { animation: dtq1 16s ease-in-out infinite both; }
-.loop-q2 { animation: dtq2 16s ease-in-out infinite both; }
-.loop-q3 { animation: dtq3 16s ease-in-out infinite both; }
-.loop-q4 { animation: dtq4 16s ease-in-out infinite both; }
-.loop-cap1 { animation: dtcap1 16s ease-in-out infinite both; }
-.loop-cap2 { animation: dtcap2 16s ease-in-out infinite both; }
-.loop-cap3 { animation: dtcap3 16s ease-in-out infinite both; }
-@keyframes dtgA { 0%, 2%, 9%, 31%, 36%, 37%, 43%, 72%, 77%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 4%, 7%, 39%, 41% { border-color: var(--color-terra); background-color: #2B2C49; box-shadow: var(--glow-you); } 33%, 34%, 74%, 75% { border-color: var(--color-cyan); background-color: #1C3557; box-shadow: var(--glow-cyan); } }
-@keyframes dtgD { 0%, 9%, 15%, 24.5%, 30.5%, 43.5%, 49.5%, 59.5%, 71%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 11%, 13%, 45.5%, 47.5% { border-color: var(--color-terra); background-color: #2B2C49; box-shadow: var(--glow-you); } 26.5%, 28.5%, 61.5%, 69% { border-color: var(--color-cyan); background-color: #1C3557; box-shadow: var(--glow-cyan); } }
-@keyframes dtgE { 0%, 15.5%, 23%, 50%, 65%, 84%, 94%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 17.5%, 21%, 52%, 63%, 86%, 92% { border-color: var(--color-cyan); background-color: #1C3557; box-shadow: var(--glow-cyan); } }
-@keyframes dtsh { 0%, 17%, 56.5%, 87% { background-position: 100% 0; } 22%, 51.5%, 92%, 100% { background-position: 0% 0; } }
-@keyframes dtq1 { 0%, 5.5%, 11.125%, 40%, 45.625%, 100% { opacity: 0; transform: translateX(0); } 6%, 40.5% { opacity: 1; transform: translateX(0); } 10%, 44.5% { opacity: 1; transform: translateX(56px); } 11%, 45.5% { opacity: 0; transform: translateX(56px); } }
-@keyframes dtq2 { 0%, 12%, 17.625%, 46.5%, 52.125%, 100% { opacity: 0; transform: translateX(0); } 12.5%, 47% { opacity: 1; transform: translateX(0); } 16.5%, 51% { opacity: 1; transform: translateX(56px); } 17.5%, 52% { opacity: 0; transform: translateX(56px); } }
-@keyframes dtq3 { 0%, 21%, 26.625%, 56%, 61.625%, 62.5%, 68.125%, 100% { opacity: 0; transform: translateX(0); } 21.5%, 56.5%, 63% { opacity: 1; transform: translateX(0); } 25.5%, 60.5%, 67% { opacity: 1; transform: translateX(-56px); } 26.5%, 61.5%, 68% { opacity: 0; transform: translateX(-56px); } }
-@keyframes dtq4 { 0%, 27.5%, 33.125%, 68.5%, 74.125%, 100% { opacity: 0; transform: translateX(0); } 28%, 69% { opacity: 1; transform: translateX(0); } 32%, 73% { opacity: 1; transform: translateX(-56px); } 33%, 74% { opacity: 0; transform: translateX(-56px); } }
-@keyframes dtpvo { 0%, 50%, 65%, 100% { opacity: 0.35; } 52%, 63% { opacity: 1; } }
-@keyframes dtpvd { 0%, 51.5%, 62%, 100% { stroke-dashoffset: 0; } 55.5%, 58% { stroke-dashoffset: -44; } }
-@keyframes dtgP { 0%, 54.5%, 62%, 100% { border-color: var(--color-night-dash); background-color: rgb(62 230 255 / 0); box-shadow: var(--glow-off); } 56.5%, 60% { border-color: var(--color-cyan); background-color: rgb(62 230 255 / 0.08); box-shadow: var(--glow-link); } }
-@keyframes dtcto { 0%, 77%, 91%, 100% { opacity: 0.35; } 79%, 89% { opacity: 1; } }
-@keyframes dtctd { 0%, 79% { stroke-dashoffset: 0; } 88%, 100% { stroke-dashoffset: -88; } }
-@keyframes dtgC { 0%, 77%, 87%, 100% { border-color: var(--color-night-dash); background-color: rgb(62 230 255 / 0); box-shadow: var(--glow-off); } 79%, 85% { border-color: var(--color-cyan); background-color: rgb(62 230 255 / 0.08); box-shadow: var(--glow-link); } }
-@keyframes dtcap1 { 0%, 0.5% { opacity: 0; transform: translateY(4px); } 2.5%, 34% { opacity: 1; transform: none; } 35.5%, 100% { opacity: 0; transform: none; } }
-@keyframes dtcap2 { 0%, 36% { opacity: 0; transform: translateY(4px); } 38%, 74% { opacity: 1; transform: none; } 75.5%, 100% { opacity: 0; transform: none; } }
-@keyframes dtcap3 { 0%, 76% { opacity: 0; transform: translateY(4px); } 78%, 95% { opacity: 1; transform: none; } 96.5%, 100% { opacity: 0; transform: none; } }
+.loop-prov { animation: dtgP 8s ease-in-out infinite both; }
+.loop-pv { animation: dtpvo 8s ease-in-out infinite both, dtpvd 8s linear infinite both; }
+.loop-q1 { animation: dtq1 8s ease-in-out infinite both; }
+.loop-q2 { animation: dtq2 8s ease-in-out infinite both; }
+.loop-q3 { animation: dtq3 8s ease-in-out infinite both; }
+.loop-q4 { animation: dtq4 8s ease-in-out infinite both; }
+@keyframes dtgA { 0%, 2.5%, 17.5%, 90%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 7.5%, 12.5% { border-color: var(--color-terra); background-color: #2B2C49; box-shadow: var(--glow-you); } 94%, 96% { border-color: var(--color-cyan); background-color: #1C3557; box-shadow: var(--glow-cyan); } }
+@keyframes dtgD { 0%, 18.75%, 33.75%, 75%, 87.5%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 23.75%, 28.75% { border-color: var(--color-terra); background-color: #2B2C49; box-shadow: var(--glow-you); } 78%, 84% { border-color: var(--color-cyan); background-color: #1C3557; box-shadow: var(--glow-cyan); } }
+@keyframes dtgE { 0%, 35%, 72.5%, 100% { border-color: var(--color-night-line); background-color: var(--color-night-card); box-shadow: var(--glow-off); } 40%, 67.5% { border-color: var(--color-cyan); background-color: #1C3557; box-shadow: var(--glow-cyan); } }
+@keyframes dtsh { 0%, 38.75% { background-position: 0% 0; } 51.25%, 100% { background-position: 100% 0; } }
+@keyframes dtq1 { 0%, 10%, 24%, 100% { opacity: 0; transform: translateX(0); } 11.25% { opacity: 1; transform: translateX(0); } 21.25% { opacity: 1; transform: translateX(56px); } 23.75% { opacity: 0; transform: translateX(56px); } }
+@keyframes dtq2 { 0%, 26.25%, 40.3%, 100% { opacity: 0; transform: translateX(0); } 27.5% { opacity: 1; transform: translateX(0); } 37.5% { opacity: 1; transform: translateX(56px); } 40% { opacity: 0; transform: translateX(56px); } }
+@keyframes dtq3 { 0%, 66.25%, 80.3%, 100% { opacity: 0; transform: translateX(0); } 67.5% { opacity: 1; transform: translateX(0); } 77.5% { opacity: 1; transform: translateX(-56px); } 80% { opacity: 0; transform: translateX(-56px); } }
+@keyframes dtq4 { 0%, 81.25%, 95.3%, 100% { opacity: 0; transform: translateX(0); } 82.5% { opacity: 1; transform: translateX(0); } 92.5% { opacity: 1; transform: translateX(-56px); } 95% { opacity: 0; transform: translateX(-56px); } }
+@keyframes dtpvo { 0%, 35%, 72.5%, 100% { opacity: 0.35; } 40%, 67.5% { opacity: 1; } }
+@keyframes dtpvd { 0%, 38.75%, 65%, 100% { stroke-dashoffset: 0; } 48.75%, 55% { stroke-dashoffset: -44; } }
+@keyframes dtgP { 0%, 46.25%, 65%, 100% { border-color: var(--color-night-dash); background-color: rgb(62 230 255 / 0); box-shadow: var(--glow-off); } 51.25%, 60% { border-color: var(--color-cyan); background-color: rgb(62 230 255 / 0.08); box-shadow: var(--glow-link); } }
 
 /* The FAQ drawing · 8 s: your bubble bobs as its question mark draws itself, the assistant's blinks
    and bobs, then its answer writes itself a line at a time. */

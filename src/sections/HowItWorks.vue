@@ -124,72 +124,19 @@ import Suggestion from '../components/demo/Suggestion.vue'
 
     <div class="mt-3 flex flex-col gap-4 lg:mt-5 lg:gap-6">
       <div class="flex flex-col gap-2.5">
-        <h3 class="fluid font-display leading-[1.1] font-bold tracking-[-0.02em] [--hi:30] [--lo:24]">Install a model, or bring your own key</h3>
+        <h3 class="fluid font-display leading-[1.1] font-bold tracking-[-0.02em] [--hi:30] [--lo:24]">Bring your own key</h3>
         <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:17] [--lo:15.5]">
-          The first time you open DuoTyping, choose what does the checking: a model on your Mac, a cloud provider with your own key, or both.
+          The first time you open DuoTyping, connect what does the checking: OpenAI or Anthropic with your own key, or any OpenAI-compatible endpoint.
         </p>
       </div>
-      <div class="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:gap-6">
-        <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-          <div class="flex h-80 items-center justify-center border-b border-edge bg-stage md:h-[300px]" aria-hidden="true">
-            <div class="font-mac flex w-[310px] flex-col gap-2 text-ink md:w-[460px]">
-              <div class="flex items-center gap-3 rounded-[10px] border border-edge bg-panel px-3.5 py-[11px]">
-                <div class="flex grow flex-col gap-[3px]">
-                  <div class="flex flex-wrap items-center gap-x-2 gap-y-[3px]">
-                    <span class="text-[13px] font-semibold whitespace-nowrap">Qwen3 1.7B</span>
-                    <span class="rounded bg-[#E6E9EF] px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-ink-2">Fastest</span>
-                  </div>
-                  <span class="text-[11.5px] text-ink-2">983.6 MB · 8 GB memory</span>
-                </div>
-                <span class="mk-btn-2">Install</span>
-              </div>
-              <div class="flex flex-col gap-[9px] rounded-[10px] border border-accent bg-tint px-3.5 py-[11px]">
-                <div class="flex items-center gap-3">
-                  <div class="flex grow flex-col gap-[3px]">
-                    <div class="flex flex-wrap items-center gap-x-2 gap-y-[3px]">
-                      <span class="text-[13px] font-semibold whitespace-nowrap">Qwen3 4B Instruct 2507</span>
-                      <span class="rounded bg-accent px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-white">Recommended</span>
-                    </div>
-                    <span class="text-[11.5px] text-ink-2">2.28 GB · 8 GB memory · balanced</span>
-                  </div>
-                  <span class="mk-btn-2">Pause</span>
-                </div>
-                <div class="h-[5px] overflow-hidden rounded-[3px] bg-chip"><div class="h-[5px] w-[62%] rounded-[3px] bg-accent" /></div>
-                <div class="flex items-center gap-[7px]">
-                  <Icon name="verified" class="size-[15px] text-[#2F7D3A]" />
-                  <span class="text-[11.5px] text-ink-2">1.4 GB of 2.28 GB · signature verified</span>
-                </div>
-              </div>
-              <div class="flex items-center gap-3 rounded-[10px] border border-edge bg-panel px-3.5 py-[11px]">
-                <div class="flex grow flex-col gap-[3px]">
-                  <div class="flex flex-wrap items-center gap-x-2 gap-y-[3px]">
-                    <span class="text-[13px] font-semibold whitespace-nowrap">Qwen2.5 14B Instruct</span>
-                    <span class="rounded bg-[#E6E9EF] px-[7px] py-px text-[10px] font-semibold whitespace-nowrap text-ink-2">Most capable</span>
-                  </div>
-                  <span class="text-[11.5px] text-ink-2">8.32 GB · 32 GB memory recommended</span>
-                </div>
-                <span class="mk-btn-2">Install</span>
-              </div>
-            </div>
-          </div>
-          <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
-            <h4 class="fluid font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">A local model, installed once</h4>
-            <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">
-              Pick a size that fits your Mac: download size and memory are on every row. It’s checked against a signed catalog before it loads, then works offline.
-            </p>
-          </div>
-        </article>
-        <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card">
-          <div class="flex h-[300px] items-center justify-center border-b border-edge bg-stage" aria-hidden="true">
+      <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card lg:grid lg:grid-cols-12">
+          <div class="flex h-[300px] items-center justify-center bg-stage max-lg:border-b max-lg:border-edge lg:order-2 lg:col-span-7 lg:border-l lg:border-edge" aria-hidden="true">
             <div class="font-mac flex w-[310px] flex-col gap-2 text-ink md:w-[460px]">
               <div class="flex items-center gap-2.5 rounded-[10px] border border-edge bg-panel px-3.5 py-2.5">
                 <span class="flex size-[26px] shrink-0 items-center justify-center rounded-full bg-[#E3E7EA] text-xs font-bold text-slate">O</span>
                 <span class="text-[13px] font-semibold">OpenAI</span>
                 <span class="rounded border border-[#A9B7C0] px-1.5 text-[10px] font-semibold text-slate">Cloud</span>
                 <span class="grow" />
-                <span class="inline-flex items-center gap-[5px] rounded-md border border-edge bg-card px-2 py-[3px] text-[11px] whitespace-nowrap text-ink-2 max-md:hidden">
-                  gpt-4.1-mini <Icon name="chevron" class="size-[11px] text-ink-3" />
-                </span>
                 <span class="inline-flex items-center gap-[5px] text-[11px] font-semibold whitespace-nowrap text-[#2F7D3A]">
                   <span class="inline-block size-1.5 rounded-full bg-[#2F7D3A]" />Connected
                 </span>
@@ -216,14 +163,13 @@ import Suggestion from '../components/demo/Suggestion.vue'
               </div>
             </div>
           </div>
-          <div class="flex flex-col gap-2.5 p-6 lg:p-[30px]">
+          <div class="flex flex-col justify-center gap-2.5 p-6 lg:order-1 lg:col-span-5 lg:p-10">
             <h4 class="fluid font-semibold tracking-[-0.01em] [--hi:22] [--lo:20]">A cloud model, with your own key</h4>
             <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">
               Paste a key from OpenAI or Anthropic, or add any OpenAI-compatible endpoint. The key stays in your Mac’s Keychain, and your provider bills you directly.
             </p>
           </div>
-        </article>
-      </div>
+      </article>
     </div>
 
     <article class="mt-3 flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card lg:mt-5 lg:grid lg:grid-cols-12">

@@ -28,7 +28,7 @@ import Suggestion from './Suggestion.vue'
       </div>
       <div class="absolute top-[206px] left-3.5">
         <div class="dt-pop" style="--at: 4480ms">
-          <Popup scope="Sentence by sentence" count="2 suggestions" checked="Both checked on this Mac" note="Nothing changes until you accept." class="w-[322px]">
+          <Popup scope="Sentence by sentence" count="2 suggestions" checked="Both checked by OpenAI" note="Nothing changes until you accept." class="w-[322px]">
             <Suggestion label="Sentence 1 of 2" focused actions="accept-skip" original="I have send the revised contract to legal yesterday.">
               I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
             </Suggestion>
