@@ -36,7 +36,7 @@ usePageHead({
       <li><strong>How it’s protected:</strong> each check is encrypted on DuoTyping’s server before it’s stored, with a key that server can use only to lock, never to unlock. Only the people who make DuoTyping can read kept checks, on their own computers. Kept checks are stored with Cloudflare, in the EU.</li>
       <li><strong>How long:</strong> until we delete them.</li>
       <li><strong>Other people in your text:</strong> what you check may mention others, such as a reply to a colleague. It’s kept the same way, so check with your own key if you’d rather nothing you write reach us.</li>
-      <li><strong>Deleting it:</strong> write to <a href="mailto:privacy@duotyping.com">privacy@duotyping.com</a>. With an account, we delete every check linked to it. Signed out, your checks are linked only to a random key on your Mac that we can’t trace to you, so tell us roughly when you checked and we’ll do what we can.</li>
+      <li><strong>Deleting it:</strong> write to <a href="mailto:support@duotyping.com">support@duotyping.com</a>. With an account, we delete every check linked to it. Signed out, your checks are linked only to a random key on your Mac that we can’t trace to you, so tell us roughly when you checked and we’ll do what we can.</li>
     </ul>
 
     <h2>What stays on your Mac</h2>
@@ -89,6 +89,6 @@ usePageHead({
     <p>If any of this changes, this page changes first, with a new date at the top.</p>
 
     <h2>Questions</h2>
-    <p>Write to <a href="mailto:privacy@duotyping.com">privacy@duotyping.com</a> about your data, or ask anything else through <a :href="FEEDBACK_URL">Send feedback</a>.</p>
+    <p>Write to <a href="mailto:support@duotyping.com">support@duotyping.com</a> about your data, or ask anything else through <a :href="FEEDBACK_URL">Send feedback</a>.</p>
   </LegalPage>
 </template>
