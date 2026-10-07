@@ -8,6 +8,10 @@ const GA_ID = 'G-4T27V43Q6F'
 // Empty until the owner adds the site there, and then nothing loads.
 const CF_BEACON_TOKEN = ''
 
+/** Hidden for now (owner, 2026-10-07): no banner, no Cookie settings, so Google Analytics never
+ * loads. Flip to true to ask again; the privacy page follows this flag. */
+export const CONSENT_BANNER = false
+
 const KEY = 'duotyping-consent'
 const DAY = 86_400_000
 // CNIL: ask again 6 months after a refusal; an accept lasts at most 13 months.
@@ -75,6 +79,7 @@ export function startAnalytics() {
       'data-cf-beacon': JSON.stringify({ token: CF_BEACON_TOKEN }),
     })
   }
+  if (!CONSENT_BANNER) return
   const choice = read()
   if (choice?.analytics) startGoogleAnalytics()
   else if (!choice) consentOpen.value = true

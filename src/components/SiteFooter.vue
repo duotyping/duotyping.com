@@ -2,7 +2,7 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import BrandMark from './brand/BrandMark.vue'
-import { consentOpen } from '../utils/consent'
+import { CONSENT_BANNER, consentOpen } from '../utils/consent'
 import { FEEDBACK_URL } from '../utils/site'
 
 const route = useRoute()
@@ -30,7 +30,7 @@ const YEAR = __YEAR__
         <nav v-for="[title, links] in COLUMNS" :key="title" :aria-label="title" class="flex flex-col gap-1">
           <span class="mb-2 font-mono text-xs font-medium tracking-[0.12em] text-ink-3 uppercase">{{ title }}</span>
           <a v-for="[href, label] in links" :key="label" :href="href" class="nav-link min-h-9 text-[15px] font-normal whitespace-nowrap md:text-[15.5px]">{{ label }}</a>
-          <button v-if="title === 'Legal'" type="button" class="nav-link min-h-9 text-left text-[15px] font-normal whitespace-nowrap md:text-[15.5px]" @click="consentOpen = true">Cookie settings</button>
+          <button v-if="CONSENT_BANNER && title === 'Legal'" type="button" class="nav-link min-h-9 text-left text-[15px] font-normal whitespace-nowrap md:text-[15.5px]" @click="consentOpen = true">Cookie settings</button>
         </nav>
       </div>
     </div>
