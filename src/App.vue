@@ -1,7 +1,13 @@
 <script setup lang="ts">
+import { onMounted } from 'vue'
 import { RouterView } from 'vue-router'
+import ConsentBanner from './components/ConsentBanner.vue'
 import SiteFooter from './components/SiteFooter.vue'
 import SiteHeader from './components/SiteHeader.vue'
+import { startAnalytics } from './utils/consent'
+
+// In the browser only: the prerendered page carries no analytics and no banner.
+onMounted(startAnalytics)
 </script>
 
 <template>
@@ -15,4 +21,5 @@ import SiteHeader from './components/SiteHeader.vue'
     <RouterView />
   </main>
   <SiteFooter />
+  <ConsentBanner />
 </template>

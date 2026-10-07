@@ -10,14 +10,12 @@
     <link rel="preload" as="font" type="font/woff2" crossorigin href="./node_modules/@fontsource-variable/onest/files/onest-latin-wght-normal.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="./node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2" />
     <link rel="preload" as="font" type="font/woff2" crossorigin href="./node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2" />
-    <!-- Google tag (gtag.js): visit counts for this website only; the app has no analytics. -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-4T27V43Q6F"></script>
+    <!-- Google Analytics, for this website only (the app has no analytics), waits for consent:
+         this sets its default to denied, and src/utils/consent.ts loads gtag.js after Accept. -->
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-
-      gtag('config', 'G-4T27V43Q6F');
+      gtag('consent', 'default', { analytics_storage: 'denied', ad_storage: 'denied', ad_user_data: 'denied', ad_personalization: 'denied' });
     </script>
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />

@@ -15,9 +15,9 @@ usePageHead({
        the account section is what docs/specs/writing-profiles-and-sync.md §4 commits it to. The DuoTyping
        provider's lines are hosted-api.md §7, and what it keeps is hosted-check-storage.md: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
-  <LegalPage title="Privacy Policy" updated="6 October 2026">
+  <LegalPage title="Privacy Policy" updated="7 October 2026">
     <p class="lede">
-      DuoTyping sends no analytics, telemetry or crash reports. When you check with your own key, your writing goes straight to your provider and never reaches us. When you check with the DuoTyping provider, DuoTyping keeps what you check and the suggestions it got back, encrypted, to improve DuoTyping. An account is optional, and it carries settings, never writing. This website uses Google Analytics to count visits.
+      DuoTyping sends no analytics, telemetry or crash reports. When you check with your own key, your writing goes straight to your provider and never reaches us. When you check with the DuoTyping provider, DuoTyping keeps what you check and the suggestions it got back, encrypted, to improve DuoTyping. An account is optional, and it carries settings, never writing. This website counts visits without cookies, and with Google Analytics only if you agree.
     </p>
 
     <h2>Your writing</h2>
@@ -78,8 +78,10 @@ usePageHead({
 
     <h2>This website</h2>
     <ul>
-      <li>It uses Google Analytics to count visits and see which pages are read. Google Analytics sets cookies and receives your IP address, your browser and device details, and the pages you visit, under <a href="https://policies.google.com/privacy">Google’s privacy policy</a>. A content blocker or blocking cookies turns it off, and the site works the same without it.</li>
-      <li>Apart from that script, it loads nothing from anyone else. Even its fonts come from duotyping.com.</li>
+      <li>It counts visits with Cloudflare Web Analytics, which sets no cookies, stores nothing on your device and keeps no IP address: we see how many people read which page, from which country and kind of device, and nothing that identifies you.</li>
+      <li>Google Analytics runs only if you choose Accept when the site asks. It then sets cookies and receives your IP address, your browser and device details, and the pages you visit, under <a href="https://policies.google.com/privacy">Google’s privacy policy</a>. Choose Reject and it never loads. Change your mind any time with Cookie settings at the bottom of every page: choosing Reject there also deletes its cookies.</li>
+      <li>Your choice is remembered on your device, without a cookie, and the site asks again after 6 months if you rejected, or 13 if you accepted.</li>
+      <li>Apart from those two, it loads nothing from anyone else. Even its fonts come from duotyping.com.</li>
       <li>It’s hosted on Cloudflare, which, like any host, sees your IP address in order to deliver the page.</li>
       <li>The Download button downloads the app from download.duotyping.com, also on Cloudflare.</li>
       <li>Send feedback opens a form on GitHub. What you post there is public, so don’t use it for privacy requests.</li>
