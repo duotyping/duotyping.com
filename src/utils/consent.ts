@@ -1,6 +1,6 @@
 import { ref } from 'vue'
 
-// Two counters (docs/specs/site-analytics-consent.md in the app repo). Cloudflare Web Analytics
+// Two counters (docs/specs/site-analytics-consent.md). Cloudflare Web Analytics
 // sets no cookie and keeps no IP address, so it runs for everyone. Google Analytics sets cookies,
 // so it loads only after Accept; index.html sets its consent default to denied before anything.
 const GA_ID = 'G-4T27V43Q6F'
