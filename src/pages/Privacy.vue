@@ -12,8 +12,8 @@ usePageHead({
 </script>
 
 <template>
-  <!-- Every line here is something the code does (docs/PRD.md §2, §4.6 and §5 in the app repo), and
-       the account section is what docs/specs/writing-profiles-and-sync.md §4 commits it to. The DuoTyping
+  <!-- Every line here is something the code does (duotyping-specs product/mac-prd.md §2, §4.6 and §5), and
+       the account section is what duotyping-specs specs/writing-profiles-and-sync.md §4 commits it to. The DuoTyping
        provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md in duotyping-api: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
   <LegalPage title="Privacy Policy" updated="7 October 2026">
