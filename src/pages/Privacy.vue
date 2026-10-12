@@ -13,7 +13,7 @@ usePageHead({
 
 <template>
   <!-- Every line here is something the code does (duotyping-specs product/mac-prd.md §2, §4.6 and §5), and
-       the account section is what duotyping-specs specs/user-accounts.md (A1, A2, R8b, R8d) keeps, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
+       the account section is what duotyping-specs specs/user-accounts.md (A1, A2, A4, R8b, R8d, R10a) keeps, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
        provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md in duotyping-api: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
   <LegalPage title="Privacy Policy" updated="12 October 2026">
@@ -71,7 +71,8 @@ usePageHead({
       <li>You sign in on account.duotyping.com with a 6-digit code we email you, sent through Cloudflare, or with Google, Apple or a passkey. The code works for 10 minutes, and we store it only in a scrambled form. The sign-in page uses Cloudflare Turnstile to tell people from bots, which checks your browser; it’s the only thing that page loads from anyone else.</li>
       <li>If you use Google or Apple, we ask it only for your email address, and keep the ID it uses for you and the address it gives us. From Apple we also keep a token, encrypted, so we can end the link at Apple when the account is deleted. If you hide your email from Apple, we only ever see the address Apple makes for you, and our emails reach you through Apple. Each handles your sign-in under its own privacy policy.</li>
       <li>A passkey stays on your device or in your password manager. We keep its public key, which can’t sign you in by itself, the kind of passkey it is, such as iCloud Keychain, when you added it and when you last used it, until you remove it or delete the account.</li>
-      <li>To keep the account secure, each sign-in in a browser keeps when it happened, your IP address and your browser’s user agent, which names the browser and its system. They’re deleted when that sign-in ends: when you sign out, or about a week after you last use it. For each DuoTyping app you sign in, we keep which app it is (Mac, Windows, Chrome or the web) and when you allowed it, until you delete the account, and when it was last used, until 30 days after that. Devices, in the web app, lists them and can sign any of them out.</li>
+      <li>To keep the account secure, each sign-in in a browser keeps when it happened, your IP address and your browser’s user agent, which names the browser and its system. They’re deleted when that sign-in ends: when you sign out, or about a week after you last use it. For each DuoTyping app you sign in, we keep which app it is (Mac, Windows, Chrome or the web) and when you allowed it, until the account is deleted, and when it was last used, until 30 days after that. Devices, in the web app, lists them and can sign any of them out.</li>
+      <li>We also keep a list of every sign-in, in a browser or an app: when it happened, which app it was, if any, and the IP address of the browser you signed in with. It’s kept until the account is deleted, isn’t shown on any page, and comes with your export.</li>
       <li>Each time an app or the web app signs in to your account, we email you which one it was and when, so you can spot a sign-in that wasn’t you. The email gives the time in your account’s time zone, which we take from your browser when you make the account and you can change on Devices. It has no IP address or location.</li>
       <li>account.duotyping.com and the web app at app.duotyping.com each keep you signed in with a cookie of their own, used for nothing else.</li>
       <li>To stop anyone guessing codes or flooding an inbox, the sign-in server also counts requests from each IP address, and to each email address in a scrambled form, for a few minutes.</li>
@@ -79,8 +80,9 @@ usePageHead({
       <li>What can sync, each with its own switch in Settings › Account: writing profiles and their custom instructions, which profile is the default, appearance, your language, your cloud model choice (never its key), custom providers (never a key), shortcuts and which apps have marks as you type.</li>
       <li>What never syncs: anything you check, any suggestion, API keys, and your Mac’s own permissions and setup.</li>
       <li>The account and its synced settings are stored with Cloudflare. They’re encrypted in transit and at rest, but not end to end, so our server can read the settings it stores.</li>
-      <li>Synced settings are kept until you delete them. Deleting the account erases them and the checks linked to it at once; restorable backups expire within 30 days.</li>
-      <li>You can’t yet export the account’s settings or delete the account yourself: write to <a href="mailto:support@duotyping.com">support@duotyping.com</a> from its email address, and we’ll do it. Your devices keep their own settings either way.</li>
+      <li>Synced settings are kept until you delete them or the account is deleted.</li>
+      <li>Export My Data, on Privacy in the web app, downloads everything the account holds as one file.</li>
+      <li>Delete Account, on the same page, signs every device and browser out at once and emails you the date the account will be deleted, 90 days later. Until then nothing in it is deleted, and signing in before that date lets you keep it. On that date we erase the account and everything in it, including the checks linked to it, and end the link at Apple if you used it; restorable backups expire within 30 days. Your devices keep their own settings either way.</li>
       <li>We don’t sell or share any of it, and we use it only to run and improve the account, the DuoTyping provider and the paid plan, and to keep them secure.</li>
     </ul>
 
