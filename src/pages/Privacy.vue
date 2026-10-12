@@ -13,7 +13,7 @@ usePageHead({
 
 <template>
   <!-- Every line here is something the code does (duotyping-specs product/mac-prd.md §2, §4.6 and §5), and
-       the account section is what duotyping-specs specs/user-accounts.md (A1, R8d) keeps, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
+       the account section is what duotyping-specs specs/user-accounts.md (A1, A2, R8b, R8d) keeps, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
        provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md in duotyping-api: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
   <LegalPage title="Privacy Policy" updated="12 October 2026">
@@ -67,9 +67,13 @@ usePageHead({
 
     <h2>The optional account</h2>
     <ul>
-      <li>Everything in DuoTyping works signed out. If you sign in, the account holds your email address, the settings you choose to sync, your plan and your check counts. Checks you make with the DuoTyping provider while signed in are linked to it (see “What DuoTyping keeps”). It holds no name.</li>
-      <li>You sign in on account.duotyping.com with a 6-digit code we email you, sent through Cloudflare. The code works for 10 minutes, and we store it only in a scrambled form. The sign-in page uses Cloudflare Turnstile to tell people from bots, which checks your browser; it’s the only thing that page loads from anyone else.</li>
-      <li>To keep the account secure, each sign-in in a browser keeps when it happened, your IP address and your browser’s user agent, which names the browser and its system. They’re deleted when that sign-in ends: when you sign out, or about a week after you last use it. For each DuoTyping app you sign in, we keep which app it is (Mac, Windows, Chrome or the web) and when you allowed it, until you delete the account, and when it was last used, until 30 days after that.</li>
+      <li>Everything in DuoTyping works signed out. If you sign in, the account holds your email address, how you sign in, your time zone, the settings you choose to sync, your plan and your check counts. Checks you make with the DuoTyping provider while signed in are linked to it (see “What DuoTyping keeps”). It holds no name.</li>
+      <li>You sign in on account.duotyping.com with a 6-digit code we email you, sent through Cloudflare, or with Google, Apple or a passkey. The code works for 10 minutes, and we store it only in a scrambled form. The sign-in page uses Cloudflare Turnstile to tell people from bots, which checks your browser; it’s the only thing that page loads from anyone else.</li>
+      <li>If you use Google or Apple, we ask it only for your email address, and keep the ID it uses for you and the address it gives us. From Apple we also keep a token, encrypted, so we can end the link at Apple when the account is deleted. If you hide your email from Apple, we only ever see the address Apple makes for you, and our emails reach you through Apple. Each handles your sign-in under its own privacy policy.</li>
+      <li>A passkey stays on your device or in your password manager. We keep its public key, which can’t sign you in by itself, the kind of passkey it is, such as iCloud Keychain, when you added it and when you last used it, until you remove it or delete the account.</li>
+      <li>To keep the account secure, each sign-in in a browser keeps when it happened, your IP address and your browser’s user agent, which names the browser and its system. They’re deleted when that sign-in ends: when you sign out, or about a week after you last use it. For each DuoTyping app you sign in, we keep which app it is (Mac, Windows, Chrome or the web) and when you allowed it, until you delete the account, and when it was last used, until 30 days after that. Devices, in the web app, lists them and can sign any of them out.</li>
+      <li>Each time an app or the web app signs in to your account, we email you which one it was and when, so you can spot a sign-in that wasn’t you. The email gives the time in your account’s time zone, which we take from your browser when you make the account and you can change on Devices. It has no IP address or location.</li>
+      <li>account.duotyping.com and the web app at app.duotyping.com each keep you signed in with a cookie of their own, used for nothing else.</li>
       <li>To stop anyone guessing codes or flooding an inbox, the sign-in server also counts requests from each IP address, and to each email address in a scrambled form, for a few minutes.</li>
       <li>If you buy the paid plan, Paddle sells it to you as the merchant of record and handles your payment details under its own privacy policy. We receive only whether your subscription is active and when it renews.</li>
       <li>What can sync, each with its own switch in Settings › Account: writing profiles and their custom instructions, which profile is the default, appearance, your language, your cloud model choice (never its key), custom providers (never a key), shortcuts and which apps have marks as you type.</li>
