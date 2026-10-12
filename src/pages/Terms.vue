@@ -11,7 +11,7 @@ usePageHead({
 </script>
 
 <template>
-  <LegalPage title="Terms of Use" updated="6 October 2026">
+  <LegalPage title="Terms of Use" updated="12 October 2026">
     <p class="lede">
       These terms cover the DuoTyping app, the DuoTyping provider, its optional account and paid plan, and this website, and by using any of them you agree to them. “We” means the people who make DuoTyping.
     </p>
@@ -20,7 +20,7 @@ usePageHead({
     <p>You can download DuoTyping and use it on your own Macs, for personal or professional writing. Every feature works without an account.</p>
 
     <h2>Your account</h2>
-    <p>An account is optional. It gives you more free checks with the DuoTyping provider, holds the paid plan if you buy it, and syncs your writing profiles and settings between your devices. Keep its sign-in to yourself: what happens through it is yours. You can export its data or delete it at any time in Settings › Account, and deleting it never touches the settings on your devices. We may close an account that’s used to abuse the service.</p>
+    <p>An account is optional. It gives you more free checks with the DuoTyping provider, holds the paid plan if you buy it, and syncs your writing profiles and settings between your devices. Keep its sign-in to yourself: what happens through it is yours. You can have its data exported or the account deleted at any time: for now, write to <a href="mailto:support@duotyping.com">support@duotyping.com</a> from its email address. Deleting it never touches the settings on your devices. We may close an account that’s used to abuse the service.</p>
 
     <h2>Your writing is yours</h2>
     <p>You keep every right to what you write, and to the suggestions you accept. We claim none of it. When you check with the DuoTyping provider, you let us keep the text you check and the suggestions it gets, encrypted, and use them to run and improve DuoTyping, as the <a href="/privacy">Privacy Policy</a> explains. We don’t sell them, share them, or train AI models on them. What you check on your own key never reaches us.</p>

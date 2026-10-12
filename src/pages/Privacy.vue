@@ -13,10 +13,10 @@ usePageHead({
 
 <template>
   <!-- Every line here is something the code does (duotyping-specs product/mac-prd.md §2, §4.6 and §5), and
-       the account section is what duotyping-specs specs/writing-profiles-and-sync.md §4 commits it to. The DuoTyping
+       the account section is what duotyping-specs specs/user-accounts.md (A1, R8d) keeps, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
        provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md in duotyping-api: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
-  <LegalPage title="Privacy Policy" updated="9 October 2026">
+  <LegalPage title="Privacy Policy" updated="12 October 2026">
     <p class="lede">
       DuoTyping sends no analytics, telemetry or crash reports. When you check with your own key, your writing goes straight to your provider and never reaches us. When you check with the DuoTyping provider, DuoTyping keeps what you check and the suggestions it got back, encrypted, to improve DuoTyping. An account is optional, and it carries settings, never writing. This website counts visits without cookies{{ CONSENT_BANNER ? ', and with Google Analytics only if you agree' : '' }}.
     </p>
@@ -51,10 +51,10 @@ usePageHead({
     <h2>When DuoTyping goes online</h2>
     <ul>
       <li>With the DuoTyping provider, the app sends each check to DuoTyping’s server.</li>
-      <li>If you sign in, the app talks to DuoTyping’s account server to sync your settings.</li>
+      <li>If you sign in, you do it in your browser, and the app then talks to DuoTyping’s account server to stay signed in and to sync your settings.</li>
       <li>The app checks download.duotyping.com for updates, and downloads an update from there when you install one. You can turn automatic checks off in Settings › General.</li>
       <li>A cloud provider you connect yourself is contacted only to check your text.</li>
-      <li>Like any server you connect to, each of these sees your Mac’s IP address. DuoTyping’s server uses it for one thing: limiting free checks without an account. It keeps only a scrambled form that changes every day, and deletes it after two days.</li>
+      <li>Like any server you connect to, each of these sees your Mac’s IP address. For checks, DuoTyping’s server uses it for one thing: limiting free checks without an account. It keeps only a scrambled form that changes every day, and deletes it after two days. Signing in keeps more, as “The optional account” below says.</li>
     </ul>
 
     <h2>The DuoTyping provider</h2>
@@ -67,13 +67,16 @@ usePageHead({
 
     <h2>The optional account</h2>
     <ul>
-      <li>Everything in DuoTyping works signed out. If you sign in, the account holds your email address, the settings you choose to sync, your plan and your check counts. Checks you make with the DuoTyping provider while signed in are linked to it (see “What DuoTyping keeps”). It holds no name, and no details about your devices.</li>
+      <li>Everything in DuoTyping works signed out. If you sign in, the account holds your email address, the settings you choose to sync, your plan and your check counts. Checks you make with the DuoTyping provider while signed in are linked to it (see “What DuoTyping keeps”). It holds no name.</li>
+      <li>You sign in on account.duotyping.com with a 6-digit code we email you, sent through Cloudflare. The code works for 10 minutes, and we store it only in a scrambled form. The sign-in page uses Cloudflare Turnstile to tell people from bots, which checks your browser; it’s the only thing that page loads from anyone else.</li>
+      <li>To keep the account secure, each sign-in in a browser keeps when it happened, your IP address and your browser’s user agent, which names the browser and its system. They’re deleted when that sign-in ends: when you sign out, or about a week after you last use it. For each DuoTyping app you sign in, we keep which app it is (Mac, Windows, Chrome or the web) and when you allowed it, until you delete the account, and when it was last used, until 30 days after that.</li>
+      <li>To stop anyone guessing codes or flooding an inbox, the sign-in server also counts requests from each IP address, and to each email address in a scrambled form, for a few minutes.</li>
       <li>If you buy the paid plan, Paddle sells it to you as the merchant of record and handles your payment details under its own privacy policy. We receive only whether your subscription is active and when it renews.</li>
       <li>What can sync, each with its own switch in Settings › Account: writing profiles and their custom instructions, which profile is the default, appearance, your language, your cloud model choice (never its key), custom providers (never a key), shortcuts and which apps have marks as you type.</li>
       <li>What never syncs: anything you check, any suggestion, API keys, and your Mac’s own permissions and setup.</li>
       <li>The account and its synced settings are stored with Cloudflare. They’re encrypted in transit and at rest, but not end to end, so our server can read the settings it stores.</li>
-      <li>Synced settings are kept until you delete them. Deleting the account erases them and the checks linked to it at once; restorable backups expire within 30 days. Sign-in records (time, a shortened IP address, platform and app version) are kept for 6 months, to keep accounts secure.</li>
-      <li>You can export the account’s settings as one file, or delete the account, in Settings › Account. Your devices keep their own settings either way.</li>
+      <li>Synced settings are kept until you delete them. Deleting the account erases them and the checks linked to it at once; restorable backups expire within 30 days.</li>
+      <li>You can’t yet export the account’s settings or delete the account yourself: write to <a href="mailto:support@duotyping.com">support@duotyping.com</a> from its email address, and we’ll do it. Your devices keep their own settings either way.</li>
       <li>We don’t sell or share any of it, and we use it only to run and improve the account, the DuoTyping provider and the paid plan, and to keep them secure.</li>
     </ul>
 
