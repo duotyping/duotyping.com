@@ -13,12 +13,12 @@ usePageHead({
 
 <template>
   <!-- Every line here is something the code does (duotyping-specs product/mac-prd.md §2, §4.6 and §5), and
-       the account section is what duotyping-specs specs/user-accounts.md (A1, A2, A4, R8b, R8d, R10a) keeps, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
+       the account section is what duotyping-specs specs/user-accounts.md (A1, A2, A4, R8b, R8d, R10a) and web-portal.md (§6.6, §6.7) keep, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
        provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md in duotyping-api: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
   <LegalPage title="Privacy Policy" updated="12 October 2026">
     <p class="lede">
-      DuoTyping sends no analytics, telemetry or crash reports. When you check with your own key, your writing goes straight to your provider and never reaches us. When you check with the DuoTyping provider, DuoTyping keeps what you check and the suggestions it got back, encrypted, to improve DuoTyping. An account is optional, and it carries settings, never writing. This website counts visits without cookies{{ CONSENT_BANNER ? ', and with Google Analytics only if you agree' : '' }}.
+      DuoTyping sends no analytics, telemetry or crash reports. When you check with your own key, your writing goes straight to your provider and never reaches us. When you check with the DuoTyping provider, DuoTyping keeps what you check and the suggestions it got back, encrypted, to improve DuoTyping. An account is optional: it carries settings and, if you use Write in the web app, your drafts. This website counts visits without cookies{{ CONSENT_BANNER ? ', and with Google Analytics only if you agree' : '' }}.
     </p>
 
     <h2>Your writing</h2>
@@ -28,6 +28,7 @@ usePageHead({
       <li>With a provider you connect on your own key, such as OpenAI or Anthropic, it goes from your Mac straight to that provider. No DuoTyping server sits in between, DuoTyping keeps nothing of it, and the provider handles it under its own terms and privacy policy.</li>
       <li>With the DuoTyping provider, it passes through DuoTyping’s server to the AI model that checks it, and DuoTyping keeps a copy of the check (see “What DuoTyping keeps” below).</li>
       <li>The app keeps no history of what you check. Notes you write in New Note are saved on your Mac only.</li>
+      <li>Write, in the web app, saves each draft to your account as you write, so it’s there in any browser you sign in to. Until DuoTyping’s server has a change, that browser keeps it too. “The optional account” below says how drafts are kept.</li>
     </ul>
 
     <h2>What DuoTyping keeps</h2>
@@ -67,7 +68,7 @@ usePageHead({
 
     <h2>The optional account</h2>
     <ul>
-      <li>Everything in DuoTyping works signed out. If you sign in, the account holds your email address, how you sign in, your time zone, the settings you choose to sync, your plan and your check counts. Checks you make with the DuoTyping provider while signed in are linked to it (see “What DuoTyping keeps”). It holds no name.</li>
+      <li>Everything in DuoTyping works signed out. If you sign in, the account holds your email address, how you sign in, your time zone, the settings you choose to sync, the writing profiles and drafts you save in the web app, your plan and your check counts. Checks you make with the DuoTyping provider while signed in are linked to it (see “What DuoTyping keeps”). It holds no name.</li>
       <li>You sign in on account.duotyping.com with a 6-digit code we email you, sent through Cloudflare, or with Google, Apple or a passkey. The code works for 10 minutes, and we store it only in a scrambled form. The sign-in page uses Cloudflare Turnstile to tell people from bots, which checks your browser; it’s the only thing that page loads from anyone else.</li>
       <li>If you use Google or Apple, we ask it only for your email address, and keep the ID it uses for you and the address it gives us. From Apple we also keep a token, encrypted, so we can end the link at Apple when the account is deleted. If you hide your email from Apple, we only ever see the address Apple makes for you, and our emails reach you through Apple. Each handles your sign-in under its own privacy policy.</li>
       <li>A passkey stays on your device or in your password manager. We keep its public key, which can’t sign you in by itself, the kind of passkey it is, such as iCloud Keychain, when you added it and when you last used it, until you remove it or delete the account.</li>
@@ -79,8 +80,8 @@ usePageHead({
       <li>If you buy the paid plan, Paddle sells it to you as the merchant of record and handles your payment details under its own privacy policy. We receive only whether your subscription is active and when it renews.</li>
       <li>What can sync, each with its own switch in Settings › Account: writing profiles and their custom instructions, which profile is the default, appearance, your language, your cloud model choice (never its key), custom providers (never a key), shortcuts and which apps have marks as you type.</li>
       <li>What never syncs: anything you check, any suggestion, API keys, and your Mac’s own permissions and setup.</li>
-      <li>The account and its synced settings are stored with Cloudflare. They’re encrypted in transit and at rest, but not end to end, so our server can read the settings it stores.</li>
-      <li>Synced settings are kept until you delete them or the account is deleted.</li>
+      <li>The account, its synced settings and its drafts are stored with Cloudflare. They’re encrypted in transit and at rest, but not end to end, so our server can read what it stores. Drafts are encrypted once more before they’re stored, with a key kept apart from the database, so a copy of the database alone can’t read them.</li>
+      <li>Synced settings, writing profiles and drafts are kept until you delete them or the account is deleted. Delete All Drafts, on Privacy in the web app, deletes every draft at once.</li>
       <li>Export My Data, on Privacy in the web app, downloads everything the account holds as one file.</li>
       <li>Delete Account, on the same page, signs every device and browser out at once and emails you the date the account will be deleted, 90 days later. Until then nothing in it is deleted, and signing in before that date lets you keep it. On that date we erase the account and everything in it, including the checks linked to it, and end the link at Apple if you used it; restorable backups expire within 30 days. Your devices keep their own settings either way.</li>
       <li>We don’t sell or share any of it, and we use it only to run and improve the account, the DuoTyping provider and the paid plan, and to keep them secure.</li>
