@@ -14,7 +14,7 @@ usePageHead({
 <template>
   <!-- Every line here is something the code does (duotyping-specs product/mac-prd.md §2, §4.6 and §5), and
        the account section is what duotyping-specs specs/user-accounts.md (A1, A2, A4, R8b, R8d, R10a) and web-portal.md (§6.6, §6.7) keep, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
-       provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md in duotyping-api: this page
+       provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md, and how it's unlinked data-deletion.md, in duotyping-specs: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
   <LegalPage title="Privacy Policy" updated="12 October 2026">
     <p class="lede">
@@ -36,9 +36,9 @@ usePageHead({
       <li><strong>What:</strong> every check made with the DuoTyping provider, marks as you type included: the text and instructions sent, the suggestions or the error that came back, when, which AI model answered and how long it took. It’s linked to your account, or, signed out, to your Mac’s random device key.</li>
       <li><strong>Why:</strong> to improve DuoTyping: to compare and choose AI models, to find and fix bad suggestions, and to tune how checks are asked. It isn’t used to train AI models, and it isn’t sold or shared.</li>
       <li><strong>How it’s protected:</strong> each check is encrypted on DuoTyping’s server before it’s stored, with a key that server can use only to lock, never to unlock. Only the people who make DuoTyping can read kept checks, on their own computers. Kept checks are stored with Cloudflare.</li>
-      <li><strong>How long:</strong> until we delete them.</li>
+      <li><strong>How long:</strong> until we delete them. Asking us to delete yours, or deleting your account, doesn’t delete them: it unlinks them from you (see “Deleting it”).</li>
       <li><strong>Other people in your text:</strong> what you check may mention others, such as a reply to a colleague. It’s kept the same way, so check with your own key if you’d rather nothing you write reach us.</li>
-      <li><strong>Deleting it:</strong> write to <a href="mailto:support@duotyping.com">support@duotyping.com</a>. With an account, we delete every check linked to it. Signed out, your checks are linked only to a random key on your Mac that we can’t trace to you, so tell us roughly when you checked and we’ll do what we can.</li>
+      <li><strong>Deleting it:</strong> we don’t delete kept checks when you ask; we unlink them from you. Write to <a href="mailto:support@duotyping.com">support@duotyping.com</a>. With an account, we unlink every check linked to it. Signed out, your checks are linked only to a random key on your Mac that we can’t trace to you, so tell us roughly when you checked and we’ll do what we can. An unlinked check stays, encrypted, with nothing that links it to you or your Mac, so we can’t find it for you again, and what you wrote in it stays as you wrote it, including anything it says about you or others. Restorable backups, and logs that could link it to you again, expire within 30 days.</li>
     </ul>
 
     <h2>What stays on your Mac</h2>
@@ -46,7 +46,7 @@ usePageHead({
       <li>Your settings (writing profiles, custom instructions, shortcut and chosen model) are saved in DuoTyping’s preferences on your Mac. They leave it only if you sign in and turn sync on.</li>
       <li>Cloud API keys are stored in the macOS Keychain, are used only to make a check, and are never shown again or sent to DuoTyping.</li>
       <li>A random device key, used to count this Mac’s free checks with the DuoTyping provider and to link the checks it keeps, is stored in the macOS Keychain. It isn’t derived from your hardware and says nothing about you.</li>
-      <li>To remove everything on your Mac, disconnect any cloud provider in Settings › Models, then delete DuoTyping, the folders <code>~/Library/Application Support/DuoTyping</code> and <code>~/Library/Application Support/com.redevify.duotyping</code> (your notes), and the DuoTyping items in Keychain Access. That doesn’t delete checks already kept on DuoTyping’s server: for those, write to us.</li>
+      <li>To remove everything on your Mac, disconnect any cloud provider in Settings › Models, then delete DuoTyping, the folders <code>~/Library/Application Support/DuoTyping</code> and <code>~/Library/Application Support/com.redevify.duotyping</code> (your notes), and the DuoTyping items in Keychain Access. That doesn’t unlink checks already kept on DuoTyping’s server from you: for those, write to us.</li>
     </ul>
 
     <h2>When DuoTyping goes online</h2>
@@ -83,7 +83,7 @@ usePageHead({
       <li>The account, its synced settings and its drafts are stored with Cloudflare. They’re encrypted in transit and at rest, but not end to end, so our server can read what it stores. Drafts are encrypted once more before they’re stored, with a key kept apart from the database, so a copy of the database alone can’t read them.</li>
       <li>Synced settings, writing profiles and drafts are kept until you delete them or the account is deleted. Delete All Drafts, on Privacy in the web app, deletes every draft at once.</li>
       <li>Export My Data, on Privacy in the web app, downloads everything the account holds as one file.</li>
-      <li>Delete Account, on the same page, signs every device and browser out at once and emails you the date the account will be deleted, 90 days later. Until then nothing in it is deleted, and signing in before that date lets you keep it. On that date we erase the account and everything in it, including the checks linked to it, and end the link at Apple if you used it; restorable backups expire within 30 days. Your devices keep their own settings either way.</li>
+      <li>Delete Account, on the same page, signs every device and browser out at once and emails you the date the account will be deleted, 90 days later. Until then nothing in it is deleted, and signing in before that date lets you keep it. On that date we erase the account and everything in it, and end the link at Apple if you used it. Checks DuoTyping kept while you were signed in aren’t erased: they stay, encrypted, no longer linked to you (see “Deleting it” above). Restorable backups, and logs that could link those checks to you again, expire within 30 days. Your devices keep their own settings either way.</li>
       <li>We don’t sell or share any of it, and we use it only to run and improve the account, the DuoTyping provider and the paid plan, and to keep them secure.</li>
     </ul>
 
