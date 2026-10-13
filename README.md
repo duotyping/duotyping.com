@@ -12,7 +12,8 @@ are self-hosted.
 ```sh
 npm install
 npm run dev       # Vite dev server
-npm test          # the appcast parser's check
+npm test          # the appcast parser, the feedback page's setup line, and the mascot's copy
+npm run mascot    # copy the mascot's css from ../duotyping-specs, where it's defined
 npm run typecheck # vue-tsc over every .ts and .vue file, templates included
 npm run build     # type-check, then prerender to dist/
 npm run preview   # build, then serve dist/ with Cloudflare's own runtime (wrangler dev)

@@ -1,4 +1,6 @@
 import assert from 'node:assert/strict'
+import { createHash } from 'node:crypto'
+import { readFileSync } from 'node:fs'
 import { DOWNLOAD_URL, RELEASES_URL, parseAppcast } from './site.ts'
 
 // The shape Sparkle's generate_appcast writes for the app repo's `make release`.
@@ -53,3 +55,11 @@ assert.equal(feedbackFromExtension('?v=1;x'), '/feedback')
 assert.equal(feedbackFromExtension(''), '/feedback')
 
 console.log('feedback: ok')
+
+// The mascot's stylesheet is duotyping-specs', copied by npm run mascot and never edited here.
+const mark = readFileSync(new URL('../styles/mark.css', import.meta.url), 'utf8')
+const copied = mark.match(/sha256 ([0-9a-f]{16})/)?.[1]
+const body = mark.slice(mark.indexOf('\n') + 1)
+assert.equal(createHash('sha256').update(body).digest('hex').slice(0, 16), copied, 'src/styles/mark.css was edited: run npm run mascot')
+
+console.log('mascot: ok')
