@@ -2,7 +2,7 @@
 import Icon from '../components/Icon.vue'
 import CountBadge from '../components/demo/CountBadge.vue'
 import InlineRewriteCard from '../components/demo/InlineRewriteCard.vue'
-import NoteDemo from '../components/demo/NoteDemo.vue'
+import DraftDemo from '../components/demo/DraftDemo.vue'
 import RewritePill from '../components/demo/RewritePill.vue'
 import Suggestion from '../components/demo/Suggestion.vue'
 </script>
@@ -174,13 +174,13 @@ import Suggestion from '../components/demo/Suggestion.vue'
 
     <article class="mt-3 flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card lg:mt-5 lg:grid lg:grid-cols-12">
       <div v-loop class="loop flex items-center justify-center bg-stage px-4 py-6 max-lg:border-b max-lg:border-edge lg:order-2 lg:col-span-7 lg:border-l lg:border-edge md:h-[492px] md:p-8" aria-hidden="true">
-        <NoteDemo class="w-[318px] max-w-full md:w-[480px]" />
+        <DraftDemo class="w-[318px] max-w-full md:w-[480px]" />
       </div>
       <div class="flex flex-col justify-center gap-2.5 p-6 lg:order-1 lg:col-span-5 lg:p-10">
-        <Icon name="note" class="size-7 text-cyan-deep" />
-        <h4 class="fluid mt-1 font-semibold tracking-[-0.01em] [--hi:26] [--lo:21]">Nothing selected? New Note.</h4>
+        <Icon name="draft" class="size-7 text-cyan-deep" />
+        <h4 class="fluid mt-1 font-semibold tracking-[-0.01em] [--hi:26] [--lo:21]">Nothing selected? New Draft.</h4>
         <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:16.5] [--lo:15.5]">
-          New Note opens instead: type or paste, check, then copy the result anywhere. It’s also the way in for apps that won’t share their text.
+          Write opens instead: type or paste, check, then copy the result anywhere. It’s also the way in for apps that won’t share their text.
         </p>
       </div>
     </article>

@@ -2,7 +2,7 @@
 // Every icon by name, so a misspelt <Icon name> fails the type check instead of drawing nothing.
 export type IconName =
   | 'download' | 'arrow-down' | 'arrow-right' | 'share' | 'copy' | 'check' | 'menu' | 'close'
-  | 'mac' | 'offline' | 'note' | 'fixes' | 'lines' | 'shield' | 'keyboard'
+  | 'mac' | 'offline' | 'draft' | 'fixes' | 'lines' | 'shield' | 'keyboard'
   | 'nothing-kept' | 'key' | 'verified' | 'selection' | 'lock' | 'chevron'
   | 'minus' | 'plus'
 </script>
@@ -22,7 +22,7 @@ const ICONS: Record<IconName, [string, number]> = {
   close: ['<path d="M6 6l12 12M18 6 6 18"/>', 1.8],
   offline: ['<path d="M2.5 9.2a14 14 0 0 1 19 0M5.8 12.6a9.4 9.4 0 0 1 12.4 0M9.1 16a4.6 4.6 0 0 1 5.8 0"/><path d="M12 19.6h.01"/><path d="M4 4l16 16"/>', 1.8],
   mac: ['<rect x="3" y="4.5" width="18" height="12" rx="2"/><path d="M9 20h6M12 16.5V20"/>', 1.7],
-  note: ['<rect x="3.5" y="4" width="17" height="16" rx="2.6"/><path d="M3.5 8.2h17"/><path d="M8.5 16.8l.5-2.3 5.3-5.3 1.8 1.8-5.3 5.3-2.3.5Z"/>', 1.7],
+  draft: ['<rect x="3.5" y="4" width="17" height="16" rx="2.6"/><path d="M3.5 8.2h17"/><path d="M8.5 16.8l.5-2.3 5.3-5.3 1.8 1.8-5.3 5.3-2.3.5Z"/>', 1.7],
   fixes: ['<path d="M3.5 16.5 7.5 6l4 10.5M5 12.8h5"/><path d="M13.5 15.2l2.6 2.6 4.6-5.3"/>', 1.7],
   lines: ['<path d="M4 6.5h16M4 11.5h11M4 16.5h14"/>', 1.7],
   shield: ['<path d="M12 3.5 5.5 6.2v5.1c0 4.1 2.8 7.3 6.5 8.9 3.7-1.6 6.5-4.8 6.5-8.9V6.2L12 3.5Z"/><path d="M9 12.2l2.1 2.1 4-4.1"/>', 1.7],

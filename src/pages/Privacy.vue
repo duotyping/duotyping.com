@@ -23,11 +23,11 @@ usePageHead({
 
     <h2>Your writing</h2>
     <ul>
-      <li>DuoTyping reads text only when you ask it to: the text you select when you press the shortcut, what you type or paste into New Note and, where marks as you type are on, the text in the box you’re typing in.</li>
+      <li>DuoTyping reads text only when you ask it to: the text you select when you press the shortcut, what you type or paste into Write and, where marks as you type are on, the text in the box you’re typing in.</li>
       <li>The text being checked goes, with your writing profile and any custom instructions, to the provider you chose in Settings › Models or when you set DuoTyping up.</li>
       <li>With a provider you connect on your own key, such as OpenAI or Anthropic, it goes from your Mac straight to that provider. No DuoTyping server sits in between, DuoTyping keeps nothing of it, and the provider handles it under its own terms and privacy policy.</li>
       <li>With the DuoTyping provider, it passes through DuoTyping’s server to the AI model that checks it, and DuoTyping keeps a copy of the check (see “What DuoTyping keeps” below).</li>
-      <li>The app keeps no history of what you check. Notes you write in New Note are saved on your Mac only.</li>
+      <li>The app keeps no history of what you check. Drafts you keep in Write on the Mac are saved on your Mac only.</li>
       <li>Write, in the web app, saves each draft to your account as you write, so it’s there in any browser you sign in to. Until DuoTyping’s server has a change, that browser keeps it too. “The optional account” below says how drafts are kept.</li>
     </ul>
 
@@ -46,7 +46,7 @@ usePageHead({
       <li>Your settings (writing profiles, custom instructions, shortcut and chosen model) are saved in DuoTyping’s preferences on your Mac. They leave it only if you sign in and turn sync on.</li>
       <li>Cloud API keys are stored in the macOS Keychain, are used only to make a check, and are never shown again or sent to DuoTyping.</li>
       <li>A random device key, used to count this Mac’s free checks with the DuoTyping provider and to link the checks it keeps, is stored in the macOS Keychain. It isn’t derived from your hardware and says nothing about you.</li>
-      <li>To remove everything on your Mac, disconnect any cloud provider in Settings › Models, then delete DuoTyping, the folders <code>~/Library/Application Support/DuoTyping</code> and <code>~/Library/Application Support/com.redevify.duotyping</code> (your notes), and the DuoTyping items in Keychain Access. That doesn’t unlink checks already kept on DuoTyping’s server from you: for those, write to us.</li>
+      <li>To remove everything on your Mac, disconnect any cloud provider in Settings › Models, then delete DuoTyping, the folders <code>~/Library/Application Support/DuoTyping</code> and <code>~/Library/Application Support/com.redevify.duotyping</code> (your drafts), and the DuoTyping items in Keychain Access. That doesn’t unlink checks already kept on DuoTyping’s server from you: for those, write to us.</li>
     </ul>
 
     <h2>When DuoTyping goes online</h2>

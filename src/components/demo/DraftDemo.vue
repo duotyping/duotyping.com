@@ -4,11 +4,11 @@ import Suggestion from './Suggestion.vue'
 </script>
 
 <template>
-  <!-- New Note as the app draws it (ManualInputViewController): the arrival banner, your text and its
+  <!-- Write (New Draft) as the app draws it (ManualInputViewController): the arrival banner, your text and its
        count, Check text and Copy, the status line, the cards, and the promise at the foot. The loop
        checks, accepts the fix into the box (the status line stays, the card goes, as in the app),
        then copies the result. -->
-  <MacWindow title="New Note">
+  <MacWindow title="Write">
     <div class="px-4 pt-3.5">
       <div class="mb-2.5 flex items-start gap-2 rounded-[7px] border border-[#9ED7E3] bg-tag px-[11px] py-[9px] text-[11.5px] leading-[1.4] text-ink">
         <svg width="13" height="13" viewBox="0 0 16 16" fill="none" class="mt-px shrink-0">

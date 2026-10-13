@@ -5,7 +5,7 @@ withDefaults(
   defineProps<{
     label: string // "Sentence 1 of 2"
     focused?: boolean // the card the keyboard is on
-    cloud?: string // the provider and whose key: "OpenAI · your key"; empty in a note, which has no chip
+    cloud?: string // the provider and whose key: "OpenAI · your key"; empty in a draft, which has no chip
     original?: string
     actions?: 'accept' | 'accept-skip' | 'replace'
     pressed?: boolean // Accept, mid-press (the demo)

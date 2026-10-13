@@ -31,8 +31,8 @@
 @keyframes dtrpop { 0%, 20% { opacity: 0; transform: translateY(6px); } 23%, 57% { opacity: 1; transform: none; } 60%, 100% { opacity: 0; transform: translateY(6px); } }
 @keyframes dtpress { 0%, 52%, 57%, 100% { background-color: var(--color-accent); transform: none; } 53%, 56% { background-color: #0F1530; transform: scale(0.96); } }
 
-/* New Note · 10 s: Check text, the card arrives, Accept writes the fix into the box and the card
-   goes while the status line stays, then Copy becomes Copied. At rest: the checked note, card
+/* Write · 10 s: Check text, the card arrives, Accept writes the fix into the box and the card
+   goes while the status line stays, then Copy becomes Copied. At rest: the checked draft, card
    showing, Copy ready. */
 .loop-nslot-stat { animation: dtnslotstat 10s ease-out infinite both; }
 .loop-nslot-card { animation: dtnslotcard 10s ease-out infinite both; }

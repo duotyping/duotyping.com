@@ -18,7 +18,7 @@ body:
     attributes:
       label: What happened
       description: What you expected, what you got, and the steps to get there. Please don’t paste anything private you wrote — describe it instead.
-      placeholder: Pressing ⌃⌥⌘D in Pages opens New Note instead of checking my selection.
+      placeholder: Pressing ⌃⌥⌘D in Pages opens Write instead of checking my selection.
     validations:
       required: true
 
