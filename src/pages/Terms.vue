@@ -11,7 +11,7 @@ usePageHead({
 </script>
 
 <template>
-  <LegalPage title="Terms of Use" updated="12 October 2026">
+  <LegalPage title="Terms of Use" updated="13 October 2026">
     <p class="lede">
       These terms cover the DuoTyping app, the DuoTyping provider, its optional account and paid plan, and this website, and by using any of them you agree to them. “We” means the people who make DuoTyping.
     </p>
@@ -40,7 +40,7 @@ usePageHead({
 
     <h2>The paid plan</h2>
     <p>
-      The paid plan is a subscription that raises your daily checks with the DuoTyping provider, up to the allowance shown when you buy it. It’s sold by Paddle, our merchant of record, and Paddle’s terms of sale apply to the purchase, its taxes and refunds. It renews until you cancel. You can cancel any time in Settings › Account › Manage Subscription, and the plan stays until the end of the period you paid for. If we change the price, we’ll tell you before your next renewal, and the new price applies only from then.
+      The paid plan is a subscription that raises your daily checks with the DuoTyping provider, up to the allowance shown when you buy it. It’s sold by Creem, our merchant of record, and Creem’s terms of sale apply to the purchase, its taxes and refunds. It renews until you cancel. You can cancel any time in Settings › Account › Manage Subscription, and the plan stays until the end of the period you paid for. If we change the price, we’ll tell you before your next renewal, and the new price applies only from then.
     </p>
 
     <h2>No warranty</h2>
