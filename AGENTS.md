@@ -11,12 +11,12 @@ The public website for DuoTyping, a writing assistant: Vue 3, Tailwind CSS 4 and
 - Never commit API tokens, deploy credentials or anything a visitor sent.
 - `/appcast.xml` is part of the Mac app, not the site: it stays at that exact URL, answers 200 with no redirect, and never sits behind a bot challenge. The Mac's `make release` writes it.
 - The privacy page, terms, promises and FAQ say only what the apps and the API actually do. They follow `duotyping-specs`' `product/mac-prd.md` and the specs they name, and change when those do.
-- Keep `duotyping-specs` in step with the code: a change that alters what a document there describes updates it in the same piece of work -- `specs/site-analytics-consent.md` for analytics and consent, or the spec whose promise the copy states (its body, its Status line, and its row in that repo's `README.md`). Commit it to `duotyping-specs`, naming the commit it reflects.
+- Keep `duotyping-specs` in step with the code: a change that alters what a document there describes updates it in the same piece of work -- `specs/site-analytics-consent.md` for analytics, or the spec whose promise the copy states (its body, its Status line, and its row in that repo's `README.md`). Commit it to `duotyping-specs`, naming the commit it reflects.
 
 ## Where things are
 
 - Pages: `src/pages/` (`Home.vue`, `Privacy.vue`, `Terms.vue`, `Feedback.vue`, which every client's Send Feedback… opens, its query read by `src/utils/feedback.ts`, and `Uninstalled.vue`, which the browser opens when the extension is removed; both draw the mascot with `src/components/brand/Mascot.vue` from `src/styles/mark.css`, which `npm run mascot` copies from `duotyping-specs`, where the mascot is defined for every client; never edit the copy, which `npm test` checks); the home page's sections: `src/sections/`, drawn from the design canvas ("DuoTyping Landing").
-- `src/utils/site.ts`: the site's URLs and the appcast reader; `head.ts`: meta tags; `motion.ts`: Reduce Motion and `v-loop`; `consent.ts`: the analytics counters and the banner flag (`duotyping-specs/specs/site-analytics-consent.md`).
+- `src/utils/site.ts`: the site's URLs and the appcast reader; `head.ts`: meta tags; `motion.ts`: Reduce Motion and `v-loop`; `analytics.ts`: the cookieless visit counter (`duotyping-specs/specs/site-analytics-consent.md`).
 - `src/style.css` and `src/styles/`: brand tokens, type scale, components, the hero demo and the loops' keyframes.
 - `public/_headers`: security headers and caching; `wrangler.jsonc`: the static-assets Worker.
 - Plans, the product record and design boards: `duotyping-specs` (its `README.md` is the index).
@@ -28,7 +28,7 @@ The public website for DuoTyping, a writing assistant: Vue 3, Tailwind CSS 4 and
 
 ## Conventions that differ from defaults
 
-- No third-party requests except what `site-analytics-consent.md` allows: Cloudflare Web Analytics for everyone, Google Analytics only after Accept. Fonts stay self-hosted.
+- No cookies, and no third-party requests except what `site-analytics-consent.md` allows: Cloudflare Web Analytics, which sets none. Fonts stay self-hosted.
 - Honour Reduce Motion: every loop and the hero demo show their final frame when motion is reduced.
 
 ## Commit messages
