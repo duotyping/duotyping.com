@@ -15,7 +15,7 @@ The public website for DuoTyping, a writing assistant: Vue 3, Tailwind CSS 4 and
 
 ## Where things are
 
-- Pages: `src/pages/` (`Home.vue`, `Privacy.vue`, `Terms.vue`, and `Feedback.vue`, which every client's Send Feedback… opens; its query is read by `src/utils/feedback.ts`, and its mascot is `src/styles/mark.css`, copied from `duotyping-specs`); the home page's sections: `src/sections/`, drawn from the design canvas ("DuoTyping Landing").
+- Pages: `src/pages/` (`Home.vue`, `Privacy.vue`, `Terms.vue`, `Feedback.vue`, which every client's Send Feedback… opens, its query read by `src/utils/feedback.ts`, and `Uninstalled.vue`, which the browser opens when the extension is removed; both draw the mascot with `src/components/brand/Mascot.vue` from `src/styles/mark.css`, copied from `duotyping-specs`); the home page's sections: `src/sections/`, drawn from the design canvas ("DuoTyping Landing").
 - `src/utils/site.ts`: the site's URLs and the appcast reader; `head.ts`: meta tags; `motion.ts`: Reduce Motion and `v-loop`; `consent.ts`: the analytics counters and the banner flag (`duotyping-specs/specs/site-analytics-consent.md`).
 - `src/style.css` and `src/styles/`: brand tokens, type scale, components, the hero demo and the loops' keyframes.
 - `public/_headers`: security headers and caching; `wrangler.jsonc`: the static-assets Worker.

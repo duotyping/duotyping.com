@@ -37,6 +37,7 @@ Where things are:
 - `src/components/brand/` — the pencils, the lockup, the app icon and the menu-bar mark.
 - `src/pages/Privacy.vue`, `Terms.vue` — linked from every Settings tab in the app.
 - `src/pages/Feedback.vue` — `/feedback`, which every client's Send Feedback… and the site's own Send feedback links open (`duotyping-specs` `specs/user-feedback.md` §5).
+- `src/pages/Uninstalled.vue` — `/uninstalled?v=…`, which the browser opens when the extension is removed (`user-feedback.md` §8); its Add DuoTyping back ↗ waits on `CHROME_STORE_URL`.
 
 ## What the app reads from here
 

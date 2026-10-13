@@ -11,6 +11,12 @@ export const RELEASES_URL = `https://github.com/${REPO}/releases/latest`
 // (duotyping-specs specs/user-feedback.md §5), which links on to the GitHub form.
 export const FEEDBACK_URL = '/feedback'
 
+// The extension's Web Store listing, once it exists: /uninstalled's "Add DuoTyping back ↗" shows
+// only then (duotyping-specs ui-design/site/02-uninstalled.html UN1).
+export const CHROME_STORE_URL = ''
+// Where Delete Account lives, in the web app.
+export const ACCOUNT_PRIVACY_URL = 'https://app.duotyping.com/privacy'
+
 // The appcast Sparkle updates from is also the only place the shipped build is named, so the
 // page reads its version and its disk image off that one feed instead of keeping copies that
 // go stale. Regex, not DOMParser: it runs at build time in node, over a file our own release

@@ -26,9 +26,12 @@ const plain = (value: string | null, max: number) => {
   return v.length <= max && /^[\p{L}\p{N} ._()+-]+$/u.test(v) ? v : ''
 }
 
+// "1.0.0", "0.3.0-beta.2"; anything else is no version.
+export const versionOf = (q: URLSearchParams) => (q.get('v') ?? '').match(/^\d+(\.\d+){0,3}([-+][0-9A-Za-z.]{1,20})?$/)?.[0] ?? ''
+
 export function setupLine(query: string) {
   const q = new URLSearchParams(query)
-  const version = (q.get('v') ?? '').match(/^\d+(\.\d+){0,3}([-+][0-9A-Za-z.]{1,20})?$/)?.[0] ?? ''
+  const version = versionOf(q)
   const system = plain(q.get('os'), 40) || CLIENTS[q.get('client') ?? ''] || ''
   const provider = PROVIDERS[q.get('provider') ?? ''] ?? ''
   const app = plain(q.get('app'), 40)
@@ -41,3 +44,9 @@ export const formUrl = (setup: string) => (setup ? `${FORM_URL}&setup=${encodeUR
 
 export const mailUrl = (setup: string) =>
   `mailto:${SUPPORT_EMAIL}?subject=${encodeURIComponent('DuoTyping feedback')}${setup ? `&body=${encodeURIComponent(`${setup}\n\n`)}` : ''}`
+
+// The extension's uninstall page (§8) has only ?v=; its feedback link names the client for it.
+export const feedbackFromExtension = (query: string) => {
+  const v = versionOf(new URLSearchParams(query))
+  return v ? `/feedback?client=chrome&v=${v}` : '/feedback'
+}

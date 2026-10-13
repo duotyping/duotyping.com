@@ -175,4 +175,20 @@
     text-transform: uppercase;
     color: var(--color-ink-2);
   }
+
+  /* /feedback and /uninstalled: numbered ways, each a card (duotyping-specs ui-design/site/). */
+  .way {
+    @apply flex items-start gap-3 rounded-[14px] border border-line bg-card px-4 py-[18px] md:gap-[18px] md:rounded-2xl md:px-6 md:py-[22px];
+  }
+  .way h2 { @apply font-display text-lg leading-[1.2] font-semibold tracking-[-0.02em] text-ink md:text-xl; }
+  .way p { @apply text-[14.5px] leading-[1.55] text-ink-2 md:text-[15px]; }
+  .way b { @apply font-semibold text-ink; }
+  .way-num {
+    @apply flex size-7 shrink-0 items-center justify-center rounded-full bg-tint font-mono text-[13px] font-semibold text-cyan-deep;
+  }
+  .way .fine, .fine { @apply text-[13.5px] text-ink-3; }
+  .way-link { @apply text-[14.5px] font-semibold text-cyan-deep hover:underline; }
+  /* A smaller .btn; on a 320 px phone its words wrap rather than push its icon out. */
+  .btn-sm { @apply h-auto min-h-11 rounded-xl px-[18px] py-2 text-center text-[15px] whitespace-normal; }
+  .btn-soft { @apply bg-sand text-ink hover:bg-key; }
 }
