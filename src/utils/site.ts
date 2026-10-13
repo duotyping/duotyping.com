@@ -7,8 +7,9 @@ export const SITE_URL = 'https://duotyping.com'
 export const REPO = 'duotyping/duotyping.com'
 export const RELEASES_URL = `https://github.com/${REPO}/releases/latest`
 
-// Owner-approved destination for "Send feedback", same rule as the app's own button.
-export const FEEDBACK_URL = `https://github.com/${REPO}/issues/new?template=feedback.yml`
+// "Send feedback" everywhere on the site: the page every client's Send Feedback… opens too
+// (duotyping-specs specs/user-feedback.md §5), which links on to the GitHub form.
+export const FEEDBACK_URL = '/feedback'
 
 // The appcast Sparkle updates from is also the only place the shipped build is named, so the
 // page reads its version and its disk image off that one feed instead of keeping copies that

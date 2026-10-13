@@ -16,7 +16,7 @@ usePageHead({
        the account section is what duotyping-specs specs/user-accounts.md (A1, A2, A4, R8b, R8d, R10a) and web-portal.md (§6.6, §6.7) keep, with sync as writing-profiles-and-sync.md §4 commits it to. The DuoTyping
        provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md, and how it's unlinked data-deletion.md, in duotyping-specs: this page
        deploys before the server keeps anything (KEEP_ENABLED), as "Changes" below promises. -->
-  <LegalPage title="Privacy Policy" updated="12 October 2026">
+  <LegalPage title="Privacy Policy" updated="13 October 2026">
     <p class="lede">
       DuoTyping sends no analytics, telemetry or crash reports. When you check with your own key, your writing goes straight to your provider and never reaches us. When you check with the DuoTyping provider, DuoTyping keeps what you check and the suggestions it got back, encrypted, to improve DuoTyping. An account is optional: it carries settings and, if you use Write in the web app, your drafts. This website counts visits without cookies{{ CONSENT_BANNER ? ', and with Google Analytics only if you agree' : '' }}.
     </p>
@@ -96,7 +96,7 @@ usePageHead({
       <li>Apart from {{ CONSENT_BANNER ? 'those two' : 'that counter' }}, it loads nothing from anyone else. Even its fonts come from duotyping.com.</li>
       <li>It’s hosted on Cloudflare, which, like any host, sees your IP address in order to deliver the page.</li>
       <li>The Download button downloads the app from download.duotyping.com, also on Cloudflare.</li>
-      <li>Send feedback opens a form on GitHub. What you post there is public, so don’t use it for privacy requests.</li>
+      <li>Send feedback opens a page on this site that reads only what your app adds to its address (its version, your system, your provider and, from a menu over another app, that app’s name) and stores nothing. Its form is on GitHub: what you post there is public, so don’t use it for privacy requests.</li>
     </ul>
 
     <h2>Changes</h2>

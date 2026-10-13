@@ -10,6 +10,8 @@ const routes = [
   // The app links to both from every Settings tab.
   { path: '/privacy', component: () => import('./pages/Privacy.vue') },
   { path: '/terms', component: () => import('./pages/Terms.vue') },
+  // Every client's Send Feedback… opens it, with its setup in the query.
+  { path: '/feedback', component: () => import('./pages/Feedback.vue') },
   // Prerendered as dist/404.html, which Cloudflare serves for any unknown path...
   { path: '/404', component: NotFound },
   // ...and hydrated here, whatever that path was.

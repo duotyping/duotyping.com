@@ -36,6 +36,7 @@ Where things are:
 - `src/components/demo/` — the Mac UI the illustrations draw, in the system font.
 - `src/components/brand/` — the pencils, the lockup, the app icon and the menu-bar mark.
 - `src/pages/Privacy.vue`, `Terms.vue` — linked from every Settings tab in the app.
+- `src/pages/Feedback.vue` — `/feedback`, which every client's Send Feedback… and the site's own Send feedback links open (`duotyping-specs` `specs/user-feedback.md` §5).
 
 ## What the app reads from here
 

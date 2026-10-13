@@ -26,8 +26,8 @@ body:
     id: setup
     attributes:
       label: Your setup
-      description: DuoTyping version (Settings › About), macOS version, and the model you use.
-      placeholder: DuoTyping 1.0.0 · macOS 15.1 · Qwen3 4B Instruct
+      description: DuoTyping version (in About), your system (macOS, Windows or Chrome) and the provider you use.
+      placeholder: DuoTyping 0.3.0 · Windows 11 24H2 · DuoTyping
 
   - type: textarea
     id: attachments
