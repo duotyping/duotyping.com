@@ -163,7 +163,11 @@ onUnmounted(() => {
               <span class="font-semibold text-ink">Done: only what you accepted changed.</span>
               <button type="button" class="cursor-pointer font-semibold text-cyan-deep underline underline-offset-4" @click="pick(sample)">Start over</button>
             </template>
-            <span v-else>The review appears here.</span>
+            <!-- Before the first press: what to do, and what will show up here -->
+            <template v-else>
+              <span class="font-semibold text-ink">{{ os === 'phone' ? 'Tap the keys' : `Press ${KEYS.join(os === 'mac' ? '' : '+')} or click the keys` }} to check the highlighted text.</span>
+              <span>Each suggestion shows up here, for you to accept or skip.</span>
+            </template>
           </div>
         </div>
       </div>
