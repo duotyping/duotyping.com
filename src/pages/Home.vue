@@ -1,18 +1,21 @@
 <script setup lang="ts">
 import { usePageHead } from '../utils/head'
+import ChooseAi from '../sections/ChooseAi.vue'
 import Download from '../sections/Download.vue'
 import Faq, { FAQ } from '../sections/Faq.vue'
+import Features from '../sections/Features.vue'
 import Hero from '../sections/Hero.vue'
-import HowItWorks from '../sections/HowItWorks.vue'
-import Models from '../sections/Models.vue'
-import Privacy from '../sections/Privacy.vue'
-import Promises from '../sections/Promises.vue'
-import Review from '../sections/Review.vue'
+import Platforms from '../sections/Platforms.vue'
+import Pricing from '../sections/Pricing.vue'
+import Sponsors from '../sections/Sponsors.vue'
+import TryIt from '../sections/TryIt.vue'
 import { SITE_URL, release } from '../utils/site'
 
-const TITLE = 'DuoTyping | The private writing assistant for Mac'
+// The page shows every feature working and keeps its words to headlines (duotyping-specs, the
+// landing proposal of 2026-10-15): eleven sections, nearly all of them demos.
+const TITLE = 'DuoTyping | Grammar and tone in any app, on Mac, Windows and the web'
 const DESCRIPTION =
-  'DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you accept. It checks with DuoTyping’s own free checks or your own OpenAI or Anthropic key.'
+  'DuoTyping checks grammar and tone in the apps you already write in, on Mac, Windows, Chrome and the web, and changes nothing until you say yes.'
 
 usePageHead({
   title: TITLE,
@@ -29,17 +32,17 @@ usePageHead({
         url: `${SITE_URL}/`,
         description: DESCRIPTION,
         applicationCategory: 'BusinessApplication',
-        operatingSystem: 'macOS 14 Sonoma or later',
-        processorRequirements: 'Apple silicon or Intel',
+        operatingSystem: 'macOS 14 or later, Windows 10 22H2 or Windows 11, Chrome, Edge, web',
         ...(release.version && { softwareVersion: release.version }),
         image: `${SITE_URL}/og.png`,
         featureList: [
           'Grammar, spelling and tone suggestions in the apps you already use',
           'Nothing changes until you accept',
-          'DuoTyping’s own free checks, or OpenAI, Anthropic or any OpenAI-compatible model on your own API key',
-          'Marks as you type in Mail, Messages, Slack, Teams and WhatsApp',
+          'Marks as you type in the apps and sites you switch on',
+          'Rewrite, Translate and Pronounce',
           'Up to 10 writing profiles, each with one of 17 writing contexts',
-          'An optional free account for more daily checks',
+          'DuoTyping’s own free checks, or OpenAI, Anthropic or any OpenAI-compatible model on your own key (Mac and Windows)',
+          'Write, in the browser and on your phone',
         ],
       },
       {
@@ -53,11 +56,12 @@ usePageHead({
 
 <template>
   <Hero />
-  <Promises />
-  <HowItWorks />
-  <Review />
-  <Privacy />
-  <Models />
+  <Sponsors />
+  <TryIt />
+  <Features />
+  <ChooseAi />
+  <Platforms />
+  <Pricing />
   <Faq />
   <Download />
 </template>

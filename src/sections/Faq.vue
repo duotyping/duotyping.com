@@ -1,14 +1,14 @@
 <script lang="ts">
 // Rendered here and handed to search engines as FAQPage, from the one list.
 export const FAQ: [string, string][] = [
-  ['What does it cost?', 'DuoTyping’s own checks are free: 20 on each Mac, and more with a free account. On your own key, your provider bills you directly for what you check.'],
-  ['Does my writing leave my Mac?', 'Only the text you check. On your own key it goes straight to the cloud provider you connect, and nowhere else, and DuoTyping stores none of it. With the DuoTyping provider it goes through DuoTyping’s server, which keeps the check, encrypted, to improve DuoTyping.'],
-  ['Do I need an account?', 'No. Everything on the Mac works signed out. A free account gives you more DuoTyping checks each day; your keys, settings and drafts stay on your Mac either way.'],
-  ['Why does it ask for Accessibility access?', 'It’s how macOS lets one app read the text you select in another, and write an accepted change back in place. DuoTyping uses it for exactly that, and never reads password fields. Without it, you can still type or paste into Write.'],
-  ['Which apps does it work in?', 'Most apps where you can select text: Mail, Messages, Notes, Pages, Slack and your browser among them. Marks as you type work in Mail, Messages, Slack, Teams and WhatsApp. For an app that won’t share its text, Write is the way in: type or paste, check, then copy the result back.'],
-  ['Which Macs can run it?', 'Any Mac with Apple silicon or Intel on macOS 14 Sonoma or later.'],
-  ['Does it work offline?', 'No. Checks go to your provider or to DuoTyping, so they need a connection. Pronounce works offline, and drafts you keep in Write are saved on your Mac either way.'],
+  ['Which apps does it work in?', 'On Mac and Windows, most apps where you can select text, with marks as you type in the chat and mail apps you switch on. In Chrome and Edge, the sites you switch on. For anything else there’s Write, on the web and your phone: type or paste, check, then copy.'],
+  ['Which computers can run it?', 'A Mac with macOS 14 or later, Apple silicon or Intel; a PC with Windows 10 22H2 or Windows 11; Chrome 119 or later, or Edge. Write runs in any current browser, phones included.'],
+  ['Do I need an account?', 'Not on Mac or Windows: both work signed out, with your own key or 20 free checks to start. The browser extension and Write on the web need a free account, which also gives you more checks each day.'],
+  ['What does it cost?', 'DuoTyping’s own checks are free to start, and a free account gives you more every day. Pro, with more again, is coming. On your own key, your provider bills you directly.'],
+  ['What does DuoTyping keep?', 'On your own key, nothing: your text goes straight to your provider. With DuoTyping’s checks, it keeps each check, encrypted, to improve DuoTyping, and never logs or sells it. Delete Account, in the web app, deletes your account after 90 days.'],
+  ['Does it work offline?', 'No: checks need a connection, to your provider or to DuoTyping. Pronounce works offline in the apps, and drafts you keep in Write on your computer stay there either way.'],
   ['Which languages does it support?', 'English today, with more languages coming: DuoTyping is becoming a multilingual writing assistant. Translate already reads most languages.'],
+  ['Why does the Mac app ask for Accessibility access?', 'It’s how macOS lets one app read the text you select in another, and write an accepted change back in place. DuoTyping uses it for exactly that, and never reads password fields. Without it, you can still type or paste into Write.'],
 ]
 </script>
 

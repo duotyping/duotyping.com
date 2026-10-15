@@ -35,10 +35,10 @@ export function parseAppcast(xml?: string) {
 export const release = parseAppcast(typeof __APPCAST__ === 'string' ? __APPCAST__ : '')
 export const DOWNLOAD_URL = release.url || RELEASES_URL
 
-// "Send to my Mac" on a phone: the share sheet where there is one, else a mail to yourself.
+// "Send to my computer" on a phone: the share sheet where there is one, else a mail to yourself.
 export const SHARE = {
-  title: 'DuoTyping for Mac',
-  text: 'DuoTyping | The private writing assistant for Mac. Coming soon to your Mac:',
+  title: 'DuoTyping',
+  text: 'DuoTyping checks grammar and tone in any app, on Mac, Windows, Chrome and the web:',
   url: `${SITE_URL}/`,
 }
 export const MAIL_SELF = `mailto:?subject=${encodeURIComponent(SHARE.title)}&body=${encodeURIComponent(`${SHARE.text} ${SHARE.url}`)}`

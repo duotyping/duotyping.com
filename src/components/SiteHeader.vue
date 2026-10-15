@@ -5,15 +5,18 @@ import BrandMark from './brand/BrandMark.vue'
 import Icon from './Icon.vue'
 import ShareActions from './ShareActions.vue'
 import { motionPaused, toggleMotion } from '../utils/motion'
+import { headerCta } from '../utils/cta'
+import { WEB_APP_URL } from '../utils/facts'
+import { detectPlatform } from '../utils/platform'
 
 const route = useRoute()
-// "#how" on the home page, "/#how" everywhere else. A bare "/#how" on the home page would
+// "#faq" on the home page, "/#faq" everywhere else. A bare "/#faq" on the home page would
 // reload it whenever the address carries a query string.
 const at = (hash: string) => (route.path === '/' ? hash : `/${hash}`)
 const LINKS = [
-  ['#how', 'How it works'],
-  ['#privacy', 'Privacy'],
-  ['#models', 'Models'],
+  ['#features', 'Features'],
+  ['#platforms', 'Platforms'],
+  ['#pricing', 'Pricing'],
   ['#faq', 'FAQ'],
 ]
 
@@ -37,6 +40,7 @@ watch(
 const onKey = (e: KeyboardEvent) => e.key === 'Escape' && close()
 let wide: MediaQueryList | undefined
 onMounted(() => {
+  detectPlatform()
   onScroll()
   addEventListener('scroll', onScroll, { passive: true })
   addEventListener('keydown', onKey)
@@ -62,10 +66,17 @@ onUnmounted(() => {
         <span class="text-[18.5px] font-semibold tracking-[-0.02em] lg:text-[21px]">DuoTyping</span>
       </a>
       <div class="flex items-center gap-1 lg:gap-6">
-        <nav aria-label="Main" class="hidden items-center gap-9 lg:flex">
+        <nav aria-label="Main" class="hidden items-center gap-8 lg:flex">
           <a v-for="[hash, label] in LINKS" :key="hash" :href="at(hash)" class="nav-link">{{ label }}</a>
-          <span class="btn btn-soon h-11 rounded-xl px-[18px] text-[15.5px]">Coming soon</span>
+          <div class="flex items-center gap-2.5">
+            <a :href="WEB_APP_URL" class="btn btn-soft h-11 rounded-xl px-[18px] text-[15.5px]">Use now</a>
+            <template v-if="headerCta">
+              <span v-if="headerCta.soon" class="btn btn-soon h-11 rounded-xl px-[18px] text-[15.5px]">Coming soon</span>
+              <a v-else :href="headerCta.href" class="btn h-11 rounded-xl px-[18px] text-[15.5px]">{{ headerCta.label }}</a>
+            </template>
+          </div>
         </nav>
+        <a :href="WEB_APP_URL" class="btn btn-soft mr-1 h-9 rounded-[10px] px-3.5 text-[14.5px] lg:hidden">Use now</a>
         <!-- Stops every moving figure on the page (WCAG 2.2.2); with Reduce Motion nothing moves, so it's gone. -->
         <button
           type="button"
@@ -102,10 +113,14 @@ onUnmounted(() => {
           >
             {{ label }}<Icon name="arrow-right" class="size-5 text-ink-3" />
           </a>
-          <div class="mt-[22px]">
-            <!-- A phone can't install it, so pass the link on; a tablet-sized window might be a Mac. -->
-            <ShareActions class="sm:hidden" />
-            <span class="btn btn-soon w-full max-sm:hidden">Coming soon</span>
+          <div class="mt-[22px] flex flex-col gap-2.5">
+            <a :href="WEB_APP_URL" class="btn w-full">Use now</a>
+            <!-- A phone can't install the apps, so pass the link on; a tablet-sized window might be a computer. -->
+            <ShareActions class="sm:hidden" soft />
+            <template v-if="headerCta">
+              <span v-if="headerCta.soon" class="btn btn-soon w-full max-sm:hidden">Coming soon</span>
+              <a v-else :href="headerCta.href" class="btn btn-soft w-full max-sm:hidden">{{ headerCta.label }}</a>
+            </template>
           </div>
         </nav>
       </div>

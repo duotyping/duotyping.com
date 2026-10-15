@@ -1,15 +1,30 @@
 <script setup lang="ts">
-import Icon from '../components/Icon.vue'
+import { computed, ref } from 'vue'
 import ShareActions from '../components/ShareActions.vue'
 import HeroDemo from '../components/demo/HeroDemo.vue'
 import HeroDemoPhone from '../components/demo/HeroDemoPhone.vue'
+import PlatformScene from '../components/demo/PlatformScene.vue'
+import { PLATFORMS, WEB_APP_URL } from '../utils/facts'
+import { desktopCta, extensionCta } from '../utils/cta'
+import { os } from '../utils/platform'
+
+type Scene = 'mac' | 'windows' | 'chrome' | 'phone'
+const SCENES: [Scene, string][] = [['mac', 'Mac'], ['windows', 'Windows'], ['chrome', 'Chrome'], ['phone', 'Phone']]
+const picked = ref<Scene | null>(null)
+// The demo opens on the visitor's own system, Windows until the page knows which.
+const scene = computed<Scene>(() => picked.value ?? ({ mac: 'mac', windows: 'windows', phone: 'phone', other: 'chrome' } as const)[os.value])
+// This computer's app, or on another system the extension; "Try in browser" always sits beside it.
+const primary = computed(() => desktopCta.value ?? extensionCta.value)
+const desktop = computed(() => os.value === 'mac' || os.value === 'windows')
+const facts = computed(() => (desktop.value ? 'Free to try, no account needed · Or bring your own key' : 'Free daily checks with a free account'))
+const requires = computed(() => PLATFORMS[os.value === 'mac' ? 'mac' : os.value === 'windows' ? 'windows' : 'chrome'].requires)
 </script>
 
 <template>
   <!-- ── Hero ───────────────────────────────────────────────────────────────────────── -->
-  <section id="top" class="@container relative xl:flex xl:min-h-[850px] xl:items-center">
-    <div class="wrap flex flex-col gap-[22px] pt-9 sm:max-w-[640px] sm:gap-7 sm:pt-14 xl:box-content xl:w-[520px] xl:max-w-none xl:gap-[30px] xl:pt-0 xl:pr-0">
-      <div class="eyebrow">The private writing assistant for Mac</div>
+  <section id="top" class="@container relative xl:flex xl:min-h-[860px] xl:items-center">
+    <div class="wrap flex flex-col gap-[22px] pt-9 sm:max-w-[640px] sm:gap-7 sm:pt-14 xl:box-content xl:w-[520px] xl:max-w-none xl:gap-[28px] xl:pt-0 xl:pr-0">
+      <div class="eyebrow">For Mac, Windows, Chrome and the web</div>
       <h1 class="hero-title font-display leading-[1.04] font-bold tracking-[-0.035em] text-ink">
         <!-- Screen readers hear the line itself; the struck word is decoration. -->
         <span class="sr-only">Say it well. Keep it yours.</span>
@@ -19,27 +34,40 @@ import HeroDemoPhone from '../components/demo/HeroDemoPhone.vue'
         </span>
       </h1>
       <p class="fluid max-w-[540px] leading-[1.55] text-pretty text-ink-2 [--hi:21] [--lo:17.5]">
-        DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you say so. It checks with your own OpenAI or Anthropic key and keeps nothing you write, or with the DuoTyping provider, which keeps your checks, encrypted, to improve DuoTyping.
+        Grammar and tone in any app.<br />Nothing changes until you say yes.
       </p>
-      <!-- A phone can't install a Mac app, so here the call is to pass the link on. -->
-      <div class="mt-1 flex flex-col gap-[18px] sm:hidden">
-        <ShareActions copy />
-        <p class="text-center text-sm leading-normal text-ink-3">
-          DuoTyping is a Mac app, so send yourself the link for when it’s out.<br />macOS 14 or later · Apple silicon or Intel
-        </p>
+      <!-- A phone: Write works right here, and the apps are a link to send on. -->
+      <div class="mt-1 flex flex-col gap-3.5 sm:hidden">
+        <a class="btn w-full" :href="WEB_APP_URL">Try in browser</a>
+        <ShareActions copy soft />
+        <p class="text-center text-sm leading-normal text-ink-3">Write works in your phone’s browser. Send the link to your computer for the apps.</p>
       </div>
-      <div class="flex flex-wrap items-center gap-x-[30px] gap-y-3 max-sm:hidden">
-        <span class="btn btn-soon">Coming soon</span>
-        <a
-          href="#how"
-          class="inline-flex min-h-11 items-center gap-2 text-[17px] font-semibold text-ink underline decoration-ink/28 decoration-[1.5px] underline-offset-[5px] transition-[text-decoration-color] duration-150 hover:decoration-ink"
-        >See how it works<Icon name="arrow-down" class="size-[18px]" /></a>
+      <div class="flex flex-wrap items-center gap-3 max-sm:hidden">
+        <template v-if="primary">
+          <span v-if="primary.soon" class="btn btn-soon">Coming soon</span>
+          <a v-else class="btn" :href="primary.href">{{ primary.label }}</a>
+          <a class="btn btn-soft" :href="WEB_APP_URL">Try in browser</a>
+        </template>
+        <a v-else class="btn" :href="WEB_APP_URL">Try in browser</a>
       </div>
-      <p class="-mt-2.5 text-[14.5px] text-ink-3 max-sm:hidden">macOS 14 Sonoma or later · Apple silicon or Intel</p>
+      <p class="-mt-2.5 text-[14.5px] leading-[1.6] text-ink-3 max-sm:hidden">{{ facts }}<br />{{ requires }}</p>
+      <div class="flex flex-wrap items-center gap-2 max-sm:hidden" role="group" aria-label="See the demo on">
+        <span class="mr-1 text-[14.5px] text-ink-3">See it on</span>
+        <button
+          v-for="[id, label] in SCENES"
+          :key="id"
+          type="button"
+          class="h-9 cursor-pointer rounded-full border px-3.5 text-[14px] font-semibold transition-colors duration-200 ease-out"
+          :class="scene === id ? 'border-ink bg-ink text-white' : 'border-edge bg-card text-ink hover:border-key'"
+          :aria-pressed="scene === id"
+          @click="picked = id"
+        >{{ label }}</button>
+      </div>
       <HeroDemoPhone class="sm:hidden" />
     </div>
     <div class="wrap pt-12 max-sm:hidden xl:contents">
-      <HeroDemo />
+      <HeroDemo v-if="scene === 'mac'" />
+      <PlatformScene v-else :key="scene" :platform="scene" />
     </div>
   </section>
 </template>

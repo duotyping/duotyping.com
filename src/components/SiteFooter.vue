@@ -7,7 +7,7 @@ import { FEEDBACK_URL } from '../utils/site'
 const route = useRoute()
 const at = (hash: string) => (route.path === '/' ? hash : `/${hash}`)
 const COLUMNS = computed((): [string, [string, string][]][] => [
-  ['Product', [[at('#download'), 'Coming soon'], [at('#how'), 'How it works'], [at('#privacy'), 'Privacy'], [at('#models'), 'Models']]],
+  ['Product', [[at('#features'), 'Features'], [at('#platforms'), 'Platforms'], [at('#pricing'), 'Pricing'], [at('#privacy'), 'Privacy']]],
   ['Help', [[at('#faq'), 'FAQ'], [FEEDBACK_URL, 'Send feedback']]],
   ['Legal', [['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Use']]],
 ])
@@ -23,7 +23,7 @@ const YEAR = __YEAR__
           <BrandMark class="size-7 md:size-[30px]" />
           <span class="text-[18.5px] font-semibold tracking-[-0.02em] md:text-xl">DuoTyping</span>
         </a>
-        <p class="text-[15px] text-ink-2 md:text-[15.5px]">The private writing assistant for Mac.</p>
+        <p class="text-[15px] text-ink-2 md:text-[15.5px]">The writing assistant for Mac, Windows, Chrome and the web.</p>
       </div>
       <div class="flex flex-wrap gap-x-7 gap-y-6 md:gap-x-[72px]">
         <nav v-for="[title, links] in COLUMNS" :key="title" :aria-label="title" class="flex flex-col gap-1">
@@ -34,7 +34,7 @@ const YEAR = __YEAR__
     </div>
     <div class="flex flex-col gap-1.5 text-[13px] text-ink-3 md:flex-row md:justify-between md:text-[13.5px]">
       <span>© {{ YEAR }} DuoTyping</span>
-      <span>Mac and macOS are trademarks of Apple Inc.</span>
+      <span>Mac and macOS are trademarks of Apple Inc. Windows and Edge are trademarks of Microsoft. Chrome is a trademark of Google LLC. Other names belong to their owners.</span>
     </div>
   </footer>
 </template>
