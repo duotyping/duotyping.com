@@ -4,7 +4,6 @@ import { useRoute } from 'vue-router'
 import BrandMark from './brand/BrandMark.vue'
 import Icon from './Icon.vue'
 import ShareActions from './ShareActions.vue'
-import { motionPaused, toggleMotion } from '../utils/motion'
 import { headerCta } from '../utils/cta'
 import { WEB_APP_URL } from '../utils/facts'
 import { detectPlatform } from '../utils/platform'
@@ -74,17 +73,6 @@ onUnmounted(() => {
           </div>
         </nav>
         <a :href="WEB_APP_URL" class="btn btn-soft mr-1 h-9 rounded-[10px] px-3.5 text-[14.5px] lg:hidden">Use now</a>
-        <!-- Stops every moving figure on the page (WCAG 2.2.2); with Reduce Motion nothing moves, so it's gone. -->
-        <button
-          type="button"
-          class="flex size-11 cursor-pointer items-center justify-center rounded-full text-ink transition-colors duration-200 ease-out hover:bg-ink/6 motion-reduce:hidden"
-          :aria-pressed="motionPaused"
-          :aria-label="motionPaused ? 'Play animations' : 'Pause animations'"
-          :title="motionPaused ? 'Play animations' : 'Pause animations'"
-          @click="toggleMotion"
-        >
-          <Icon :name="motionPaused ? 'play' : 'pause'" class="size-5" />
-        </button>
         <button
           type="button"
           class="flex size-11 cursor-pointer items-center justify-center text-ink lg:hidden"

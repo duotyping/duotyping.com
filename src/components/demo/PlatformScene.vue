@@ -11,8 +11,8 @@ import { PC_KEYS } from '../../utils/platform'
 
 // The hero's story on Windows, in Chrome or Edge, and on a phone, at the Mac demo's size: the
 // email's two mistakes are marked, it's selected, the shortcut goes down, the review rises and
-// Accept fixes it in place. CSS plays it every 10 s; v-loop starts it in view and holds it still
-// when paused, and with Reduce Motion it rests on the review.
+// Accept fixes it in place. CSS plays it every 10 s; v-loop starts it in view, and with Reduce
+// Motion it rests on the review.
 defineProps<{ platform: 'windows' | 'chrome' | 'phone' }>()
 const KEYS = { windows: ['Win', 'Shift', 'D'], chrome: ['Alt', 'Shift', 'D'] }
 </script>

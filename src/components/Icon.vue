@@ -4,7 +4,7 @@ export type IconName =
   | 'download' | 'arrow-down' | 'arrow-right' | 'share' | 'copy' | 'check' | 'menu' | 'close'
   | 'mac' | 'offline' | 'draft' | 'fixes' | 'lines' | 'shield' | 'keyboard'
   | 'nothing-kept' | 'key' | 'verified' | 'selection' | 'lock' | 'chevron'
-  | 'minus' | 'plus' | 'pause' | 'play' | 'windows' | 'browser' | 'phone'
+  | 'minus' | 'plus' | 'windows' | 'browser' | 'phone'
 </script>
 
 <script setup lang="ts">
@@ -35,8 +35,6 @@ const ICONS: Record<IconName, [string, number]> = {
   chevron: ['<path d="M6.5 9.5 12 15l5.5-5.5"/>', 2],
   minus: ['<path d="M6 12h12"/>', 2],
   plus: ['<path d="M12 6v12M6 12h12"/>', 2],
-  pause: ['<path d="M9 6.5v11M15 6.5v11"/>', 2.2],
-  play: ['<path d="M8.5 6.4v11.2L17.8 12 8.5 6.4Z"/>', 1.8],
   windows: ['<rect x="4" y="4" width="7" height="7" rx="1.2"/><rect x="13" y="4" width="7" height="7" rx="1.2"/><rect x="4" y="13" width="7" height="7" rx="1.2"/><rect x="13" y="13" width="7" height="7" rx="1.2"/>', 1.7],
   browser: ['<rect x="3" y="4.5" width="18" height="15" rx="2.2"/><path d="M3 9h18"/><path d="M6.2 6.8h.01M8.8 6.8h.01"/>', 1.7],
   phone: ['<rect x="6.8" y="3" width="10.4" height="18" rx="2.4"/><path d="M10.8 17.6h2.4"/>', 1.7],

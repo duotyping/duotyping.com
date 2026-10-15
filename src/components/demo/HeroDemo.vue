@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { computed, onMounted, onUnmounted, reactive, ref, watch } from 'vue'
+import { computed, onMounted, onUnmounted, reactive, ref } from 'vue'
 import MarkPaths from '../brand/MarkPaths.vue'
 import MenuBarMark from '../brand/MenuBarMark.vue'
 import CountBadge from './CountBadge.vue'
@@ -7,7 +7,7 @@ import MacWindow from './MacWindow.vue'
 import Popup from './Popup.vue'
 import RewritePill from './RewritePill.vue'
 import Suggestion from './Suggestion.vue'
-import { motionPaused, reducedMotion } from '../../utils/motion'
+import { reducedMotion } from '../../utils/motion'
 
 type Seg = 't0' | 't1' | 'm1' | 't2' | 'm2' | 't3'
 // A line box, in canvas px: left, right, top, bottom.
@@ -204,23 +204,19 @@ function play() {
 
 // It only plays while someone can see it. Off screen, in a hidden tab (where timers are
 // throttled and the steps would drift apart) or display:none on a phone, it rests at the
-// start and begins again from the top when it's back. Paused from the header, it shows its
-// last frame, as it does under Reduce Motion, until it's played again.
+// start and begins again from the top when it's back.
 const root = ref<HTMLElement | null>(null)
 let seen = false
 let running = false
 let io: IntersectionObserver | undefined
 const sync = () => {
-  const go = seen && !document.hidden && !motionPaused.value
+  const go = seen && !document.hidden
   if (go && running) return
   running = go
   stop()
-  set(motionPaused.value ? STILL : RESET)
+  set(RESET)
   if (go) later(FIRST, play)
 }
-watch(motionPaused, () => {
-  if (!reducedMotion()) sync()
-})
 onMounted(() => {
   if (reducedMotion()) return set(STILL)
   io = new IntersectionObserver(([e]) => {
