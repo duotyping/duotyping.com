@@ -4,7 +4,6 @@ import ChooseAi from '../sections/ChooseAi.vue'
 import Download from '../sections/Download.vue'
 import Faq, { FAQ } from '../sections/Faq.vue'
 import Features from '../sections/Features.vue'
-import BuiltOn from '../sections/BuiltOn.vue'
 import Hero from '../sections/Hero.vue'
 import Platforms from '../sections/Platforms.vue'
 import Pricing from '../sections/Pricing.vue'
@@ -56,7 +55,6 @@ usePageHead({
 
 <template>
   <Hero />
-  <BuiltOn />
   <TryIt />
   <Features />
   <ChooseAi />
