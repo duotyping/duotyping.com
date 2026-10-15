@@ -11,9 +11,6 @@ export const RELEASES_URL = `https://github.com/${REPO}/releases/latest`
 // (duotyping-specs specs/user-feedback.md §5), which links on to the GitHub form.
 export const FEEDBACK_URL = '/feedback'
 
-// The extension's Web Store listing, once it exists: /uninstalled's "Add DuoTyping back ↗" shows
-// only then (duotyping-specs ui-design/site/02-uninstalled.html UN1).
-export const CHROME_STORE_URL = ''
 // Where Delete Account lives, in the web app.
 export const ACCOUNT_PRIVACY_URL = 'https://app.duotyping.com/privacy'
 

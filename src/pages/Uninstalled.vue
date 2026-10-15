@@ -3,7 +3,8 @@ import { onMounted, ref } from 'vue'
 import Mascot from '../components/brand/Mascot.vue'
 import { usePageHead } from '../utils/head'
 import { feedbackFromExtension } from '../utils/feedback'
-import { ACCOUNT_PRIVACY_URL, CHROME_STORE_URL } from '../utils/site'
+import { CHROME_STORE_URL, isLive, isPlaceholder } from '../utils/facts'
+import { ACCOUNT_PRIVACY_URL } from '../utils/site'
 
 // duotyping-specs specs/user-feedback.md §8 (F1), drawn in ui-design/site/02-uninstalled.html UN1–UN2.
 // The browser opens it when the extension is removed, with ?v= only. Static: it collects nothing.
@@ -62,7 +63,7 @@ onMounted(() => (feedback.value = feedbackFromExtension(location.search)))
       </ol>
 
       <div class="mt-2 flex flex-wrap items-center gap-4">
-        <a v-if="CHROME_STORE_URL" :href="CHROME_STORE_URL" target="_blank" rel="noopener" class="btn btn-sm max-sm:w-full">Add DuoTyping back ↗</a>
+        <a v-if="isLive('chrome') && !isPlaceholder(CHROME_STORE_URL)" :href="CHROME_STORE_URL" target="_blank" rel="noopener" class="btn btn-sm max-sm:w-full">Add DuoTyping back ↗</a>
         <span class="fine">Your account is still there when you sign in again.</span>
       </div>
     </div>

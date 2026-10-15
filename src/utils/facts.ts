@@ -1,5 +1,5 @@
 import { ref } from 'vue'
-import { CHROME_STORE_URL, DOWNLOAD_URL } from './site'
+import { DOWNLOAD_URL } from './site'
 
 // Every platform's facts in one place: the header, the hero, the platform cards, the pricing and
 // the structured data all read them, so a store launch is a change here and nowhere else.
@@ -18,9 +18,15 @@ export type Platform = {
 }
 
 export const WEB_APP_URL = 'https://app.duotyping.com/'
-// The Microsoft Store and Edge Add-ons pages, once the listings exist (windows-store-listing.md).
-export const WINDOWS_STORE_URL = ''
-export const EDGE_ADDONS_URL = ''
+// Each store's page, a placeholder until its listing exists (windows-store-listing.md,
+// publishing-the-extension.md): a launch puts the listing's ID in place of PLACEHOLDER and sets the
+// platform live below. Nothing links to a placeholder: a live button goes to #platforms instead, and
+// /uninstalled's "Add DuoTyping back ↗" stays hidden.
+export const WINDOWS_STORE_URL = 'https://apps.microsoft.com/detail/PLACEHOLDER'
+export const CHROME_STORE_URL = 'https://chromewebstore.google.com/detail/duotyping/PLACEHOLDER'
+export const EDGE_ADDONS_URL = 'https://microsoftedge.microsoft.com/addons/detail/duotyping/PLACEHOLDER'
+export const isPlaceholder = (url: string) => !url || url.includes('PLACEHOLDER')
+export const linkTo = (url: string) => (isPlaceholder(url) ? '#platforms' : url)
 
 export const PLATFORMS: Record<PlatformId, Platform> = {
   mac: {
@@ -87,5 +93,14 @@ export const PLANS = [
   },
 ]
 
-// Shown as the companies' logos, which go in public/sponsors/ as each company's own artwork.
-export const SPONSORS = ['Anthropic', 'Cloudflare', 'Google', 'Apple', 'Microsoft', 'Better Auth']
+// Each company's logo, from public/sponsors/. Every file there is a placeholder, the name set in Onest
+// SemiBold, until it's replaced with the company's own logo from its brand page: keep the file name
+// and put the new file's width and height here, so the row holds its place while it loads.
+export const SPONSORS = [
+  { name: 'Anthropic', logo: '/sponsors/anthropic.svg', width: 94, height: 21 },
+  { name: 'Cloudflare', logo: '/sponsors/cloudflare.svg', width: 97, height: 21 },
+  { name: 'Google', logo: '/sponsors/google.svg', width: 67, height: 21 },
+  { name: 'Apple', logo: '/sponsors/apple.svg', width: 55, height: 21 },
+  { name: 'Microsoft', logo: '/sponsors/microsoft.svg', width: 89, height: 21 },
+  { name: 'Better Auth', logo: '/sponsors/better-auth.svg', width: 108, height: 21 },
+]

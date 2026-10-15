@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { computed, onUnmounted, ref } from 'vue'
 import Icon, { type IconName } from '../components/Icon.vue'
-import { PLATFORMS, isLive, type PlatformId } from '../utils/facts'
+import { PLATFORMS, isLive, linkTo, type PlatformId } from '../utils/facts'
 import { extensionStore, os } from '../utils/platform'
 
 // Every platform on the home page, as decided on 2026-10-15 (no page per platform): its button,
@@ -49,7 +49,7 @@ onUnmounted(() => clearTimeout(reset))
           <li v-for="t in PLATFORMS[id].tags" :key="t" class="rounded-md bg-chip px-2 py-1 text-[12.5px] font-medium text-ink-2">{{ t }}</li>
         </ul>
         <div class="mt-auto flex flex-col gap-2.5 pt-2">
-          <a v-if="isLive(id)" :href="PLATFORMS[id].href || '#platforms'" class="btn btn-sm w-full" :class="mine !== id && 'btn-soft'">{{ label(id) }}</a>
+          <a v-if="isLive(id)" :href="linkTo(PLATFORMS[id].href)" class="btn btn-sm w-full" :class="mine !== id && 'btn-soft'">{{ label(id) }}</a>
           <span v-else class="btn btn-sm btn-soon w-full">Coming soon</span>
           <p class="text-[13px] leading-[1.45] text-ink-3">{{ PLATFORMS[id].requires }}</p>
           <!-- The package manager's line only once there's a release for it to install -->

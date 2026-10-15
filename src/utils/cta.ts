@@ -1,10 +1,10 @@
 import { computed } from 'vue'
-import { EDGE_ADDONS_URL, PLATFORMS, isLive } from './facts'
+import { EDGE_ADDONS_URL, PLATFORMS, isLive, linkTo } from './facts'
 import { extensionStore, os } from './platform'
 
 // A button the page draws: a link once its store is live, "Coming soon" until then.
 export type Cta = { label: string; href?: string; soon?: boolean }
-const link = (label: string, href: string): Cta => ({ label, href: href || '#platforms' })
+const link = (label: string, href: string): Cta => ({ label, href: linkTo(href) })
 const SOON: Cta = { label: 'Coming soon', soon: true }
 
 // The app for this computer: Mac or Windows. A phone or another system gets none.
