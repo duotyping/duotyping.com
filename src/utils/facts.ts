@@ -45,7 +45,7 @@ export const PLATFORMS: Record<PlatformId, Platform> = {
     live: false,
     cta: 'Get it for Windows',
     href: WINDOWS_STORE_URL,
-    requires: 'Windows 10 22H2 or Windows 11',
+    requires: 'Windows 10 22H2, or Windows 11 24H2 or later',
     tags: ['Any app', 'Your own key', 'Translate', 'Pronounce'],
   },
   chrome: {
