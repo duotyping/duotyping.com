@@ -103,9 +103,10 @@ onUnmounted(() => {
         <p class="fluid text-ink-2 [--hi:18] [--lo:16]">{{ os === 'phone' ? '' : 'Or click the keys. ' }}Nothing you do here leaves the page.</p>
       </div>
 
-      <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-12 lg:gap-8">
+      <!-- The keys take what they need, so the Mac's four never run into the review. -->
+      <div class="grid grid-cols-1 items-center gap-6 lg:grid-cols-[1fr_auto_1fr] lg:gap-8">
         <!-- The message, its mistakes already selected -->
-        <div class="font-mac rounded-xl border border-key bg-white px-5 py-4 text-[15px] leading-[1.7] text-mac-ink shadow-[0_12px_28px_rgba(24,33,63,0.08)] lg:col-span-5 md:text-base">
+        <div class="font-mac rounded-xl border border-key bg-white px-5 py-4 text-[15px] leading-[1.7] text-mac-ink shadow-[0_12px_28px_rgba(24,33,63,0.08)] md:text-base">
           {{ current.before
           }}<template v-for="(fix, i) in current.fixes" :key="fix.from"
             ><span
@@ -117,7 +118,7 @@ onUnmounted(() => {
         </div>
 
         <!-- The shortcut -->
-        <div class="flex justify-center lg:col-span-2">
+        <div class="flex justify-center">
           <button
             type="button"
             class="group flex cursor-pointer items-center gap-2 rounded-2xl p-1 disabled:cursor-default"
@@ -135,7 +136,7 @@ onUnmounted(() => {
         </div>
 
         <!-- The review: one card at a time, as the app shows it -->
-        <div class="font-mac min-h-[218px] lg:col-span-5">
+        <div class="font-mac min-h-[218px]">
           <div v-if="step === 'review' && card" class="overflow-hidden rounded-[10px] border border-edge bg-panel text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)]">
             <div class="flex items-center gap-2.5 px-3.5 pt-3 pb-2.5">
               <span class="rounded-[5px] bg-tag px-2 py-[3px] text-[10.5px] font-semibold text-cyan-deep">Sentence by sentence</span>
