@@ -1,11 +1,9 @@
 <script setup lang="ts">
-import BrandMark from '../brand/BrandMark.vue'
 import MarkPaths from '../brand/MarkPaths.vue'
-import SceneMessage from './SceneMessage.vue'
-import Suggestion from './Suggestion.vue'
+import PhoneWrite from './PhoneWrite.vue'
 
 // What a phone sees in the hero: Write in the phone's own browser, the same email's mistakes
-// marked, then fixed from a sheet, on the clock PlatformScene's styles keep (its ps-* classes).
+// marked, one tapped and fixed, on the clock PlatformScene's styles keep (its ps-* classes).
 // Drawn at 350 × 626 and scaled to the phone, as the stage-phone rule does.
 </script>
 
@@ -20,21 +18,7 @@ import Suggestion from './Suggestion.vue'
         <div class="flex h-9 items-center justify-between px-5 text-xs font-semibold text-mac-ink">
           9:41<span class="h-5 w-[78px] rounded-full bg-[#0F1530]" /><span class="flex gap-[3px]"><span v-for="n in 3" :key="n" class="size-1.5 rounded-full bg-mac-ink" /></span>
         </div>
-        <div class="flex items-center gap-2 border-b border-line px-4 pt-1 pb-2.5">
-          <BrandMark class="size-[18px]" />
-          <span class="text-sm font-semibold text-mac-ink">Write</span>
-          <span class="grow" />
-          <span class="text-[11px] text-ink-3">Saved</span>
-        </div>
-        <SceneMessage class="font-mac px-4 pt-3.5" size="text-[13px] leading-[1.6]" />
-        <div class="ps-sheet absolute inset-x-0 bottom-0 rounded-t-[16px] border-t border-edge bg-white px-3 pt-2 pb-6 shadow-[0_-12px_28px_rgba(24,33,63,0.14)]">
-          <div class="mx-auto mb-2.5 h-1 w-9 rounded-full bg-key" />
-          <div class="ps-acc font-mac">
-            <Suggestion label="Grammar" focused actions="accept" cloud="" :keys="null" original="I have send" size="text-[13px]">
-              I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
-            </Suggestion>
-          </div>
-        </div>
+        <PhoneWrite small class="h-[534px]" />
       </div>
     </div>
   </div>
