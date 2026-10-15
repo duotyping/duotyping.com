@@ -4,10 +4,10 @@ import ChooseAi from '../sections/ChooseAi.vue'
 import Download from '../sections/Download.vue'
 import Faq, { FAQ } from '../sections/Faq.vue'
 import Features from '../sections/Features.vue'
+import BuiltOn from '../sections/BuiltOn.vue'
 import Hero from '../sections/Hero.vue'
 import Platforms from '../sections/Platforms.vue'
 import Pricing from '../sections/Pricing.vue'
-import Sponsors from '../sections/Sponsors.vue'
 import TryIt from '../sections/TryIt.vue'
 import { SITE_URL, release } from '../utils/site'
 
@@ -56,7 +56,7 @@ usePageHead({
 
 <template>
   <Hero />
-  <Sponsors />
+  <BuiltOn />
   <TryIt />
   <Features />
   <ChooseAi />

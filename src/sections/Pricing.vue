@@ -28,5 +28,6 @@ import { PLANS } from '../utils/facts'
         </ul>
       </li>
     </ul>
+    <p class="mt-5 text-[14px] text-ink-3">Prices are in US dollars. Sales tax or VAT, where it applies, is added at checkout.</p>
   </section>
 </template>

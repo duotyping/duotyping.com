@@ -97,15 +97,3 @@ export const PLANS = [
     items: ['Checks with no daily limit', 'OpenAI, Anthropic or any OpenAI-compatible endpoint', 'Billed by your provider; DuoTyping keeps nothing'],
   },
 ]
-
-// Each company's logo, from public/sponsors/. Every file there is a placeholder, the name set in Onest
-// SemiBold, until it's replaced with the company's own logo from its brand page: keep the file name
-// and put the new file's width and height here, so the row holds its place while it loads.
-export const SPONSORS = [
-  { name: 'Anthropic', logo: '/sponsors/anthropic.svg', width: 94, height: 21 },
-  { name: 'Cloudflare', logo: '/sponsors/cloudflare.svg', width: 97, height: 21 },
-  { name: 'Google', logo: '/sponsors/google.svg', width: 67, height: 21 },
-  { name: 'Apple', logo: '/sponsors/apple.svg', width: 55, height: 21 },
-  { name: 'Microsoft', logo: '/sponsors/microsoft.svg', width: 89, height: 21 },
-  { name: 'Better Auth', logo: '/sponsors/better-auth.svg', width: 108, height: 21 },
-]
