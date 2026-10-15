@@ -4,7 +4,7 @@ import { PLANS } from '../utils/facts'
 </script>
 
 <template>
-  <!-- ── Pricing: what each plan gives, no price until there is one ─────────────────── -->
+  <!-- ── Pricing: each plan's price and what it gives ───────────────────────────────── -->
   <section id="pricing" class="wrap scroll-mt-[-40px] pt-[88px] lg:pt-[116px]">
     <div class="mb-8 flex flex-col gap-3.5 lg:mb-12 lg:gap-[18px]">
       <div class="eyebrow">Pricing</div>
@@ -16,6 +16,10 @@ import { PLANS } from '../utils/facts'
           <h3 class="font-display text-[24px] font-bold tracking-[-0.02em]">{{ plan.name }}</h3>
           <span v-if="plan.soon" class="tag">Coming soon</span>
         </div>
+        <p class="flex flex-wrap items-baseline gap-x-2">
+          <span class="font-display text-[34px] leading-none font-bold tracking-[-0.03em] text-ink">{{ plan.price }}</span>
+          <span v-if="plan.per" class="text-[15px] text-ink-2">{{ plan.per }}</span>
+        </p>
         <p class="text-[15.5px] text-ink-2">{{ plan.line }}</p>
         <ul class="flex flex-col gap-3 border-t border-line pt-4">
           <li v-for="item in plan.items" :key="item" class="flex gap-2.5 text-[15px] leading-[1.45] text-ink">

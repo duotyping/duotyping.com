@@ -73,21 +73,26 @@ export const previewLaunch = ref(false)
 export const isLive = (id: PlatformId) => PLATFORMS[id].live || previewLaunch.value
 
 // The plans, as the API counts them today (duotyping-api wrangler.jsonc; product/web-prd.md §4.3).
-// No prices until the owner sets one (decided 2026-10-15).
+// Pro's price is the owner's (2026-10-15), and must match its products in Creem.
 export const PLANS = [
   {
     name: 'Free',
+    price: '$0',
     line: 'For everyday writing.',
     items: ['20 checks on each computer, no account', 'With a free account, every day: 20 checks, 200 marks as you type, 50 translations', 'Spelling marks in Write, never counted'],
   },
   {
     name: 'Pro',
     soon: true,
+    price: '$10',
+    per: 'a month, or $96 a year',
     line: 'For writing all day.',
     items: ['Every day: 300 checks, 1,000 marks as you type, 300 translations', 'Within a fair monthly limit', 'Everything in Free'],
   },
   {
     name: 'Your own key',
+    price: '$0',
+    per: 'from DuoTyping',
     line: 'On Mac and Windows.',
     items: ['Checks with no daily limit', 'OpenAI, Anthropic or any OpenAI-compatible endpoint', 'Billed by your provider; DuoTyping keeps nothing'],
   },

@@ -2,13 +2,14 @@
 import { computed } from 'vue'
 import { useRoute } from 'vue-router'
 import BrandMark from './brand/BrandMark.vue'
+import { SUPPORT_EMAIL } from '../utils/feedback'
 import { FEEDBACK_URL } from '../utils/site'
 
 const route = useRoute()
 const at = (hash: string) => (route.path === '/' ? hash : `/${hash}`)
 const COLUMNS = computed((): [string, [string, string][]][] => [
   ['Product', [[at('#features'), 'Features'], [at('#platforms'), 'Platforms'], [at('#pricing'), 'Pricing'], [at('#privacy'), 'Privacy']]],
-  ['Help', [[at('#faq'), 'FAQ'], [FEEDBACK_URL, 'Send feedback']]],
+  ['Help', [[at('#faq'), 'FAQ'], [FEEDBACK_URL, 'Send feedback'], [`mailto:${SUPPORT_EMAIL}`, SUPPORT_EMAIL]]],
   ['Legal', [['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Use'], ['/terms#acceptable-use', 'Acceptable Use Policy']]],
 ])
 // The build's year, so the prerendered page and the hydrated one always agree.
