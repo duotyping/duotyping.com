@@ -13,7 +13,7 @@ usePageHead({
 <template>
   <!-- Every line here is something the code does (duotyping-specs product/mac-prd.md §2, §4.6 and §5; windows-prd.md and extension-prd.md for their own lines), and
        the account section is what duotyping-specs specs/user-accounts.md (A1, A2, A4, R8b, R8d, R10a) and web-portal.md (§6.6, §6.7) keep, and nothing here promises sync, which writing-profiles-and-sync.md plans but isn’t built. The DuoTyping
-       provider's lines are hosted-api.md §7 in the app repo, and what it keeps is hosted-check-storage.md, and how it's unlinked data-deletion.md, in duotyping-specs: this page
+       provider's lines, and Cloudflare's logs of each request, are hosted-api.md §7, and what it keeps is hosted-check-storage.md, and how it's unlinked data-deletion.md, in duotyping-specs: this page
        deploys before the server, which keeps every check from its first deploy with no switch (owner, 2026-10-13), as "Changes" below promises. -->
   <LegalPage title="Privacy Policy" updated="15 October 2026">
     <p class="lede">
@@ -55,6 +55,7 @@ usePageHead({
       <li>The Mac app checks download.duotyping.com for updates, and downloads an update from there when you install one; you can turn automatic checks off in Settings › General. The Windows app and the browser extension update through the Microsoft Store and the browser’s extension store.</li>
       <li>A cloud provider you connect yourself is contacted only to check your text.</li>
       <li>Like any server you connect to, each of these sees your device’s IP address. For checks, DuoTyping’s server uses it for one thing: limiting free checks without an account. It keeps only a scrambled form that changes every day, and deletes it after two days. Signing in keeps more, as “Your account” below says.</li>
+      <li>Cloudflare, which runs DuoTyping’s server, its account server and the web app, also keeps a log of each request to them for us: when it came, the web address it asked for, your IP address and the city and country Cloudflare places it in, and the browser or app that sent it, but never what you check or write. We use these logs only to find and fix faults and to keep DuoTyping secure, and Cloudflare deletes them after seven days.</li>
     </ul>
 
     <h2>The DuoTyping provider</h2>
