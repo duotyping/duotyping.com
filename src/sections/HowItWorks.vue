@@ -126,7 +126,7 @@ import Suggestion from '../components/demo/Suggestion.vue'
       <div class="flex flex-col gap-2.5">
         <h3 class="fluid font-display leading-[1.1] font-bold tracking-[-0.02em] [--hi:30] [--lo:24]">Bring your own key</h3>
         <p class="fluid leading-[1.55] text-pretty text-ink-2 [--hi:17] [--lo:15.5]">
-          The first time you open DuoTyping, connect what does the checking: OpenAI or Anthropic with your own key, or any OpenAI-compatible endpoint.
+          The first time you open DuoTyping, pick what does the checking: DuoTyping’s own free checks, OpenAI or Anthropic with your own key, or any OpenAI-compatible endpoint.
         </p>
       </div>
       <article class="flex flex-col overflow-hidden rounded-[22px] border border-edge bg-card lg:grid lg:grid-cols-12">

@@ -4,6 +4,7 @@ import { useRoute } from 'vue-router'
 import BrandMark from './brand/BrandMark.vue'
 import Icon from './Icon.vue'
 import ShareActions from './ShareActions.vue'
+import { motionPaused, toggleMotion } from '../utils/motion'
 
 const route = useRoute()
 // "#how" on the home page, "/#how" everywhere else. A bare "/#how" on the home page would
@@ -60,20 +61,33 @@ onUnmounted(() => {
         <BrandMark class="size-7 lg:size-8" />
         <span class="text-[18.5px] font-semibold tracking-[-0.02em] lg:text-[21px]">DuoTyping</span>
       </a>
-      <nav aria-label="Main" class="hidden items-center gap-9 lg:flex">
-        <a v-for="[hash, label] in LINKS" :key="hash" :href="at(hash)" class="nav-link">{{ label }}</a>
-        <span class="btn btn-soon h-11 rounded-xl px-[18px] text-[15.5px]">Coming soon</span>
-      </nav>
-      <button
-        type="button"
-        class="flex size-11 cursor-pointer items-center justify-center text-ink lg:hidden"
-        aria-controls="menu"
-        :aria-expanded="open"
-        :aria-label="open ? 'Close menu' : 'Open menu'"
-        @click="open = !open"
-      >
-        <Icon :name="open ? 'close' : 'menu'" :class="open ? 'size-[22px]' : 'size-6'" />
-      </button>
+      <div class="flex items-center gap-1 lg:gap-6">
+        <nav aria-label="Main" class="hidden items-center gap-9 lg:flex">
+          <a v-for="[hash, label] in LINKS" :key="hash" :href="at(hash)" class="nav-link">{{ label }}</a>
+          <span class="btn btn-soon h-11 rounded-xl px-[18px] text-[15.5px]">Coming soon</span>
+        </nav>
+        <!-- Stops every moving figure on the page (WCAG 2.2.2); with Reduce Motion nothing moves, so it's gone. -->
+        <button
+          type="button"
+          class="flex size-11 cursor-pointer items-center justify-center rounded-full text-ink transition-colors duration-200 ease-out hover:bg-ink/6 motion-reduce:hidden"
+          :aria-pressed="motionPaused"
+          :aria-label="motionPaused ? 'Play animations' : 'Pause animations'"
+          :title="motionPaused ? 'Play animations' : 'Pause animations'"
+          @click="toggleMotion"
+        >
+          <Icon :name="motionPaused ? 'play' : 'pause'" class="size-5" />
+        </button>
+        <button
+          type="button"
+          class="flex size-11 cursor-pointer items-center justify-center text-ink lg:hidden"
+          aria-controls="menu"
+          :aria-expanded="open"
+          :aria-label="open ? 'Close menu' : 'Open menu'"
+          @click="open = !open"
+        >
+          <Icon :name="open ? 'close' : 'menu'" :class="open ? 'size-[22px]' : 'size-6'" />
+        </button>
+      </div>
     </div>
 
     <Transition name="menu">

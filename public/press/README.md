@@ -11,11 +11,10 @@ apps you already write in, and changes nothing until you accept.
 **Long:** DuoTyping is a writing assistant for the Mac. Select text in Mail, Messages, Notes,
 Slack or your browser, press one shortcut, and DuoTyping suggests fixes for spelling, grammar,
 punctuation and tone, sentence by sentence or as a whole rewrite. Nothing changes until you
-accept. By default it runs a local model on Apple silicon, so what you write never leaves the Mac;
-a cloud model (OpenAI, Anthropic, or any OpenAI-compatible endpoint) is optional and runs on your
-own API key, and then DuoTyping stores none of what you write; checks with the DuoTyping provider
-are kept, encrypted, to improve DuoTyping. An optional account syncs only your
-writing profiles and settings between Macs.
+accept. It checks with DuoTyping’s own free checks, which DuoTyping keeps, encrypted, to improve
+DuoTyping, or with a cloud model on your own API key (OpenAI, Anthropic or any OpenAI-compatible
+endpoint), and then DuoTyping stores none of what you write. An optional free account gives you
+more checks each day.
 
 ## Fact sheet
 
@@ -24,11 +23,11 @@ writing profiles and settings between Macs.
 | Name | DuoTyping (one word, capital D and T) |
 | Tagline | Say it well. Keep it yours. |
 | Category | Writing assistant, macOS menu-bar app |
-| Platform | macOS 14 Sonoma or later, Apple silicon |
+| Platform | macOS 14 Sonoma or later, Apple silicon or Intel |
 | Writing languages | English today, more coming |
 | Interface | English |
 | Availability | Coming soon at [duotyping.com](https://duotyping.com) |
-| Local models | Qwen3 1.7B, Llama 3.2 3B Instruct, Qwen3 4B Instruct 2507, Qwen2.5 14B Instruct |
+| Checks | DuoTyping’s own, free to start |
 | Cloud models (optional, your own key) | OpenAI, Anthropic, any OpenAI-compatible API |
 | Website | <https://duotyping.com> |
 

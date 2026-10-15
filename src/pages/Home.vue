@@ -12,7 +12,7 @@ import { SITE_URL, release } from '../utils/site'
 
 const TITLE = 'DuoTyping | The private writing assistant for Mac'
 const DESCRIPTION =
-  'DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you accept. It checks with your own OpenAI or Anthropic key.'
+  'DuoTyping checks grammar and tone in the apps you already write in, and changes nothing until you accept. It checks with DuoTyping’s own free checks or your own OpenAI or Anthropic key.'
 
 usePageHead({
   title: TITLE,
@@ -30,16 +30,16 @@ usePageHead({
         description: DESCRIPTION,
         applicationCategory: 'BusinessApplication',
         operatingSystem: 'macOS 14 Sonoma or later',
-        processorRequirements: 'Apple silicon',
+        processorRequirements: 'Apple silicon or Intel',
         ...(release.version && { softwareVersion: release.version }),
         image: `${SITE_URL}/og.png`,
         featureList: [
           'Grammar, spelling and tone suggestions in the apps you already use',
           'Nothing changes until you accept',
-          'OpenAI, Anthropic or any OpenAI-compatible model, on your own API key',
+          'DuoTyping’s own free checks, or OpenAI, Anthropic or any OpenAI-compatible model on your own API key',
           'Marks as you type in Mail, Messages, Slack, Teams and WhatsApp',
-          '17 writing profiles',
-          'An optional account that syncs profiles and settings between Macs',
+          'Up to 10 writing profiles, each with one of 17 writing contexts',
+          'An optional free account for more daily checks',
         ],
       },
       {

@@ -12,7 +12,7 @@ import ShareActions from '../components/ShareActions.vue'
     <ShareActions class="w-full sm:hidden" />
     <div class="flex flex-col items-center gap-[22px] sm:mt-1.5 sm:gap-4">
       <span class="btn btn-soon max-sm:hidden">Coming soon</span>
-      <p class="text-sm text-ink-3 sm:text-[14.5px]">macOS 14 Sonoma or later · Apple silicon</p>
+      <p class="text-sm text-ink-3 sm:text-[14.5px]">macOS 14 Sonoma or later · Apple silicon or Intel</p>
     </div>
   </section>
 </template>

@@ -6,8 +6,8 @@ import BrandMark from '../components/brand/BrandMark.vue'
 const FACTS: [IconName, string, string][] = [
   ['lock', 'Never your passwords', 'Password fields and other secure text are skipped entirely: never read, never marked.'],
   ['shield', 'Signed updates', 'Every update is signed, and checked against that signature before it installs.'],
-  ['nothing-kept', 'Nothing kept on your key', 'On your own key, neither part stores what you write. The DuoTyping provider keeps its checks, encrypted, to improve DuoTyping.'],
-  ['key', 'Keys in your Keychain', 'Cloud API keys are stored in the macOS Keychain and never read back into the app.'],
+  ['nothing-kept', 'Nothing kept on your key', 'On your own key, DuoTyping stores none of what you write. The DuoTyping provider keeps its checks, encrypted, to improve DuoTyping.'],
+  ['key', 'Keys in your Keychain', 'Cloud API keys are stored in the macOS Keychain, used only to make a check, and never sent to DuoTyping.'],
   ['verified', 'Checked destinations', 'A provider you add yourself must be a public HTTPS address, checked before every request.'],
   ['selection', 'Only your selection', 'Your provider gets just the text you check, billed to your own account.'],
 ]
@@ -29,14 +29,14 @@ const PACKETS: [number, string, number][] = [[262, '#D7784F', 1], [542, '#D7784F
           </h2>
         </div>
         <p class="fluid max-w-[760px] leading-[1.55] text-pretty text-night-text [--hi:20] [--lo:17]">
-          DuoTyping is built in two parts, on purpose. The app you see only goes online to check for updates. A separate engine holds your key, and sends the text you check to the provider you connected, and nowhere else.
+          On your own key, DuoTyping sends the text you check from your Mac straight to the provider you connected, and nowhere else. With the DuoTyping provider, it goes through DuoTyping’s server, which keeps the check, encrypted.
         </p>
       </div>
 
       <!-- Wide: the whole picture at once, 1200 × 400, scaled to the column below 1440 -->
       <figure v-loop class="loop diagram-fit max-lg:hidden">
         <figcaption class="sr-only">
-          On your Mac, the app you’re writing in shares only the text you select with DuoTyping, which passes it to the DuoTyping engine. The engine sends it to the cloud provider you connected, on your own key, and passes the suggestions back.
+          On your Mac, the app you’re writing in shares only the text you select with DuoTyping, which sends it with your key to the cloud provider you connected and passes the suggestions back.
         </figcaption>
         <div class="canvas" aria-hidden="true">
           <svg width="1200" height="400" viewBox="0 0 1200 400" fill="none" class="absolute top-0 left-0">
@@ -68,11 +68,11 @@ const PACKETS: [number, string, number][] = [[262, '#D7784F', 1], [542, '#D7784F
           </div>
           <div class="loop-duo absolute top-[136px] left-80 flex h-40 w-[222px] flex-col justify-center gap-1.5 rounded-2xl border border-night-line bg-night-card p-5">
             <span class="flex items-center gap-2.5 text-[17.5px] font-semibold text-paper"><BrandMark tone="ink" class="size-[26px]" />DuoTyping</span>
-            <span class="text-[14.5px] leading-[1.4] text-night-mute">Only goes online for updates</span>
+            <span class="text-[14.5px] leading-[1.4] text-night-mute">Checks only what you choose</span>
           </div>
           <div class="loop-engine absolute top-[136px] left-[600px] flex h-40 w-[230px] flex-col justify-center gap-1.5 rounded-2xl border border-night-line bg-night-card p-5">
-            <span class="text-[17.5px] font-semibold text-paper">DuoTyping engine</span>
-            <span class="text-[14.5px] leading-[1.4] text-night-mute">Holds your key, talks to your provider</span>
+            <span class="text-[17.5px] font-semibold text-paper">Your key</span>
+            <span class="text-[14.5px] leading-[1.4] text-night-mute">From your Keychain, only to check</span>
           </div>
           <div class="loop-prov absolute top-[148px] left-[944px] flex h-[136px] w-64 flex-col justify-center gap-1.5 rounded-2xl border-[1.5px] border-dashed border-night-dash p-5">
             <span class="text-[17.5px] font-semibold text-night-text">Your cloud provider</span>
@@ -98,21 +98,21 @@ const PACKETS: [number, string, number][] = [[262, '#D7784F', 1], [542, '#D7784F
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border border-night-line bg-night-card px-[18px] py-4">
             <span class="flex items-center gap-[9px] text-[16.5px] font-semibold text-paper"><BrandMark tone="ink" class="size-[22px]" />DuoTyping</span>
-            <span class="text-sm leading-[1.4] text-night-mute">Only goes online for updates</span>
+            <span class="text-sm leading-[1.4] text-night-mute">Checks only what you choose</span>
           </div>
           <div class="flex h-10 items-center gap-2.5 pl-[22px]" aria-hidden="true">
             <svg width="14" height="40" viewBox="0 0 14 40" fill="none"><path d="M7 3V36" stroke="#7F8BB5" stroke-width="1.7" /><path d="M2.5 31 7 36l4.5-5" stroke="#7F8BB5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
             <span class="font-mono text-[11px] tracking-[0.1em] text-night-mute uppercase">Text</span>
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border border-night-line bg-night-card px-[18px] py-4">
-            <span class="text-[16.5px] font-semibold text-paper">DuoTyping engine</span>
-            <span class="text-sm leading-[1.4] text-night-mute">Holds your key, talks to your provider</span>
+            <span class="text-[16.5px] font-semibold text-paper">Your key</span>
+            <span class="text-sm leading-[1.4] text-night-mute">From your Keychain, only to check</span>
           </div>
         </div>
         <div class="flex flex-col gap-3">
           <div class="flex h-10 items-center gap-2.5 pl-[22px]">
             <svg width="14" height="40" viewBox="0 0 14 40" fill="none" aria-hidden="true"><path d="M7 3V36" stroke="#7F8BB5" stroke-width="1.7" stroke-dasharray="4 5" /><path d="M2.5 31 7 36l4.5-5" stroke="#7F8BB5" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" /></svg>
-            <span class="font-mono text-[11px] tracking-[0.1em] text-night-mute uppercase">Only goes online for</span>
+            <span class="font-mono text-[11px] tracking-[0.1em] text-night-mute uppercase">On your key</span>
           </div>
           <div class="flex flex-col gap-1 rounded-[14px] border-[1.5px] border-dashed border-night-dash px-[18px] py-4">
             <span class="text-[16.5px] font-semibold text-night-text">Your cloud provider</span>

@@ -4,7 +4,7 @@ export type IconName =
   | 'download' | 'arrow-down' | 'arrow-right' | 'share' | 'copy' | 'check' | 'menu' | 'close'
   | 'mac' | 'offline' | 'draft' | 'fixes' | 'lines' | 'shield' | 'keyboard'
   | 'nothing-kept' | 'key' | 'verified' | 'selection' | 'lock' | 'chevron'
-  | 'minus' | 'plus'
+  | 'minus' | 'plus' | 'pause' | 'play'
 </script>
 
 <script setup lang="ts">
@@ -35,6 +35,8 @@ const ICONS: Record<IconName, [string, number]> = {
   chevron: ['<path d="M6.5 9.5 12 15l5.5-5.5"/>', 2],
   minus: ['<path d="M6 12h12"/>', 2],
   plus: ['<path d="M12 6v12M6 12h12"/>', 2],
+  pause: ['<path d="M9 6.5v11M15 6.5v11"/>', 2.2],
+  play: ['<path d="M8.5 6.4v11.2L17.8 12 8.5 6.4Z"/>', 1.8],
 }
 
 const props = defineProps<{ name: IconName; stroke?: number }>()

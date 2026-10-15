@@ -4,7 +4,7 @@ import Icon from '../components/Icon.vue'
 // The models the app offers out of the box (ProviderRegistry in the app repo), and the custom route.
 const PROVIDERS = [
   ['O', 'OpenAI', 'GPT-4o mini'],
-  ['A', 'Anthropic', 'Claude Haiku 4.5'],
+  ['A', 'Anthropic', 'Claude Haiku 5.5'],
 ]
 const CUSTOM = [
   ['Any OpenAI-compatible API', 'A gateway, or a model you serve yourself'],
@@ -22,7 +22,7 @@ const CUSTOM = [
         <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:54] [--lo:35]">Pick the engine.<br class="max-lg:hidden" /> Change it any time.</h2>
       </div>
       <p class="fluid max-w-[470px] leading-[1.55] text-pretty text-ink-2 [--hi:18.5] [--lo:17]">
-        DuoTyping doesn’t ship with a model: the first time you open it, connect the provider you already use, with your own key. Change it any time in Settings.
+        Start with DuoTyping’s own checks, free and with no key, or connect the provider you already use, with your own key. Change it any time in Settings.
       </p>
     </div>
     <div class="flex flex-col gap-4 lg:grid lg:grid-cols-2 lg:items-start lg:gap-6">

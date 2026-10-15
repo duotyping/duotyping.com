@@ -1,13 +1,13 @@
 <script lang="ts">
 // Rendered here and handed to search engines as FAQPage, from the one list.
 export const FAQ: [string, string][] = [
-  ['What does a cloud model cost?', 'Whatever your provider charges. DuoTyping sends the text you check straight to the provider on your own key, and the provider bills you directly.'],
+  ['What does it cost?', 'DuoTyping’s own checks are free: 20 on each Mac, and more with a free account. On your own key, your provider bills you directly for what you check.'],
   ['Does my writing leave my Mac?', 'Only the text you check. On your own key it goes straight to the cloud provider you connect, and nowhere else, and DuoTyping stores none of it. With the DuoTyping provider it goes through DuoTyping’s server, which keeps the check, encrypted, to improve DuoTyping.'],
-  ['Do I need an account?', 'No. Every feature works signed out. Signing in only syncs your writing profiles and settings between your Macs; your keys stay on each Mac.'],
+  ['Do I need an account?', 'No. Everything on the Mac works signed out. A free account gives you more DuoTyping checks each day; your keys, settings and drafts stay on your Mac either way.'],
   ['Why does it ask for Accessibility access?', 'It’s how macOS lets one app read the text you select in another, and write an accepted change back in place. DuoTyping uses it for exactly that, and never reads password fields. Without it, you can still type or paste into Write.'],
   ['Which apps does it work in?', 'Most apps where you can select text: Mail, Messages, Notes, Pages, Slack and your browser among them. Marks as you type work in Mail, Messages, Slack, Teams and WhatsApp. For an app that won’t share its text, Write is the way in: type or paste, check, then copy the result back.'],
-  ['Which Macs can run it?', 'Any Mac with Apple silicon on macOS 14 Sonoma or later.'],
-  ['Does it work offline?', 'No. Checks go to your cloud provider, so they need a connection. Drafts you keep in Write are saved on your Mac either way.'],
+  ['Which Macs can run it?', 'Any Mac with Apple silicon or Intel on macOS 14 Sonoma or later.'],
+  ['Does it work offline?', 'No. Checks go to your provider or to DuoTyping, so they need a connection. Pronounce works offline, and drafts you keep in Write are saved on your Mac either way.'],
   ['Which languages does it support?', 'English today, with more languages coming: DuoTyping is becoming a multilingual writing assistant. Translate already reads most languages.'],
 ]
 </script>
