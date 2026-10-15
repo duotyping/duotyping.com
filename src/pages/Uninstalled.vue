@@ -52,7 +52,7 @@ onMounted(() => (feedback.value = feedbackFromExtension(location.search)))
           <span class="way-num">3</span>
           <div class="flex min-w-0 flex-1 flex-col gap-2">
             <h2>You weren’t sure about privacy</h2>
-            <p>The privacy page says what’s sent, what’s kept and how to delete it. Removing the extension doesn’t delete your account or its kept checks: <b>Delete Account</b> is in Account › Privacy.</p>
+            <p>The privacy page says what’s sent, what’s kept and how to delete it. Removing the extension doesn’t delete your account. To delete it, use <b>Delete Account</b> in Account › Privacy on the web app; checks DuoTyping kept stay, encrypted, no longer linked to you.</p>
             <div class="mt-1 flex flex-wrap items-center gap-x-5 gap-y-2">
               <a href="/privacy" class="way-link">Read the privacy page →</a>
               <a :href="ACCOUNT_PRIVACY_URL" target="_blank" rel="noopener" class="way-link">Account › Privacy ↗</a>

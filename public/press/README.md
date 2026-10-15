@@ -13,7 +13,8 @@ Slack or your browser, press one shortcut, and DuoTyping suggests fixes for spel
 punctuation and tone, sentence by sentence or as a whole rewrite. Nothing changes until you
 accept. By default it runs a local model on Apple silicon, so what you write never leaves the Mac;
 a cloud model (OpenAI, Anthropic, or any OpenAI-compatible endpoint) is optional and runs on your
-own API key. DuoTyping never stores what you write, and an optional account syncs only your
+own API key, and then DuoTyping stores none of what you write; checks with the DuoTyping provider
+are kept, encrypted, to improve DuoTyping. An optional account syncs only your
 writing profiles and settings between Macs.
 
 ## Fact sheet
@@ -24,7 +25,8 @@ writing profiles and settings between Macs.
 | Tagline | Say it well. Keep it yours. |
 | Category | Writing assistant, macOS menu-bar app |
 | Platform | macOS 14 Sonoma or later, Apple silicon |
-| Language | English |
+| Writing languages | English today, more coming |
+| Interface | English |
 | Availability | Coming soon at [duotyping.com](https://duotyping.com) |
 | Local models | Qwen3 1.7B, Llama 3.2 3B Instruct, Qwen3 4B Instruct 2507, Qwen2.5 14B Instruct |
 | Cloud models (optional, your own key) | OpenAI, Anthropic, any OpenAI-compatible API |

@@ -7,7 +7,7 @@ const AI = 'M40 26H74A18 18 0 0 1 92 44V62A18 18 0 0 1 74 80L84 88L64 80H40A18 1
 const PILLARS: [IconName, boolean, string, string][] = [
   ['check', true, 'Nothing changes until you accept', 'Every suggestion waits for your yes. If the text moved while DuoTyping was checking, it asks again instead of guessing.'],
   ['key', false, 'Your key, your provider', 'Connect OpenAI, Anthropic or any OpenAI-compatible endpoint. The key stays in your Mac’s Keychain, and your provider bills you directly.'],
-  ['selection', false, 'Only what you select', 'Only the text you check goes to your provider, and DuoTyping never stores what you write.'],
+  ['selection', false, 'Only what you select', 'Only the text you check goes to your provider, and on your own key DuoTyping stores none of it.'],
 ]
 </script>
 

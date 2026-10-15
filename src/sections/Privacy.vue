@@ -6,7 +6,7 @@ import BrandMark from '../components/brand/BrandMark.vue'
 const FACTS: [IconName, string, string][] = [
   ['lock', 'Never your passwords', 'Password fields and other secure text are skipped entirely: never read, never marked.'],
   ['shield', 'Signed updates', 'Every update is signed, and checked against that signature before it installs.'],
-  ['nothing-kept', 'Nothing kept', 'Neither part stores what you write, not even for a moment longer than the check.'],
+  ['nothing-kept', 'Nothing kept on your key', 'On your own key, neither part stores what you write. The DuoTyping provider keeps its checks, encrypted, to improve DuoTyping.'],
   ['key', 'Keys in your Keychain', 'Cloud API keys are stored in the macOS Keychain and never read back into the app.'],
   ['verified', 'Checked destinations', 'A provider you add yourself must be a public HTTPS address, checked before every request.'],
   ['selection', 'Only your selection', 'Your provider gets just the text you check, billed to your own account.'],
