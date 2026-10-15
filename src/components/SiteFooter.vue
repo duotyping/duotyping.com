@@ -9,7 +9,7 @@ const at = (hash: string) => (route.path === '/' ? hash : `/${hash}`)
 const COLUMNS = computed((): [string, [string, string][]][] => [
   ['Product', [[at('#features'), 'Features'], [at('#platforms'), 'Platforms'], [at('#pricing'), 'Pricing'], [at('#privacy'), 'Privacy']]],
   ['Help', [[at('#faq'), 'FAQ'], [FEEDBACK_URL, 'Send feedback']]],
-  ['Legal', [['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Use']]],
+  ['Legal', [['/privacy', 'Privacy Policy'], ['/terms', 'Terms of Use'], ['/terms#acceptable-use', 'Acceptable Use Policy']]],
 ])
 // The build's year, so the prerendered page and the hydrated one always agree.
 const YEAR = __YEAR__

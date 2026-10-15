@@ -19,6 +19,24 @@ usePageHead({
     <h2>Using DuoTyping</h2>
     <p>You can use DuoTyping on your own computers and phones, for personal or professional writing. The Mac and Windows apps work without an account; the browser extension and the web app need a free one.</p>
 
+    <h2 id="acceptable-use">Acceptable use</h2>
+    <p>DuoTyping’s AI features (checks, rewrites, marks as you type, Write and Translate) work only on text you write: they correct it, rewrite it or translate it. They don’t chat, don’t write from a prompt, and don’t make images or video. Whichever provider you use, don’t use them for:</p>
+    <ul>
+      <li>sexually explicit, pornographic or other NSFW content, or any sexual content involving a minor;</li>
+      <li>harassment, threats or hate, or anything that encourages violence or self-harm;</li>
+      <li>spam, phishing, scams or malware, or text meant to impersonate someone or deceive;</li>
+      <li>anything illegal, or that infringes someone else’s rights or privacy.</li>
+    </ul>
+    <p>And don’t use DuoTyping’s servers for anything but its own checks, or to get around their limits.</p>
+
+    <h2>How we enforce it</h2>
+    <ul>
+      <li>The AI model behind the DuoTyping provider runs under its maker’s usage policy, which prohibits sexually explicit content, and has its own safeguards against it.</li>
+      <li>With the DuoTyping provider, every computer and account has a limit on how much it can check.</li>
+      <li>Report misuse to <a href="mailto:support@duotyping.com">support@duotyping.com</a>. We may stop checks for, or close, any account used to break these rules.</li>
+      <li>On your own key, your provider’s usage policy applies as well, and the provider enforces it: that text never reaches us.</li>
+    </ul>
+
     <h2>Your account</h2>
     <p>An account is optional in the Mac and Windows apps and needed for the browser extension and the web app. It gives you more free checks with the DuoTyping provider, holds the paid plan if you buy it, and keeps the writing profiles and drafts you make in the web app. Keep its sign-in to yourself, with the email account its codes go to and any passkey, Google or Apple account you sign in with: what happens through it is yours. You can export its data or delete the account at any time, on Privacy in the web app, or by writing to <a href="mailto:support@duotyping.com">support@duotyping.com</a> from its email address. Deleting it never touches the settings on your devices. We may close an account that’s used to abuse the service.</p>
 
