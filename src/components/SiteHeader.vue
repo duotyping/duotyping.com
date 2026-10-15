@@ -19,7 +19,9 @@ const LINKS = [
   ['#faq', 'FAQ'],
 ]
 
-// Once the page moves: 88 % paper, an 18 px blur and a soft shadow (Components board).
+// 88 % paper and an 18 px blur from the first paint, so the page never shows through even before
+// (or without) the script; once the page moves, a soft shadow too (Components board). At the top
+// it sits on paper, so it looks the same as none.
 const scrolled = ref(false)
 const onScroll = () => (scrolled.value = scrollY > 0)
 
@@ -56,8 +58,8 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="sticky top-0 z-40 h-16 border-b border-ink/8 transition-[background-color,box-shadow] duration-200 ease-out lg:h-[76px]"
-    :class="open ? 'bg-paper' : scrolled && 'bg-paper/88 shadow-[0_8px_24px_rgba(24,33,63,0.06)] backdrop-blur-[18px]'"
+    class="sticky top-0 z-40 h-16 border-b border-ink/8 transition-[background-color,box-shadow] duration-200 ease-out [-webkit-backdrop-filter:blur(18px)] [backdrop-filter:blur(18px)] lg:h-[76px]"
+    :class="[open ? 'bg-paper' : 'bg-paper/88', scrolled && 'shadow-[0_8px_24px_rgba(24,33,63,0.06)]']"
   >
     <div class="wrap flex h-full items-center justify-between max-lg:pr-[calc(var(--gutter)-8px)]">
       <a :href="route.path === '/' ? '#top' : '/'" aria-label="DuoTyping home" class="flex items-center gap-[9px] text-ink lg:gap-2.5">
