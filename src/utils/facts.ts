@@ -83,7 +83,6 @@ export const PLANS = [
   },
   {
     name: 'Pro',
-    soon: true,
     price: '$10',
     per: 'a month, or $96 a year',
     line: 'For writing all day.',

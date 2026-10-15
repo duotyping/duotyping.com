@@ -14,7 +14,6 @@ import { PLANS } from '../utils/facts'
       <li v-for="plan in PLANS" :key="plan.name" class="flex flex-col gap-4 rounded-[22px] border border-edge bg-card p-6 lg:p-8">
         <div class="flex items-center gap-3">
           <h3 class="font-display text-[24px] font-bold tracking-[-0.02em]">{{ plan.name }}</h3>
-          <span v-if="plan.soon" class="tag">Coming soon</span>
         </div>
         <p class="flex flex-wrap items-baseline gap-x-2">
           <span class="font-display text-[34px] leading-none font-bold tracking-[-0.03em] text-ink">{{ plan.price }}</span>

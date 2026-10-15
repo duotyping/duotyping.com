@@ -70,10 +70,7 @@ onUnmounted(() => {
           <a v-for="[hash, label] in LINKS" :key="hash" :href="at(hash)" class="nav-link">{{ label }}</a>
           <div class="flex items-center gap-2.5">
             <a :href="WEB_APP_URL" class="btn btn-soft h-11 rounded-xl px-[18px] text-[15.5px]">Use now</a>
-            <template v-if="headerCta">
-              <span v-if="headerCta.soon" class="btn btn-soon h-11 rounded-xl px-[18px] text-[15.5px]">Coming soon</span>
-              <a v-else :href="headerCta.href" class="btn h-11 rounded-xl px-[18px] text-[15.5px]">{{ headerCta.label }}</a>
-            </template>
+            <a v-if="headerCta" :href="headerCta.href" class="btn h-11 rounded-xl px-[18px] text-[15.5px]">{{ headerCta.label }}</a>
           </div>
         </nav>
         <a :href="WEB_APP_URL" class="btn btn-soft mr-1 h-9 rounded-[10px] px-3.5 text-[14.5px] lg:hidden">Use now</a>
@@ -117,10 +114,7 @@ onUnmounted(() => {
             <a :href="WEB_APP_URL" class="btn w-full">Use now</a>
             <!-- A phone can't install the apps, so pass the link on; a tablet-sized window might be a computer. -->
             <ShareActions class="sm:hidden" soft />
-            <template v-if="headerCta">
-              <span v-if="headerCta.soon" class="btn btn-soon w-full max-sm:hidden">Coming soon</span>
-              <a v-else :href="headerCta.href" class="btn btn-soft w-full max-sm:hidden">{{ headerCta.label }}</a>
-            </template>
+            <a v-if="headerCta" :href="headerCta.href" class="btn btn-soft w-full max-sm:hidden">{{ headerCta.label }}</a>
           </div>
         </nav>
       </div>

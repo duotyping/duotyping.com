@@ -13,11 +13,12 @@ const SCENES: [Scene, string][] = [['mac', 'Mac'], ['windows', 'Windows'], ['chr
 const picked = ref<Scene | null>(null)
 // The demo opens on the visitor's own system, Windows until the page knows which.
 const scene = computed<Scene>(() => picked.value ?? ({ mac: 'mac', windows: 'windows', phone: 'phone', other: 'chrome' } as const)[os.value])
-// This computer's app, or on another system the extension; "Try in browser" always sits beside it.
+// This computer's app, or on another system the extension, once its store is live; "Try in browser"
+// always sits beside it. The lines under the buttons describe what the first one gets.
 const primary = computed(() => desktopCta.value ?? extensionCta.value)
-const desktop = computed(() => os.value === 'mac' || os.value === 'windows')
-const facts = computed(() => (desktop.value ? 'Free to try, no account needed · Or bring your own key' : 'Free daily checks with a free account'))
-const requires = computed(() => PLATFORMS[os.value === 'mac' ? 'mac' : os.value === 'windows' ? 'windows' : 'chrome'].requires)
+const offered = computed(() => primary.value?.id ?? 'web')
+const facts = computed(() => (offered.value === 'mac' || offered.value === 'windows' ? 'Free to try, no account needed · Or bring your own key' : 'Free daily checks with a free account'))
+const requires = computed(() => PLATFORMS[offered.value].requires)
 </script>
 
 <template>
@@ -44,8 +45,7 @@ const requires = computed(() => PLATFORMS[os.value === 'mac' ? 'mac' : os.value 
       </div>
       <div class="flex flex-wrap items-center gap-3 max-sm:hidden">
         <template v-if="primary">
-          <span v-if="primary.soon" class="btn btn-soon">Coming soon</span>
-          <a v-else class="btn" :href="primary.href">{{ primary.label }}</a>
+          <a class="btn" :href="primary.href">{{ primary.label }}</a>
           <a class="btn btn-soft" :href="WEB_APP_URL">Try in browser</a>
         </template>
         <a v-else class="btn" :href="WEB_APP_URL">Try in browser</a>

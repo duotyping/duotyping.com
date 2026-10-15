@@ -29,24 +29,6 @@
   }
   .btn:hover { background: var(--color-accent-hover); }
   .btn:active { background: var(--color-accent-press); translate: 0 1px; }
-  /* Before the first release: the button itself, no action. */
-  .btn-soon, .btn-soon:hover, .btn-soon:active {
-    background: var(--color-accent);
-    cursor: default;
-    translate: none;
-  }
-  /* A live dot in the assistant's cyan: it's on its way. The ring only pulses when motion is welcome. */
-  .btn-soon::before {
-    content: '';
-    width: 9px;
-    height: 9px;
-    border-radius: 999px;
-    background: var(--color-cyan);
-    box-shadow: 0 0 0 0 color-mix(in srgb, var(--color-cyan) 45%, transparent);
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    .btn-soon::before { animation: dtsoon 2s ease-out infinite; }
-  }
 
   .nav-link {
     display: flex;

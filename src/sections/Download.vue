@@ -4,11 +4,10 @@ import AppIcon from '../components/brand/AppIcon.vue'
 import ShareActions from '../components/ShareActions.vue'
 import { desktopCta, extensionCta } from '../utils/cta'
 import { PLATFORMS, WEB_APP_URL } from '../utils/facts'
-import { os } from '../utils/platform'
 
 // The closing call: the same buttons as the hero, for whoever read this far.
 const primary = computed(() => desktopCta.value ?? extensionCta.value)
-const requires = computed(() => PLATFORMS[os.value === 'mac' ? 'mac' : os.value === 'windows' ? 'windows' : 'chrome'].requires)
+const requires = computed(() => PLATFORMS[primary.value?.id ?? 'web'].requires)
 </script>
 
 <template>
@@ -24,8 +23,7 @@ const requires = computed(() => PLATFORMS[os.value === 'mac' ? 'mac' : os.value 
     <div class="flex flex-col items-center gap-4 max-sm:hidden sm:mt-1.5">
       <div class="flex flex-wrap items-center justify-center gap-3">
         <template v-if="primary">
-          <span v-if="primary.soon" class="btn btn-soon">Coming soon</span>
-          <a v-else class="btn" :href="primary.href">{{ primary.label }}</a>
+          <a class="btn" :href="primary.href">{{ primary.label }}</a>
           <a class="btn btn-soft" :href="WEB_APP_URL">Try in browser</a>
         </template>
         <a v-else class="btn" :href="WEB_APP_URL">Try in browser</a>

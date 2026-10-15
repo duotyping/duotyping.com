@@ -4,8 +4,8 @@ import Icon, { type IconName } from '../components/Icon.vue'
 import { PLATFORMS, isLive, linkTo, type PlatformId } from '../utils/facts'
 import { extensionStore, os } from '../utils/platform'
 
-// Every platform on the home page, as decided on 2026-10-15 (no page per platform): its button,
-// what it needs and what it does, with the visitor's own one picked out.
+// Every platform on the home page, as decided on 2026-10-15 (no page per platform): its button once
+// its store is live, what it needs and what it does, with the visitor's own one picked out.
 const ORDER: PlatformId[] = ['mac', 'windows', 'chrome', 'web']
 const ICON: Record<string, IconName> = { laptop: 'mac', pc: 'windows', browser: 'browser', phone: 'phone' }
 const mine = computed<PlatformId>(() => (os.value === 'mac' ? 'mac' : os.value === 'windows' ? 'windows' : os.value === 'phone' ? 'web' : 'chrome'))
@@ -50,7 +50,6 @@ onUnmounted(() => clearTimeout(reset))
         </ul>
         <div class="mt-auto flex flex-col gap-2.5 pt-2">
           <a v-if="isLive(id)" :href="linkTo(PLATFORMS[id].href)" class="btn btn-sm w-full" :class="mine !== id && 'btn-soft'">{{ label(id) }}</a>
-          <span v-else class="btn btn-sm btn-soon w-full">Coming soon</span>
           <p class="text-[13px] leading-[1.45] text-ink-3">{{ PLATFORMS[id].requires }}</p>
           <!-- The package manager's line only once there's a release for it to install -->
           <button
