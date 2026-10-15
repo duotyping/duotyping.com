@@ -8,11 +8,12 @@ import { PLATFORMS, WEB_APP_URL } from '../utils/facts'
 import { desktopCta, extensionCta } from '../utils/cta'
 import { os } from '../utils/platform'
 
-type Scene = 'mac' | 'windows' | 'chrome' | 'phone'
-const SCENES: [Scene, string][] = [['mac', 'Mac'], ['windows', 'Windows'], ['chrome', 'Chrome'], ['phone', 'Phone']]
+type Scene = 'desktop' | 'chrome' | 'phone'
+const SCENES: [Scene, string][] = [['desktop', 'Desktop'], ['chrome', 'Chrome'], ['phone', 'Phone']]
 const picked = ref<Scene | null>(null)
-// The demo opens on the visitor's own system, Windows until the page knows which.
-const scene = computed<Scene>(() => picked.value ?? ({ mac: 'mac', windows: 'windows', phone: 'phone', other: 'chrome' } as const)[os.value])
+// The demo opens on the visitor's own system, Windows until the page knows which. Mac and Windows
+// do the same things, so they share Desktop, drawn as the Mac on a Mac and as Windows elsewhere.
+const scene = computed<Scene>(() => picked.value ?? ({ mac: 'desktop', windows: 'desktop', phone: 'phone', other: 'chrome' } as const)[os.value])
 // This computer's app, or on another system the extension, once its store is live; "Try in browser"
 // always sits beside it. The lines under the buttons describe what the first one gets.
 const primary = computed(() => desktopCta.value ?? extensionCta.value)
@@ -66,8 +67,8 @@ const requires = computed(() => PLATFORMS[offered.value].requires)
       <PhoneDemo class="sm:hidden" />
     </div>
     <div class="wrap pt-12 max-sm:hidden xl:contents">
-      <HeroDemo v-if="scene === 'mac'" />
-      <PlatformScene v-else :key="scene" :platform="scene" />
+      <HeroDemo v-if="scene === 'desktop' && os === 'mac'" />
+      <PlatformScene v-else :key="scene" :platform="scene === 'desktop' ? 'windows' : scene" />
     </div>
   </section>
 </template>

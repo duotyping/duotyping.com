@@ -9,13 +9,14 @@ import ToneTile from '../components/tiles/ToneTile.vue'
 import TranslateTile from '../components/tiles/TranslateTile.vue'
 
 // Where each feature works today, from the feature inventory (duotyping-specs product/*-prd.md).
+// Desktop is the Mac and Windows apps, which do the same things.
 const ON = {
-  marks: ['Mac', 'Windows', 'Chrome', 'Web'],
-  rewrite: ['Mac', 'Windows', 'Chrome'],
-  translate: ['Mac', 'Windows', 'Web'],
-  pronounce: ['Mac', 'Windows', 'Web'],
-  tone: ['Mac', 'Windows', 'Chrome', 'Web'],
-  write: ['Mac', 'Windows', 'Web'],
+  marks: ['Desktop', 'Chrome', 'Web'],
+  rewrite: ['Desktop', 'Chrome'],
+  translate: ['Desktop', 'Web'],
+  pronounce: ['Desktop', 'Web'],
+  tone: ['Desktop', 'Chrome', 'Web'],
+  write: ['Desktop', 'Web'],
 }
 </script>
 
