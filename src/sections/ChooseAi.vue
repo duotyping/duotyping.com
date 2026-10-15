@@ -7,8 +7,9 @@ import BrandMark from '../components/brand/BrandMark.vue'
 // goes and what's kept (duotyping-specs product/api-prd.md; the Privacy Policy says it in full).
 type Choice = { id: string; name: string; via?: string; to: string; kept: string }
 // OpenAI, Anthropic and any OpenAI-compatible endpoint take the same path, so they're one choice.
+// DuoTyping's own model isn't named: the page says only that an AI provider runs it (owner, 2026-10-15).
 const CHOICES: Choice[] = [
-  { id: 'duo', name: 'DuoTyping', via: 'DuoTyping’s server', to: 'Claude, by Anthropic', kept: 'Kept, encrypted, to improve DuoTyping. Never logged, never sold.' },
+  { id: 'duo', name: 'DuoTyping', via: 'DuoTyping’s server', to: 'DuoTyping’s AI provider', kept: 'Kept, encrypted, to improve DuoTyping. Never logged, never sold.' },
   { id: 'key', name: 'Your own key', to: 'OpenAI, Anthropic or your endpoint', kept: 'Checks go straight from your computer to your provider. DuoTyping keeps none of them.' },
 ]
 const at = ref(0)
