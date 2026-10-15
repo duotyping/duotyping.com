@@ -13,8 +13,5 @@ const BUILT_ON = ['Claude', 'Cloudflare', 'Better Auth', 'macOS', 'Windows', 'Ch
         <li v-for="name in BUILT_ON" :key="name" class="font-display text-[18px] font-semibold tracking-[-0.01em] text-ink-3 lg:text-[21px]">{{ name }}</li>
       </ul>
     </div>
-    <p class="mt-3 text-center text-[13px] text-ink-3 lg:text-left">
-      DuoTyping is an independent product, not affiliated with or endorsed by Anthropic, OpenAI, Cloudflare, Better Auth, Apple, Microsoft or Google.
-    </p>
   </section>
 </template>
