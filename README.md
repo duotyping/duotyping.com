@@ -1,6 +1,6 @@
 # duotyping.com
 
-The website for [DuoTyping](https://duotyping.com), the private writing assistant for Mac — and
+The website for [DuoTyping](https://duotyping.com), the writing assistant for Mac, Windows, Chrome and the web — and
 the two files the app itself reads from this origin.
 
 Vue 3, Tailwind CSS 4 and Vite 8, prerendered to static HTML by `vite-ssg` and served by
@@ -22,19 +22,25 @@ npm run preview   # build, then serve dist/ with Cloudflare's own runtime (wrang
 Where things are:
 
 - `src/pages/Home.vue` — the page's head and search data, then its sections in order.
-- `src/utils/` — `site.ts` (the site's URLs and the appcast reader), `head.ts` (every page's
-  meta tags), `motion.ts` (Reduce Motion and `v-loop`).
+- `src/utils/` — `site.ts` (the site's URLs and the appcast reader), `facts.ts` (every platform's
+  status, requirements and links, and the plans: a store launch is a change there, and `?launch`
+  previews it), `platform.ts` (the visitor's system and browser), `cta.ts` (the buttons that
+  follow from them), `head.ts` (every page's meta tags), `motion.ts` (Reduce Motion, `v-loop` and
+  the header's pause button).
 - `src/sections/` — one file per section of the home page, with its copy, from the design canvas
   ("DuoTyping Landing"): 1440 px desktop and 390 px phone boards, fluid in between.
 - `src/style.css` — the brand tokens (colours, type), the fluid type scale, and the legal, FAQ
   and menu rules; it imports `src/styles/`: the shared components, the hero demo, and the figure
   loops' keyframes.
-- `src/components/demo/HeroDemo.vue`, `HeroDemoPhone.vue` — the hero motion, timed to the
-  "Hero motion" board. Reduced motion shows each one's final frame.
-- The figure loops (marks, Rewrite, Whole selection, writing profile, the privacy flow, the FAQ
-  drawing) are CSS keyframes in `src/styles/loops.css`, timed to the desktop boards; `src/utils/motion.ts`
+- `src/components/demo/HeroDemo.vue` — the hero's Mac scene, timed to the "Hero motion" board;
+  `PlatformScene.vue` its Windows, Chrome and phone scenes, and `PhoneDemo.vue` the one phones see,
+  on CSS loops. Reduced motion shows each one's final frame, and the header's pause button holds
+  them all.
+- The figure loops (marks, Rewrite, Write, the FAQ drawing; the hero scenes' and Translate's
+  sit in their own components) are CSS keyframes in `src/styles/loops.css`, timed to the desktop boards; `src/utils/motion.ts`
   (`v-loop`) starts each one as it scrolls into view and pauses it off screen.
-- `src/components/demo/` — the Mac UI the illustrations draw, in the system font.
+- `src/components/demo/` and `src/components/tiles/` — the apps' UI the demos draw, in the
+  system font.
 - `src/components/brand/` — the pencils, the lockup, the app icon and the menu-bar mark.
 - `src/pages/Privacy.vue`, `Terms.vue` — linked from every Settings tab in the app.
 - `src/pages/Feedback.vue` — `/feedback`, which every client's Send Feedback… and the site's own Send feedback links open (`duotyping-specs` `specs/user-feedback.md` §5).

@@ -1,4 +1,4 @@
-import { ref } from 'vue'
+import { computed, ref } from 'vue'
 import { previewLaunch } from './facts'
 
 // What the visitor is on, so the page leads with the button and the demo that fit it. The page is
@@ -9,6 +9,13 @@ export const os = ref<Os>('windows')
 // A browser that installs from the Chrome Web Store (Chrome, Brave, Arc, Cốc Cốc) or from Edge
 // Add-ons; Firefox and Safari get none, since the extension has no build for them.
 export const extensionStore = ref<'chrome' | 'edge' | null>(null)
+
+// The keys a review card names beside Accept and Skip: the Mac app's, or the Windows app's. The
+// extension names its one key return on every system, as the Mac does. A phone's card names none.
+export type KeyNames = { accept: string; skip: string }
+export const MAC_KEYS: KeyNames = { accept: 'return', skip: 'delete' }
+export const PC_KEYS: KeyNames = { accept: 'Enter', skip: 'Backspace' }
+export const visitorKeys = computed(() => (os.value === 'mac' ? MAC_KEYS : os.value === 'phone' ? null : PC_KEYS))
 
 type Brands = { brands?: { brand: string }[]; platform?: string; mobile?: boolean }
 

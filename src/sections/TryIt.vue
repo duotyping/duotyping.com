@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import { computed, onMounted, onUnmounted, ref } from 'vue'
-import { os } from '../utils/platform'
+import { os, visitorKeys } from '../utils/platform'
 
 // The three steps, as a demo the visitor drives: a message with its mistakes already selected,
 // the real shortcut (or a click on its keys), then Accept or Skip on each card, as the apps do.
@@ -62,7 +62,8 @@ function next(accept: boolean) {
 }
 
 // The shortcut works while the demo is on screen: ⌃⌥⌘D, Win+Shift+D or the extension's
-// Alt+Shift+D, whichever this keyboard has. In the review, Return takes a card and Delete skips it.
+// Alt+Shift+D, whichever this keyboard has. In the review, Return or Enter takes a card, and Delete
+// or Backspace skips it; the card names them as this keyboard does.
 const root = ref<HTMLElement | null>(null)
 let inView = false
 let io: IntersectionObserver | undefined
@@ -149,9 +150,9 @@ onUnmounted(() => {
               <p class="mb-3 text-[13px] leading-[1.4] text-ink-3 line-through">{{ card.from }}</p>
               <div class="flex flex-wrap items-center gap-2">
                 <button type="button" class="mk-btn cursor-pointer px-4 py-[7px] text-[13px]" @click="next(true)">Accept</button>
-                <span class="mk-kbd">return</span>
+                <span v-if="visitorKeys" class="mk-kbd">{{ visitorKeys.accept }}</span>
                 <button type="button" class="mk-btn-2 cursor-pointer px-4 py-[6px] text-[13px]" @click="next(false)">Skip</button>
-                <span class="mk-kbd">delete</span>
+                <span v-if="visitorKeys" class="mk-kbd">{{ visitorKeys.skip }}</span>
               </div>
             </div>
             <div class="border-t border-edge px-3.5 py-[9px] text-[11.5px] text-ink-3">Nothing changes until you accept.</div>

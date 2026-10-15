@@ -13,14 +13,14 @@ usePageHead({
 <template>
   <LegalPage title="Terms of Use" updated="15 October 2026">
     <p class="lede">
-      These terms cover the DuoTyping app, the DuoTyping provider, its optional account and paid plan, and this website, and by using any of them you agree to them. “We” means the people who make DuoTyping.
+      These terms cover the DuoTyping apps for Mac and Windows, the browser extension, the web app, the DuoTyping provider, the account and paid plan, and this website, and by using any of them you agree to them. “We” means the people who make DuoTyping.
     </p>
 
     <h2>Using DuoTyping</h2>
-    <p>You can download DuoTyping and use it on your own Macs, for personal or professional writing. Every feature works without an account.</p>
+    <p>You can use DuoTyping on your own computers and phones, for personal or professional writing. The Mac and Windows apps work without an account; the browser extension and the web app need a free one.</p>
 
     <h2>Your account</h2>
-    <p>An account is optional. It gives you more free checks with the DuoTyping provider, holds the paid plan if you buy it, and keeps the writing profiles and drafts you make in the web app. Keep its sign-in to yourself, with the email account its codes go to and any passkey, Google or Apple account you sign in with: what happens through it is yours. You can have its data exported or the account deleted at any time: for now, write to <a href="mailto:support@duotyping.com">support@duotyping.com</a> from its email address. Deleting it never touches the settings on your devices. We may close an account that’s used to abuse the service.</p>
+    <p>An account is optional in the Mac and Windows apps and needed for the browser extension and the web app. It gives you more free checks with the DuoTyping provider, holds the paid plan if you buy it, and keeps the writing profiles and drafts you make in the web app. Keep its sign-in to yourself, with the email account its codes go to and any passkey, Google or Apple account you sign in with: what happens through it is yours. You can export its data or delete the account at any time, on Privacy in the web app, or by writing to <a href="mailto:support@duotyping.com">support@duotyping.com</a> from its email address. Deleting it never touches the settings on your devices. We may close an account that’s used to abuse the service.</p>
 
     <h2>Your writing is yours</h2>
     <p>You keep every right to what you write, and to the suggestions you accept. We claim none of it. When you check with the DuoTyping provider, you let us keep the text you check and the suggestions it gets, encrypted, and use them to run and improve DuoTyping, as the <a href="/privacy">Privacy Policy</a> explains. We don’t sell them, share them, or train AI models on them. What you check on your own key never reaches us.</p>
@@ -30,12 +30,12 @@ usePageHead({
 
     <h2>The DuoTyping provider</h2>
     <p>
-      Once you choose it, DuoTyping checks your writing with its own provider, so you don’t need a key. Without an account, each Mac gets 20 free checks in all; with a free account, you get 20 a day. A check is one review, translation or rewrite. We may change these limits, and may stop free checks for a device, network or account that’s used to get around them or to use the service for anything other than checking writing in DuoTyping.
+      Once you choose it, DuoTyping checks your writing with its own provider, so you don’t need a key. Without an account, each Mac or PC gets 20 free checks in all; with a free account, you get 20 a day. A check is one review, translation or rewrite. We may change these limits, and may stop free checks for a device, network or account that’s used to get around them or to use the service for anything other than checking writing in DuoTyping.
     </p>
 
     <h2>Your own cloud provider</h2>
     <p>
-      You can instead connect a cloud provider on your own key: OpenAI, Anthropic or another provider. You use it under that provider’s terms, it bills you directly, and DuoTyping’s limits don’t apply.
+      In the Mac and Windows apps, you can instead connect a cloud provider on your own key: OpenAI, Anthropic or another provider. You use it under that provider’s terms, it bills you directly, and DuoTyping’s limits don’t apply.
     </p>
 
     <h2>The paid plan</h2>

@@ -2,7 +2,7 @@
 import { computed, ref } from 'vue'
 import ShareActions from '../components/ShareActions.vue'
 import HeroDemo from '../components/demo/HeroDemo.vue'
-import HeroDemoPhone from '../components/demo/HeroDemoPhone.vue'
+import PhoneDemo from '../components/demo/PhoneDemo.vue'
 import PlatformScene from '../components/demo/PlatformScene.vue'
 import { PLATFORMS, WEB_APP_URL } from '../utils/facts'
 import { desktopCta, extensionCta } from '../utils/cta'
@@ -63,7 +63,7 @@ const requires = computed(() => PLATFORMS[os.value === 'mac' ? 'mac' : os.value 
           @click="picked = id"
         >{{ label }}</button>
       </div>
-      <HeroDemoPhone class="sm:hidden" />
+      <PhoneDemo class="sm:hidden" />
     </div>
     <div class="wrap pt-12 max-sm:hidden xl:contents">
       <HeroDemo v-if="scene === 'mac'" />

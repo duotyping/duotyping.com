@@ -7,6 +7,7 @@ import Popup from './Popup.vue'
 import RewritePill from './RewritePill.vue'
 import SceneMessage from './SceneMessage.vue'
 import Suggestion from './Suggestion.vue'
+import { PC_KEYS } from '../../utils/platform'
 
 // The hero's story on Windows, in Chrome or Edge, and on a phone, at the Mac demo's size: the
 // email's two mistakes are marked, it's selected, the shortcut goes down, the review rises and
@@ -43,7 +44,7 @@ const KEYS = { windows: ['Win', 'Shift', 'D'], chrome: ['Alt', 'Shift', 'D'] }
         </div>
         <Popup scope="Sentence by sentence" count="2 suggestions" class="ps-pop absolute top-[318px] left-[404px] w-[400px]">
           <div class="ps-acc">
-            <Suggestion label="Sentence 1 of 2" focused actions="accept-skip" cloud="DuoTyping" original="I have send the revised contract to legal yesterday.">
+            <Suggestion label="Sentence 1 of 2" focused actions="accept-skip" cloud="DuoTyping" :keys="PC_KEYS" original="I have send the revised contract to legal yesterday.">
               I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
             </Suggestion>
           </div>
@@ -113,10 +114,11 @@ const KEYS = { windows: ['Win', 'Shift', 'D'], chrome: ['Alt', 'Shift', 'D'] }
           </div>
         </div>
         <RewritePill class="ps-pill absolute top-[268px] left-[452px]" />
-        <Popup scope="Sentence by sentence" count="2 suggestions" class="ps-pop absolute top-[332px] left-[420px] w-[392px]">
+        <!-- The extension's card for a selection: one proposal for all of it, and Replace selection -->
+        <Popup scope="Whole selection" count="1 proposal" class="ps-pop absolute top-[332px] left-[420px] w-[392px]">
           <div class="ps-acc">
-            <Suggestion label="Sentence 1 of 2" focused actions="accept-skip" cloud="DuoTyping · your account" original="I have send the revised contract to legal yesterday.">
-              I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
+            <Suggestion label="Proposal 1 of 1" focused actions="replace" cloud="DuoTyping · your account">
+              I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday. <span class="font-semibold text-cyan-deep">They will review</span> it by Friday.
             </Suggestion>
           </div>
           <template #note>Nothing changes until you accept.</template>
@@ -151,7 +153,7 @@ const KEYS = { windows: ['Win', 'Shift', 'D'], chrome: ['Alt', 'Shift', 'D'] }
           <div class="ps-sheet absolute inset-x-0 bottom-0 rounded-t-[18px] border-t border-edge bg-white px-3.5 pt-2.5 pb-7 shadow-[0_-14px_32px_rgba(24,33,63,0.14)]">
             <div class="mx-auto mb-3 h-1 w-10 rounded-full bg-key" />
             <div class="ps-acc font-mac">
-              <Suggestion label="Grammar" focused actions="accept" cloud="" original="I have send" size="text-[13.5px]">
+              <Suggestion label="Grammar" focused actions="accept" cloud="" :keys="null" original="I have send" size="text-[13.5px]">
                 I <span class="font-semibold text-cyan-deep">sent</span> the revised contract to legal yesterday.
               </Suggestion>
             </div>

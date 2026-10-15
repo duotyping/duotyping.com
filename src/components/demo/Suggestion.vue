@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import { MAC_KEYS, type KeyNames } from '../../utils/platform'
+
 // One card in the popup: which provider checked it, the new text with the change in deep cyan, your
-// original struck through underneath, and the keys that act on it.
+// original struck through underneath, and the keys that act on it, named as the app drawn names them.
 withDefaults(
   defineProps<{
     label: string // "Sentence 1 of 2"
@@ -11,8 +13,9 @@ withDefaults(
     pressed?: boolean // Accept, mid-press (the demo)
     size?: string // the suggestion's own size
     originalSize?: string
+    keys?: KeyNames | null // the Mac's unless the scene is another app's; null on a phone
   }>(),
-  { cloud: 'OpenAI · your key', size: 'text-sm', originalSize: 'text-xs' },
+  { cloud: 'OpenAI · your key', size: 'text-sm', originalSize: 'text-xs', keys: () => MAC_KEYS },
 )
 </script>
 
@@ -32,10 +35,10 @@ withDefaults(
       <span class="mk-btn transition-[background-color,scale] duration-120 ease-out" :class="pressed && 'scale-96 bg-accent-press'">
         {{ actions === 'replace' ? 'Replace selection' : 'Accept' }}
       </span>
-      <span class="mk-kbd">return</span>
+      <span v-if="keys" class="mk-kbd">{{ keys.accept }}</span>
       <template v-if="actions === 'accept-skip'">
         <span class="mk-btn-2">Skip</span>
-        <span class="mk-kbd">delete</span>
+        <span v-if="keys" class="mk-kbd">{{ keys.skip }}</span>
       </template>
     </div>
   </div>

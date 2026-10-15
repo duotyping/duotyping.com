@@ -28,7 +28,7 @@ export function usePageHead({ title, description, path, noindex = false, jsonLd 
       { property: 'og:image:type', content: 'image/png' },
       { property: 'og:image:width', content: '1200' },
       { property: 'og:image:height', content: '630' },
-      { property: 'og:image:alt', content: 'DuoTyping — Say it well. Keep it yours. A suggestion popup over an email on a Mac.' },
+      { property: 'og:image:alt', content: 'DuoTyping — Say it well. Keep it yours. A suggestion fixing a sentence, for Mac, Windows, Chrome and the web.' },
       { property: 'og:locale', content: 'en_US' },
       { name: 'twitter:card', content: 'summary_large_image' },
     ],

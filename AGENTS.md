@@ -16,7 +16,7 @@ The public website for DuoTyping, a writing assistant: Vue 3, Tailwind CSS 4 and
 ## Where things are
 
 - Pages: `src/pages/` (`Home.vue`, `Privacy.vue`, `Terms.vue`, `Feedback.vue`, which every client's Send Feedback… opens, its query read by `src/utils/feedback.ts`, and `Uninstalled.vue`, which the browser opens when the extension is removed; both draw the mascot with `src/components/brand/Mascot.vue` from `src/styles/mark.css`, which `npm run mascot` copies from `duotyping-specs`, where the mascot is defined for every client; never edit the copy, which `npm test` checks); the home page's sections: `src/sections/`, drawn from the design canvas ("DuoTyping Landing").
-- `src/utils/site.ts`: the site's URLs and the appcast reader; `head.ts`: meta tags; `motion.ts`: Reduce Motion and `v-loop`; `analytics.ts`: the cookieless visit counter (`duotyping-specs/specs/site-analytics-consent.md`).
+- `src/utils/site.ts`: the site's URLs and the appcast reader; `facts.ts`: every platform's status, requirements and links, and the plans (a store launch is a change there); `head.ts`: meta tags; `motion.ts`: Reduce Motion, `v-loop` and the header's pause button; `analytics.ts`: the cookieless visit counter (`duotyping-specs/specs/site-analytics-consent.md`).
 - `src/style.css` and `src/styles/`: brand tokens, type scale, components, the hero demo and the loops' keyframes.
 - `public/_headers`: security headers and caching; `wrangler.jsonc`: the static-assets Worker.
 - Plans, the product record and design boards: `duotyping-specs` (its `README.md` is the index).
@@ -29,7 +29,7 @@ The public website for DuoTyping, a writing assistant: Vue 3, Tailwind CSS 4 and
 ## Conventions that differ from defaults
 
 - No cookies, and no third-party requests except what `site-analytics-consent.md` allows: Cloudflare Web Analytics, which sets none. Fonts stay self-hosted.
-- Honour Reduce Motion: every loop and the hero demo show their final frame when motion is reduced.
+- Honour Reduce Motion: every loop and the hero demo show their final frame when motion is reduced. The header's pause button holds every loop and the hero demo (WCAG 2.2.2); a new loop joins it through `v-loop`.
 
 ## Commit messages
 
