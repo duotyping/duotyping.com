@@ -27,7 +27,7 @@ checks each day, and the extension and the web app use one.
 | Platforms | macOS 14 or later (Apple silicon or Intel); Windows 10 22H2 or Windows 11; Chrome 119 or later, or Edge; any current browser |
 | Writing languages | English today, more coming |
 | Interface | English |
-| Availability | Write, the web app, now; the apps and the extension soon, at [duotyping.com](https://duotyping.com) |
+| Availability | Write, the web app, at [app.duotyping.com](https://app.duotyping.com) |
 | Checks | DuoTyping’s own, free to start |
 | Cloud models (optional, your own key, Mac and Windows) | OpenAI, Anthropic, any OpenAI-compatible API |
 | Website | <https://duotyping.com> |
