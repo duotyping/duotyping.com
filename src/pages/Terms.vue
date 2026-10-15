@@ -58,7 +58,7 @@ usePageHead({
 
     <h2>The paid plan</h2>
     <p>
-      The paid plan is a subscription that raises your daily checks with the DuoTyping provider, up to the allowance shown when you buy it. It’s sold by Creem, our merchant of record, and Creem’s terms of sale apply to the purchase, its taxes and refunds. It renews until you cancel. You can cancel any time in Settings › Account › Manage Subscription, and the plan stays until the end of the period you paid for. If we change the price, we’ll tell you before your next renewal, and the new price applies only from then.
+      The paid plan is a subscription that raises your daily checks with the DuoTyping provider, up to the allowance shown when you buy it. It’s sold by Creem, our merchant of record, and Creem’s terms of sale apply to the purchase, its taxes and refunds. It renews until you cancel. You can cancel any time in Settings › Account › Manage Subscription, and the plan stays until the end of the period you paid for. If we stop offering the paid plan, or close DuoTyping, we’ll stop its renewals, and it stays until the end of the period you paid for. If we raise the price, we’ll tell you 30 days before it applies, and it applies only from your next renewal after that.
     </p>
 
     <h2>No warranty</h2>
