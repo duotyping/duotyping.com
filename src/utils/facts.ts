@@ -13,7 +13,7 @@ export type Platform = {
   cta: string // what the button says once it's live
   href: string
   requires: string
-  install?: string // a package manager's line, where there is one
+  install?: string // a package manager's line, where there is one, shown once the platform is live
   tags: string[] // what this platform does that the others may not
 }
 

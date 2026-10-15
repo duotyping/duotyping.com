@@ -12,7 +12,7 @@ import TryIt from '../sections/TryIt.vue'
 import { SITE_URL, release } from '../utils/site'
 
 // The page shows every feature working and keeps its words to headlines (duotyping-specs, the
-// landing proposal of 2026-10-15): eleven sections, nearly all of them demos.
+// landing proposal of 2026-10-15): nine sections, nearly all of them demos.
 const TITLE = 'DuoTyping | Grammar and tone in any app, on Mac, Windows and the web'
 const DESCRIPTION =
   'DuoTyping checks grammar and tone in the apps you already write in, on Mac, Windows, Chrome and the web, and changes nothing until you say yes.'

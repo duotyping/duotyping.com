@@ -52,8 +52,9 @@ onUnmounted(() => clearTimeout(reset))
           <a v-if="isLive(id)" :href="PLATFORMS[id].href || '#platforms'" class="btn btn-sm w-full" :class="mine !== id && 'btn-soft'">{{ label(id) }}</a>
           <span v-else class="btn btn-sm btn-soon w-full">Coming soon</span>
           <p class="text-[13px] leading-[1.45] text-ink-3">{{ PLATFORMS[id].requires }}</p>
+          <!-- The package manager's line only once there's a release for it to install -->
           <button
-            v-if="PLATFORMS[id].install"
+            v-if="PLATFORMS[id].install && isLive(id)"
             type="button"
             class="flex cursor-pointer items-center justify-between gap-2 rounded-lg bg-chip px-3 py-2 text-left font-mono text-[12px] text-ink-2"
             :aria-label="`Copy ${PLATFORMS[id].install}`"
