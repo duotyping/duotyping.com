@@ -5,12 +5,11 @@ import BrandMark from '../components/brand/BrandMark.vue'
 
 // Privacy as a demo: pick who checks your writing, and the path redraws to say where your text
 // goes and what's kept (duotyping-specs product/api-prd.md; the Privacy Policy says it in full).
-type Choice = { id: string; name: string; via?: string; to: string; kept: string; ownKey?: boolean }
+type Choice = { id: string; name: string; via?: string; to: string; kept: string }
+// OpenAI, Anthropic and any OpenAI-compatible endpoint take the same path, so they're one choice.
 const CHOICES: Choice[] = [
   { id: 'duo', name: 'DuoTyping', via: 'DuoTyping’s server', to: 'Claude, by Anthropic', kept: 'Kept, encrypted, to improve DuoTyping. Never logged, never sold.' },
-  { id: 'openai', name: 'OpenAI', to: 'OpenAI', kept: 'Straight from your computer, on your own key. DuoTyping keeps nothing.', ownKey: true },
-  { id: 'anthropic', name: 'Anthropic', to: 'Anthropic', kept: 'Straight from your computer, on your own key. DuoTyping keeps nothing.', ownKey: true },
-  { id: 'endpoint', name: 'Your endpoint', to: 'Your endpoint', kept: 'Any OpenAI-compatible endpoint, on your own key. DuoTyping keeps nothing.', ownKey: true },
+  { id: 'key', name: 'Your own key', to: 'OpenAI, Anthropic or your endpoint', kept: 'Checks go straight from your computer to your provider. DuoTyping keeps none of them.' },
 ]
 const at = ref(0)
 const choice = computed(() => CHOICES[at.value]!)
