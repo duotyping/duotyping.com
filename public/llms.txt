@@ -1,0 +1,75 @@
+# DuoTyping
+
+> DuoTyping is a writing assistant that checks grammar and tone in the apps and sites you already write in, on Mac, Windows, Chrome and Edge, and the web. You select text, press one shortcut and review its suggestions in DuoTyping's own card. Nothing changes until you accept.
+
+Available today: Write, the web app, at https://app.duotyping.com/ (any current browser, phones included), and the Windows app, from the Microsoft Store at https://apps.microsoft.com/detail/9N73KBZTTD43. The Mac app and the Chrome and Edge extension are described below but are not yet released, so there is nothing to download or install for them yet. The interface is in English on every client.
+
+## How it works
+
+- Select text and press the shortcut, or use the right-click menu in the browser. DuoTyping reviews it and shows its suggestions; you accept or skip each one, and only what you accept is written back.
+- Marks as you type: in the apps or sites you switch on (off by default), mistakes in English paragraphs are underlined as you write. Grammar and tone marks are separate.
+- Rewrite: select a sentence and pick a better way to say it.
+- Translate: write in your own language and get ways to say it in English, or put English into your language.
+- Pronounce: hear a word, with its IPA in the Mac and Windows apps.
+- Profiles: up to 10 writing profiles (context, tone, how many variations to offer); "Check again with" another profile re-checks the same text.
+- Write: a quiet place to draft. Nothing selected? Write opens.
+
+## Clients
+
+### Write on the web (live)
+- https://app.duotyping.com/ in any current browser; installs on a phone as an app, and on Android you can share text to it.
+- Needs a free account. Drafts are saved to your account (up to 100,000 characters each) and keep editing offline, saving once you're back.
+- Marks as you type for English, spelling marks (US English, never counted), Check Now in any language, and a Suggestions panel with Accept, Skip and Report.
+- Translate offers three ways to say it by default, into English or into one of Vietnamese, Chinese, French, Hindi, Indonesian, Japanese, Korean, Malay, Portuguese, Spanish, Tagalog, Thai or your account's own language.
+- Pronounce plays a single English word, normally or slowly.
+
+### Mac app (not yet released)
+- macOS 14 or later, Apple silicon or Intel. Lives in the menu bar.
+- Shortcuts, all reassignable: Check ⌃⌥⌘D, Translate ⌃⌥⌘T, Pronounce ⌃⌥⌘P.
+- Works in most apps where you can select text. Where an app won't take a change back, you copy the fix instead.
+- Marks as you type in the apps you switch on: Slack, Microsoft Teams, Mail, Messages and WhatsApp.
+- Pronounce shows IPA and works offline. Write keeps drafts on the Mac. Signed in, your writing profiles, languages and drafts sync through your account, each with its own switch in Settings › Account; Windows and the extension don't sync yet.
+- Asks for Accessibility access: it's how macOS lets one app read the text you select in another and write an accepted change back. It never reads password fields or password managers.
+- Works signed out: with your own AI key, or 20 free checks to start.
+
+### Windows app (live)
+- From the Microsoft Store: https://apps.microsoft.com/detail/9N73KBZTTD43
+- Windows 10 22H2 (x64), or Windows 11 24H2 or later (x64 or ARM64). Lives in the system tray.
+- Shortcuts: Check Win+Shift+D, Translate Win+Ctrl+Alt+T, Pronounce Win+Ctrl+Alt+P.
+- Marks as you type in the apps you switch on: Slack, Microsoft Teams, the new Outlook and WhatsApp. Word and classic Outlook work by shortcut.
+- Needs no special permission. It never reads password fields or password managers, and can't reach apps run as administrator.
+- Pronounce works offline; Write keeps drafts on the PC, encrypted. Works signed out, like the Mac app.
+
+### Chrome and Edge extension (not yet released)
+- Chrome 119 or later, or Edge. Needs a free account and always uses DuoTyping's own checks.
+- Right-click › DuoTyping or the shortcut checks a selection on any site: Alt+Shift+D to check, Alt+Shift+E to rewrite (Ctrl+Shift on a Mac).
+- On the sites you switch on (https only): marks as you type, a button in the text box's corner with the count, and a Rewrite pencil beside it when you select text.
+- Never reads password, card-number or one-time-code fields, password managers' web vaults, or incognito windows. Google Docs isn't supported.
+
+## Plans
+
+- Signed out (Mac and Windows apps): 20 checks on each computer to start.
+- Free account, every day (UTC): 20 checks, 200 marks as you type and 50 translations. Spelling marks in Write are never counted.
+- Pro: $10 a month or $96 a year, plus tax where it applies. Every day: 300 checks, 1,000 marks as you type and 300 translations, within a fair monthly limit.
+- Your own key (Mac and Windows apps): OpenAI, Anthropic or any OpenAI-compatible endpoint, with no daily limit, billed by your provider. The key stays in the Mac's Keychain or encrypted for your Windows account; DuoTyping never sees it.
+- Marks as you type and translations have their own allowances and never spend checks. A check that fails isn't counted.
+
+## Privacy
+
+- With DuoTyping's own checks, your text goes through DuoTyping's server to its AI provider. DuoTyping keeps each check, encrypted, to improve DuoTyping; it doesn't use it to train AI and never sells it.
+- With your own key, checks go straight from your computer to your provider and DuoTyping keeps none of them. Translations always go through DuoTyping, so it keeps those.
+- Spelling marks never reach an AI provider and aren't kept. A report sends a reason, never your text.
+- Delete Account, in the web app, signs every device out and deletes the account 90 days later (signing in before then keeps it); what was kept stays, no longer linked to you. Delete All Drafts and Export My Data are there too.
+- duotyping.com sets no cookies.
+
+## Pages
+
+- [Home](https://duotyping.com/): every feature, the platforms, plans and FAQ
+- [Privacy Policy](https://duotyping.com/privacy): what each mode sends and keeps, in full
+- [Terms of Use](https://duotyping.com/terms): including acceptable use
+- [Write](https://app.duotyping.com/): the web app
+- [Feedback](https://duotyping.com/feedback): report a bug or ask a question; support@duotyping.com
+
+## Optional
+
+- [Press kit](https://duotyping.com/press/duotyping-press-kit.zip): logo, icon and banners
