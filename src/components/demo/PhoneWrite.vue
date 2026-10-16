@@ -5,8 +5,8 @@ import SceneMessage from './SceneMessage.vue'
 // Write in a phone's browser, as web-prd.md and board L8 draw it: ☰, the draft's title, its save
 // tick, Translate, ⋯ and the count that opens Suggestions; the email with Write's marks; the profile
 // and Check Now underneath. A tapped mark docks its fix at the bottom, and tapping the fix takes it:
-// there's no Accept. Fills the phone's screen under its status bar, which positions the fix.
-defineProps<{ small?: boolean }>()
+// there's no Accept. Drawn as the app alone, a card with no phone around it (owner, 2026-10-17): a
+// bezel and a status bar only took room from the words. Whoever places it gives it its size.
 // Each mark's fix, docked in turn; a fix taken leaves one fewer, so the second says 1 of 1.
 const FIXES = [
   { from: 'have send', to: 'sent', of: '1 of 2' },
@@ -15,10 +15,11 @@ const FIXES = [
 </script>
 
 <template>
-  <div class="font-mac flex flex-col text-mac-ink">
-    <div class="flex items-center gap-2.5 border-b border-line px-3.5 pt-1 pb-2.5">
+  <!-- The card: its corners clip the fix as it slides in and out at the bottom edge. -->
+  <div class="font-mac relative flex flex-col overflow-hidden rounded-[28px] bg-white text-mac-ink shadow-[0_24px_50px_-14px_rgba(24,33,63,0.24),0_2px_8px_rgba(24,33,63,0.06)] ring-1 ring-ink/6">
+    <div class="flex items-center gap-2.5 border-b border-line px-4 py-2.5">
       <Icon name="menu" class="size-[18px] shrink-0" />
-      <span class="grow truncate font-semibold" :class="small ? 'text-[13px]' : 'text-sm'">Revised contract</span>
+      <span class="grow truncate text-[15px] font-semibold">Revised contract</span>
       <Icon name="check" class="size-4 shrink-0 text-ink-3" />
       <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round" class="shrink-0 text-ink-2">
         <path d="M1.5 3.5h7M5 2v1.5M3 3.5c.5 2.3 2 4 4 5M7 3.5c-.4 2.4-2 4.3-4.5 5.5M8.5 14l3-7 3 7M9.5 12h4" />
@@ -30,31 +31,33 @@ const FIXES = [
         <svg width="9" height="9" viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" class="pw-n0 [grid-area:1/1]"><path d="M2.5 6.3 5 8.7l4.5-5" /></svg>
       </span>
     </div>
-    <SceneMessage web class="grow px-4 pt-3.5" :size="small ? 'text-[13px] leading-[1.6]' : 'text-[14px] leading-[1.6]'" />
-    <div class="flex items-center justify-between gap-2 border-t border-line px-3.5 py-2.5">
+    <SceneMessage web class="grow px-[18px] pt-4" size="text-[15.5px] leading-[1.6]" />
+    <div class="flex items-center justify-between gap-2 border-t border-line px-4 py-2.5">
       <span class="truncate rounded-full border border-edge px-2.5 py-1 text-[11px] text-ink-2">Work · Business &amp; finance ⌄</span>
       <span class="shrink-0 rounded-lg bg-ink px-3 py-1.5 text-[11.5px] font-semibold text-white">Check Now</span>
     </div>
 
-    <!-- The tapped mark's fix, docked full width: the words struck, the fix a pill you tap. Taking it
-         writes it in and closes the sheet; the next mark opens its own. -->
+    <!-- The tapped mark's fix, a sheet over the card's foot, full width: the words struck, the fix a
+         pill you tap. Taking it writes it in and closes the sheet; the next mark opens its own. Its
+         lower corners are the card's, so they hold even where a browser lets a moving layer slip
+         the card's rounded clip. -->
     <div
       v-for="(fix, i) in FIXES"
       :key="fix.from"
-      class="pw-sheet absolute inset-x-0 bottom-0 rounded-t-[16px] border-t border-edge bg-white px-3.5 pt-2.5 pb-6 shadow-[0_-12px_28px_rgba(24,33,63,0.14)]"
+      class="pw-sheet absolute inset-x-0 bottom-0 rounded-t-[20px] rounded-b-[28px] border-t border-edge bg-white px-4 pt-2.5 pb-5 shadow-[0_-10px_28px_rgba(24,33,63,0.14)]"
       :class="`pw-sheet${i + 1}`"
     >
-      <div class="flex items-center gap-2 text-xs text-ink-2">
+      <div class="flex items-center gap-2 text-[13px] text-ink-2">
         <span class="size-2 rounded-full bg-[#B04227]" />
         <span class="grow font-semibold text-mac-ink">Grammar</span>
         <span class="flex size-7 items-center justify-center text-base text-ink-3">‹</span>{{ fix.of }}<span class="flex size-7 items-center justify-center text-base text-ink-3">›</span>
       </div>
-      <div class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1.5" :class="small ? 'text-[13.5px]' : 'text-[14.5px]'">
+      <div class="mt-2 flex flex-wrap items-center gap-x-2 gap-y-1.5 text-[16px]">
         <span class="text-ink-3 line-through">{{ fix.from }}</span>
         <span class="text-ink-3">→</span>
         <span class="pw-chip relative rounded-full bg-ink px-3 py-1 font-semibold text-white" :class="`pw-chip${i + 1}`">{{ fix.to }}<span class="pw-touch" :class="`pw-t${2 * i + 2}`" /></span>
       </div>
-      <div class="mt-3 flex justify-between text-xs">
+      <div class="mt-3 flex justify-between text-[13px]">
         <span class="font-semibold text-ink-2">Skip</span>
         <span class="text-ink-3">Report…</span>
       </div>
@@ -78,7 +81,8 @@ const FIXES = [
 .pw-mark1 { box-shadow: 0 0 0 2px var(--color-ink); }
 .pw-lit { border-radius: 2px; }
 .pw-new1, .pw-new2, .pw-n1, .pw-n0 { opacity: 0; }
-.pw-sheet2 { transform: translateY(105%); }
+/* Out of sight, a sheet sits its shadow's depth below the card, so none of it shades the foot. */
+.pw-sheet2 { transform: translateY(calc(100% + 40px)); }
 .pw-touch {
   position: absolute;
   top: 50%;
@@ -139,10 +143,10 @@ const FIXES = [
 }
 /* A fix: up in 0.5 s as iOS moves a sheet, held, and down in 0.4 s the moment it's taken. */
 @keyframes pw-sheet {
-  0% { transform: translateY(105%); animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1); }
+  0% { transform: translateY(calc(100% + 40px)); animation-timing-function: cubic-bezier(0.32, 0.72, 0, 1); }
   6.25% { transform: none; }
   24.6% { transform: none; animation-timing-function: cubic-bezier(0.4, 0, 1, 1); }
-  29.6%, 100% { transform: translateY(105%); }
+  29.6%, 100% { transform: translateY(calc(100% + 40px)); }
 }
 @keyframes pw-press {
   0%, 0.5% { transform: none; background-color: var(--color-ink); }

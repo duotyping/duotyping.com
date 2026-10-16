@@ -185,13 +185,9 @@ const PROPOSALS = [
       </template>
 
       <!-- ── A phone: Write in the browser, a mark tapped, its fix docked below ──────── -->
+      <!-- Write as the phone's hero draws it: the app as a card, with no phone around it. -->
       <template v-else>
-        <div class="absolute top-[30px] left-[110px] h-[660px] w-[322px] overflow-hidden rounded-[46px] border-[11px] border-[#0F1530] bg-white shadow-[0_30px_70px_rgba(24,33,63,0.28)]">
-          <div class="flex h-10 items-center justify-between px-6 text-[12.5px] font-semibold text-mac-ink">
-            9:41<span class="flex gap-[3px]"><span v-for="n in 3" :key="n" class="size-1.5 rounded-full bg-mac-ink" /></span>
-          </div>
-          <PhoneWrite class="h-[598px]" />
-        </div>
+        <PhoneWrite class="absolute top-[124px] left-[110px] h-[520px] w-[340px]" />
         <div class="absolute top-[150px] left-[488px] flex w-[300px] flex-col gap-4">
           <span class="stage-label">Write, on your phone</span>
           <div class="font-mac flex items-center gap-3 rounded-2xl border border-edge bg-white p-4 shadow-[0_14px_34px_rgba(24,33,63,0.10)]">
