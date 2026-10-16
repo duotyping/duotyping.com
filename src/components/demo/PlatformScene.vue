@@ -14,7 +14,8 @@ import { PC_KEYS, os } from '../../utils/platform'
 // The hero's story on Windows, in Chrome or Edge, and on a phone, at the Mac demo's size: the
 // email's two mistakes are marked, then reviewed and fixed in place, each the way that client does
 // it (the extension's from its own content scripts, the phone's from Write and board L8). CSS plays
-// it every 10 s; v-loop starts it in view, and with Reduce Motion it rests on the review.
+// it every 10 s (the phone's Write on its own 8 s clock, in PhoneWrite); v-loop starts it in view,
+// and with Reduce Motion it rests on the review.
 defineProps<{ platform: 'windows' | 'chrome' | 'phone' }>()
 // The extension's Check selection: Alt+Shift+D, or Control+Shift+D on a Mac.
 const KEYS = computed(() => ({ windows: ['Win', 'Shift', 'D'], chrome: os.value === 'mac' ? ['⌃', '⇧', 'D'] : ['Alt', 'Shift', 'D'] }))
@@ -220,22 +221,14 @@ const PROPOSALS = [
 /* The scenes' story, on one 10 s clock. Without motion (or before CSS runs) each piece sits in
    its last frame, the review open, so the still picture still says it all. */
 .font-win { font-family: "Segoe UI Variable Text", "Segoe UI", system-ui, sans-serif; }
-/* Every client draws its marks straight (mac-prd.md, owner 2026-10-11); Write adds a tint, and
-   rings the one you tapped. */
+/* Every client draws its marks straight (mac-prd.md, owner 2026-10-11); Write's, with their tint,
+   are PhoneWrite's .pw-mark. */
 .ps-mark {
   text-decoration: underline solid var(--color-clay);
   text-decoration-thickness: 2px;
   text-underline-offset: 3px;
   text-decoration-skip-ink: none;
 }
-.ps-wmark {
-  text-decoration: underline solid #B04227 2px;
-  text-underline-offset: 3px;
-  text-decoration-skip-ink: none;
-  background: rgb(176 66 39 / 0.12);
-  border-radius: 2px;
-}
-.ps-tap { box-shadow: 0 0 0 2px var(--color-ink); }
 .ps-sel { background: linear-gradient(var(--color-select), var(--color-select)) no-repeat 0 0 / 100% 100%; }
 .ps-new { opacity: 0; }
 
@@ -247,9 +240,6 @@ const PROPOSALS = [
   .ps-badge { animation: ps-badge 10s infinite; }
   .ps-pop { animation: ps-pop 10s infinite; }
   .ps-xpop { animation: ps-xpop 10s infinite; }
-  .ps-wsheet { animation: ps-wsheet 10s infinite; }
-  .ps-tap { animation: ps-tap 10s infinite; }
-  .ps-wpill { animation: ps-wpill 10s infinite; }
   .ps-acc .mk-btn { animation: ps-acc 10s infinite; }
   .ps-old { animation: ps-old 10s infinite; }
   .ps-new { animation: ps-new 10s infinite; }
@@ -264,11 +254,8 @@ const PROPOSALS = [
 @keyframes ps-pill { 0%, 25%, 43%, 100% { opacity: 0; transform: translateY(4px); } 28%, 40% { opacity: 1; transform: none; } }
 @keyframes ps-badge { 0%, 10%, 65%, 100% { opacity: 0; transform: scale(0.9); } 13%, 62% { opacity: 1; transform: none; } }
 @keyframes ps-pop { 0%, 40%, 77%, 100% { opacity: 0; transform: translateY(10px); } 43%, 74% { opacity: 1; transform: none; } }
-/* The extension's card and Write's fix close the moment the text is written. */
+/* The extension's card closes the moment the text is written. */
 @keyframes ps-xpop { 0%, 40%, 64%, 100% { opacity: 0; transform: translateY(10px); } 43%, 62% { opacity: 1; transform: none; } }
-@keyframes ps-wsheet { 0%, 40%, 64%, 100% { transform: translateY(105%); } 44%, 62% { transform: none; } }
-@keyframes ps-tap { 0%, 36%, 64%, 100% { box-shadow: none; } 38%, 62% { box-shadow: 0 0 0 2px var(--color-ink); } }
-@keyframes ps-wpill { 0%, 58%, 61.5%, 100% { scale: 1; } 59.5% { scale: 0.92; } }
 @keyframes ps-acc { 0%, 58%, 63%, 100% { transform: none; } 59.5%, 61.5% { transform: scale(0.94); background: var(--color-accent-press); } }
 @keyframes ps-old { 0%, 62%, 97%, 100% { opacity: 1; } 64.5%, 94% { opacity: 0; } }
 @keyframes ps-new { 0%, 62%, 97%, 100% { opacity: 0; } 64.5%, 94% { opacity: 1; } }

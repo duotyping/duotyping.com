@@ -3,7 +3,7 @@ import MarkPaths from '../brand/MarkPaths.vue'
 import PhoneWrite from './PhoneWrite.vue'
 
 // What a phone sees in the hero: Write in the phone's own browser, the same email's mistakes
-// marked, one tapped and fixed, on the clock PlatformScene's styles keep (its ps-* classes).
+// marked, each tapped and fixed in turn, on PhoneWrite's own 8 s clock (its pw-* classes).
 // Drawn at 350 × 626 and scaled to the phone, as the stage-phone rule does.
 </script>
 
