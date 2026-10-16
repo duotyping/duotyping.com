@@ -16,7 +16,7 @@ import PhoneWrite from './PhoneWrite.vue'
       </svg>
       <div class="absolute top-[18px] left-[29px] h-[590px] w-[292px] overflow-hidden rounded-[42px] border-[10px] border-[#0F1530] bg-white shadow-[0_24px_56px_rgba(24,33,63,0.26)]">
         <div class="flex h-9 items-center justify-between px-5 text-xs font-semibold text-mac-ink">
-          9:41<span class="h-5 w-[78px] rounded-full bg-[#0F1530]" /><span class="flex gap-[3px]"><span v-for="n in 3" :key="n" class="size-1.5 rounded-full bg-mac-ink" /></span>
+          9:41<span class="flex gap-[3px]"><span v-for="n in 3" :key="n" class="size-1.5 rounded-full bg-mac-ink" /></span>
         </div>
         <PhoneWrite small class="h-[534px]" />
       </div>
