@@ -8,12 +8,18 @@ import { glideInPageLinks } from './utils/scroll'
 
 const router = useRouter()
 let unglide: (() => void) | undefined
+// iOS only shows a button's :active press while the page listens for touches.
+const onTouch = () => {}
 // In the browser only: the prerendered page carries no analytics.
 onMounted(() => {
   startAnalytics()
   unglide = glideInPageLinks(router)
+  document.addEventListener('touchstart', onTouch, { passive: true })
 })
-onUnmounted(() => unglide?.())
+onUnmounted(() => {
+  unglide?.()
+  document.removeEventListener('touchstart', onTouch)
+})
 </script>
 
 <template>

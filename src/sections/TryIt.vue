@@ -94,7 +94,7 @@ onUnmounted(() => {
 <template>
   <!-- ── Try it ─────────────────────────────────────────────────────────────────────── -->
   <section id="try" ref="root" class="wrap scroll-mt-[-40px] pt-[72px] lg:pt-24">
-    <div class="flex flex-col gap-6 rounded-[28px] border border-edge bg-card p-5 md:p-9 lg:gap-8 lg:p-12">
+    <div v-reveal class="flex flex-col gap-6 rounded-[28px] border border-edge bg-card p-5 md:p-9 lg:gap-8 lg:p-12">
       <div class="flex flex-col gap-2.5">
         <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:46] [--lo:31]">
           <template v-if="os === 'phone'">Try it: tap the keys</template>
@@ -136,40 +136,48 @@ onUnmounted(() => {
           </button>
         </div>
 
-        <!-- The review: one card at a time, as the app shows it -->
-        <div class="font-mac min-h-[218px]">
-          <div v-if="step === 'review' && card" class="overflow-hidden rounded-[10px] border border-edge bg-panel text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)]">
-            <div class="flex items-center gap-2.5 px-3.5 pt-3 pb-2.5">
-              <span class="rounded-[5px] bg-tag px-2 py-[3px] text-[10.5px] font-semibold text-cyan-deep">Sentence by sentence</span>
-              <span class="text-xs text-ink-2">{{ card.kind }} · {{ at + 1 }} of {{ current.fixes.length }}</span>
-            </div>
-            <div class="mx-2.5 mb-2.5 rounded-lg border border-accent bg-tint px-[13px] py-[11px]">
-              <p class="mb-1 text-[15px] leading-[1.45]">
-                <template v-for="(part, j) in card.to.split(card.changed)" :key="j"
-                  ><span v-if="j > 0" class="font-semibold text-cyan-deep">{{ card.changed }}</span>{{ part }}</template
-                >
-              </p>
-              <p class="mb-3 text-[13px] leading-[1.4] text-ink-3 line-through">{{ card.from }}</p>
-              <div class="flex flex-wrap items-center gap-2">
-                <button type="button" class="mk-btn cursor-pointer px-4 py-[7px] text-[13px]" @click="next(true)">Accept</button>
-                <span v-if="visitorKeys" class="mk-kbd">{{ visitorKeys.accept }}</span>
-                <button type="button" class="mk-btn-2 cursor-pointer px-4 py-[6px] text-[13px]" @click="next(false)">Skip</button>
-                <span v-if="visitorKeys" class="mk-kbd">{{ visitorKeys.skip }}</span>
+        <!-- The review: one card at a time, as the app shows it. The card and the note it replaces
+             share one cell and cross-fade; the next card's words swap in while its buttons stay put,
+             so focus stays on Accept. -->
+        <div class="font-mac grid min-h-[218px]">
+          <Transition name="stack">
+            <div v-if="step === 'review' && card" key="card" class="self-start overflow-hidden [grid-area:1/1] rounded-[10px] border border-edge bg-panel text-left text-ink shadow-[0_26px_60px_rgba(24,33,63,0.18),0_3px_10px_rgba(24,33,63,0.08)]">
+              <div class="flex items-center gap-2.5 px-3.5 pt-3 pb-2.5">
+                <span class="rounded-[5px] bg-tag px-2 py-[3px] text-[10.5px] font-semibold text-cyan-deep">Sentence by sentence</span>
+                <span class="text-xs text-ink-2">{{ card.kind }} · {{ at + 1 }} of {{ current.fixes.length }}</span>
               </div>
+              <div class="mx-2.5 mb-2.5 rounded-lg border border-accent bg-tint px-[13px] py-[11px]">
+                <Transition name="swap" mode="out-in">
+                  <div :key="at">
+                    <p class="mb-1 text-[15px] leading-[1.45]">
+                      <template v-for="(part, j) in card.to.split(card.changed)" :key="j"
+                        ><span v-if="j > 0" class="font-semibold text-cyan-deep">{{ card.changed }}</span>{{ part }}</template
+                      >
+                    </p>
+                    <p class="mb-3 text-[13px] leading-[1.4] text-ink-3 line-through">{{ card.from }}</p>
+                  </div>
+                </Transition>
+                <div class="flex flex-wrap items-center gap-2">
+                  <button type="button" class="mk-btn cursor-pointer px-4 py-[7px] text-[13px]" @click="next(true)">Accept</button>
+                  <span v-if="visitorKeys" class="mk-kbd">{{ visitorKeys.accept }}</span>
+                  <button type="button" class="mk-btn-2 cursor-pointer px-4 py-[6px] text-[13px]" @click="next(false)">Skip</button>
+                  <span v-if="visitorKeys" class="mk-kbd">{{ visitorKeys.skip }}</span>
+                </div>
+              </div>
+              <div class="border-t border-edge px-3.5 py-[9px] text-[11.5px] text-ink-3">Nothing changes until you accept.</div>
             </div>
-            <div class="border-t border-edge px-3.5 py-[9px] text-[11.5px] text-ink-3">Nothing changes until you accept.</div>
-          </div>
-          <div v-else class="flex h-full min-h-[218px] flex-col items-start justify-center gap-3 rounded-[10px] border border-dashed border-key px-5 py-4 text-[14.5px] text-ink-3">
-            <template v-if="step === 'done'">
-              <span class="font-semibold text-ink">Done: only what you accepted changed.</span>
-              <button type="button" class="cursor-pointer font-semibold text-cyan-deep underline underline-offset-4" @click="pick(sample)">Start over</button>
-            </template>
-            <!-- Before the first press: what to do, and what will show up here -->
-            <template v-else>
-              <span class="font-semibold text-ink">{{ os === 'phone' ? 'Tap the keys' : `Press ${KEYS.join(os === 'mac' ? '' : '+')} or click the keys` }} to check the highlighted text.</span>
-              <span>Each suggestion shows up here, for you to accept or skip.</span>
-            </template>
-          </div>
+            <div v-else :key="step" class="flex h-full min-h-[218px] [grid-area:1/1] flex-col items-start justify-center gap-3 rounded-[10px] border border-dashed border-key px-5 py-4 text-[14.5px] text-ink-3">
+              <template v-if="step === 'done'">
+                <span class="font-semibold text-ink">Done: only what you accepted changed.</span>
+                <button type="button" class="cursor-pointer font-semibold text-cyan-deep underline underline-offset-4" @click="pick(sample)">Start over</button>
+              </template>
+              <!-- Before the first press: what to do, and what will show up here -->
+              <template v-else>
+                <span class="font-semibold text-ink">{{ os === 'phone' ? 'Tap the keys' : `Press ${KEYS.join(os === 'mac' ? '' : '+')} or click the keys` }} to check the highlighted text.</span>
+                <span>Each suggestion shows up here, for you to accept or skip.</span>
+              </template>
+            </div>
+          </Transition>
         </div>
       </div>
 

@@ -179,10 +179,42 @@ details[open]:not(.is-closing) .faq-icon .bar { transform: scaleY(0); }
 .burger[aria-expanded="true"] path:nth-child(2) { transform: scaleX(0.2); opacity: 0; }
 .burger[aria-expanded="true"] path:nth-child(3) { transform: rotate(-45deg) translateY(-4.5px); }
 
+/* ── Small changes of state ──────────────────────────────────────────────────────────── */
+
+/* One thing becoming another in place (Copy link → Link copied, a review card's text): the old
+   fades out quickly, then the new fades in with a 4 px rise. Used with mode="out-in". */
+.swap-enter-active { transition: opacity 200ms ease-out, transform 200ms var(--ease-glide); }
+.swap-leave-active { transition: opacity 110ms ease-in; }
+.swap-enter-from { opacity: 0; transform: translateY(4px); }
+.swap-leave-to { opacity: 0; }
+/* Two things sharing one grid cell, so the box keeps its size: the new one fades in as the old goes. */
+.stack-enter-active { transition: opacity 220ms ease-out, transform 220ms var(--ease-glide); }
+.stack-leave-active { transition: opacity 150ms ease-in; }
+.stack-enter-from { opacity: 0; transform: translateY(6px); }
+.stack-leave-to { opacity: 0; }
+
+/* The hero's scenes cross-fade: the new one fades in over the old, which holds still underneath
+   until it's gone. Under 1280 the stage is in the page's flow, so the old one steps out of it. */
+.scene-enter-active { transition: opacity 320ms ease-out; }
+.scene-enter-from { opacity: 0; }
+@media (width < 80rem) {
+  .stage-desk.scene-leave-active { position: absolute; inset-inline: var(--gutter); }
+}
+
+/* Section headings and cards rise 14 px into place the first time they scroll into view (v-reveal
+   in motion.ts). The prerendered page, a page without script, and Reduce Motion show them as is. */
+[data-reveal] {
+  transition: opacity 650ms var(--ease-glide) var(--reveal-delay, 0ms), transform 750ms var(--ease-glide) var(--reveal-delay, 0ms);
+}
+[data-reveal="out"] { opacity: 0; transform: translateY(14px); }
+@media print { [data-reveal] { opacity: 1 !important; transform: none !important; } }
+
 /* Nothing here is load-bearing, so honour the setting: every piece shows its final frame. */
 @media (prefers-reduced-motion: reduce) {
   .tcaret, .dt-sel, .dt-pop, .dt-mark, .dt-in { animation: none !important; }
   .fade, .mk, .sel, .keycap-press, .faq-icon, .faq-icon .bar,
-  .menu-enter-active, .menu-leave-active, .menu-row, .burger path { transition: none !important; }
+  .menu-enter-active, .menu-leave-active, .menu-row, .burger path,
+  .swap-enter-active, .swap-leave-active, .stack-enter-active, .stack-leave-active,
+  .scene-enter-active, [data-reveal] { transition: none !important; }
   .loop, .loop * { animation: none !important; }
 }

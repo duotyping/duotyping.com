@@ -63,7 +63,7 @@ function toggle(e: MouseEvent) {
   <!-- ── FAQ ────────────────────────────────────────────────────────────────────────── -->
   <section id="faq" class="faq wrap grid grid-cols-1 scroll-mt-[-40px] gap-7 pt-20 lg:scroll-mt-[-68px] lg:grid-cols-12 lg:gap-x-6 lg:gap-y-0 lg:pt-[116px]">
     <div class="contents lg:col-span-4 lg:flex lg:flex-col lg:gap-[22px]">
-      <div class="order-1 flex flex-col gap-3.5 lg:order-none lg:gap-[22px]">
+      <div v-reveal class="order-1 flex flex-col gap-3.5 lg:order-none lg:gap-[22px]">
         <div class="eyebrow">FAQ</div>
         <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:54] [--lo:35]">Fair questions.</h2>
       </div>
@@ -99,7 +99,7 @@ function toggle(e: MouseEvent) {
       </svg>
     </div>
     <div class="order-2 lg:order-none lg:col-span-7 lg:col-start-6">
-      <div class="border-b border-line">
+      <div v-reveal class="border-b border-line">
         <details v-for="([q, a], i) in FAQ" :key="q" class="border-t border-line" :open="i === 0">
           <summary class="flex min-h-11 cursor-pointer items-center justify-between gap-6 py-[18px] text-left lg:py-5" @click="toggle">
             <span class="fluid font-semibold text-ink [--hi:19.5] [--lo:17.5]">{{ q }}</span>

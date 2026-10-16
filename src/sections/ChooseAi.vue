@@ -14,6 +14,7 @@ const CHOICES: Choice[] = [
 ]
 const at = ref(0)
 const choice = computed(() => CHOICES[at.value]!)
+const VIA = CHOICES[0]!.via
 
 const FACTS: [IconName, string][] = [
   ['lock', 'Passwords and secure fields are never read'],
@@ -26,7 +27,7 @@ const FACTS: [IconName, string][] = [
   <!-- ── Privacy: your choice of AI ─────────────────────────────────────────────────── -->
   <section id="privacy" class="mt-[88px] scroll-mt-[-32px] bg-ink text-paper lg:mt-[120px]">
     <div class="wrap flex flex-col gap-8 pt-[72px] pb-[76px] lg:gap-12 lg:pt-[104px] lg:pb-[100px]">
-      <div class="flex flex-col gap-3.5 lg:gap-5">
+      <div v-reveal class="flex flex-col gap-3.5 lg:gap-5">
         <div class="eyebrow text-cyan">Privacy</div>
         <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance text-paper [--hi:58] [--lo:35]">
           <del class="text-night-mute decoration-terra decoration-[0.07em]">Our</del> Your choice of AI.
@@ -34,7 +35,7 @@ const FACTS: [IconName, string][] = [
         <p class="fluid text-night-text [--hi:19] [--lo:16.5]">Pick who checks your writing, and see where it goes.</p>
       </div>
 
-      <div class="flex flex-col gap-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
+      <div v-reveal class="flex flex-col gap-6 lg:grid lg:grid-cols-12 lg:items-center lg:gap-10">
         <div class="flex flex-col gap-3 lg:col-span-4">
           <div class="grid grid-cols-2 gap-2" role="group" aria-label="Who checks your writing">
             <button
@@ -51,24 +52,34 @@ const FACTS: [IconName, string][] = [
         </div>
 
         <figure class="flex flex-col gap-5 rounded-[22px] border border-night-line bg-night-card/60 p-5 md:p-8 lg:col-span-8">
-          <div class="flex flex-col items-stretch gap-2 md:flex-row md:items-center md:gap-3" aria-hidden="true">
+          <!-- The path redraws rather than jumps: DuoTyping's server folds out of it and back in, and
+               the words swap with a fade (the .via rules below, and "swap" in style.css). -->
+          <div class="flex flex-col items-stretch md:flex-row md:items-center" aria-hidden="true">
             <span class="flex items-center gap-2.5 rounded-2xl border border-night-line bg-night-card px-4 py-3.5 text-[15.5px] font-semibold text-paper md:shrink-0">
               <Icon name="selection" class="size-5 text-terra" />Your app
             </span>
-            <template v-if="choice.via">
-              <span class="self-center text-night-mute md:rotate-0 max-md:rotate-90">→</span>
-              <span class="flex items-center gap-2.5 rounded-2xl border border-cyan/60 bg-night-card px-4 py-3.5 text-[15.5px] font-semibold text-paper md:shrink-0">
-                <BrandMark tone="ink" class="size-5" />{{ choice.via }}
-              </span>
-            </template>
-            <span class="self-center text-night-mute max-md:rotate-90">→</span>
+            <div class="via" :class="choice.via && 'is-on'">
+              <div class="flex min-h-0 min-w-0 flex-col items-stretch overflow-hidden md:flex-row md:items-center">
+                <span class="self-center py-2 text-night-mute max-md:rotate-90 md:px-3 md:py-0">→</span>
+                <span class="flex items-center gap-2.5 rounded-2xl border border-cyan/60 bg-night-card px-4 py-3.5 text-[15.5px] font-semibold whitespace-nowrap text-paper md:shrink-0">
+                  <BrandMark tone="ink" class="size-5" />{{ VIA }}
+                </span>
+              </div>
+            </div>
+            <span class="self-center py-2 text-night-mute max-md:rotate-90 md:px-3 md:py-0">→</span>
             <span class="flex items-center gap-2.5 rounded-2xl border-[1.5px] border-dashed border-night-dash px-4 py-3.5 text-[15.5px] font-semibold text-night-text md:shrink-0">
-              {{ choice.to }}
+              <Transition name="swap" mode="out-in"><span :key="choice.id">{{ choice.to }}</span></Transition>
             </span>
           </div>
           <figcaption class="flex items-start gap-3 text-[16px] leading-[1.5] text-night-text md:text-[17px]">
-            <Icon :name="choice.via ? 'lock' : 'nothing-kept'" class="mt-0.5 size-[22px] shrink-0 text-cyan" />
-            <span role="status"><span class="sr-only">With {{ choice.name }}: </span>{{ choice.kept }}</span>
+            <Transition name="swap" mode="out-in">
+              <Icon :key="choice.id" :name="choice.via ? 'lock' : 'nothing-kept'" class="mt-0.5 size-[22px] shrink-0 text-cyan" />
+            </Transition>
+            <span role="status">
+              <Transition name="swap" mode="out-in">
+                <span :key="choice.id"><span class="sr-only">With {{ choice.name }}: </span>{{ choice.kept }}</span>
+              </Transition>
+            </span>
           </figcaption>
         </figure>
       </div>
@@ -82,3 +93,22 @@ const FACTS: [IconName, string][] = [
     </div>
   </section>
 </template>
+
+<style>
+/* DuoTyping's server in the path: folded to nothing on your own key, and drawn out again on
+   DuoTyping's checks, down the column on a phone and along the row from 768. */
+.via {
+  display: grid;
+  grid-template-rows: 0fr;
+  opacity: 0;
+  transition: grid-template-rows 380ms var(--ease-glide), grid-template-columns 380ms var(--ease-glide), opacity 240ms ease-out;
+}
+.via.is-on { grid-template-rows: 1fr; opacity: 1; }
+@media (width >= 48rem) {
+  .via { grid-template-rows: 1fr; grid-template-columns: 0fr; }
+  .via.is-on { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .via { transition: none; }
+}
+</style>

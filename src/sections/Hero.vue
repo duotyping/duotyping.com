@@ -66,9 +66,12 @@ const requires = computed(() => PLATFORMS[offered.value].requires)
       </div>
       <PhoneDemo class="sm:hidden" />
     </div>
+    <!-- Picking another scene cross-fades to it (style.css, "The hero's scenes"). -->
     <div class="wrap pt-12 max-sm:hidden xl:contents">
-      <HeroDemo v-if="scene === 'desktop' && os === 'mac'" />
-      <PlatformScene v-else :key="scene" :platform="scene === 'desktop' ? 'windows' : scene" />
+      <Transition name="scene" :duration="320">
+        <HeroDemo v-if="scene === 'desktop' && os === 'mac'" key="mac" />
+        <PlatformScene v-else :key="scene" :platform="scene === 'desktop' ? 'windows' : scene" />
+      </Transition>
     </div>
   </section>
 </template>

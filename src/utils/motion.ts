@@ -43,9 +43,38 @@ export const vLoop: Directive<HTMLElement> = {
   },
 }
 
-// Registered app-wide in main.ts; this tells templates it exists.
+// Section headings and cards rise into place the first time they scroll into view, once (the
+// [data-reveal] rules in style.css). Only what's still below the screen when the page wakes up
+// waits for it, so nothing already on screen blinks out; the prerendered page and a page without
+// script show everything as it is, and so does Reduce Motion. Whatever arrives together follows
+// on 70 ms apart, at most four steps.
+let reveals: IntersectionObserver | undefined
+const reveal = (entries: IntersectionObserverEntry[]) => {
+  let n = 0
+  for (const { isIntersecting, target } of entries) {
+    if (!isIntersecting || !(target instanceof HTMLElement)) continue
+    target.style.setProperty('--reveal-delay', `${Math.min(n++, 4) * 70}ms`)
+    target.dataset.reveal = 'in'
+    reveals?.unobserve(target)
+  }
+}
+
+export const vReveal: Directive<HTMLElement> = {
+  mounted(el) {
+    if (!window.IntersectionObserver || reducedMotion() || el.getBoundingClientRect().top < innerHeight) return
+    reveals ??= new IntersectionObserver(reveal, { rootMargin: '0px 0px -6% 0px' })
+    el.dataset.reveal = 'out'
+    reveals.observe(el)
+  },
+  unmounted(el) {
+    reveals?.unobserve(el)
+  },
+}
+
+// Registered app-wide in main.ts; this tells templates they exist.
 declare module 'vue' {
   interface GlobalDirectives {
     vLoop: typeof vLoop
+    vReveal: typeof vReveal
   }
 }

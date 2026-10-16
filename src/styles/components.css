@@ -26,8 +26,11 @@
     white-space: nowrap;
     cursor: pointer;
     transition: background-color 120ms ease-out, translate 120ms ease-out;
+    /* The press below is the feedback, not iOS's grey tap box. */
+    -webkit-tap-highlight-color: transparent;
   }
-  .btn:hover { background: var(--color-accent-hover); }
+  /* Hover only where there's a pointer to hover with: on a phone it would stick after the tap. */
+  @media (hover: hover) { .btn:hover { background: var(--color-accent-hover); } }
   .btn:active { background: var(--color-accent-press); translate: 0 1px; }
 
   .nav-link {
@@ -39,7 +42,8 @@
     color: var(--color-ink);
     transition: color 120ms ease-out;
   }
-  .nav-link:hover { color: var(--color-cyan-deep); }
+  @media (hover: hover) { .nav-link:hover { color: var(--color-cyan-deep); } }
+  .nav-link:active { color: var(--color-cyan-deep); }
 
   /* Tags on the page: "Works offline", "Fastest", "Optional". */
   .tag {
@@ -172,5 +176,6 @@
   .way-link { @apply text-[14.5px] font-semibold text-cyan-deep hover:underline; }
   /* A smaller .btn; on a 320 px phone its words wrap rather than push its icon out. */
   .btn-sm { @apply h-auto min-h-11 rounded-xl px-[18px] py-2 text-center text-[15px] whitespace-normal; }
-  .btn-soft { @apply bg-sand text-ink hover:bg-key; }
+  /* Pressed on a touch screen, where there's no hover first, it darkens to the hover's grey too. */
+  .btn-soft { @apply bg-sand text-ink hover:bg-key active:bg-key; }
 }

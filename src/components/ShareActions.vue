@@ -45,7 +45,11 @@ onUnmounted(() => clearTimeout(reset))
       class="flex h-12 cursor-pointer items-center justify-center gap-2 text-base font-semibold text-ink"
       @click="copyLink"
     >
-      <Icon :name="copied ? 'check' : 'copy'" class="size-[18px]" />{{ copied ? 'Link copied' : 'Copy link' }}
+      <Transition name="swap" mode="out-in">
+        <span :key="String(copied)" class="flex items-center gap-2">
+          <Icon :name="copied ? 'check' : 'copy'" class="size-[18px]" />{{ copied ? 'Link copied' : 'Copy link' }}
+        </span>
+      </Transition>
     </button>
     <span v-if="copy" class="sr-only" role="status">{{ copied ? 'Link copied' : '' }}</span>
   </div>

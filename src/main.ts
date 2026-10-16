@@ -1,6 +1,6 @@
 import { ViteSSG } from 'vite-ssg'
 import App from './App.vue'
-import { vLoop } from './utils/motion'
+import { vLoop, vReveal } from './utils/motion'
 import Home from './pages/Home.vue'
 import NotFound from './pages/NotFound.vue'
 import './style.css'
@@ -22,4 +22,5 @@ const routes = [
 
 export const createApp = ViteSSG(App, { routes }, ({ app }) => {
   app.directive('loop', vLoop)
+  app.directive('reveal', vReveal)
 })

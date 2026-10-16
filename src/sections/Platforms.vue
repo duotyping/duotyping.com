@@ -31,7 +31,7 @@ onUnmounted(() => clearTimeout(reset))
 <template>
   <!-- ── Every platform ─────────────────────────────────────────────────────────────── -->
   <section id="platforms" class="wrap scroll-mt-[-40px] pt-[88px] lg:pt-[116px]">
-    <div class="mb-8 flex flex-col gap-3.5 lg:mb-12 lg:gap-[18px]">
+    <div v-reveal class="mb-8 flex flex-col gap-3.5 lg:mb-12 lg:gap-[18px]">
       <div class="eyebrow">Platforms</div>
       <h2 class="fluid font-display leading-[1.06] font-bold tracking-[-0.03em] text-balance [--hi:54] [--lo:35]">Wherever you write.</h2>
     </div>
@@ -39,7 +39,8 @@ onUnmounted(() => clearTimeout(reset))
       <li
         v-for="ids in CARDS"
         :key="ids[0]"
-        class="flex flex-col gap-4 rounded-[22px] border bg-card p-6"
+        v-reveal
+        class="flex flex-col gap-4 rounded-[22px] border bg-card p-6 transition-[border-color,box-shadow] duration-300 ease-out"
         :class="ids.includes(mine) ? 'border-accent shadow-[0_0_0_1px_var(--color-accent)]' : 'border-edge'"
       >
         <div class="flex items-center justify-between">
@@ -65,7 +66,9 @@ onUnmounted(() => clearTimeout(reset))
               @click="copy(PLATFORMS[id].install!)"
             >
               <span class="truncate">{{ PLATFORMS[id].install }}</span>
-              <Icon :name="copied ? 'check' : 'copy'" class="size-4 shrink-0" />
+              <Transition name="swap" mode="out-in">
+                <Icon :key="String(copied)" :name="copied ? 'check' : 'copy'" class="size-4 shrink-0" />
+              </Transition>
             </button>
           </div>
         </div>
