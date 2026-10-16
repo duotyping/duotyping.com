@@ -66,9 +66,9 @@ const FACTS: [IconName, string][] = [
               {{ choice.to }}
             </span>
           </div>
-          <figcaption class="flex items-start gap-3 text-[16px] leading-[1.5] text-night-text md:text-[17px]" role="status">
+          <figcaption class="flex items-start gap-3 text-[16px] leading-[1.5] text-night-text md:text-[17px]">
             <Icon :name="choice.via ? 'lock' : 'nothing-kept'" class="mt-0.5 size-[22px] shrink-0 text-cyan" />
-            <span><span class="sr-only">With {{ choice.name }}: </span>{{ choice.kept }}</span>
+            <span role="status"><span class="sr-only">With {{ choice.name }}: </span>{{ choice.kept }}</span>
           </figcaption>
         </figure>
       </div>

@@ -123,15 +123,16 @@ onUnmounted(() => {
             type="button"
             class="group flex cursor-pointer items-center gap-2 rounded-2xl p-1 disabled:cursor-default"
             :disabled="step === 'review'"
-            :aria-label="`Check the selection (${KEYS.join(' ')})`"
+            :aria-label="`${KEYS.join(' ')}, check the selection`"
             @click="step === 'done' ? (pick(sample), check()) : check()"
           >
-            <span
-              v-for="k in KEYS"
-              :key="k"
-              class="keycap h-[52px] min-w-[52px] rounded-[11px] px-3 text-[17px] transition-[translate,background-color] duration-100 ease-out group-active:translate-y-0.5"
-              :class="k === 'D' ? 'border-[#0A0F22] !bg-ink font-semibold text-cyan' : step === 'review' ? 'bg-tag' : ''"
-            >{{ k }}</span>
+            <!-- A space between the keys, unseen in the flex row, so their text reads as the label does. -->
+            <template v-for="k in KEYS" :key="k">
+              <span
+                class="keycap h-[52px] min-w-[52px] rounded-[11px] px-3 text-[17px] transition-[translate,background-color] duration-100 ease-out group-active:translate-y-0.5"
+                :class="k === 'D' ? 'border-[#0A0F22] !bg-ink font-semibold text-cyan' : step === 'review' ? 'bg-tag' : ''"
+              >{{ k }}</span>{{ ' ' }}
+            </template>
           </button>
         </div>
 

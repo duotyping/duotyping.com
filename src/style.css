@@ -46,7 +46,7 @@
   --color-line: #E1E4EA;        /* hairlines */
   --color-edge: #E1E4EA;        /* card borders */
   --color-sand: #E9ECF1;        /* secondary hover, a closed question */
-  --color-struck: #8A91A6;      /* the struck word */
+  --color-struck: #848B9F;      /* the struck word: 3.17:1 on paper, as large text needs 3:1 */
 
   /* The Mac, as the illustrations draw it: the redesign's light theme */
   --color-mac-ink: #1D1D1F;

@@ -5,11 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="theme-color" content="#F1EFE6" />
     <meta name="color-scheme" content="light" />
-    <!-- The first screen's three faces, fetched with the HTML rather than after the inlined
-         stylesheet that names them, so the headline types in Onest from its first letter. -->
+    <!-- The headline's face, fetched with the HTML rather than after the inlined stylesheet that
+         names it, so the headline types in Onest from its first letter. Only Onest: the headline is
+         the largest paint, and preloading the body and mono faces too had them share a phone's
+         bandwidth with it. Those swap in when the stylesheet asks for them. -->
     <link rel="preload" as="font" type="font/woff2" crossorigin href="./node_modules/@fontsource-variable/onest/files/onest-latin-wght-normal.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="./node_modules/@fontsource-variable/instrument-sans/files/instrument-sans-latin-wght-normal.woff2" />
-    <link rel="preload" as="font" type="font/woff2" crossorigin href="./node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2" />
     <link rel="icon" href="/favicon.ico" sizes="32x32" />
     <link rel="icon" href="/icon.svg" type="image/svg+xml" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
