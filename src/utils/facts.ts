@@ -3,7 +3,7 @@ import { DOWNLOAD_URL } from './site'
 
 // Every platform's facts in one place: the header, the hero, the platform cards, the pricing and
 // the structured data all read them, so a store launch is a change here and nowhere else.
-// Each status follows duotyping-specs specs/release-1.0.0.md: only the web app is live today.
+// Each status follows duotyping-specs specs/release-1.0.0.md: the web app and Windows (Store, 2026-10-16) are live.
 
 export type PlatformId = 'mac' | 'windows' | 'chrome' | 'web'
 export type Platform = {
@@ -22,7 +22,7 @@ export const WEB_APP_URL = 'https://app.duotyping.com/'
 // publishing-the-extension.md): a launch puts the listing's ID in place of PLACEHOLDER and sets the
 // platform live below. Nothing links to a placeholder: a live button goes to #platforms instead, and
 // /uninstalled's "Add DuoTyping back ↗" stays hidden.
-export const WINDOWS_STORE_URL = 'https://apps.microsoft.com/detail/PLACEHOLDER'
+export const WINDOWS_STORE_URL = 'https://apps.microsoft.com/detail/9N73KBZTTD43'
 export const CHROME_STORE_URL = 'https://chromewebstore.google.com/detail/duotyping/PLACEHOLDER'
 export const EDGE_ADDONS_URL = 'https://microsoftedge.microsoft.com/addons/detail/duotyping/PLACEHOLDER'
 export const isPlaceholder = (url: string) => !url || url.includes('PLACEHOLDER')
@@ -42,7 +42,7 @@ export const PLATFORMS: Record<PlatformId, Platform> = {
   windows: {
     name: 'Windows',
     device: 'pc',
-    live: false,
+    live: true,
     cta: 'Get it for Windows',
     href: WINDOWS_STORE_URL,
     requires: 'Windows 10 22H2, or Windows 11 24H2 or later',
