@@ -2,7 +2,7 @@
 
 > DuoTyping is a writing assistant that checks grammar and tone in the apps and sites you already write in, on Mac, Windows, Chrome and Edge, and the web. You select text, press one shortcut and review its suggestions in DuoTyping's own card. Nothing changes until you accept.
 
-Available today: Write, the web app, at https://app.duotyping.com/ (any current browser, phones included), and the Windows app, from the Microsoft Store at https://apps.microsoft.com/detail/9N73KBZTTD43. The Mac app and the Chrome and Edge extension are described below but are not yet released, so there is nothing to download or install for them yet. The interface is in English on every client.
+Available today: Write, the web app, at https://app.duotyping.com/ (any current browser, phones included); the Windows app, from the Microsoft Store at https://apps.microsoft.com/detail/9N73KBZTTD43; and the Chrome and Edge extension, from the Chrome Web Store at https://chromewebstore.google.com/detail/duotyping/eldkfheijiolifmamkighbkdmclfidkg, which Edge can install from too. The Mac app is described below but is not yet released, so there is nothing to download or install for it yet. The interface is in English on every client.
 
 ## How it works
 
@@ -40,7 +40,8 @@ Available today: Write, the web app, at https://app.duotyping.com/ (any current 
 - Needs no special permission. It never reads password fields or password managers, and can't reach apps run as administrator.
 - Pronounce works offline; Write keeps drafts on the PC, encrypted. Works signed out, like the Mac app.
 
-### Chrome and Edge extension (not yet released)
+### Chrome and Edge extension (live)
+- From the Chrome Web Store: https://chromewebstore.google.com/detail/duotyping/eldkfheijiolifmamkighbkdmclfidkg (Edge can install it from there too)
 - Chrome 119 or later, or Edge. Needs a free account and always uses DuoTyping's own checks.
 - Right-click › DuoTyping or the shortcut checks a selection on any site: Alt+Shift+D to check, Alt+Shift+E to rewrite (Ctrl+Shift on a Mac).
 - On the sites you switch on (https only): marks as you type, a button in the text box's corner with the count, and a Rewrite pencil beside it when you select text.
