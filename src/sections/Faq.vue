@@ -16,6 +16,7 @@ export const FAQ: [string, string][] = [
 
 <script setup lang="ts">
 import { useId } from 'vue'
+import { reducedMotion } from '../utils/motion'
 import { FEEDBACK_URL } from '../utils/site'
 
 // The assistant's answer, a line at a time.
@@ -23,6 +24,39 @@ import { FEEDBACK_URL } from '../utils/site'
 const shadow = useId()
 const ANSWER = [['M65 61H97', 'f1a'], ['M65 69H93', 'f1b'], ['M65 77H83', 'f1c']]
 
+// Each answer eases open (300 ms) and shut (240 ms) in every browser, Safari included: the
+// <details> keeps its own semantics, keyboard and find-in-page, and only the height between its
+// two states is drawn here. A second tap mid-way turns it round from where it is.
+const OPEN: KeyframeAnimationOptions = { duration: 300, easing: 'cubic-bezier(0.22, 1, 0.36, 1)' }
+const SHUT: KeyframeAnimationOptions = { duration: 240, easing: 'cubic-bezier(0.4, 0, 0.2, 1)' }
+const moving = new WeakMap<HTMLDetailsElement, Animation[]>()
+
+function toggle(e: MouseEvent) {
+  const summary = e.currentTarget as HTMLElement
+  const details = summary.parentElement as HTMLDetailsElement
+  const answer = summary.nextElementSibling as HTMLElement | null
+  if (reducedMotion() || !details.animate || !answer) return
+  e.preventDefault()
+  const from = details.offsetHeight
+  moving.get(details)?.forEach((a) => a.cancel())
+  const opening = !details.open || details.classList.contains('is-closing')
+  details.classList.toggle('is-closing', !opening)
+  details.open = true
+  const to = opening ? details.offsetHeight : summary.getBoundingClientRect().bottom - details.getBoundingClientRect().top
+  details.style.overflow = 'hidden'
+  const timing = { ...(opening ? OPEN : SHUT), fill: 'forwards' } as const
+  const run = [details.animate({ height: [`${from}px`, `${to}px`] }, timing), answer.animate({ opacity: opening ? [0, 1] : [1, 0] }, timing)]
+  moving.set(details, run)
+  run[0]!.onfinish = () => {
+    if (!opening) {
+      details.open = false
+      details.classList.remove('is-closing')
+    }
+    details.style.overflow = ''
+    run.forEach((a) => a.cancel())
+    moving.delete(details)
+  }
+}
 </script>
 
 <template>
@@ -67,7 +101,7 @@ const ANSWER = [['M65 61H97', 'f1a'], ['M65 69H93', 'f1b'], ['M65 77H83', 'f1c']
     <div class="order-2 lg:order-none lg:col-span-7 lg:col-start-6">
       <div class="border-b border-line">
         <details v-for="([q, a], i) in FAQ" :key="q" class="border-t border-line" :open="i === 0">
-          <summary class="flex min-h-11 cursor-pointer items-center justify-between gap-6 py-[18px] text-left lg:py-5">
+          <summary class="flex min-h-11 cursor-pointer items-center justify-between gap-6 py-[18px] text-left lg:py-5" @click="toggle">
             <span class="fluid font-semibold text-ink [--hi:19.5] [--lo:17.5]">{{ q }}</span>
             <span class="faq-icon flex size-8 shrink-0 items-center justify-center rounded-full bg-sand text-ink" aria-hidden="true">
               <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">

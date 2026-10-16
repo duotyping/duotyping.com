@@ -146,20 +146,12 @@
 
 /* ── FAQ ─────────────────────────────────────────────────────────────────────────────── */
 
-.faq-icon { transition: background-color 180ms ease-out, color 180ms ease-out; }
-.faq-icon .bar { transition: transform 180ms ease-out; transform-box: fill-box; transform-origin: center; }
-details[open] .faq-icon { background: var(--color-ink); color: var(--color-paper); }
-details[open] .faq-icon .bar { transform: scaleY(0); }
-/* Where the browser can animate to an auto height, an answer eases open instead of jumping. */
-@supports (interpolate-size: allow-keywords) {
-  :root { interpolate-size: allow-keywords; }
-  .faq details::details-content {
-    height: 0;
-    overflow: clip;
-    transition: height 240ms ease-out, content-visibility 240ms allow-discrete;
-  }
-  .faq details[open]::details-content { height: auto; }
-}
+/* An answer eases open and shut in Faq.vue; the icon turns as soon as it's asked to, so a closing
+   answer already shows its + while it folds away. */
+.faq-icon { transition: background-color 200ms ease-out, color 200ms ease-out; }
+.faq-icon .bar { transition: transform 260ms var(--ease-glide); transform-box: fill-box; transform-origin: center; }
+details[open]:not(.is-closing) .faq-icon { background: var(--color-ink); color: var(--color-paper); }
+details[open]:not(.is-closing) .faq-icon .bar { transform: scaleY(0); }
 
 /* ── The phone menu ──────────────────────────────────────────────────────────────────── */
 
@@ -190,7 +182,7 @@ details[open] .faq-icon .bar { transform: scaleY(0); }
 /* Nothing here is load-bearing, so honour the setting: every piece shows its final frame. */
 @media (prefers-reduced-motion: reduce) {
   .tcaret, .dt-sel, .dt-pop, .dt-mark, .dt-in { animation: none !important; }
-  .fade, .mk, .sel, .keycap-press, .faq-icon, .faq-icon .bar, .faq details::details-content,
+  .fade, .mk, .sel, .keycap-press, .faq-icon, .faq-icon .bar,
   .menu-enter-active, .menu-leave-active, .menu-row, .burger path { transition: none !important; }
   .loop, .loop * { animation: none !important; }
 }
