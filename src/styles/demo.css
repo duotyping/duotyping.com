@@ -64,18 +64,21 @@
    length, so the fit needs no script and never jumps after load. 100cqw is the width of the
    section around it, which carries Tailwind's @container. */
 
-/* Phones: the 350 × 626 composition, a little larger on a larger phone. */
+/* Phones: the 350 × 626 composition, a little larger on a larger phone. The stage takes its
+   column's width and no more, and is its own container, so the canvas scales to the stage itself:
+   iOS once sized it from the section's width as more than the screen, which widened the page. */
 .stage-phone {
-  --s: min(1.15, tan(atan2(100cqw - 2 * var(--gutter), 350px)));
+  container-type: inline-size;
   position: relative;
-  width: calc(350px * var(--s));
-  height: calc(626px * var(--s));
+  width: 100%;
+  max-width: calc(350px * 1.15);
+  aspect-ratio: 350 / 626;
   margin-inline: auto;
   overflow: hidden;
   border-radius: 22px;
   background: var(--color-desk);
 }
-.stage-phone > .canvas { width: 350px; height: 626px; transform: scale(var(--s)); transform-origin: 0 0; }
+.stage-phone > .canvas { width: 350px; height: 626px; transform: scale(tan(atan2(100cqw, 350px))); transform-origin: 0 0; }
 
 /* Tablets and small laptops: the 1000 × 778 desktop canvas under the copy. Its content spans
    850 px of that width, so that is what gets centred. */

@@ -21,7 +21,9 @@ const LINKS = [
 
 // 88 % paper and an 18 px blur from the first paint, so the page never shows through even before
 // (or without) the script; once the page moves, a soft shadow too (Components board). At the top
-// it sits on paper, so it looks the same as none.
+// it sits on paper, so it looks the same as none. The blur sits on a layer of its own: on the
+// header itself it would make the header the phone menu's containing block, and the menu, fixed
+// below the header's 64 px, would open with no height.
 const scrolled = ref(false)
 const onScroll = () => (scrolled.value = scrollY > 0)
 
@@ -58,9 +60,14 @@ onUnmounted(() => {
 
 <template>
   <header
-    class="sticky top-0 z-40 h-16 border-b border-ink/8 transition-[background-color,box-shadow] duration-200 ease-out [-webkit-backdrop-filter:blur(18px)] [backdrop-filter:blur(18px)] lg:h-[76px]"
-    :class="[open ? 'bg-paper' : 'bg-paper/88', scrolled && 'shadow-[0_8px_24px_rgba(24,33,63,0.06)]']"
+    class="sticky top-0 z-40 h-16 border-b border-ink/8 transition-shadow duration-200 ease-out lg:h-[76px]"
+    :class="scrolled && 'shadow-[0_8px_24px_rgba(24,33,63,0.06)]'"
   >
+    <div
+      aria-hidden="true"
+      class="absolute inset-0 -z-10 transition-colors duration-200 ease-out [-webkit-backdrop-filter:blur(18px)] [backdrop-filter:blur(18px)]"
+      :class="open ? 'bg-paper' : 'bg-paper/88'"
+    />
     <div class="wrap flex h-full items-center justify-between max-lg:pr-[calc(var(--gutter)-8px)]">
       <a :href="route.path === '/' ? '#top' : '/'" aria-label="DuoTyping home" class="flex items-center gap-[9px] text-ink lg:gap-2.5">
         <BrandMark class="size-7 lg:size-8" />
