@@ -1,12 +1,19 @@
 <script setup lang="ts">
-import { onMounted } from 'vue'
-import { RouterView } from 'vue-router'
+import { onMounted, onUnmounted } from 'vue'
+import { RouterView, useRouter } from 'vue-router'
 import SiteFooter from './components/SiteFooter.vue'
 import SiteHeader from './components/SiteHeader.vue'
 import { startAnalytics } from './utils/analytics'
+import { glideInPageLinks } from './utils/scroll'
 
+const router = useRouter()
+let unglide: (() => void) | undefined
 // In the browser only: the prerendered page carries no analytics.
-onMounted(startAnalytics)
+onMounted(() => {
+  startAnalytics()
+  unglide = glideInPageLinks(router)
+})
+onUnmounted(() => unglide?.())
 </script>
 
 <template>

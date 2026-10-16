@@ -81,6 +81,12 @@
      page's own sans: no local "SF Pro" or "Helvetica Neue", whose Windows copies are often a
      condensed or outline cut. */
   --font-mac: -apple-system, BlinkMacSystemFont, "Instrument Sans Variable", sans-serif;
+
+  /* The page's motion: things arriving decelerate (glide), a sheet moves as iOS moves one (sheet),
+     and anything leaving is quicker than it came. */
+  --ease-glide: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-sheet: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-leave: cubic-bezier(0.4, 0, 1, 1);
 }
 
 /* One gutter for the whole page: 20 px on a phone, 32 on a tablet, and from 1024 whatever
@@ -104,11 +110,11 @@
   html {
     color-scheme: light;
     line-height: normal;
+    /* Where an in-page link, Back or find-in-page puts a section: under the header. The glide
+       to it is utils/scroll.ts; no scroll-behavior: smooth here, which iOS skips as the phone
+       menu unlocks the page, and which makes Chrome drift slowly back on Back and Forward. */
     scroll-padding-top: var(--header);
     -webkit-text-size-adjust: 100%;
-  }
-  @media (prefers-reduced-motion: no-preference) {
-    html { scroll-behavior: smooth; }
   }
   body {
     background: var(--color-paper);
@@ -157,13 +163,34 @@ details[open] .faq-icon .bar { transform: scaleY(0); }
 
 /* ── The phone menu ──────────────────────────────────────────────────────────────────── */
 
-.menu-enter-active, .menu-leave-active { transition: opacity 180ms ease-out, transform 180ms ease-out; }
-.menu-enter-from, .menu-leave-to { opacity: 0; transform: translateY(-6px); }
+/* A sheet of paper drops from under the header in 320 ms, and its rows follow a beat behind, 30 ms
+   apart, settling from 10 px above. Closing, the rows fade first and the sheet lifts after them.
+   The sheet is uncovered by clipping, never moved, so nothing slides over the header. */
+.menu-enter-active { clip-path: inset(0); transition: clip-path 320ms var(--ease-sheet); }
+.menu-leave-active { clip-path: inset(0); transition: clip-path 240ms var(--ease-leave) 50ms; }
+.menu-enter-from, .menu-leave-to { clip-path: inset(0 0 100% 0); }
+.menu-enter-active .menu-row {
+  transition: opacity 260ms var(--ease-glide) calc(60ms + var(--i) * 30ms), transform 320ms var(--ease-sheet) calc(60ms + var(--i) * 30ms);
+}
+.menu-enter-from .menu-row { opacity: 0; transform: translateY(-10px); }
+.menu-leave-active .menu-row { transition: opacity 130ms ease-in; }
+.menu-leave-to .menu-row { opacity: 0; }
+.menu-row { -webkit-tap-highlight-color: transparent; }
+/* ☰ turns into ✕: the outer bars meet in the middle as they turn, the middle one shrinks away. */
+.burger { -webkit-tap-highlight-color: transparent; }
+.burger path {
+  transform-box: view-box;
+  transform-origin: 12px 12px;
+  transition: transform 300ms var(--ease-sheet), opacity 160ms ease-out;
+}
+.burger[aria-expanded="true"] path:nth-child(1) { transform: rotate(45deg) translateY(4.5px); }
+.burger[aria-expanded="true"] path:nth-child(2) { transform: scaleX(0.2); opacity: 0; }
+.burger[aria-expanded="true"] path:nth-child(3) { transform: rotate(-45deg) translateY(-4.5px); }
 
 /* Nothing here is load-bearing, so honour the setting: every piece shows its final frame. */
 @media (prefers-reduced-motion: reduce) {
   .tcaret, .dt-sel, .dt-pop, .dt-mark, .dt-in { animation: none !important; }
   .fade, .mk, .sel, .keycap-press, .faq-icon, .faq-icon .bar, .faq details::details-content,
-  .menu-enter-active, .menu-leave-active { transition: none !important; }
+  .menu-enter-active, .menu-leave-active, .menu-row, .burger path { transition: none !important; }
   .loop, .loop * { animation: none !important; }
 }
